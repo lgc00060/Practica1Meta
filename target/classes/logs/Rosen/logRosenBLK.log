@@ -1,0 +1,45 @@
+2022-11-02 17:07:53,834 Rosen.blk - Empieza ejecucion algoritmo BLK: 
+2022-11-02 17:07:53,834 Rosen.blk - El tiempo total de ejecucion en ms es: 0.047583
+2022-11-02 17:07:53,834 Rosen.blk - Funcion:Rosen
+2022-11-02 17:07:53,834 Rosen.blk - RangoInf: -5.0
+2022-11-02 17:07:53,834 Rosen.blk - RangoSup: 10.0
+2022-11-02 17:07:53,834 Rosen.blk - El coste del algoritmo BLk es:599.990960488651
+2022-11-02 17:07:53,834 Rosen.blk - El numero de iteraciones recorridas es:0
+2022-11-02 17:07:53,834 Rosen.blk - El vector seria: [5.9849970386380935, 1.0175530918671347, -0.08300002444054133, 3.702803973863233, 3.900337093193775, -1.877653376950581, -3.3718746134078437, 5.037713363132923, 3.4614982903330205, -2.1689715570468975]
+2022-11-02 17:07:53,834 Rosen.blk - La semilla es:76589227
+2022-11-02 17:07:53,834 Rosen.blk - Empieza ejecucion algoritmo BLK: 
+2022-11-02 17:07:53,834 Rosen.blk - El tiempo total de ejecucion en ms es: 0.03275
+2022-11-02 17:07:53,834 Rosen.blk - Funcion:Rosen
+2022-11-02 17:07:53,834 Rosen.blk - RangoInf: -5.0
+2022-11-02 17:07:53,834 Rosen.blk - RangoSup: 10.0
+2022-11-02 17:07:53,834 Rosen.blk - El coste del algoritmo BLk es:1246.9374150002184
+2022-11-02 17:07:53,834 Rosen.blk - El numero de iteraciones recorridas es:0
+2022-11-02 17:07:53,834 Rosen.blk - El vector seria: [6.071686482171522, 6.217917047448138, -1.5967105539958686, 8.133965689925661, -3.390624990451498, 3.0109157828121944, -0.682241697243442, 4.990375473734744, 6.788674789262556, 1.4353262931528326]
+2022-11-02 17:07:53,834 Rosen.blk - La semilla es:77658922
+2022-11-02 17:07:53,834 Rosen.blk - Empieza ejecucion algoritmo BLK: 
+2022-11-02 17:07:53,834 Rosen.blk - El tiempo total de ejecucion en ms es: 0.026666
+2022-11-02 17:07:53,834 Rosen.blk - Funcion:Rosen
+2022-11-02 17:07:53,834 Rosen.blk - RangoInf: -5.0
+2022-11-02 17:07:53,834 Rosen.blk - RangoSup: 10.0
+2022-11-02 17:07:53,834 Rosen.blk - El coste del algoritmo BLk es:1184.3100638166038
+2022-11-02 17:07:53,834 Rosen.blk - El numero de iteraciones recorridas es:0
+2022-11-02 17:07:53,834 Rosen.blk - El vector seria: [6.833922462619213, -0.7254348387552065, 6.252257763440449, -0.3118385878180465, 6.3374159025387815, 2.3491203579186433, 8.34712512155901, 4.361922715820519, 3.949063428300903, 7.2188973662000055]
+2022-11-02 17:07:53,834 Rosen.blk - La semilla es:27765892
+2022-11-02 17:07:53,834 Rosen.blk - Empieza ejecucion algoritmo BLK: 
+2022-11-02 17:07:53,834 Rosen.blk - El tiempo total de ejecucion en ms es: 0.024875
+2022-11-02 17:07:53,834 Rosen.blk - Funcion:Rosen
+2022-11-02 17:07:53,834 Rosen.blk - RangoInf: -5.0
+2022-11-02 17:07:53,834 Rosen.blk - RangoSup: 10.0
+2022-11-02 17:07:53,834 Rosen.blk - El coste del algoritmo BLk es:871.70637625875
+2022-11-02 17:07:53,834 Rosen.blk - El numero de iteraciones recorridas es:0
+2022-11-02 17:07:53,834 Rosen.blk - El vector seria: [4.357959107775262, 5.305706145076925, 2.2559625647263877, 4.2669950162090196, -4.741736288553891, 5.979147840174152, 4.446857729374907, 2.482955348165672, -1.90578112552928, 1.750157373970401]
+2022-11-02 17:07:53,834 Rosen.blk - La semilla es:22776589
+2022-11-02 17:07:53,834 Rosen.blk - Empieza ejecucion algoritmo BLK: 
+2022-11-02 17:07:53,834 Rosen.blk - El tiempo total de ejecucion en ms es: 0.0355
+2022-11-02 17:07:53,834 Rosen.blk - Funcion:Rosen
+2022-11-02 17:07:53,834 Rosen.blk - RangoInf: -5.0
+2022-11-02 17:07:53,834 Rosen.blk - RangoSup: 10.0
+2022-11-02 17:07:53,834 Rosen.blk - El coste del algoritmo BLk es:754.4622866912867
+2022-11-02 17:07:53,834 Rosen.blk - El numero de iteraciones recorridas es:0
+2022-11-02 17:07:53,834 Rosen.blk - El vector seria: [5.626031462213897, 6.131617372638512, 1.0391532597184954, 3.194141188882467, 1.1320752210318261, 0.849060254203617, 3.995372565626166, 2.112959746021933, 5.825330141841437, 6.0313641578570785]
+2022-11-02 17:07:53,834 Rosen.blk - La semilla es:92277658

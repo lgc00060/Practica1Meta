@@ -1,0 +1,45 @@
+2022-11-02 17:07:43,434 griewank.bl3 - Empieza ejecucion algoritmo BL3: 
+2022-11-02 17:07:43,435 griewank.bl3 - El tiempo total de ejecucion en ms es: 0.72675
+2022-11-02 17:07:43,435 griewank.bl3 - Funcion:griewank
+2022-11-02 17:07:43,435 griewank.bl3 - RangoInf: -600.0
+2022-11-02 17:07:43,435 griewank.bl3 - RangoSup: 600.0
+2022-11-02 17:07:43,435 griewank.bl3 - El coste del algoritmo BL3 es:-2.372778396868628
+2022-11-02 17:07:43,435 griewank.bl3 - El numero de iteraciones recorridas es:0
+2022-11-02 17:07:43,435 griewank.bl3 - El vector seria: [-503.79889470231535, -330.2508300214114, -394.862493637368, -208.7063669039881, 79.28561335898212, -285.2215745535156, -435.4134496985007, -311.444800133829, -518.1998278109907, -464.1657727656914]
+2022-11-02 17:07:43,435 griewank.bl3 - La semilla es:76589227
+2022-11-02 17:07:43,435 griewank.bl3 - Empieza ejecucion algoritmo BL3: 
+2022-11-02 17:07:43,435 griewank.bl3 - El tiempo total de ejecucion en ms es: 0.037542
+2022-11-02 17:07:43,435 griewank.bl3 - Funcion:griewank
+2022-11-02 17:07:43,435 griewank.bl3 - RangoInf: -600.0
+2022-11-02 17:07:43,436 griewank.bl3 - RangoSup: 600.0
+2022-11-02 17:07:43,436 griewank.bl3 - El coste del algoritmo BL3 es:0.338094211597883
+2022-11-02 17:07:43,436 griewank.bl3 - El numero de iteraciones recorridas es:0
+2022-11-02 17:07:43,436 griewank.bl3 - El vector seria: [112.39297188997227, -295.4240918144186, -67.54989806319122, -238.7738370490854, 120.97563550289453, 282.48683888382584, 82.12642293671081, 1.547321471696364, -529.1785574827467, -130.50859467777485]
+2022-11-02 17:07:43,436 griewank.bl3 - La semilla es:77658922
+2022-11-02 17:07:43,436 griewank.bl3 - Empieza ejecucion algoritmo BL3: 
+2022-11-02 17:07:43,436 griewank.bl3 - El tiempo total de ejecucion en ms es: 0.038292
+2022-11-02 17:07:43,436 griewank.bl3 - Funcion:griewank
+2022-11-02 17:07:43,436 griewank.bl3 - RangoInf: -600.0
+2022-11-02 17:07:43,436 griewank.bl3 - RangoSup: 600.0
+2022-11-02 17:07:43,436 griewank.bl3 - El coste del algoritmo BL3 es:1.1292203507513583
+2022-11-02 17:07:43,436 griewank.bl3 - El numero de iteraciones recorridas es:0
+2022-11-02 17:07:43,436 griewank.bl3 - El vector seria: [23.56009518284452, -4.041173880083761, 272.00917036503597, 141.57132264665586, 518.5565831111894, -428.3959943016872, 113.6298371189198, 331.16340763440337, -296.8325797881077, -542.0003173378119]
+2022-11-02 17:07:43,436 griewank.bl3 - La semilla es:27765892
+2022-11-02 17:07:43,436 griewank.bl3 - Empieza ejecucion algoritmo BL3: 
+2022-11-02 17:07:43,436 griewank.bl3 - El tiempo total de ejecucion en ms es: 0.034125
+2022-11-02 17:07:43,436 griewank.bl3 - Funcion:griewank
+2022-11-02 17:07:43,436 griewank.bl3 - RangoInf: -600.0
+2022-11-02 17:07:43,436 griewank.bl3 - RangoSup: 600.0
+2022-11-02 17:07:43,436 griewank.bl3 - El coste del algoritmo BL3 es:1.3061385952079094
+2022-11-02 17:07:43,436 griewank.bl3 - El numero de iteraciones recorridas es:0
+2022-11-02 17:07:43,436 griewank.bl3 - El vector seria: [47.67235742981234, 287.48212940727626, 335.1896827149369, -562.6127151217075, -215.73379540134283, 120.27394064572297, 118.978719873189, 204.05836787877104, -369.8947624970965, 340.72467027834773]
+2022-11-02 17:07:43,436 griewank.bl3 - La semilla es:22776589
+2022-11-02 17:07:43,436 griewank.bl3 - Empieza ejecucion algoritmo BL3: 
+2022-11-02 17:07:43,436 griewank.bl3 - El tiempo total de ejecucion en ms es: 0.035583
+2022-11-02 17:07:43,436 griewank.bl3 - Funcion:griewank
+2022-11-02 17:07:43,436 griewank.bl3 - RangoInf: -600.0
+2022-11-02 17:07:43,436 griewank.bl3 - RangoSup: 600.0
+2022-11-02 17:07:43,436 griewank.bl3 - El coste del algoritmo BL3 es:-0.5046134715208053
+2022-11-02 17:07:43,436 griewank.bl3 - El numero de iteraciones recorridas es:0
+2022-11-02 17:07:43,436 griewank.bl3 - El vector seria: [-506.6334634847483, 132.29662720943782, -481.5018601215178, -366.658982444201, -492.4697184754425, 546.373877521652, -48.518943734826166, -413.149192995995, -246.12645175314418, 371.77463675798003]
+2022-11-02 17:07:43,436 griewank.bl3 - La semilla es:92277658

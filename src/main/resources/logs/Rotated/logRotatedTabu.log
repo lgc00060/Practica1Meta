@@ -1,0 +1,45 @@
+2022-11-02 17:07:56,324 Rotated.tabu - Empieza ejecucion TABU: 
+2022-11-02 17:07:56,577 Rotated.tabu - El tiempo total de ejecucion en ms es: 252.747791
+2022-11-02 17:07:56,577 Rotated.tabu - Funcion:Rotated
+2022-11-02 17:07:56,577 Rotated.tabu - RangoInf: -65.536
+2022-11-02 17:07:56,577 Rotated.tabu - RangoSup: 65.536
+2022-11-02 17:07:56,577 Rotated.tabu - El coste del algoritmo tabu es:3626.840781622201
+2022-11-02 17:07:56,577 Rotated.tabu - El numero de iteraciones recorridas es:1000
+2022-11-02 17:07:56,577 Rotated.tabu - El vector seria: [43.39408558134615, 20.648040854509077, 53.440354477547075, 55.198728547509106, 64.22913874917096, 48.03632244889049, 56.79332112998593, 46.84471374668401, 44.10399248754979, 39.01837713520959]
+2022-11-02 17:07:56,577 Rotated.tabu - La semilla es:76589227
+2022-11-02 17:07:56,577 Rotated.tabu - Empieza ejecucion TABU: 
+2022-11-02 17:07:56,836 Rotated.tabu - El tiempo total de ejecucion en ms es: 258.927209
+2022-11-02 17:07:56,836 Rotated.tabu - Funcion:Rotated
+2022-11-02 17:07:56,836 Rotated.tabu - RangoInf: -65.536
+2022-11-02 17:07:56,836 Rotated.tabu - RangoSup: 65.536
+2022-11-02 17:07:56,836 Rotated.tabu - El coste del algoritmo tabu es:3624.5887306048635
+2022-11-02 17:07:56,836 Rotated.tabu - El numero de iteraciones recorridas es:1000
+2022-11-02 17:07:56,836 Rotated.tabu - El vector seria: [51.235287375817094, 40.788337192122526, 64.15969089911086, 48.9218679869129, 42.404331216864406, 39.59411431343032, 47.9786427146158, 55.14471530160891, 62.92503528481914, 40.961668225375526]
+2022-11-02 17:07:56,836 Rotated.tabu - La semilla es:77658922
+2022-11-02 17:07:56,836 Rotated.tabu - Empieza ejecucion TABU: 
+2022-11-02 17:07:57,094 Rotated.tabu - El tiempo total de ejecucion en ms es: 257.906917
+2022-11-02 17:07:57,094 Rotated.tabu - Funcion:Rotated
+2022-11-02 17:07:57,094 Rotated.tabu - RangoInf: -65.536
+2022-11-02 17:07:57,094 Rotated.tabu - RangoSup: 65.536
+2022-11-02 17:07:57,094 Rotated.tabu - El coste del algoritmo tabu es:3678.8744626598104
+2022-11-02 17:07:57,094 Rotated.tabu - El numero de iteraciones recorridas es:1000
+2022-11-02 17:07:57,095 Rotated.tabu - El vector seria: [52.714244804831665, 56.68880849555292, 60.85559149383599, 49.284838772660265, 59.01322491597212, 50.62347716943436, 43.87679405235632, 59.021808491201085, 41.776701178853884, 62.51395470211895]
+2022-11-02 17:07:57,095 Rotated.tabu - La semilla es:27765892
+2022-11-02 17:07:57,095 Rotated.tabu - Empieza ejecucion TABU: 
+2022-11-02 17:07:57,340 Rotated.tabu - El tiempo total de ejecucion en ms es: 245.069209
+2022-11-02 17:07:57,340 Rotated.tabu - Funcion:Rotated
+2022-11-02 17:07:57,340 Rotated.tabu - RangoInf: -65.536
+2022-11-02 17:07:57,340 Rotated.tabu - RangoSup: 65.536
+2022-11-02 17:07:57,340 Rotated.tabu - El coste del algoritmo tabu es:3700.1883283657353
+2022-11-02 17:07:57,340 Rotated.tabu - El numero de iteraciones recorridas es:1000
+2022-11-02 17:07:57,340 Rotated.tabu - El vector seria: [50.86005558361853, 54.227540435256046, 55.14062736230413, 51.22407907512073, 51.47288477431666, 43.1049232239989, 60.23651918857895, 52.87835043694891, 43.27344517046253, 41.21683970549549]
+2022-11-02 17:07:57,340 Rotated.tabu - La semilla es:22776589
+2022-11-02 17:07:57,340 Rotated.tabu - Empieza ejecucion TABU: 
+2022-11-02 17:07:57,591 Rotated.tabu - El tiempo total de ejecucion en ms es: 250.869625
+2022-11-02 17:07:57,591 Rotated.tabu - Funcion:Rotated
+2022-11-02 17:07:57,591 Rotated.tabu - RangoInf: -65.536
+2022-11-02 17:07:57,591 Rotated.tabu - RangoSup: 65.536
+2022-11-02 17:07:57,591 Rotated.tabu - El coste del algoritmo tabu es:3650.542350773488
+2022-11-02 17:07:57,591 Rotated.tabu - El numero de iteraciones recorridas es:1000
+2022-11-02 17:07:57,591 Rotated.tabu - El vector seria: [53.61589436155292, 48.43816369640019, 31.593119207785058, 42.63912916932823, 45.63207866530578, 46.099890930789215, 60.944639948557224, 44.359105953667665, 56.138566104048685, 22.685719193444978]
+2022-11-02 17:07:57,591 Rotated.tabu - La semilla es:92277658

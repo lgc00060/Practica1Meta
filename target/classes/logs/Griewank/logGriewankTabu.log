@@ -1,0 +1,45 @@
+2022-11-02 17:07:43,440 griewank.tabu - Empieza ejecucion TABU: 
+2022-11-02 17:07:43,702 griewank.tabu - El tiempo total de ejecucion en ms es: 262.081458
+2022-11-02 17:07:43,702 griewank.tabu - Funcion:griewank
+2022-11-02 17:07:43,703 griewank.tabu - RangoInf: -600.0
+2022-11-02 17:07:43,703 griewank.tabu - RangoSup: 600.0
+2022-11-02 17:07:43,703 griewank.tabu - El coste del algoritmo tabu es:0.2805021620600454
+2022-11-02 17:07:43,703 griewank.tabu - El numero de iteraciones recorridas es:1000
+2022-11-02 17:07:43,703 griewank.tabu - El vector seria: [451.1900630332837, 594.9106834539808, 298.9490146613815, 586.2537702095432, 464.6184734917886, 353.6291980774541, 496.8217313185316, 490.6960287307654, 516.1025644537548, 553.9676623443337]
+2022-11-02 17:07:43,703 griewank.tabu - La semilla es:76589227
+2022-11-02 17:07:43,703 griewank.tabu - Empieza ejecucion TABU: 
+2022-11-02 17:07:43,976 griewank.tabu - El tiempo total de ejecucion en ms es: 272.137667
+2022-11-02 17:07:43,976 griewank.tabu - Funcion:griewank
+2022-11-02 17:07:43,976 griewank.tabu - RangoInf: -600.0
+2022-11-02 17:07:43,976 griewank.tabu - RangoSup: 600.0
+2022-11-02 17:07:43,976 griewank.tabu - El coste del algoritmo tabu es:-1.055587978385074
+2022-11-02 17:07:43,976 griewank.tabu - El numero de iteraciones recorridas es:1000
+2022-11-02 17:07:43,976 griewank.tabu - El vector seria: [536.241757030094, 440.64831722348094, 464.708165243843, 450.5366573628365, 341.4990032594756, 340.2488248443075, 360.72763333409273, 445.18083395919086, 393.0250644539377, 330.4504437061058]
+2022-11-02 17:07:43,976 griewank.tabu - La semilla es:77658922
+2022-11-02 17:07:43,976 griewank.tabu - Empieza ejecucion TABU: 
+2022-11-02 17:07:44,243 griewank.tabu - El tiempo total de ejecucion en ms es: 266.952916
+2022-11-02 17:07:44,243 griewank.tabu - Funcion:griewank
+2022-11-02 17:07:44,243 griewank.tabu - RangoInf: -600.0
+2022-11-02 17:07:44,243 griewank.tabu - RangoSup: 600.0
+2022-11-02 17:07:44,243 griewank.tabu - El coste del algoritmo tabu es:1.726917764902034
+2022-11-02 17:07:44,243 griewank.tabu - El numero de iteraciones recorridas es:1000
+2022-11-02 17:07:44,244 griewank.tabu - El vector seria: [-78.06897458847232, -505.2937154085669, 486.18214427555586, -21.58373342476841, 471.95886190354645, 534.02134818528, 125.36908796942134, 82.47233142480343, 563.0575575088292, 175.85727564790568]
+2022-11-02 17:07:44,244 griewank.tabu - La semilla es:27765892
+2022-11-02 17:07:44,244 griewank.tabu - Empieza ejecucion TABU: 
+2022-11-02 17:07:44,512 griewank.tabu - El tiempo total de ejecucion en ms es: 267.368875
+2022-11-02 17:07:44,512 griewank.tabu - Funcion:griewank
+2022-11-02 17:07:44,512 griewank.tabu - RangoInf: -600.0
+2022-11-02 17:07:44,512 griewank.tabu - RangoSup: 600.0
+2022-11-02 17:07:44,512 griewank.tabu - El coste del algoritmo tabu es:2.360944756675104
+2022-11-02 17:07:44,512 griewank.tabu - El numero de iteraciones recorridas es:1000
+2022-11-02 17:07:44,512 griewank.tabu - El vector seria: [465.562652859998, 360.01304305137654, 352.31099661539446, 332.66222466356277, 312.46672979125975, 476.1387735594798, 490.8746681902766, 490.3103764062254, 482.93889635923034, 591.1066811917867]
+2022-11-02 17:07:44,512 griewank.tabu - La semilla es:22776589
+2022-11-02 17:07:44,512 griewank.tabu - Empieza ejecucion TABU: 
+2022-11-02 17:07:44,762 griewank.tabu - El tiempo total de ejecucion en ms es: 249.1785
+2022-11-02 17:07:44,762 griewank.tabu - Funcion:griewank
+2022-11-02 17:07:44,762 griewank.tabu - RangoInf: -600.0
+2022-11-02 17:07:44,762 griewank.tabu - RangoSup: 600.0
+2022-11-02 17:07:44,762 griewank.tabu - El coste del algoritmo tabu es:6.134497729903598
+2022-11-02 17:07:44,762 griewank.tabu - El numero de iteraciones recorridas es:1000
+2022-11-02 17:07:44,763 griewank.tabu - El vector seria: [366.69484861491503, 318.886197668803, 591.6600952360167, 194.00232525739293, 487.7895963225994, 568.9857362528786, 476.161987006634, 277.3993110837924, 236.54271825388074, 407.6891647895895]
+2022-11-02 17:07:44,763 griewank.tabu - La semilla es:92277658

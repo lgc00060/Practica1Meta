@@ -1,0 +1,9 @@
+semilla=76589227 77658922 27765892 22776589 92277658
+d=10
+algoritmos=bl3 blk tabu vns
+k=3
+iteraciones=1000
+prob_cambio=0.3
+funciones=Ackley, Dixon, griewank, michale, Perm, Rast, Rosen, Rotated, Schew, Trid
+rangoInf=-32768 -100 -600 0 -100 -51.12 -5 -65.536 -500 -1000
+rangoSup=32768 100 600 PI 100 51.12 10 65.536 500 1000
