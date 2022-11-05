@@ -19,7 +19,15 @@ public class Lector {
 
     private int k;
 
+    private int poblacion;
+
     private float prob_cambio;
+
+    private float cruce;
+
+    private float mutacion;
+
+    private  float alfa;
 
     private long iteraciones;
 
@@ -84,6 +92,7 @@ public class Lector {
                         // System.out.println("k:" + k);
                         break;
 
+
                     case "iteraciones":
                         iteraciones = Long.parseLong(split[1]);
                         break;
@@ -115,8 +124,21 @@ public class Lector {
                             }else{
                                 rangoSup[q] = Double.parseDouble(splitrangS[q]);;
                             }
+
                         }
-                        //  System.out.println("rangoSup:" + rangoSup);
+                        break;
+                    case "poblacion":
+                        poblacion = Integer.parseInt(split[1]);
+                        // System.out.println("k:" + k);
+                        break;
+                    case "cruce":
+                        cruce = Float.parseFloat(split[1]);
+                        break;
+                    case "mutacion":
+                        mutacion = Float.parseFloat(split[1]);
+                        break;
+                    case "alfa":
+                       alfa = Float.parseFloat(split[1]);
                         break;
                 }
             }

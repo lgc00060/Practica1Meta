@@ -7,3 +7,7 @@ prob_cambio=0.3
 funciones=Ackley, Dixon, griewank, michale, Perm, Rast, Rosen, Rotated, Schew, Trid
 rangoInf=-32768 -100 -600 0 -100 -51.12 -5 -65.536 -500 -1000
 rangoSup=32768 100 600 PI 100 51.12 10 65.536 500 1000
+poblacion=50
+cruce=0.7
+mutacion=0.01
+alfa=0.5
