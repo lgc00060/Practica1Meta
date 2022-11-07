@@ -4,7 +4,7 @@ import java.security.SecureRandom;
 import static meta.funciones.Funciones.evaluaCoste;
 
 public class AEvBLXalfa_Clase3_Grupo5 {
-   public static <Poblacion> double AEVBLXALFA(int tp, int tampoblacion, int evaluaciones, double s, double rmin, double rmax,
+   public static <Poblacion> double AEVBLXALFA(int tp, int tampoblacion, int evaluaciones, double[] s, double rmin, double rmax,
                                                double kProbMuta, double kProbCruce, double alfa, String selector, double tiempo_ejec, int semilla, int individuos, double datos, int poblacion){
 
 
@@ -22,12 +22,12 @@ public class AEvBLXalfa_Clase3_Grupo5 {
  */
 
        //Calculamos sus costes y lo ordenamos de mayor a menor
-       poblacion.evaluaCoste(datos);
+       //poblacion.evaluaCoste(datos);
 
        //Tiempo de ejecucion del algoritmo
        int t=0;
-        double[] cromosomas = new double[10];
-        double[] nuevag = new double[10];
+        double[][] cromosomas = new double[10];
+        double[][] nuevag = new double[10];
        double[] costes = new double[10];
        double[] costesH = new double[10];
        double[] position = new double[10];
@@ -36,6 +36,9 @@ public class AEvBLXalfa_Clase3_Grupo5 {
        int mejorCrHijo;
        double mejorCo=9999999e+100;
        double mejorCoHijo;
+       double mejorCosteGlobal=mejorCo;
+       double[] mejorCruce1 = mejorCruce;
+       double[] mejorCroGlobal= new double[] mejorCruce;
 
 //Carga de los cromosomas iniciales
        for (int i=0;i<tp;i++){
@@ -47,9 +50,7 @@ public class AEvBLXalfa_Clase3_Grupo5 {
                mejorCruce=cromosomas[i];
            }
        }
-       double mejorCosteGlobal=mejorCo;
-       double mejorCruce1 = mejorCruce;
-       double mejorCroGlobal= new double[] mejorCruce;
+
 
        //Calculo de la probabilidad de mutacion
        float probMutacion= (float) kProbMuta;
@@ -72,15 +73,15 @@ public class AEvBLXalfa_Clase3_Grupo5 {
 
            //Nos quedamos con los cromosomas mas prometedores
            for (int i=0;i<tp;i++){
-               nuevag[i]=cromosomas[posi[i]];
-               costesH[i]=costes[posi[i]];
+               nuevag[i]=cromosomas[position[i]];
+               costesH[i]=costes[position[i]];
            }
 
            //CRUZAMOS los padres seleccionados con una probabilidad probCruce OPCION 1
            float x;
            int p1;
-          double h1 = new double [];
-          double h2 = new double [];
+          double[] h1 = new double [];
+          double[] h2 = new double [];
           boolean[] marcados(tp,false);  //marcamos los modificados
            for (int i=0;i<tp;i++){
                x=Randfloat(0,1.01);
@@ -98,9 +99,8 @@ public class AEvBLXalfa_Clase3_Grupo5 {
 
            //CRUZAMOS los padres seleccionados con una probabilidad probCruce OPCION 2
            //    PDTEEEEEEEEEEEEEEEEEEEE
-           x;
            int c1,c2;
-           Double nuevagg=nuevag; //la copiamos para obtener los nuevos hijos
+           double[][] nuevagg=nuevag; //la copiamos para obtener los nuevos hijos
            //std::vector<double> h1;
 
            for (int i=0;i<tp;i++){
