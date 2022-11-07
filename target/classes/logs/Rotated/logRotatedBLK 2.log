@@ -1,0 +1,45 @@
+2022-11-02 17:07:56,322 Rotated.blk - Empieza ejecucion algoritmo BLK: 
+2022-11-02 17:07:56,322 Rotated.blk - El tiempo total de ejecucion en ms es: 0.13375
+2022-11-02 17:07:56,322 Rotated.blk - Funcion:Rotated
+2022-11-02 17:07:56,323 Rotated.blk - RangoInf: -65.536
+2022-11-02 17:07:56,323 Rotated.blk - RangoSup: 65.536
+2022-11-02 17:07:56,323 Rotated.blk - El coste del algoritmo BLk es:3646.3265316815186
+2022-11-02 17:07:56,323 Rotated.blk - El numero de iteraciones recorridas es:6
+2022-11-02 17:07:56,323 Rotated.blk - El vector seria: [60.05604414656992, 65.18544907605757, 63.87274241141832, 59.42747370461624, 58.50317737927609, 61.585757586880455, 57.994883914739106, 53.61488595526376, 64.08515634555911, -78.02252930005815]
+2022-11-02 17:07:56,323 Rotated.blk - La semilla es:76589227
+2022-11-02 17:07:56,323 Rotated.blk - Empieza ejecucion algoritmo BLK: 
+2022-11-02 17:07:56,323 Rotated.blk - El tiempo total de ejecucion en ms es: 0.064875
+2022-11-02 17:07:56,323 Rotated.blk - Funcion:Rotated
+2022-11-02 17:07:56,323 Rotated.blk - RangoInf: -65.536
+2022-11-02 17:07:56,323 Rotated.blk - RangoSup: 65.536
+2022-11-02 17:07:56,323 Rotated.blk - El coste del algoritmo BLk es:3711.972863567108
+2022-11-02 17:07:56,323 Rotated.blk - El numero de iteraciones recorridas es:3
+2022-11-02 17:07:56,323 Rotated.blk - El vector seria: [42.42201584989501, -5.632384528699362, 58.34081073253251, 61.8625799241959, 58.9399430749597, 64.89940636662637, 65.08557436816211, 59.149802064529965, 55.27398802562153, 53.047466011981804]
+2022-11-02 17:07:56,323 Rotated.blk - La semilla es:77658922
+2022-11-02 17:07:56,323 Rotated.blk - Empieza ejecucion algoritmo BLK: 
+2022-11-02 17:07:56,323 Rotated.blk - El tiempo total de ejecucion en ms es: 0.088708
+2022-11-02 17:07:56,323 Rotated.blk - Funcion:Rotated
+2022-11-02 17:07:56,324 Rotated.blk - RangoInf: -65.536
+2022-11-02 17:07:56,324 Rotated.blk - RangoSup: 65.536
+2022-11-02 17:07:56,324 Rotated.blk - El coste del algoritmo BLk es:3606.3889091876677
+2022-11-02 17:07:56,324 Rotated.blk - El numero de iteraciones recorridas es:5
+2022-11-02 17:07:56,324 Rotated.blk - El vector seria: [64.0629545938277, 49.77626632029537, 58.62254651683462, 64.11560804149818, 58.84184194365403, 59.828247730203714, 58.178461253162, 60.14053264992767, 54.197084232603, 64.00640848620444]
+2022-11-02 17:07:56,324 Rotated.blk - La semilla es:27765892
+2022-11-02 17:07:56,324 Rotated.blk - Empieza ejecucion algoritmo BLK: 
+2022-11-02 17:07:56,324 Rotated.blk - El tiempo total de ejecucion en ms es: 0.360042
+2022-11-02 17:07:56,324 Rotated.blk - Funcion:Rotated
+2022-11-02 17:07:56,324 Rotated.blk - RangoInf: -65.536
+2022-11-02 17:07:56,324 Rotated.blk - RangoSup: 65.536
+2022-11-02 17:07:56,324 Rotated.blk - El coste del algoritmo BLk es:3584.252151673462
+2022-11-02 17:07:56,324 Rotated.blk - El numero de iteraciones recorridas es:7
+2022-11-02 17:07:56,324 Rotated.blk - El vector seria: [63.62921499195412, 62.562134637399886, 64.52695738704287, 57.65487127924483, 63.35492282296116, 57.65040923842314, 63.46162834004862, 52.146744159942806, 59.970985925336684, 63.96995705211183]
+2022-11-02 17:07:56,324 Rotated.blk - La semilla es:22776589
+2022-11-02 17:07:56,324 Rotated.blk - Empieza ejecucion algoritmo BLK: 
+2022-11-02 17:07:56,324 Rotated.blk - El tiempo total de ejecucion en ms es: 0.055791
+2022-11-02 17:07:56,324 Rotated.blk - Funcion:Rotated
+2022-11-02 17:07:56,324 Rotated.blk - RangoInf: -65.536
+2022-11-02 17:07:56,324 Rotated.blk - RangoSup: 65.536
+2022-11-02 17:07:56,324 Rotated.blk - El coste del algoritmo BLk es:3592.844192114816
+2022-11-02 17:07:56,324 Rotated.blk - El numero de iteraciones recorridas es:5
+2022-11-02 17:07:56,324 Rotated.blk - El vector seria: [60.70582876332727, 58.346241380382565, 58.36614092190782, 53.75983768480125, 58.23983506177748, 58.68101964524811, 61.95515103265102, 59.37600085249793, 56.02764427722229, 65.15143267949716]
+2022-11-02 17:07:56,324 Rotated.blk - La semilla es:92277658
