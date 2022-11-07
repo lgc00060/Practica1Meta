@@ -8,27 +8,26 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.lang.Boolean;
+import meta.utils.FuncionesAux;
+import org.apache.log4j.Logger;
+
 
 public class AEvBLXalfa_Clase3_Grupo5 {
-    double AEVBLXALFA(int tp, int tamPob, int evaluaciones, vector<double> s, double rmin, double rmax,
+    double AEVBLXALFA(int tp, int tamPob, int evaluaciones, double[] s, double rmin, double rmax,
                       double kProbMuta, double kProbCruce, double alfa, int selector) {
         int t = 0;
         List<double[]> cromosomas=new ArrayList<>();
         List<double[]> nuevag=new ArrayList<>();
-        double[] costes;
-        double[] costesH;
-        int posi;
-        double[] mejorCr;
-        int peor;
-        int peorcostehijo;
+        double[] costes= new double[0];
+        double[] costesH=new double[0];
+        double[] posi=new double[0];
+        double[] mejorCr=new double[0];
+        double[] peor= new double[0];
+        double[] peorcostehijo;
         int mejorCruceHijo;
         double mejorCoste =Integer.MAX_VALUE;
-        double mejorCosteHijo;
+        double[] mejorCosteHijo= new double[0];
         Random random = new Random();
-        //  reservamos del tamaño del vector de cromosomas original, nueva gen., costes y posic.
-
-
-
 
         //Carga de los cromosomas iniciales
         for (int i = 0; i < tp; i++) {
@@ -70,17 +69,17 @@ public class AEvBLXalfa_Clase3_Grupo5 {
             }
 
             //CRUZAMOS los padres seleccionados con una probabilidad probCruce OPCION 1
-            double x=new double[];
             int p1;
-            double h1, h2;
+            double[] h1 = new double[0];
+            double[] h2 = new double[0]
 
-            Boolean marcados=false;  //marcamos los modificados
+            boolean marcados=false;  //marcamos los modificados
             for (int i = 0; i < tp; i++) {
                 double x = random.nextDouble();
                 if (x < kProbCruce) {
                     while (i == (p1 = random.nextInt())) ;
 
-                    cruceBLX(tamPob, nuevag[i], nuevag[p1], alfa, h1, h2);
+                    cruceBLX(tamPob, nuevag.get(i), nuevag.get(p1), alfa, h1, h2);
 
                     nuevag.set(i, h1);
                     nuevag.set(p1, h2);
@@ -90,13 +89,11 @@ public class AEvBLXalfa_Clase3_Grupo5 {
             }
 
             //CRUZAMOS los padres seleccionados con una probabilidad probCruce OPCION 2
-            //    PDTEEEEEEEEEEEEEEEEEEEE
-            x;
-            int c1;
+
             int c2;
            // vector<vector<double>> nuevagg = nuevag; //la copiamos para obtener los nuevos hijos
             //std::vector<double> h1;
-            List<double[]> nuevagg=new ArrayList<>();
+            List<Double> nuevagg=new ArrayList<>();
 
             for (int i = 0; i < tp; i++) {
                 int c1 = random.nextInt();
@@ -111,7 +108,7 @@ public class AEvBLXalfa_Clase3_Grupo5 {
 
                 }
             }
-            nuevag = Collections.singletonList(nuevagg);  //la dejamos en nuevag para proseguir
+            nuevag = ((nuevagg);  //la dejamos en nuevag para proseguir
 
             //MUTAMOS los genes de los dos padres ya cruzados con probabilidad probMutacion
             for (int i = 0; i < tp; i++) {
@@ -130,8 +127,6 @@ public class AEvBLXalfa_Clase3_Grupo5 {
 
             //actualizamos el coste de los modificados
             // preparamos el REEMPLAZAMIENTO calculamos el peor de la nueva poblacion
-            peorcostehijo = 0;
-            int peor;
             double mejorcostehijo = Integer.MAX_VALUE;
             for (int i = 0; i < tp; i++) {
                 if (marcados[i]) {
@@ -173,8 +168,7 @@ public class AEvBLXalfa_Clase3_Grupo5 {
                 mejorCosteGlobal = mejorcostehijo;
                 mejorCroGlobal = nuevag[mejorCruceHijo];
             }
-
-            //        cout << "Mejor Coste: " << mejorCosteGlobal << endl;
+            System.out.println("Mejor coste;" + mejorCosteGlobal);
             //Actualizo cromosomas con nuevag, para la siguiente generacion
             costes = costesH;
             cromosomas = nuevag;
