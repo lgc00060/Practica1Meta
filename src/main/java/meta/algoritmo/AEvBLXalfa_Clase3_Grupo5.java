@@ -1,81 +1,88 @@
 package meta.algoritmo;
 
 import static meta.funciones.Funciones.evaluaCoste;
-import static java.util.Random.*;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
+import java.lang.Boolean;
 
 public class AEvBLXalfa_Clase3_Grupo5 {
-    double AEVBLXALFA(int tp, int tam, int evaluaciones, double[] s, double rmin, double rmax,
+    double AEVBLXALFA(int tp, int tamPob, int evaluaciones, vector<double> s, double rmin, double rmax,
                       double kProbMuta, double kProbCruce, double alfa, int selector) {
         int t = 0;
-        vector<vector<double>> cromosomas, nuevag;
-        vector<double> costes, costesH;
-        vector<double> posi, mejorCr;
+        List<double[]> cromosomas=new ArrayList<>();
+        List<double[]> nuevag=new ArrayList<>();
+        double[] costes;
+        double[] costesH;
+        int posi;
+        double[] mejorCr;
         int peor;
-        int peorCoHijo;
-        int mejorCrHijo;
-        double mejorCo = 9999999e+100,
-        double mejorCoHijo;
-
+        int peorcostehijo;
+        int mejorCruceHijo;
+        double mejorCoste =Integer.MAX_VALUE;
+        double mejorCosteHijo;
+        Random random = new Random();
         //  reservamos del tamaño del vector de cromosomas original, nueva gen., costes y posic.
-        cromosomas.resize(tp, vector < double>(tam));
-        nuevag.resize(tp, vector < double>(tam));
-        costes.resize(tp);
-        costesH.resize(tp);
-        posi.resize(tp);
+
+
+
 
         //Carga de los cromosomas iniciales
         for (int i = 0; i < tp; i++) {
-            cargaAleatoria(tam, cromosomas[i], rmin, rmax);
-            costes[i] = evaluaCoste(cromosomas[i], selector);
+            cargaAleatoria(tamPob, cromosomas.get(i), rmin, rmax);
+            costes[i] = evaluaCoste(cromosomas.get(i), String.valueOf(selector));
 
-            if (costes[i] < mejorCo) {
-                mejorCo = costes[i];
-                mejorCr = cromosomas[i];
+            if (costes[i] < mejorCoste) {
+                mejorCoste = costes[i];
+                mejorCr = cromosomas.get(i);
             }
         }
 
-        double mejorCosteGlobal = mejorCo;
-        vector<double> mejorCroGlobal = mejorCr;
+        double mejorCosteGlobal = mejorCoste;
+        double[] mejorCroGlobal = mejorCr;
 
         //Calculo de la probabilidad de mutacion
-        float probMutacion = kProbMuta;
+        float probMutacion;
 
         //Contador de evaluaciones de la poblacion
-        int conte = tp;
+        int conta = tp;
 
         //PRINCIPAL: Comienzan las iteraciones
 
-        while (conte < evaluaciones) {
+        while (conta < evaluaciones) {
             t++;
 
             //SELECCION por TORNEO: Calculo de los cromosomas mas prometedores entre cada 2 parejas aleatorias
-            //durante tp enfrentamientos
+            //durante tp enfrentamiento¡'
             for (int k = 0, i, j; k < tp; k++) {
-                i = Randint(0, tp - 1);
-                while (i == (j = Randint(0, tp - 1))) ;
-                posi[k] = (costes[i] < costes[j]) ? i : j;
+               int i =  random.nextInt();
+                while (i == (j = random.nextInt()));
+                 posi[k] = (costes[i] < costes[j]) ? i : j;
             }
 
             //Nos quedamos con los cromosomas mas prometedores
             for (int i = 0; i < tp; i++) {
-                nuevag[i] = cromosomas[posi[i]];
-                costesH[i] = costes[posi[i]];
+                nuevag.set(i, cromosomas[posi[i]]);
+                costesH[i] = costes[(int) posi[i]];
             }
 
             //CRUZAMOS los padres seleccionados con una probabilidad probCruce OPCION 1
-            float x;
+            double x=new double[];
             int p1;
-            vector < double>h1, h2;
-            vector < boolean > marcados(tp, false);  //marcamos los modificados
+            double h1, h2;
+
+            Boolean marcados=false;  //marcamos los modificados
             for (int i = 0; i < tp; i++) {
-                x = Randfloat(0, 1.01);
+                double x = random.nextDouble();
                 if (x < kProbCruce) {
-                    while (i == (p1 = Randint(0, tp - 1))) ;
+                    while (i == (p1 = random.nextInt())) ;
 
-                    cruceBLX(tam, nuevag[i], nuevag[p1], alfa, h1, h2);
+                    cruceBLX(tamPob, nuevag[i], nuevag[p1], alfa, h1, h2);
 
-                    nuevag[i] = h1;
-                    nuevag[p1] = h2;
+                    nuevag.set(i, h1);
+                    nuevag.set(p1, h2);
                     marcados[i] = marcados[p1] = true;
 
                 }
@@ -84,33 +91,34 @@ public class AEvBLXalfa_Clase3_Grupo5 {
             //CRUZAMOS los padres seleccionados con una probabilidad probCruce OPCION 2
             //    PDTEEEEEEEEEEEEEEEEEEEE
             x;
-            int c1, c2;
+            int c1;
+            int c2;
             vector<vector<double>> nuevagg = nuevag; //la copiamos para obtener los nuevos hijos
             //std::vector<double> h1;
 
             for (int i = 0; i < tp; i++) {
-                int c1 = Randint(0, tp - 1);
+                int c1 = random.nextInt();
 
-                x = Randfloat(0, 1.01);
+               double x = random.nextDouble();
                 if (x < kProbCruce) {
-                    while (c1 == (c2 = Randint(0, tp - 1))) ;
-                    cruceBLX(tam, nuevag[i], nuevag[p1], alfa, h1, h2);
+                    while (c1 == (c2 = random.nextInt())) ;
+                    cruceBLX(tamPob, nuevag.get(i), nuevag.get(p1), alfa, h1, h2);
                     nuevagg[c1] = h1;
                     nuevagg[c2] = h2;
                     marcados[c1] = marcados[c2] = true;
 
                 }
             }
-            nuevag = nuevagg;  //la dejamos en nuevag para proseguir
+            nuevag = Collections.singletonList(nuevagg);  //la dejamos en nuevag para proseguir
 
             //MUTAMOS los genes de los dos padres ya cruzados con probabilidad probMutacion
             for (int i = 0; i < tp; i++) {
                 boolean m = false;
-                for (int j = 0; j < tam; j++) {
-                    x = Randfloat(0, 1.01);
+                for (int j = 0; j < tamPob; j++) {
+                   float x = random.nextFloat();
                     if (x < probMutacion) {
                         m = true;
-                        double valor = Randfloat(rmin, rmax);
+                        double valor = random.nextDouble(rmin,rmax);
                         Mutacion(nuevag[i], j, valor);//cout << "mutando Cromosoma.." << endl;
                     }
                 }
@@ -120,48 +128,48 @@ public class AEvBLXalfa_Clase3_Grupo5 {
 
             //actualizamos el coste de los modificados
             // preparamos el REEMPLAZAMIENTO calculamos el peor de la nueva poblacion
-            peorCoHijo = 0;
+            peorcostehijo = 0;
             int peor;
-            mejorCoHijo = 99999999e+100;
+            double mejorcostehijo = Integer.MAX_VALUE;
             for (int i = 0; i < tp; i++) {
                 if (marcados[i]) {
                     costesH[i] = evaluaCoste(nuevag[i], selector);
-                    conte++;
+                    conta++;
                 }
 
-                if (costesH[i] > peorCoHijo) {
-                    peorCoHijo = costesH[i];
+                if (costesH[i] > peorcostehijo) {
+                    peorcostehijo = costesH[i];
                     peor = i;
                 }
 
-                if (costesH[i] < mejorCoHijo) {
-                    mejorCoHijo = costesH[i];
-                    mejorCrHijo = i;
+                if (costesH[i] < mejorcostehijo) {
+                    mejorcostehijo = costesH[i];
+                    mejorCruceHijo = i;
                 }
 
             }
 
             //Mantenemos el elitismo del mejor de P(t) para P(t') si no sobrevive
             boolean enc = false;
-            for (int i = 0; i < nuevag.size() && !enc; i++) {
+            for (int i = 0; i < nuevag.lenght(); i++) {
                 if (mejorCr == nuevag[i]) {
                     enc = true;
                 }
             }
             if (!enc) {
                 nuevag[peor] = mejorCr;
-                costesH[peor] = mejorCo;
+                costesH[peor] = mejorCoste;
             }
 
             //actualizamos el mejor cromosoma para el elitismo de la siguiente generacion
-            mejorCr = nuevag[mejorCrHijo];
-            mejorCo = mejorCoHijo;
+            mejorCr = nuevag[mejorCruceHijo];
+            mejorCoste = mejorcostehijo;
 
             //Actualizamos el mejor global y su coste con el mejor hijo de la NUEVA POBLACION
             //si mejora
-            if (mejorCoHijo < mejorCosteGlobal) {
-                mejorCosteGlobal = mejorCoHijo;
-                mejorCroGlobal = nuevag[mejorCrHijo];
+            if (mejorcostehijo < mejorCosteGlobal) {
+                mejorCosteGlobal = mejorcostehijo;
+                mejorCroGlobal = nuevag[mejorCruceHijo];
             }
 
             //        cout << "Mejor Coste: " << mejorCosteGlobal << endl;
@@ -169,8 +177,9 @@ public class AEvBLXalfa_Clase3_Grupo5 {
             costes = costesH;
             cromosomas = nuevag;
         }
+        double tiempoFinal = System.nanoTime();
         s = mejorCroGlobal;
-        System.out.println("Total Evaluaciones:" + conte);
+        System.out.println("Total Evaluaciones:" + conta);
         System.out.println(" Total Iteraciones:" + t);
         return mejorCosteGlobal;
     }
