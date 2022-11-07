@@ -8,29 +8,31 @@ import static java.util.Collections.swap;
 import static meta.algoritmo.AEvBLXalfa_Clase3_Grupo5.*;
 
 public class FuncionesAux {
-    public static void cargaAleatoria(int tam,double[] v, double rmin, double rmax ){
-        for (int i=0; i<tam; i++){
+    public static void cargaAleatoria(int tam, double[] v, double rmin, double rmax) {
+        for (int i = 0; i < tam; i++) {
             Random random = new Random();
             v[i] = random.nextDouble();
         }
     }
 
-    public static void Mutacion(double[] v, int pos, double valor){
-        v[pos]=valor;
+    public static void Mutacion(double[] v, int pos, double valor) {
+        v[pos] = valor;
 
     }
-   public static void cruceMedia(int tam,double[] v,double[] w,double[] h){
+
+    public static void cruceMedia(int tam, double[] v, double[] w, double[] h) {
 //    vector<double> h1,h2;
 //    h1.resize(tam);
         //     h.resize(tam);
-        for (int i=0; i<tam; i++){
-            h[i]= (v[i]+w[i])/2;
+        for (int i = 0; i < tam; i++) {
+            h[i] = (v[i] + w[i]) / 2;
 //        h2[i]= (v[i]+tercero[i])/2;
         }
 //    v=h1;
 //    w=h2;
     }
-
+}
+/*
    public static void cruceBLX(int tam, double[] v, double[] w, double alfaBLX, double[] h1, double[] h2){
         double Cmax,Cmin,I;
         h1.resize(tam);
@@ -45,6 +47,8 @@ public class FuncionesAux {
             h2[i]= Randfloat(Cmin-(I*alfaBLX),Cmax+(I*alfaBLX));
         }
     }
+
+
 
     public static boolean negativos(double[] v){
         for (long k=0; k<v.length(); k++){
@@ -69,3 +73,6 @@ public class FuncionesAux {
 
     }
 }
+
+
+ */
