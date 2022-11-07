@@ -179,7 +179,7 @@ public class AEvBLXalfa_Clase3_Grupo5 {
             costes = costesH;
             cromosomas = nuevag;
         }
-        double tiempoFinal = System.nanoTime(); //CAMBIOOOOOSlkjijgiy
+        double tiempoFinal = System.nanoTime(); //CAMBIOOOOOSlkjijgiyj
         s = mejorCroGlobal;
         System.out.println("Total Evaluaciones:" + conta);
         System.out.println(" Total Iteraciones:" + t);
