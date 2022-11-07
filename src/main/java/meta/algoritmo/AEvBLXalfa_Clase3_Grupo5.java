@@ -1,6 +1,7 @@
 package meta.algoritmo;
 
 import static meta.funciones.Funciones.evaluaCoste;
+import static meta.utils.FuncionesAux.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -93,8 +94,9 @@ public class AEvBLXalfa_Clase3_Grupo5 {
             x;
             int c1;
             int c2;
-            vector<vector<double>> nuevagg = nuevag; //la copiamos para obtener los nuevos hijos
+           // vector<vector<double>> nuevagg = nuevag; //la copiamos para obtener los nuevos hijos
             //std::vector<double> h1;
+            List<double[]> nuevagg=new ArrayList<>();
 
             for (int i = 0; i < tp; i++) {
                 int c1 = random.nextInt();
@@ -103,8 +105,8 @@ public class AEvBLXalfa_Clase3_Grupo5 {
                 if (x < kProbCruce) {
                     while (c1 == (c2 = random.nextInt())) ;
                     cruceBLX(tamPob, nuevag.get(i), nuevag.get(p1), alfa, h1, h2);
-                    nuevagg[c1] = h1;
-                    nuevagg[c2] = h2;
+                    nuevagg.set(c1, h1);
+                    nuevagg.set(c2, h2);
                     marcados[c1] = marcados[c2] = true;
 
                 }
@@ -118,8 +120,8 @@ public class AEvBLXalfa_Clase3_Grupo5 {
                    float x = random.nextFloat();
                     if (x < probMutacion) {
                         m = true;
-                        double valor = random.nextDouble(rmin,rmax);
-                        Mutacion(nuevag[i], j, valor);//cout << "mutando Cromosoma.." << endl;
+                        double valor = random.nextDouble();
+                        Mutacion(nuevag.get(i), j, valor);//cout << "mutando Cromosoma.." << endl;
                     }
                 }
                 if (m)
