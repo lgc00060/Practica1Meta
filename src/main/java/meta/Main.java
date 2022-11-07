@@ -8,10 +8,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
-import static meta.algoritmo.AlgBL3_Clase3_Grupo5.algBL3Clase1Grupo5;
-import static meta.algoritmo.AlgBLX_Clase3_Grupo5.algBLkClase1Grupo5;
-import static meta.algoritmo.AlgBTabu_Clase3_Grupo5.algBTabuClase1Grupo5;
-import static meta.algoritmo.AlgBTabuVNS_Clase3_Grupo5.algBTabuVNSClase1Grupo5;
+import static meta.algoritmo.AEvBLXalfa_Clase3_Grupo5.*;
+
 
 
 public class Main {
@@ -41,9 +39,11 @@ public class Main {
                 for (Long semilla : semillas) {
                     aleatorio.setSeed(semilla);
                     switch (algoritmo) {
-                        case "bl3" -> {
+                        /*
+                        case "AEVBLXALFA" -> {
                             algBL3Clase1Grupo5(semilla, d, evaluar, soluActu, rangoInf[i], rangoSup[i], funcion, oscilacion, logger);
                         }
+                        /*
                         case "blk" -> {
                             algBLkClase1Grupo5(semilla, d,evaluar, soluActu, rangoInf[i], rangoSup[i],funcion, oscilacion, logger);
                         }
@@ -53,6 +53,8 @@ public class Main {
                         case "vns" ->{
                             algBTabuVNSClase1Grupo5(semilla,iteraciones,soluActu,d,rangoInf[i],rangoSup[i],funcion,oscilacion,logger);
                         }
+
+                         */
                     }
                 }
             }

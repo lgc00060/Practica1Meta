@@ -145,7 +145,7 @@ public class Funciones {
         }
         return score;
     }
-    public static double evaluaCoste(double[] j, String funcion) {
+    public static double evaluaCoste(double j, String funcion) {
         switch (funcion) {
             case "Ackley":
                 return ackleyFunction(j);
