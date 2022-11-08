@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import static meta.algoritmo.AEvBLXalfa_Clase3_Grupo5.*;
+import static meta.algoritmo.AEVMedia.*;
 
 
 
@@ -26,6 +27,10 @@ public class Main {
         double oscilacion = config.getProb();
         double [] rangoInf = config.getRangoInf();
         double [] rangoSup = config.getRangoSup();
+        double  poblacion= config.getPoblacion();
+        double cruce= config.getCruce();
+        double alfa= config.getAlfa();
+
         int i=0;
         long evaluar=1000;
         Long[] semillas;
@@ -39,12 +44,18 @@ public class Main {
                     aleatorio.setSeed(semilla);
                     switch (algoritmo) {
 /*
-                        case "AEVBLXALFA" -> {
-                            AEVBLXALFA(tp)
+                       case "AEVBLXALFA" -> {
+                            AEVBLXALFA(d,k,alfa,poblacion,semilla,rangoSup,funcion,logger);
+                        }
+                        case "AEVMedia" -> {
+                            AEVMedia();
                         }
 
 
  */
+
+
+
 
 
                     }

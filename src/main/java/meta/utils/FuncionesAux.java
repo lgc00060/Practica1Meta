@@ -21,7 +21,7 @@ public class FuncionesAux {
     }
 
     public static void cruceMedia(int tam, double[] v, double[] w, double[] h) {
-//    vector<double> h1,h2;
+//   vector<double> h1,h2;
 //    h1.resize(tam);
         //     h.resize(tam);
         for (int i = 0; i < tam; i++) {

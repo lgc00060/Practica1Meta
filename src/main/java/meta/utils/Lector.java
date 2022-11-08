@@ -27,15 +27,15 @@ public class Lector {
 
     private float mutacion;
 
-    private  float alfa;
+    private float alfa;
 
     private long iteraciones;
 
     private ArrayList<String> funciones = new ArrayList<>();
 
-    private double [] rangoInf = new double[10];
+    private double[] rangoInf = new double[10];
 
-    private double [] rangoSup = new double[10];
+    private double[] rangoSup = new double[10];
 
     //Simbolo de separacion
     private String simbolo = "=";
@@ -119,10 +119,11 @@ public class Lector {
                     case "rangoSup":
                         String[] splitrangS = split[1].split(" ");
                         for (int q = 0; q < splitrangS.length; q++) {
-                            if(splitrangS[q].equals("PI")) {
-                                rangoSup[q]=Math.PI;
-                            }else{
-                                rangoSup[q] = Double.parseDouble(splitrangS[q]);;
+                            if (splitrangS[q].equals("PI")) {
+                                rangoSup[q] = Math.PI;
+                            } else {
+                                rangoSup[q] = Double.parseDouble(splitrangS[q]);
+                                ;
                             }
 
                         }
@@ -138,7 +139,7 @@ public class Lector {
                         mutacion = Float.parseFloat(split[1]);
                         break;
                     case "alfa":
-                       alfa = Float.parseFloat(split[1]);
+                        alfa = Float.parseFloat(split[1]);
                         break;
                 }
             }
@@ -181,18 +182,27 @@ public class Lector {
         return simbolo;
     }
 
-    public long getIteraciones(){ return iteraciones; }
+    public long getIteraciones() {
+        return iteraciones;
+    }
 
     public ArrayList<String> getFunciones() {
         return funciones;
     }
 
-    public double [] getRangoInf() {
+    public double[] getRangoInf() {
         return rangoInf;
     }
 
-    public double [] getRangoSup() {
+    public double[] getRangoSup() {
         return rangoSup;
     }
+
+    public int getPoblacion() {return poblacion;}
+
+    public float getCruce() {return cruce;}
+
+    public float getAlfa() {return alfa;}
 }
+
 

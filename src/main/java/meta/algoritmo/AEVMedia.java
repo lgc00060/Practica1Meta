@@ -1,31 +1,32 @@
 package meta.algoritmo;
 
+import org.apache.log4j.Logger;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import org.apache.log4j.Logger;
-import static meta.funciones.Funciones.evaluaCoste;
-import static meta.utils.FuncionesAux.Mutacion;
-import static meta.utils.FuncionesAux.cargaAleatoria;
 
-public class AEvBLXalfa_Clase3_Grupo5 {
-    public static double AEVBLXALFA(int tp, int tam, int evaluaciones, double[] s, double rmin, double rmax,
-                                    double kProbMuta, double kProbCruce, double alfa, int funcion, int semilla,Logger logger) {
+import static meta.funciones.Funciones.evaluaCoste;
+import static meta.utils.FuncionesAux.*;
+
+public class AEVMedia {
+    public static void AEVMedia(int tp, int tam, int evaluaciones, double[] s, double rmin, double rmax,
+                                  double kProbMuta, double kProbCruce, double alfa, int funcion, int semilla, Logger logger) {
         int t = 0;
         long tiempoInicial = System.nanoTime();
-        List<double[]> cromosomas=new ArrayList<>();
-        List<double[]> nuevag=new ArrayList<>(tam);
-        double[] costes= new double[tp];
-        double[] costesHijo= new double[tp];
-        int[] position=new int[tp];
-        double[] mejorCr=new double[tp];
-        int peor=0;
-        double peorCosteHijo=0;
+        List<double[]> cromosomas = new ArrayList<>();
+        List<double[]> nuevag = new ArrayList<>(tam);
+        double[] costes = new double[tp];
+        double[] costesHijo = new double[tp];
+        int[] position = new int[tp];
+        double[] mejorCr = new double[tp];
+        int peor = 0;
+        double peorCosteHijo = 0;
         int mejorCruceHijo = 0;
-        double mejorCoste =Double.MAX_VALUE;
-        double mejorCosteHijo= Double.MAX_VALUE;
+        double mejorCoste = Double.MAX_VALUE;
+        double mejorCosteHijo = Double.MAX_VALUE;
         Random random = new Random();
-        logger.info("Empieza ejecucion EvolutivoBLXAlfa: ");
+        logger.info("Empieza ejecucion EvolutivoMedia: ");
         //Carga de los cromosomas iniciales
         for (int i = 0; i < tp; i++) {
             cargaAleatoria(tam, cromosomas.get(i), rmin, rmax);
@@ -41,7 +42,7 @@ public class AEvBLXalfa_Clase3_Grupo5 {
         double[] mejorCroGlobal = mejorCr;
 
         //Calculo de la probabilidad de mutacion
-        double  probMutacion= kProbMuta;
+        double probMutacion = kProbMuta;
 
         //Contador de evaluaciones de la poblacion
         int conta = tp;
@@ -53,14 +54,16 @@ public class AEvBLXalfa_Clase3_Grupo5 {
             //SELECCION por TORNEO: Calculo de los cromosomas mas prometedores entre cada 2 parejas aleatorias
             //durante tp enfrentamiento¡'
             for (int k = 0; k < tp; k++) {
-                int i,j;
-                i =  random.nextInt(tp - 1 - 0)+0;
-                while (i == (j = random.nextInt(tp - 1 - 0) + 0));
-                 position[k] = (costes[i] < costes[j]) ? i : j;
+                int i, j;
+                i = random.nextInt(tp - 1 - 0) + 0;
+                while (i == (j = random.nextInt(tp - 1 - 0) + 0)) ;
+                position[k] = (costes[i] < costes[j]) ? i : j;
             }
-
             //Nos quedamos con los cromosomas mas prometedores
-            for (int i = 0; i < tp; i++) {
+            for (int i=0;i<tp;i++){
+                //if (t>=82 && i==38)  ejecucion 4, iteracion 82, i 38
+                if (position[i]==50)    //UUFFFFFFFFFFFFFFF
+                    position[i]--;
                 nuevag.add(i, cromosomas.get(position[i]));
                 costesHijo[i] = costes[position[i]];
             }
@@ -69,24 +72,26 @@ public class AEvBLXalfa_Clase3_Grupo5 {
             double[] h1 = new double[tam];
             double[] h2 = new double[tam];
             boolean[] marcados=new boolean[tp];  //marcamos los modificados
+            double[] cr3=new double[tp];
 
             for (int i = 0; i < tp; i++) {
                 double x = random.nextDouble();
                 if (x < kProbCruce) {
                     while (i == (p1 = random.nextInt(tp - 1 -0)+ 0)) ;
-                    //cruceBLX(tam, nuevag.get(i), nuevag.get(p1), alfa, h1, h2);
+                    cr3= nuevag.get(random.nextInt(tp - 1 - 0) + 0);
+                    cruceMedia(tam, nuevag.get(i), nuevag.get(p1),h1);
+                    cruceMedia(tam, nuevag.get(i),cr3,h2);
                     nuevag.add(i, h1);
                     nuevag.add(p1, h2);
                     marcados[i] = marcados[p1] = true;
 
                 }
             }
-
-            //MUTAMOS los genes de los dos padres ya cruzados con probabilidad probMutacion
+//MUTAMOS los genes de los dos padres ya cruzados con probabilidad probMutacion
             for (int i = 0; i < tp; i++) {
                 boolean m = false;
                 for (int j = 0; j < tam; j++) {
-                   double x = random.nextDouble();
+                    double x = random.nextDouble();
                     if (x < probMutacion) {
                         m = true;
                         double valor = random.nextDouble() + rmin;
@@ -97,7 +102,7 @@ public class AEvBLXalfa_Clase3_Grupo5 {
                     marcados[i] = true;        //marcamos los modificados
             }
 
-            //actualizamos el coste de los modificados
+//actualizamos el coste de los modificados
             // preparamos el REEMPLAZAMIENTO calculamos el peor de la nueva poblacion
             double mejorcostehijo = Integer.MAX_VALUE;
             for (int i = 0; i < tp; i++) {
@@ -147,16 +152,16 @@ public class AEvBLXalfa_Clase3_Grupo5 {
 
         double tiempoFinal = System.nanoTime();
         double resultado = (tiempoFinal - tiempoInicial);
-
         logger.info("El tiempo total de ejecucion en ms es: " + resultado);
         logger.info("Funcion:" + funcion);
         logger.info("RangoInf: " + rmin);
         logger.info("RangoSup: " + rmax);
-        logger.info("El coste del algoritmo Evolutivo es:" + mejorCosteGlobal);
+        logger.info("El coste del algoritmo EvolutivoMedia es:" + mejorCosteGlobal);
         logger.info("La semilla es:" + semilla);
         System.out.println("Total Evaluaciones:" + conta);
         System.out.println(" Total Iteraciones:" + t);
-        return mejorCosteGlobal;
     }
 
 }
+
+
