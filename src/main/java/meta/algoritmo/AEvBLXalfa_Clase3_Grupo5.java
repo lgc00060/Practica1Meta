@@ -9,10 +9,11 @@ import static meta.utils.FuncionesAux.Mutacion;
 import static meta.utils.FuncionesAux.cargaAleatoria;
 
 public class AEvBLXalfa_Clase3_Grupo5 {
-    public static double AEVBLXALFA(int tp, int tam, int evaluaciones, double[] s, double rmin, double rmax,
-                                    double kProbMuta, double kProbCruce, double alfa, int funcion, int semilla,Logger logger) {
-        int t = 0;
+    public static double AEVBLXALFA(int tp, int tam, long evaluaciones, double[] s, double rmin, double rmax,
+                                    double kProbMuta, double kProbCruce, double alfa, String funcion, long semilla,Logger logger) {
         long tiempoInicial = System.nanoTime();
+
+        int t = 0;
         List<double[]> cromosomas=new ArrayList<>();
         List<double[]> nuevag=new ArrayList<>(tam);
         double[] costes= new double[tp];
@@ -25,7 +26,9 @@ public class AEvBLXalfa_Clase3_Grupo5 {
         double mejorCoste =Double.MAX_VALUE;
         double mejorCosteHijo= Double.MAX_VALUE;
         Random random = new Random();
+
         logger.info("Empieza ejecucion EvolutivoBLXAlfa: ");
+
         //Carga de los cromosomas iniciales
         for (int i = 0; i < tp; i++) {
             cargaAleatoria(tam, cromosomas.get(i), rmin, rmax);

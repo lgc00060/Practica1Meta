@@ -203,6 +203,8 @@ public class Lector {
     public float getCruce() {return cruce;}
 
     public float getAlfa() {return alfa;}
+
+    public float getMutacion() {return mutacion;}
 }
 
 

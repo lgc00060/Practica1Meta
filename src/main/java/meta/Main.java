@@ -21,18 +21,20 @@ public class Main {
         Lector config = new Lector("src/main/java/meta/config_files/config_ini");
         int d = config.getD();
         ArrayList<String> algoritmos = config.getAlgoritmos();
+        double[] solu = new double[d];
         int k = config.getK();
         float prob_cambio = config.getProb();
         ArrayList<String> funciones = config.getFunciones();
         double oscilacion = config.getProb();
         double [] rangoInf = config.getRangoInf();
         double [] rangoSup = config.getRangoSup();
-        double  poblacion= config.getPoblacion();
+        int  poblacion= config.getPoblacion();
         double cruce= config.getCruce();
         double alfa= config.getAlfa();
+        double prob_muta= config.getMutacion();
 
         int i=0;
-        long evaluar=1000;
+        long evaluar=10000;
         Long[] semillas;
         semillas = (Long[]) config.getSemilla();
 
@@ -43,16 +45,17 @@ public class Main {
                 for (Long semilla : semillas) {
                     aleatorio.setSeed(semilla);
                     switch (algoritmo) {
-/*
-                       case "AEVBLXALFA" -> {
-                            AEVBLXALFA(d,k,alfa,poblacion,semilla,rangoSup,funcion,logger);
+
+                        case "AEVBLXALFA" -> {
+                            AEVBLXALFA(poblacion,d,evaluar,solu,rangoInf[i],rangoSup[i],prob_muta,cruce,alfa,funcion, semilla,logger);
                         }
-                        case "AEVMedia" -> {
+
+                        /*case "AEVMedia" -> {
                             AEVMedia();
-                        }
+                        }*/
 
 
- */
+
 
 
 
@@ -61,8 +64,8 @@ public class Main {
                     }
                 }
             }
+
             i++;
         }
-
     }
 }
