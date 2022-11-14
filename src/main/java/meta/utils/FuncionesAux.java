@@ -2,8 +2,7 @@ package meta.utils;
 
 import java.util.Random;
 
-import static java.lang.Math.max;
-import static java.lang.Math.min;
+import static java.lang.Math.*;
 import static java.util.Collections.swap;
 import static meta.algoritmo.AEvBLXalfa_Clase3_Grupo5.*;
 
@@ -31,25 +30,9 @@ public class FuncionesAux {
 //    v=h1;
 //    w=h2;
     }
-}
+
+
 /*
-   public static void cruceBLX(int tam, double[] v, double[] w, double alfaBLX, double[] h1, double[] h2){
-        double Cmax,Cmin,I;
-        h1.resize(tam);
-        h2.resize(tam);
-        for (int i=0; i<tam; i++){
-            Cmax=max(v[i],w[i]);
-            Cmin=min(v[i],w[i]);
-            if (Cmin<0 && Cmax<0)
-                swap(Cmin, Cmax);
-            I=Cmax-Cmin;
-            h1[i]= Randfloat(Cmin-(I*alfaBLX),Cmax+(I*alfaBLX));
-            h2[i]= Randfloat(Cmin-(I*alfaBLX),Cmax+(I*alfaBLX));
-        }
-    }
-
-
-
     public static boolean negativos(double[] v){
         for (long k=0; k<v.length(); k++){
             if (v[k]<-500 || v[k]>500)
@@ -64,6 +47,34 @@ public class FuncionesAux {
         }
     }
 
+ */
+public static double MAPE(double[] real, double[] estimation) {
+    int N = real.length;
+    double score;
+    double sum = 0.0;
+    double num = 0.0;
+    for (int i = 0; i < N; i++) {
+        if (real[i] != 0) {
+            sum += Math.abs((real[i] - estimation[i]) / Math.abs(real[i]));
+            num++;
+        }
+    }
+    score = sum / num;
+    return score;
+}
+
+    public static double RMSE(double[] real, double[] estimation) {
+        int N = real.length;
+        double score;
+        double sum = 0;
+        for (int i = 0; i < N; i++) {
+            sum += Math.pow(real[i] - estimation[i], 2);
+        }
+        score = Math.sqrt(1.0 / N * sum);
+        return score;
+    }
+
+
     public static void mostrarmatriz(double[] mat){
         for (int i=0; i<50; i++){ //cout << mat[i].size() << endl;
             for (int j=0; j<10; j++){
@@ -75,4 +86,3 @@ public class FuncionesAux {
 }
 
 
- */

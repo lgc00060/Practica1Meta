@@ -3,29 +3,45 @@ package meta.algoritmo;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import meta.Main;
 import org.apache.log4j.Logger;
 import static meta.funciones.Funciones.evaluaCoste;
 import static meta.utils.FuncionesAux.Mutacion;
 import static meta.utils.FuncionesAux.cargaAleatoria;
 
 public class AEvBLXalfa_Clase3_Grupo5 {
-    public static double AEVBLXALFA(int tp, int tam, long evaluaciones, double[] s, double rmin, double rmax,
-                                    double kProbMuta, double kProbCruce, double alfa, String funcion, long semilla,Logger logger) {
-        long tiempoInicial = System.nanoTime();
+    public AEvBLXalfa_Clase3_Grupo5(int poblacion, int d, int evaluar, double[] solu, double v, double v1, double prob_muta, double cruce, double alfa, String funcion, Long semilla, Logger logger) {
+    }
 
+    public static double AEVBLXALFA(int tp, int tam, double evaluaciones, double[] s, double rmin, double rmax,
+                                    double kProbMuta, double kProbCruce, double alfa, String funcion, Long semilla) {
+
+        long tiempoInicial = System.nanoTime();
         int t = 0;
         List<double[]> cromosomas=new ArrayList<>();
         List<double[]> nuevag=new ArrayList<>(tam);
         double[] costes= new double[tp];
         double[] costesHijo= new double[tp];
         int[] position=new int[tp];
-        double[] mejorCr=new double[tp];
+        double[] mejorCruce=new double[tp];
         int peor=0;
         double peorCosteHijo=0;
         int mejorCruceHijo = 0;
         double mejorCoste =Double.MAX_VALUE;
-        double mejorCosteHijo= Double.MAX_VALUE;
+        double mejorCosteGlobal = mejorCoste;
+        double[] mejorCroGlobal = mejorCruce;
+        //Calculo de la probabilidad de mutacion
+        double  probMutacion= kProbMuta;
+        //Contador de evaluaciones de la poblacion
+        int conta = tp;
         Random random = new Random();
+        int p1 = 0;
+        double[] h1 = new double[tam];
+        double[] h2 = new double[tam];
+        boolean[] marcados=new boolean[tp];  //marcamos los modificados
+        double mejorcostehijo = Integer.MAX_VALUE;
+        Logger logger = Logger.getLogger(Main.class);
 
         logger.info("Empieza ejecucion EvolutivoBLXAlfa: ");
 
@@ -36,19 +52,9 @@ public class AEvBLXalfa_Clase3_Grupo5 {
 
             if (costes[i] < mejorCoste) {
                 mejorCoste = costes[i];
-                mejorCr = cromosomas.get(i);
+                mejorCruce = cromosomas.get(i);
             }
         }
-
-        double mejorCosteGlobal = mejorCoste;
-        double[] mejorCroGlobal = mejorCr;
-
-        //Calculo de la probabilidad de mutacion
-        double  probMutacion= kProbMuta;
-
-        //Contador de evaluaciones de la poblacion
-        int conta = tp;
-
         //PRINCIPAL: Comienzan las iteraciones
 
         while (conta < evaluaciones) {
@@ -57,8 +63,8 @@ public class AEvBLXalfa_Clase3_Grupo5 {
             //durante tp enfrentamiento¡'
             for (int k = 0; k < tp; k++) {
                 int i,j;
-                i =  random.nextInt(tp - 1 - 0)+0;
-                while (i == (j = random.nextInt(tp - 1 - 0) + 0));
+                i =  random.nextInt(tp - 1);
+                while (i == (j = random.nextInt(tp - 1)));
                  position[k] = (costes[i] < costes[j]) ? i : j;
             }
 
@@ -68,15 +74,10 @@ public class AEvBLXalfa_Clase3_Grupo5 {
                 costesHijo[i] = costes[position[i]];
             }
             //CRUZAMOS los padres seleccionados con una probabilidad probCruce OPCION 1
-            int p1 = 0;
-            double[] h1 = new double[tam];
-            double[] h2 = new double[tam];
-            boolean[] marcados=new boolean[tp];  //marcamos los modificados
-
             for (int i = 0; i < tp; i++) {
                 double x = random.nextDouble();
                 if (x < kProbCruce) {
-                    while (i == (p1 = random.nextInt(tp - 1 -0)+ 0)) ;
+                    while (i == (p1 = random.nextInt(tp - 1))) ;
                     //cruceBLX(tam, nuevag.get(i), nuevag.get(p1), alfa, h1, h2);
                     nuevag.add(i, h1);
                     nuevag.add(p1, h2);
@@ -102,7 +103,7 @@ public class AEvBLXalfa_Clase3_Grupo5 {
 
             //actualizamos el coste de los modificados
             // preparamos el REEMPLAZAMIENTO calculamos el peor de la nueva poblacion
-            double mejorcostehijo = Integer.MAX_VALUE;
+
             for (int i = 0; i < tp; i++) {
                 if (marcados[i]) {
                     costesHijo[i] = evaluaCoste(nuevag.get(i), String.valueOf(funcion));
@@ -124,15 +125,15 @@ public class AEvBLXalfa_Clase3_Grupo5 {
             //Mantenemos el elitismo del mejor de P(t) para P(t') si no sobrevive
             boolean enc = false;
             for (int i = 0; i < nuevag.size() && !enc; i++) {
-                if (mejorCr == nuevag.get(i)){
+                if (mejorCruce == nuevag.get(i)){
                     enc = true;
                 }
             }
-            mejorCr = nuevag.get(mejorCruceHijo);
+            mejorCruce = nuevag.get(mejorCruceHijo);
             costesHijo[peor] = mejorCoste;
 
             //actualizamos el mejor cromosoma para el elitismo de la siguiente generacion
-            mejorCr = nuevag.get(mejorCruceHijo);
+            mejorCruce = nuevag.get(mejorCruceHijo);
             mejorCoste = mejorcostehijo;
 
             //Actualizamos el mejor global y su coste con el mejor hijo de la NUEVA POBLACION

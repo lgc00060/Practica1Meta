@@ -9,9 +9,9 @@ import java.util.Random;
 import static meta.funciones.Funciones.evaluaCoste;
 import static meta.utils.FuncionesAux.*;
 
-public class AEVMedia {
+public class AEVMedia_CLase3_Grupo5 {
     public static void AEVMedia(int tp, int tam, int evaluaciones, double[] s, double rmin, double rmax,
-                                  double kProbMuta, double kProbCruce, double alfa, int funcion, int semilla, Logger logger) {
+                                  double kProbMuta, double kProbCruce, double alfa, String funcion, Long semilla, Logger logger) {
         int t = 0;
         long tiempoInicial = System.nanoTime();
         List<double[]> cromosomas = new ArrayList<>();
@@ -19,14 +19,26 @@ public class AEVMedia {
         double[] costes = new double[tp];
         double[] costesHijo = new double[tp];
         int[] position = new int[tp];
-        double[] mejorCr = new double[tp];
+        double[] mejorCruce = new double[tp];
         int peor = 0;
         double peorCosteHijo = 0;
         int mejorCruceHijo = 0;
         double mejorCoste = Double.MAX_VALUE;
-        double mejorCosteHijo = Double.MAX_VALUE;
         Random random = new Random();
+        double mejorCosteGlobal = mejorCoste;
+        double[] mejorCroGlobal = mejorCruce;
+        double probMutacion = kProbMuta; //Calculo de la probabilidad de mutacion
+        int conta = tp;  //Contador de evaluaciones de la poblacion
+        int p1 = 0;
+        double[] h1 = new double[tam];
+        double[] h2 = new double[tam];
+        boolean[] marcados=new boolean[tp];  //marcamos los modificados
+        double[] cr3=new double[tp];
+        double mejorcostehijo = Double.MAX_VALUE;
+
         logger.info("Empieza ejecucion EvolutivoMedia: ");
+
+
         //Carga de los cromosomas iniciales
         for (int i = 0; i < tp; i++) {
             cargaAleatoria(tam, cromosomas.get(i), rmin, rmax);
@@ -34,21 +46,11 @@ public class AEVMedia {
 
             if (costes[i] < mejorCoste) {
                 mejorCoste = costes[i];
-                mejorCr = cromosomas.get(i);
+                mejorCruce = cromosomas.get(i);
             }
         }
 
-        double mejorCosteGlobal = mejorCoste;
-        double[] mejorCroGlobal = mejorCr;
-
-        //Calculo de la probabilidad de mutacion
-        double probMutacion = kProbMuta;
-
-        //Contador de evaluaciones de la poblacion
-        int conta = tp;
-
         //PRINCIPAL: Comienzan las iteraciones
-
         while (conta < evaluaciones) {
             t++;
             //SELECCION por TORNEO: Calculo de los cromosomas mas prometedores entre cada 2 parejas aleatorias
@@ -68,12 +70,6 @@ public class AEVMedia {
                 costesHijo[i] = costes[position[i]];
             }
             //CRUZAMOS los padres seleccionados con una probabilidad probCruce OPCION 1
-            int p1 = 0;
-            double[] h1 = new double[tam];
-            double[] h2 = new double[tam];
-            boolean[] marcados=new boolean[tp];  //marcamos los modificados
-            double[] cr3=new double[tp];
-
             for (int i = 0; i < tp; i++) {
                 double x = random.nextDouble();
                 if (x < kProbCruce) {
@@ -87,7 +83,7 @@ public class AEVMedia {
 
                 }
             }
-//MUTAMOS los genes de los dos padres ya cruzados con probabilidad probMutacion
+            //MUTAMOS los genes de los dos padres ya cruzados con probabilidad probMutacion
             for (int i = 0; i < tp; i++) {
                 boolean m = false;
                 for (int j = 0; j < tam; j++) {
@@ -101,10 +97,8 @@ public class AEVMedia {
                 if (m)
                     marcados[i] = true;        //marcamos los modificados
             }
-
-//actualizamos el coste de los modificados
+            //actualizamos el coste de los modificados
             // preparamos el REEMPLAZAMIENTO calculamos el peor de la nueva poblacion
-            double mejorcostehijo = Integer.MAX_VALUE;
             for (int i = 0; i < tp; i++) {
                 if (marcados[i]) {
                     costesHijo[i] = evaluaCoste(nuevag.get(i), String.valueOf(funcion));
@@ -123,18 +117,19 @@ public class AEVMedia {
 
             }
 
+
             //Mantenemos el elitismo del mejor de P(t) para P(t') si no sobrevive
             boolean enc = false;
             for (int i = 0; i < nuevag.size() && !enc; i++) {
-                if (mejorCr == nuevag.get(i)){
+                if (mejorCruce == nuevag.get(i)){
                     enc = true;
                 }
             }
-            mejorCr = nuevag.get(mejorCruceHijo);
+            mejorCruce = nuevag.get(mejorCruceHijo);
             costesHijo[peor] = mejorCoste;
 
             //actualizamos el mejor cromosoma para el elitismo de la siguiente generacion
-            mejorCr = nuevag.get(mejorCruceHijo);
+            mejorCruce = nuevag.get(mejorCruceHijo);
             mejorCoste = mejorcostehijo;
 
             //Actualizamos el mejor global y su coste con el mejor hijo de la NUEVA POBLACION
