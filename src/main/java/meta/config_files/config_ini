@@ -1,6 +1,6 @@
 semilla=76589227 77658922 27765892 22776589 92277658
 d=10
-algoritmos=ALGEVBLXALFA AEVMedia
+algoritmos=algevblxalfa aevmedia
 k=3
 iteraciones=1000
 prob_cambio=0.3

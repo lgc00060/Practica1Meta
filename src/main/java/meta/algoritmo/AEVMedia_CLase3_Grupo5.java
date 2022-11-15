@@ -73,8 +73,8 @@ public class AEVMedia_CLase3_Grupo5 {
             for (int i = 0; i < tp; i++) {
                 double x = random.nextDouble();
                 if (x < kProbCruce) {
-                    while (i == (p1 = random.nextInt(tp - 1 -0)+ 0)) ;
-                    cr3= nuevag.get(random.nextInt(tp - 1 - 0) + 0);
+                    while (i == (p1 = random.nextInt(tp - 1 - 0))) ;
+                    cr3= nuevag.get(random.nextInt(tp - 1 - 0));
                     cruceMedia(tam, nuevag.get(i), nuevag.get(p1),h1);
                     cruceMedia(tam, nuevag.get(i),cr3,h2);
                     nuevag.add(i, h1);

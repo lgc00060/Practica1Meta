@@ -44,8 +44,6 @@ public class Main {
                         case "AEVMedia" -> {
                             AEVMedia(poblacion,d,evaluar,solu,rangoInf[i],rangoSup[i],prob_muta,cruce,alfa, funcion, semilla,logger );
                         }
-
-
  */
                     }
                 }
@@ -54,7 +52,7 @@ public class Main {
             i++;
         }
         //convertir los resultados a CSV
-      //  exportCSV(resultadoBL3, "BL3");
+        //  exportCSV(resultadoBL3, "BL3");
         //exportCSV(resultadoBLk, "BLk");
     }
 }

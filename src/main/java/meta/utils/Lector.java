@@ -202,5 +202,3 @@ public class Lector {
 
     public float getMutacion() {return mutacion;}
 }
-
-

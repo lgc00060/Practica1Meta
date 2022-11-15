@@ -32,36 +32,34 @@ public class FuncionesAux {
     }
 
 
-/*
-    public static boolean negativos(double[] v){
-        for (long k=0; k<v.length(); k++){
-            if (v[k]<-500 || v[k]>500)
-                return true;
+    /*
+        public static boolean negativos(double[] v){
+            for (long k=0; k<v.length(); k++){
+                if (v[k]<-500 || v[k]>500)
+                    return true;
+            }
+            return false;
         }
-        return false;
-    }
-
-    public static void mostrarVector(double[] v){
-        for (long k=0; k<v.lenght(); k++){
-            System.out.println("," + v);
+        public static void mostrarVector(double[] v){
+            for (long k=0; k<v.lenght(); k++){
+                System.out.println("," + v);
+            }
         }
-    }
-
- */
-public static double MAPE(double[] real, double[] estimation) {
-    int N = real.length;
-    double score;
-    double sum = 0.0;
-    double num = 0.0;
-    for (int i = 0; i < N; i++) {
-        if (real[i] != 0) {
-            sum += Math.abs((real[i] - estimation[i]) / Math.abs(real[i]));
-            num++;
+     */
+    public static double MAPE(double[] real, double[] estimation) {
+        int N = real.length;
+        double score;
+        double sum = 0.0;
+        double num = 0.0;
+        for (int i = 0; i < N; i++) {
+            if (real[i] != 0) {
+                sum += Math.abs((real[i] - estimation[i]) / Math.abs(real[i]));
+                num++;
+            }
         }
+        score = sum / num;
+        return score;
     }
-    score = sum / num;
-    return score;
-}
 
     public static double RMSE(double[] real, double[] estimation) {
         int N = real.length;
@@ -164,5 +162,3 @@ public static double MAPE(double[] real, double[] estimation) {
 
     }
 }
-
-

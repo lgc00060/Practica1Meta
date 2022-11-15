@@ -1,3 +1,5 @@
+
+/*
 package meta.algoritmo;
 
 import java.util.ArrayList;
@@ -132,4 +134,5 @@ import static meta.utils.FuncionesAux.*;
 
 
 }
-*/
+
+ */
