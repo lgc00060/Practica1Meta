@@ -21,15 +21,15 @@ public class AEvBLXalfa_Clase3_Grupo5 {
         double[] mejorCruce=new double[tampoblacion];
         int peor=0;
         double peorCosteHijo=0.0;
-        int mejorCruceHijo = 0;
+        int mejorCruceHijo = 1;
         double mejorCoste =Double.MAX_VALUE;
+        double mejorcostehijo = Integer.MAX_VALUE;
         double mejorCosteGlobal = mejorCoste;
         double[] mejorCroGlobal = mejorCruce;
         double  probabilidadMutacion= kProbMuta;
         int contador = tampoblacion;
-        Random aleatorio = new Random();
         boolean[] marcados=new boolean[tampoblacion];  //marcamos los modificados
-        double mejorcostehijo = Integer.MAX_VALUE;
+
 
         logger.info("Empieza ejecucion algoritmo evolutivoBLXAlfa: ");
 
@@ -81,6 +81,8 @@ public class AEvBLXalfa_Clase3_Grupo5 {
         double tiempoFinal = System.nanoTime();
         double resultado = (tiempoFinal - tiempoInicial);
 
+        //return mejorCosteGlobal;
+
         logger.info("El tiempo total de ejecucion en ms es: " + resultado);
         logger.info("Funcion:" + funcion);
         logger.info("RangoInf: " + rmin);
@@ -89,7 +91,7 @@ public class AEvBLXalfa_Clase3_Grupo5 {
         logger.info("La semilla es:" + semilla);
         System.out.println("Total Evaluaciones:" + contador);
         System.out.println(" Total Iteraciones:" + t);
-        //return mejorCosteGlobal;
+
     }
 
 }
