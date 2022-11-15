@@ -77,13 +77,9 @@ public class Lector {
                         break;
 
                     case "algoritmos":
-                        //Volvemos a separar la asginacion de tenencia
                         String[] splittalgg = split[1].split(" ");
-                        for (int q = 0; q < splittalgg.length; q++) { //aqui recorremos lo que hay a la derecha y se mete en algortimos
-                            //Los añadimos al atributo
+                        for (int q = 0; q < splittalgg.length; q++) {
                             algoritmos.add(splittalgg[q]);
-                            // System.out.println("algoritmos:" + algoritmos);
-
                         }
                         break;
 

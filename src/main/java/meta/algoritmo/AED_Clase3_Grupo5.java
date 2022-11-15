@@ -7,7 +7,7 @@ import java.util.Random;
 import static meta.funciones.Funciones.evaluaCoste;
 import static meta.utils.FuncionesAux.*;
 
-public class AED_Clase3_Grupo5 {
+/*public class AED_Clase3_Grupo5 {
     double AED(int tp, int tam,int evaluaciones,double[] s, double rmin, double rmax, int selector){
 
         int t=0;
@@ -132,3 +132,4 @@ public class AED_Clase3_Grupo5 {
 
 
 }
+*/

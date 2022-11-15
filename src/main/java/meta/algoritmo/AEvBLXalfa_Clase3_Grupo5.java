@@ -11,11 +11,8 @@ import static meta.utils.FuncionesAux.Mutacion;
 import static meta.utils.FuncionesAux.cargaAleatoria;
 
 public class AEvBLXalfa_Clase3_Grupo5 {
-    public AEvBLXalfa_Clase3_Grupo5(int poblacion, int d, int evaluar, double[] solu, double v, double v1, double prob_muta, double cruce, double alfa, String funcion, Long semilla, Logger logger) {
-    }
-
-    public static double AEVBLXALFA(int tp, int tam, double evaluaciones, double[] s, double rmin, double rmax,
-                                    double kProbMuta, double kProbCruce, double alfa, String funcion, Long semilla) {
+    public static void AEVBLXALFA(int tp, int tam, double evaluaciones, double[] s, double rmin, double rmax,
+                                  double kProbMuta, double kProbCruce, double alfa, String funcion, Long semilla, Logger logger) {
 
         long tiempoInicial = System.nanoTime();
         int t = 0;
@@ -41,7 +38,6 @@ public class AEvBLXalfa_Clase3_Grupo5 {
         double[] h2 = new double[tam];
         boolean[] marcados=new boolean[tp];  //marcamos los modificados
         double mejorcostehijo = Integer.MAX_VALUE;
-        Logger logger = Logger.getLogger(Main.class);
 
         logger.info("Empieza ejecucion EvolutivoBLXAlfa: ");
 
@@ -160,7 +156,7 @@ public class AEvBLXalfa_Clase3_Grupo5 {
         logger.info("La semilla es:" + semilla);
         System.out.println("Total Evaluaciones:" + conta);
         System.out.println(" Total Iteraciones:" + t);
-        return mejorCosteGlobal;
+        //return mejorCosteGlobal;
     }
 
 }

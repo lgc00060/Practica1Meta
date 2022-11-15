@@ -32,14 +32,13 @@ public class Main {
 
         for (String funcion : funciones) {
             for (String algoritmo : algoritmos) {
-                Logger logger = Logger.getLogger(funcion + "." + algoritmo + semillas);
+                Logger logger = Logger.getLogger(funcion + "." + algoritmo);
                 System.out.println(algoritmo);
                 for (Long semilla : semillas) {
                     aleatorio.setSeed(semilla);
                     switch (algoritmo) {
-
                         case "AEVBLXALFA" -> {
-                            new AEvBLXalfa_Clase3_Grupo5(poblacion,d,evaluar,solu,rangoInf[i],rangoSup[i],prob_muta,cruce,alfa, funcion, semilla,logger);
+                            AEVBLXALFA(poblacion,d,evaluar,solu,rangoInf[i],rangoSup[i],prob_muta,cruce,alfa, funcion, semilla,logger);
                         }
 /*
                         case "AEVMedia" -> {
