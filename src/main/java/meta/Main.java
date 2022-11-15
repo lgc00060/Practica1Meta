@@ -37,7 +37,7 @@ public class Main {
                 for (Long semilla : semillas) {
                     aleatorio.setSeed(semilla);
                     switch (algoritmo) {
-                        case "AEVBLXALFA" -> {
+                        case "ALGEVBLXALFA" -> {
                             AEVBLXALFA(poblacion,d,evaluar,solu,rangoInf[i],rangoSup[i],prob_muta,cruce,alfa, funcion, semilla,logger);
                         }
 /*
