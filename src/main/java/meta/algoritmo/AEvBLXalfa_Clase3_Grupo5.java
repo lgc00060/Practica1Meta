@@ -3,6 +3,7 @@ package meta.algoritmo;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.log4j.Logger;
+import java.util.Random;
 import static meta.utils.FuncionesAux.*;
 
 public class AEvBLXalfa_Clase3_Grupo5 {
@@ -86,7 +87,7 @@ public class AEvBLXalfa_Clase3_Grupo5 {
             costeNuevaGeneracion = costesHH;
 
             //MUTAMOS los genes de los dos padres ya cruzados con probabilidad probabilidadMutacion
-            mutar(tampoblacion,tam,probabilidadMutacion,rmin,nuevaGeneracion,marcados);
+            mutar(tampoblacion,tam,probabilidadMutacion,rmin,nuevaGeneracion,marcados); //mirar esto
 
             //actualizamos el coste de los modificados
             // preparamos el REEMPLAZAMIENTO calculamos el peor de la nueva poblacion
