@@ -27,7 +27,7 @@ public class AEvBLXalfa_Clase3_Grupo5 {
         double  probabilidadMutacion= kProbMuta;
         int contador = tampoblacion;
         double[] h = new double[tam];
-        double[] costes = new double[tampoblacion], costesH = new double[tampoblacion], costesHH = new double[tampoblacion];
+        double[] costes = new double[tampoblacion], costeNuevaGeneracionSegunda = new double[tampoblacion];
         double costeMejor1, costeMejor2;
         double[] mejor1, mejor2;
         boolean[] marcados=new boolean[tampoblacion];  //marcamos los modificados
@@ -44,6 +44,9 @@ public class AEvBLXalfa_Clase3_Grupo5 {
             t++;
             //seleccion por torneo
             torneo(tampoblacion,posicion,costes,cromosomas,nuevaGeneracion,costeNuevaGeneracion);
+
+            cruceTorneo2a2(tam,tampoblacion,h,costes,nuevaGeneracion,probabilidadCruce,marcados,nuevaGeneracionSegunda,costeNuevaGeneracion,costeNuevaGeneracionSegunda,
+            alfa,rmin,rmax);
 
             //MUTAMOS los genes de los dos padres ya cruzados con probabilidad probabilidadMutacion
             mutar(tampoblacion,tam,probabilidadMutacion,rmin,nuevaGeneracion,marcados);
@@ -65,17 +68,17 @@ public class AEvBLXalfa_Clase3_Grupo5 {
                 while (p1 == (p2 = random.nextInt(tampoblacion - 1 - 0) + 0)) ;
 //                while (p1 == p2 == p3) ;
 //                while (p1 == p2 == p3 == p4) ;
-                if (costesH[p1] > costesH[p2] && costesH[p1] > costesH[p3] && costesH[p1] > costesH[p4])
+                if (costeNuevaGeneracion[p1] > costeNuevaGeneracion[p2] && costeNuevaGeneracion[p1] > costeNuevaGeneracion[p3] && costeNuevaGeneracion[p1] > costeNuevaGeneracion[p4])
                     peor = p1;
-                else if (costesH[p2] > costesH[p1] && costesH[p2] > costesH[p3] && costesH[p2] > costesH[p4])
+                else if (costeNuevaGeneracion[p2] > costeNuevaGeneracion[p1] && costeNuevaGeneracion[p2] > costeNuevaGeneracion[p3] && costeNuevaGeneracion[p2] > costeNuevaGeneracion[p4])
                     peor = p2;
-                else if (costesH[p3] > costesH[p1] && costesH[p3] > costesH[p2] && costesH[p3] > costesH[p4])
+                else if (costeNuevaGeneracion[p3] > costeNuevaGeneracion[p1] && costeNuevaGeneracion[p3] > costeNuevaGeneracion[p2] && costeNuevaGeneracion[p3] > costeNuevaGeneracion[p4])
                     peor = p3;
                 else
                     peor = p4;
 
                 nuevaGeneracion.add(peor, mejorCruce);
-                costesH[peor] = mejorCoste;
+                costeNuevaGeneracion[peor] = mejorCoste;
 
                 //actualizamos el mejor con el elite si acaso lo mejora NEW
                 if(mejorCoste<mejorcostehijo){

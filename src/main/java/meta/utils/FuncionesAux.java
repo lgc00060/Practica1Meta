@@ -93,7 +93,8 @@ public class FuncionesAux {
             }
     }
 
-    public static void cruceTorneo2a2(int tam,int tampoblacion,double[] h,double[] costes,List<double[]> nuevaGeneracion,double probabilidadCruce,boolean[] marcados,List<double[]> nuevaGeneracionSegunda,double[] costeNuevaGeneracion,double[] costeNuevaGeneracionSegunda,double alfa,double rmin,double rmax){
+    public static void cruceTorneo2a2(int tam,int tampoblacion,double[] h,double[] costes,List<double[]> nuevaGeneracion,double probabilidadCruce,boolean[] marcados,
+                                      List<double[]> nuevaGeneracionSegunda,double[] costeNuevaGeneracion,double[] costeNuevaGeneracionSegunda,double alfa,double rmin,double rmax){
         Random aleatorio = new Random();
         int c1,c2,c3,c4;
         h = new double[tam];
