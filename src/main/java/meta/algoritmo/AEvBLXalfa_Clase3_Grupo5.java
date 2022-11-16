@@ -2,15 +2,11 @@ package meta.algoritmo;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-
-import meta.Main;
 import org.apache.log4j.Logger;
-import static meta.funciones.Funciones.evaluaCoste;
 import static meta.utils.FuncionesAux.*;
 
 public class AEvBLXalfa_Clase3_Grupo5 {
-    public static void AEVBLXALFA(int tampoblacion, int tam, double evaluaciones, double[] s, double rmin, double rmax,double kProbMuta, double probabilidadCruce, double alfa, String funcion, Long semilla, Logger logger) {
+    public static void AEVBLXALFA(int tampoblacion, int tam, double evaluaciones, double[] solucion, double rmin, double rmax,double kProbMuta, double probabilidadCruce, double alfa, String funcion, Long semilla, Logger logger) {
         long tiempoInicial = System.nanoTime();
         int t = 0;
         List<double[]> cromosomas = new ArrayList<>();
@@ -96,7 +92,6 @@ public class AEvBLXalfa_Clase3_Grupo5 {
             // preparamos el REEMPLAZAMIENTO calculamos el peor de la nueva poblacion
             calculaMejorPeor(tampoblacion,marcados,costeNuevaGeneracion,nuevaGeneracion,funcion,contador,peorCosteHijo,peor,mejorcostehijo,mejorCruceHijo);
 
-
             //Mantenemos el elitismo del mejor de P(t) para P(t') si no sobrevive
             boolean enc = false;
             for (int i = 0; i < nuevaGeneracion.size() && !enc; i++) {
@@ -134,21 +129,17 @@ public class AEvBLXalfa_Clase3_Grupo5 {
 
             //Actualizamos el mejor global y su coste con el mejor hijo de la NUEVA POBLACION
             //si mejora
-            if (mejorcostehijo < mejorCosteGlobal) {
-                mejorCosteGlobal = mejorcostehijo;
-                mejorCroGlobal = nuevaGeneracion.get(mejorCruceHijo);
-            }
-            System.out.println("Mejor coste;" + mejorCosteGlobal);
+            actualizarMejorCromosoma(mejorcostehijo,mejorCosteGlobal,mejorCroGlobal,nuevaGeneracion,mejorCruceHijo);
+
             //Actualizo cromosomas con nuevaGeneracion, para la siguiente generacion
             costes = costeNuevaGeneracion;
             cromosomas = nuevaGeneracion;
         }
-        s = mejorCroGlobal;
+        solucion = mejorCroGlobal;
 
         double tiempoFinal = System.nanoTime();
         double resultado = (tiempoFinal - tiempoInicial);
 
-        //return mejorCosteGlobal;
 
         logger.info("El tiempo total de ejecucion en ms es: " + resultado);
         logger.info("Funcion:" + funcion);

@@ -147,6 +147,13 @@ public class FuncionesAux {
         }
     }
 
+    public static void actualizarMejorCromosoma(double mejorcostehijo,double mejorCosteGlobal,double[] mejorCroGlobal,List<double[]> nuevaGeneracion,int mejorCruceHijo){
+        if (mejorcostehijo < mejorCosteGlobal) {
+            mejorCosteGlobal = mejorcostehijo;
+            mejorCroGlobal = nuevaGeneracion.get(mejorCruceHijo);
+        }
+    }
+
     public static void mostrarmatriz(double[] mat){
         for (int i=0; i<50; i++){ //cout << mat[i].size() << endl;
             for (int j=0; j<10; j++){
