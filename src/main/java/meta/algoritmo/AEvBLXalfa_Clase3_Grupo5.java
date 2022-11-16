@@ -141,7 +141,7 @@ public class AEvBLXalfa_Clase3_Grupo5 {
         double tiempoFinal = System.nanoTime();
         double resultado = (tiempoFinal - tiempoInicial);
 
-
+//dfsgdfgfdgf
         logger.info("El tiempo total de ejecucion en ms es: " + resultado);
         logger.info("Funcion:" + funcion);
         logger.info("RangoInf: " + rmin);
