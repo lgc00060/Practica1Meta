@@ -62,7 +62,7 @@ public class AEVMedia_CLase3_Grupo5 {
                 nuevageneracion.add(i, cromosomas.get(position[i]));
                 costesHijo[i] = costes[position[i]];
             }
-            //CRUZAMOS los padres seleccionados con una probabilidad probCruce OPCION 1
+            //CRUZAMOS los padres seleccionados con una probabilidad probCruce
             for (int i = 0; i < tampoblacion; i++) {
                 marcados[i] = false;
             }
@@ -88,17 +88,18 @@ public class AEVMedia_CLase3_Grupo5 {
                     costeMejor2 = costesHijo[c4];
                 }
                 double x = random.nextDouble();
-                if (x < kProbCruce) {
-                    //cruceMedia(tam, mejor1, mejor2, h);
-                    nuevageneracion.add(i, h);
-                    marcados[i] = true;
+                if (x < kProbCruce ) { //si se cumple la probabilidad de cruce  cojo otro aleatorio
+                    //cruceMedia(tam, mejor1, mejor2, h); y hacemos el cruce entre los dos
+                    nuevageneracion.add(i, h); //algunos cambiaran y otros no
+                    marcados[i] = true; //sobre las posiciones de los padres elegidos
                 } else {
                     nuevageneracion.add(i, mejor1);
                     costesHH[i] = costeMejor1;
                 }
             }
-            nuevageneracion = nuevageneracion;
+            nuevageneracion = nuevageneracion; //cojo la nuevagg y la copio en nuevag
             costesHijo = costesHH;
+
             //MUTAMOS los genes de los dos padres ya cruzados con probabilidad probMutacion
             for (int i = 0; i < tampoblacion; i++) {
                 boolean m = false;
@@ -107,31 +108,31 @@ public class AEVMedia_CLase3_Grupo5 {
                     if (x < kProbMuta) {
                         m = true;
                         double valor = random.nextDouble() + rmin;
-                        //Mutacion(nuevaAg.get(i),j,valor);
+                        //Mutacion(nuevaAg.get(i),j,valor); //en la posicion j del vector quitamos el valor que tiene y  metemos el valor nuevo
                     }
                 }
                 if (m)
-                    marcados[i] = true;
+                    marcados[i] = true; //marcamos los cromosomas modificados
             }
-            //actualizamos el coste de los modificados
+
             // preparamos el REEMPLAZAMIENTO calculamos el peor de la nueva poblacion
             for (int i = 0; i < tampoblacion; i++) {
-                if (marcados[i]) {
+                if (marcados[i]) {  //todo cromosoma modificado le hacemos el calculo del coste sobre el nuevo cromosoma y calculo el nuevo coste
                     costesHijo[i] = evaluaCoste(nuevageneracion.get(i), String.valueOf(funcion));
                     conta++;
                 }
-                if (costesHijo[i] < mejorcostehijo) {
+                if (costesHijo[i] < mejorcostehijo) { //de la nueva poblacion nos quedamos con el mejor hijo que ssera el mejor padre para la sioguiente generacion
                     mejorcostehijo = costesHijo[i];
                     mejorCruceHijo = i;
                 }
 
             }
-
+            //ELITILISMO
             //Mantenemos el elitismo del mejor de P(t) para P(t') si no sobrevive
             boolean enc = false;
-            for (int i = 0; i < nuevageneracion.size() && !enc; i++) {
-                if (mejorCruce == nuevageneracion.get(i)){
-                    enc = true;
+            for (int i = 0; i < nuevageneracion.size() && !enc; i++) { //pasamos por la nueva generacion
+                if (mejorCruce == nuevageneracion.get(i)){ //mirando si el mejorcruce(ahi esta guardado el primer cromosoma de la poblacion inicial) aqui guardamos los nuevos cromosomas de esta poblacion el mejor padre
+                    enc = true; //lo buscamos en la poblacion de hijos, lo encontramos no hacemos modificacion, el mejor padre tiene que seguir perviviendo en la siguiente generacion si no lo encuentro es cvuando sustituyo en la posicion del peor
                 }
             }
             if (!enc) {
@@ -151,7 +152,7 @@ public class AEVMedia_CLase3_Grupo5 {
                 nuevageneracion.add(peor, mejorCruce);
                 costesH[peor] = mejorCoste;
 
-                if (mejorCoste < mejorcostehijo) {
+                if (mejorCoste < mejorcostehijo) { //calculamos mejor cromosoma para la siguiete vuelta
                     mejorcostehijo = mejorCoste;
                     nuevageneracion.add(mejorCruceHijo, mejorCruce);
                 }
@@ -161,7 +162,7 @@ public class AEVMedia_CLase3_Grupo5 {
             mejorCoste = mejorcostehijo;
 
             //Actualizamos el mejor global y su coste con el mejor hijo de la NUEVA POBLACION
-            //si mejora
+            //si mejora me quedo con el mejor coste y con el mejorCrhijo
             if (mejorcostehijo < mejorCosteGlobal) {
                 mejorCosteGlobal = mejorcostehijo;
                 mejorCroGlobal = nuevageneracion.get(mejorCruceHijo);

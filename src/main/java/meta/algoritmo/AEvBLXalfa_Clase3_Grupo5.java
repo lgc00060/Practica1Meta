@@ -45,20 +45,6 @@ public class AEvBLXalfa_Clase3_Grupo5 {
             //seleccion por torneo
             torneo(tampoblacion,posicion,costes,cromosomas,nuevaGeneracion,costeNuevaGeneracion);
 
-            ////CRUZAMOS la poblacion tipo torneo de 2 a 2,  tp veces
-
-
-
-
-
-
-
-
-
-
-
-
-
             //MUTAMOS los genes de los dos padres ya cruzados con probabilidad probabilidadMutacion
             mutar(tampoblacion,tam,probabilidadMutacion,rmin,nuevaGeneracion,marcados);
 
