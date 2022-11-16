@@ -1,6 +1,5 @@
 package meta.utils;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -117,21 +116,22 @@ public class FuncionesAux {
         }
     }
 
-    public static void mutar(int tampoblacion,int tam,double probabilidadMutacion,double rmin,List<double[]> nuevaGeneracion,boolean[] marcados){
-        Random aleatorio = new Random();
+    public static void mutar(int tampoblacion, int tam, double probabilidadMutacion, double rmin,double rmax, List<double[]> nuevaGeneracion, boolean[] marcados){
+        Random random = new Random();
         for (int i = 0; i < tampoblacion; i++) {
             boolean m = false;
             for (int j = 0; j < tam; j++) {
-                double x = aleatorio.nextDouble();
+                double x = random.nextDouble();
                 if (x < probabilidadMutacion) {
                     m = true;
-                    double valor = aleatorio.nextDouble() + rmin;
-                    Mutacion(nuevaGeneracion.get(i), j, valor);//cout << "mutando Cromosoma.." << endl;
+                    double valor = random.nextDouble() + rmin;
+                    //Mutacion(nuevaAg.get(i),j,valor);
                 }
             }
             if (m)
-                marcados[i] = true;        //marcamos los modificados
+                marcados[i] = true; //marcamos los modificados
         }
+
     }
 
     public static void calculaMejorPeor(int tampoblacion,boolean[] marcados, double[] costeNuevaGeneracion,List<double[]> nuevaGeneracion,String funcion,int contador,double peorCosteHijo,int peor,double mejorcostehijo, int mejorCruceHijo){
@@ -140,12 +140,6 @@ public class FuncionesAux {
                 costeNuevaGeneracion[i] = evaluaCoste(nuevaGeneracion.get(i),funcion);
                 contador++;
             }
-
-            if (costeNuevaGeneracion[i] > peorCosteHijo) {
-                peorCosteHijo = costeNuevaGeneracion[i];
-                peor = i;
-            }
-
             if (costeNuevaGeneracion[i] < mejorcostehijo) {
                 mejorcostehijo = costeNuevaGeneracion[i];
                 mejorCruceHijo = i;

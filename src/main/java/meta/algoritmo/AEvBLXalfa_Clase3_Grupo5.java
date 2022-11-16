@@ -15,11 +15,11 @@ public class AEvBLXalfa_Clase3_Grupo5 {
         int t = 0;
         List<double[]> cromosomas = new ArrayList<>();
         List<double[]> nuevaGeneracion=new ArrayList<>(tam);
-        double[] costes= new double[tampoblacion];
         double[] costeNuevaGeneracion= new double[tampoblacion];
         int[] posicion=new int[tampoblacion];
         double[] mejorCruce=new double[tampoblacion];
         int peor=0;
+        Random random = new Random();
         double peorCosteHijo=0.0;
         int mejorCruceHijo = 1;
         double mejorCoste =Double.MAX_VALUE;
@@ -28,6 +28,14 @@ public class AEvBLXalfa_Clase3_Grupo5 {
         double[] mejorCroGlobal = mejorCruce;
         double  probabilidadMutacion= kProbMuta;
         int contador = tampoblacion;
+        double[] h = new double[tam];
+        double[] costes = new double[tampoblacion], costesH = new double[tampoblacion], costesHH = new double[tampoblacion];
+        int[] posi = new int[tampoblacion];
+        double x;
+        int posAnt = 0;
+        int c1, c2, c3, c4;
+        double costeMejor1, costeMejor2;
+        double[] mejor1, mejor2;
         boolean[] marcados=new boolean[tampoblacion];  //marcamos los modificados
 
 
@@ -37,11 +45,49 @@ public class AEvBLXalfa_Clase3_Grupo5 {
 
         while (contador < evaluaciones) {
             t++;
-
+            //seleccion por torneo
             torneo(tampoblacion,posicion,costes,cromosomas,nuevaGeneracion,costeNuevaGeneracion);
 
-            //CRUZAMOS los padres seleccionados con una probabilidad probCruce OPCION 1
-            cruce(tampoblacion,nuevaGeneracion,marcados,probabilidadCruce,tam);
+            ////CRUZAMOS la poblacion tipo torneo de 2 a 2,  tp veces
+
+
+            for (int i = 0; i < tampoblacion; i++) {
+                marcados[i] = false;
+            }
+            for (int i = 0; i < tampoblacion; i++) {
+                c1 = random.nextInt((tampoblacion - 1 - 0) + 0);
+                while (c1 == (c2 = random.nextInt(tampoblacion - 1 - 0) + 0)) ;
+                if (costes[c1] < costes[c2]) {
+                    mejor1 = nuevaGeneracion.get(c1);
+                    costeMejor1 = costes[c1];
+                } else {
+                    mejor1 = nuevaGeneracion.get(c2);
+                    costeMejor1 = costes[c2];
+                }
+                while (posAnt == (c3 = random.nextInt(tampoblacion - 1 - 0) + 0)) ;
+                while (posAnt == (c4 = random.nextInt(tampoblacion - 1 - 0) + 0)) ;
+
+                c3 = random.nextInt(tampoblacion - 1 - 0) + 0;
+                while (c3 == (c4 = random.nextInt(tampoblacion - 1 - 0) + 0)) ;
+                if (costes[c3] < costes[c4]) {
+                    mejor2 = nuevaGeneracion.get(c3);
+                    costeMejor2 = costes[c3];
+                } else {
+                    mejor2 = nuevaGeneracion.get(c4);
+                    costeMejor2 = costes[c4];
+                }
+                x = random.nextDouble();
+                if (x < probabilidadCruce) {
+                    //cruceBlX(tam, mejor1, mejor2, alfa, h, rangoMin, rangoMax);
+                    nuevaGeneracion.add(i, h);
+                    marcados[i] = true;
+                } else {
+                    nuevaGeneracion.add(i, mejor1);
+                    costesHH[i] = costeMejor1;
+                }
+            }
+            nuevaGeneracion = nuevaGeneracion;
+            costeNuevaGeneracion = costesHH;
 
             //MUTAMOS los genes de los dos padres ya cruzados con probabilidad probabilidadMutacion
             mutar(tampoblacion,tam,probabilidadMutacion,rmin,nuevaGeneracion,marcados);
@@ -54,13 +100,34 @@ public class AEvBLXalfa_Clase3_Grupo5 {
             //Mantenemos el elitismo del mejor de P(t) para P(t') si no sobrevive
             boolean enc = false;
             for (int i = 0; i < nuevaGeneracion.size() && !enc; i++) {
-                if (mejorCruce == nuevaGeneracion.get(i)){
+                if (mejorCruce == nuevaGeneracion.get(i)) {
                     enc = true;
                 }
             }
-            mejorCruce = nuevaGeneracion.get(mejorCruceHijo);
-            costeNuevaGeneracion[peor] = mejorCoste;
+            if (!enc) { //si no sobrevive planteamos un torneo k=4 para elegir el sustituto de la nueva poblacion
+                int p1, p2, p3 = random.nextInt(tampoblacion - 1 - 0) + 0, p4 = random.nextInt(tampoblacion - 1 - 0) + 0;
+                p1 = random.nextInt(tampoblacion - 1 - 0) + 0;
+                while (p1 == (p2 = random.nextInt(tampoblacion - 1 - 0) + 0)) ;
+//                while (p1 == p2 == p3) ;
+//                while (p1 == p2 == p3 == p4) ;
+                if (costesH[p1] > costesH[p2] && costesH[p1] > costesH[p3] && costesH[p1] > costesH[p4])
+                    peor = p1;
+                else if (costesH[p2] > costesH[p1] && costesH[p2] > costesH[p3] && costesH[p2] > costesH[p4])
+                    peor = p2;
+                else if (costesH[p3] > costesH[p1] && costesH[p3] > costesH[p2] && costesH[p3] > costesH[p4])
+                    peor = p3;
+                else
+                    peor = p4;
 
+                nuevaGeneracion.add(peor, mejorCruce);
+                costesH[peor] = mejorCoste;
+
+                //actualizamos el mejor con el elite si acaso lo mejora NEW
+                if(mejorCoste<mejorcostehijo){
+                    mejorcostehijo = mejorCoste;
+                    nuevaGeneracion.add(mejorCruceHijo, mejorCruce);
+                }
+            }
             //actualizamos el mejor cromosoma para el elitismo de la siguiente generacion
             mejorCruce = nuevaGeneracion.get(mejorCruceHijo);
             mejorCoste = mejorcostehijo;
