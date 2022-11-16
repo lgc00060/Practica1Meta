@@ -10,16 +10,15 @@ import static meta.funciones.Funciones.evaluaCoste;
 import static meta.utils.FuncionesAux.*;
 
 public class AEVMedia_CLase3_Grupo5 {
-    public static void AEVMedia(int tp, int tam, int evaluaciones, double[] s, double rmin, double rmax,
+    public static void AEVMedia(int tampoblacion, int tam, int evaluaciones, double[] s, double rmin, double rmax,
                                   double kProbMuta, double kProbCruce, double alfa, String funcion, Long semilla, Logger logger) {
         int t = 0;
         long tiempoInicial = System.nanoTime();
         List<double[]> cromosomas = new ArrayList<>();
-        List<double[]> nuevag = new ArrayList<>(tam);
-        double[] costes = new double[tp];
-        double[] costesHijo = new double[tp];
-        int[] position = new int[tp];
-        double[] mejorCruce = new double[tp];
+        List<double[]> nuevageneracion = new ArrayList<>(tam);
+        double[] costesHijo = new double[tampoblacion];
+        int[] position = new int[tampoblacion];
+        double[] mejorCruce = new double[tampoblacion];
         int peor = 0;
         double peorCosteHijo = 0;
         int mejorCruceHijo = 0;
@@ -28,88 +27,99 @@ public class AEVMedia_CLase3_Grupo5 {
         double mejorCosteGlobal = mejorCoste;
         double[] mejorCroGlobal = mejorCruce;
         double probMutacion = kProbMuta; //Calculo de la probabilidad de mutacion
-        int conta = tp;  //Contador de evaluaciones de la poblacion
-        int p1 = 0;
-        double[] h1 = new double[tam];
-        double[] h2 = new double[tam];
-        boolean[] marcados=new boolean[tp];  //marcamos los modificados
-        double[] cr3=new double[tp];
+        int conta = tampoblacion;  //Contador de evaluaciones de la poblacion
+        int c1, c2, c3, c4;
+        int posAnt=0;
+        double[] h = new double[tam];
+        double[] costes = new double[tampoblacion], costesH = new double[tampoblacion], costesHH = new double[tampoblacion];
+        boolean[] marcados=new boolean[tampoblacion];  //marcamos los modificados
+        double[] mejor1, mejor2;
+        double costeMejor1, costeMejor2;
         double mejorcostehijo = Double.MAX_VALUE;
 
         logger.info("Empieza ejecucion EvolutivoMedia: ");
 
 
         //Carga de los cromosomas iniciales
-        for (int i = 0; i < tp; i++) {
-            cargaAleatoria(tam, cromosomas.get(i), rmin, rmax);
-            costes[i] = evaluaCoste(cromosomas.get(i), String.valueOf(funcion));
+        cargaCromosomasIniciales(tampoblacion,cromosomas,rmin,rmax,funcion,costes,tam,mejorCoste,mejorCruce);
 
-            if (costes[i] < mejorCoste) {
-                mejorCoste = costes[i];
-                mejorCruce = cromosomas.get(i);
-            }
-        }
 
         //PRINCIPAL: Comienzan las iteraciones
         while (conta < evaluaciones) {
             t++;
             //SELECCION por TORNEO: Calculo de los cromosomas mas prometedores entre cada 2 parejas aleatorias
             //durante tp enfrentamiento¡'
-            for (int k = 0; k < tp; k++) {
+            for (int k = 0; k < tampoblacion; k++) {
                 int i, j;
-                i = random.nextInt(tp - 1 - 0) + 0;
-                while (i == (j = random.nextInt(tp - 1 - 0) + 0)) ;
+                i = random.nextInt(tampoblacion - 1 - 0) + 0;
+                while (i == (j = random.nextInt(tampoblacion - 1 - 0) + 0)) ;
                 position[k] = (costes[i] < costes[j]) ? i : j;
             }
             //Nos quedamos con los cromosomas mas prometedores
-            for (int i=0;i<tp;i++){
-                //if (t>=82 && i==38)  ejecucion 4, iteracion 82, i 38
-                if (position[i]==50)    //UUFFFFFFFFFFFFFFF
+            for (int i=0;i<tampoblacion;i++){
+                if (position[i]==50)
                     position[i]--;
-                nuevag.add(i, cromosomas.get(position[i]));
+                nuevageneracion.add(i, cromosomas.get(position[i]));
                 costesHijo[i] = costes[position[i]];
             }
             //CRUZAMOS los padres seleccionados con una probabilidad probCruce OPCION 1
-            for (int i = 0; i < tp; i++) {
-                double x = random.nextDouble();
-                if (x < kProbCruce) {
-                    while (i == (p1 = random.nextInt(tp - 1 - 0))) ;
-                    cr3= nuevag.get(random.nextInt(tp - 1 - 0));
-                    cruceMedia(tam, nuevag.get(i), nuevag.get(p1),h1);
-                    cruceMedia(tam, nuevag.get(i),cr3,h2);
-                    nuevag.add(i, h1);
-                    nuevag.add(p1, h2);
-                    marcados[i] = marcados[p1] = true;
+            for (int i = 0; i < tampoblacion; i++) {
+                marcados[i] = false;
+            }
+            for (int i = 0; i < tampoblacion; i++) {
+              int  h1 = random.nextInt((tampoblacion - 1 - 0) + 0);
+                while (h1 == (c2 = random.nextInt(tampoblacion - 1 - 0) + 0)) ;
+                if (costesHijo[h1] < costesHijo[c2]) {
+                    mejor1 = nuevageneracion.get(h1);
+                    costeMejor1 = costesHijo[h1];
+                } else {
+                    mejor1 = nuevageneracion.get(c2);
+                    costeMejor1 = costesHijo[c2];
+                }
+                while (posAnt == (c3 = random.nextInt(tampoblacion - 1 - 0) + 0)) ;
+                while (posAnt == (c4 = random.nextInt(tampoblacion - 1 - 0) + 0)) ;
 
+
+                if (costesHijo[c3] < costesHijo[c4]) {
+                    mejor2 = nuevageneracion.get(c3);
+                    costeMejor2 = costesHijo[c3];
+                } else {
+                    mejor2 = nuevageneracion.get(c4);
+                    costeMejor2 = costesHijo[c4];
+                }
+               double x = random.nextDouble();
+                if (x < kProbCruce) {
+                    //cruceMedia(tam, mejor1, mejor2, h);
+                    nuevageneracion.add(i, h);
+                    marcados[i] = true;
+                } else {
+                    nuevageneracion.add(i, mejor1);
+                    costesHH[i] = costeMejor1;
                 }
             }
+            nuevageneracion = nuevageneracion;
+            costesHijo = costesHH;
             //MUTAMOS los genes de los dos padres ya cruzados con probabilidad probMutacion
-            for (int i = 0; i < tp; i++) {
+            for (int i = 0; i < tampoblacion; i++) {
                 boolean m = false;
                 for (int j = 0; j < tam; j++) {
-                    double x = random.nextDouble();
-                    if (x < probMutacion) {
+                   double x = random.nextDouble();
+                    if (x < kProbMuta) {
                         m = true;
                         double valor = random.nextDouble() + rmin;
-                        Mutacion(nuevag.get(i), j, valor);//cout << "mutando Cromosoma.." << endl;
+                        //Mutacion(nuevaAg.get(i),j,valor);
                     }
                 }
                 if (m)
-                    marcados[i] = true;        //marcamos los modificados
+                    marcados[i] = true;
             }
             //actualizamos el coste de los modificados
             // preparamos el REEMPLAZAMIENTO calculamos el peor de la nueva poblacion
-            for (int i = 0; i < tp; i++) {
+            for (int i = 0; i < tampoblacion; i++) {
                 if (marcados[i]) {
-                    costesHijo[i] = evaluaCoste(nuevag.get(i), String.valueOf(funcion));
+                    costesHijo[i] = evaluaCoste(nuevageneracion.get(i), String.valueOf(funcion));
                     conta++;
                 }
-
-                if (costesHijo[i] > peorCosteHijo) {
-                    peorCosteHijo = costesHijo[i];
-                    peor = i;
-                }
-
                 if (costesHijo[i] < mejorcostehijo) {
                     mejorcostehijo = costesHijo[i];
                     mejorCruceHijo = i;
@@ -117,31 +127,49 @@ public class AEVMedia_CLase3_Grupo5 {
 
             }
 
-
             //Mantenemos el elitismo del mejor de P(t) para P(t') si no sobrevive
             boolean enc = false;
-            for (int i = 0; i < nuevag.size() && !enc; i++) {
-                if (mejorCruce == nuevag.get(i)){
+            for (int i = 0; i < nuevageneracion.size() && !enc; i++) {
+                if (mejorCruce == nuevageneracion.get(i)){
                     enc = true;
                 }
             }
-            mejorCruce = nuevag.get(mejorCruceHijo);
-            costesHijo[peor] = mejorCoste;
+            if (!enc) {
+                int p1, p2, p3 = random.nextInt(tampoblacion - 1 - 0) + 0, p4 = random.nextInt(tampoblacion - 1 - 0) + 0;
+                p1 = random.nextInt(tampoblacion - 1 - 0) + 0;
+                while (p1 == (p2 = random.nextInt(tampoblacion - 1 - 0) + 0)) ;
+//                while (p1 == p2 == p3) ;
+//                while (p1 == p2 == p3 == p4) ;
+                if (costesH[p1] > costesH[p2] && costesH[p1] > costesH[p3] && costesH[p1] > costesH[p4])
+                    peor = p1;
+                else if (costesH[p2] > costesH[p1] && costesH[p2] > costesH[p3] && costesH[p2] > costesH[p4])
+                    peor = p2;
+                else if (costesH[p3] > costesH[p1] && costesH[p3] > costesH[p2] && costesH[p3] > costesH[p4])
+                    peor = p3;
+                else
+                    peor = p4;
+                nuevageneracion.add(peor, mejorCruce);
+                costesH[peor] = mejorCoste;
 
+                if (mejorCoste < mejorcostehijo) {
+                    mejorcostehijo = mejorCoste;
+                    nuevageneracion.add(mejorCruceHijo, mejorCruce);
+                }
+            }
             //actualizamos el mejor cromosoma para el elitismo de la siguiente generacion
-            mejorCruce = nuevag.get(mejorCruceHijo);
+            mejorCruce = nuevageneracion.get(mejorCruceHijo);
             mejorCoste = mejorcostehijo;
 
             //Actualizamos el mejor global y su coste con el mejor hijo de la NUEVA POBLACION
             //si mejora
             if (mejorcostehijo < mejorCosteGlobal) {
                 mejorCosteGlobal = mejorcostehijo;
-                mejorCroGlobal = nuevag.get(mejorCruceHijo);
+                mejorCroGlobal = nuevageneracion.get(mejorCruceHijo);
             }
             System.out.println("Mejor coste;" + mejorCosteGlobal);
             //Actualizo cromosomas con nuevag, para la siguiente generacion
             costes = costesHijo;
-            cromosomas = nuevag;
+            cromosomas = nuevageneracion;
         }
         s = mejorCroGlobal;
 
