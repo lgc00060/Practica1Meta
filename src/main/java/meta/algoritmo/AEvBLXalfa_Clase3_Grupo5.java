@@ -12,6 +12,7 @@ public class AEvBLXalfa_Clase3_Grupo5 {
         int t = 0;
         List<double[]> cromosomas = new ArrayList<>();
         List<double[]> nuevaGeneracion=new ArrayList<>(tam);
+        List<double[]> nuevaGeneracionSegunda=new ArrayList<>(tam);
         double[] costeNuevaGeneracion= new double[tampoblacion];
         int[] posicion=new int[tampoblacion];
         double[] mejorCruce=new double[tampoblacion];
@@ -27,16 +28,15 @@ public class AEvBLXalfa_Clase3_Grupo5 {
         int contador = tampoblacion;
         double[] h = new double[tam];
         double[] costes = new double[tampoblacion], costesH = new double[tampoblacion], costesHH = new double[tampoblacion];
-        int[] posi = new int[tampoblacion];
-        double x;
-        int posAnt = 0;
-        int c1, c2, c3, c4;
         double costeMejor1, costeMejor2;
         double[] mejor1, mejor2;
         boolean[] marcados=new boolean[tampoblacion];  //marcamos los modificados
 
-
         logger.info("Empieza ejecucion algoritmo evolutivoBLXAlfa: ");
+
+        for (int i = 0; i < tampoblacion; i++) {
+            marcados[i] = false;
+        }
 
         cargaCromosomasIniciales(tampoblacion,cromosomas,rmin,rmax,funcion,costes,tam,mejorCoste,mejorCruce);
 
@@ -48,46 +48,19 @@ public class AEvBLXalfa_Clase3_Grupo5 {
             ////CRUZAMOS la poblacion tipo torneo de 2 a 2,  tp veces
 
 
-            for (int i = 0; i < tampoblacion; i++) {
-                marcados[i] = false;
-            }
-            for (int i = 0; i < tampoblacion; i++) {
-                c1 = random.nextInt((tampoblacion - 1 - 0) + 0);
-                while (c1 == (c2 = random.nextInt(tampoblacion - 1 - 0) + 0)) ;
-                if (costes[c1] < costes[c2]) {
-                    mejor1 = nuevaGeneracion.get(c1);
-                    costeMejor1 = costes[c1];
-                } else {
-                    mejor1 = nuevaGeneracion.get(c2);
-                    costeMejor1 = costes[c2];
-                }
-                while (posAnt == (c3 = random.nextInt(tampoblacion - 1 - 0) + 0)) ;
-                while (posAnt == (c4 = random.nextInt(tampoblacion - 1 - 0) + 0)) ;
 
-                c3 = random.nextInt(tampoblacion - 1 - 0) + 0;
-                while (c3 == (c4 = random.nextInt(tampoblacion - 1 - 0) + 0)) ;
-                if (costes[c3] < costes[c4]) {
-                    mejor2 = nuevaGeneracion.get(c3);
-                    costeMejor2 = costes[c3];
-                } else {
-                    mejor2 = nuevaGeneracion.get(c4);
-                    costeMejor2 = costes[c4];
-                }
-                x = random.nextDouble();
-                if (x < probabilidadCruce) {
-                    //cruceBlX(tam, mejor1, mejor2, alfa, h, rangoMin, rangoMax);
-                    nuevaGeneracion.add(i, h);
-                    marcados[i] = true;
-                } else {
-                    nuevaGeneracion.add(i, mejor1);
-                    costesHH[i] = costeMejor1;
-                }
-            }
-            nuevaGeneracion = nuevaGeneracion;
-            costeNuevaGeneracion = costesHH;
+
+
+
+
+
+
+
+
+
 
             //MUTAMOS los genes de los dos padres ya cruzados con probabilidad probabilidadMutacion
-            mutar(tampoblacion,tam,probabilidadMutacion,rmin,nuevaGeneracion,marcados); //mirar esto
+            mutar(tampoblacion,tam,probabilidadMutacion,rmin,nuevaGeneracion,marcados);
 
             //actualizamos el coste de los modificados
             // preparamos el REEMPLAZAMIENTO calculamos el peor de la nueva poblacion

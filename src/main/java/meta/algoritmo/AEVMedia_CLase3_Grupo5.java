@@ -11,7 +11,7 @@ import static meta.utils.FuncionesAux.*;
 
 public class AEVMedia_CLase3_Grupo5 {
     public static void AEVMedia(int tampoblacion, int tam, int evaluaciones, double[] s, double rmin, double rmax,
-                                  double kProbMuta, double kProbCruce, double alfa, String funcion, Long semilla, Logger logger) {
+                                double kProbMuta, double kProbCruce, double alfa, String funcion, Long semilla, Logger logger) {
         int t = 0;
         long tiempoInicial = System.nanoTime();
         List<double[]> cromosomas = new ArrayList<>();
@@ -67,7 +67,7 @@ public class AEVMedia_CLase3_Grupo5 {
                 marcados[i] = false;
             }
             for (int i = 0; i < tampoblacion; i++) {
-              int  h1 = random.nextInt((tampoblacion - 1 - 0) + 0);
+                int  h1 = random.nextInt((tampoblacion - 1 - 0) + 0);
                 while (h1 == (c2 = random.nextInt(tampoblacion - 1 - 0) + 0)) ;
                 if (costesHijo[h1] < costesHijo[c2]) {
                     mejor1 = nuevageneracion.get(h1);
@@ -87,7 +87,7 @@ public class AEVMedia_CLase3_Grupo5 {
                     mejor2 = nuevageneracion.get(c4);
                     costeMejor2 = costesHijo[c4];
                 }
-               double x = random.nextDouble();
+                double x = random.nextDouble();
                 if (x < kProbCruce) {
                     //cruceMedia(tam, mejor1, mejor2, h);
                     nuevageneracion.add(i, h);
@@ -103,7 +103,7 @@ public class AEVMedia_CLase3_Grupo5 {
             for (int i = 0; i < tampoblacion; i++) {
                 boolean m = false;
                 for (int j = 0; j < tam; j++) {
-                   double x = random.nextDouble();
+                    double x = random.nextDouble();
                     if (x < kProbMuta) {
                         m = true;
                         double valor = random.nextDouble() + rmin;
@@ -186,5 +186,3 @@ public class AEVMedia_CLase3_Grupo5 {
     }
 
 }
-
-

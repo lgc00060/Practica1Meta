@@ -18,33 +18,6 @@ public class FuncionesAux {
 
     }
 
-    public static void cruceMedia(int tam, double[] v, double[] w, double[] h) {
-//   vector<double> h1,h2;
-//    h1.resize(tam);
-        //     h.resize(tam);
-        for (int i = 0; i < tam; i++) {
-            h[i] = (v[i] + w[i]) / 2;
-//        h2[i]= (v[i]+tercero[i])/2;
-        }
-//    v=h1;
-//    w=h2;
-    }
-
-
-    /*
-        public static boolean negativos(double[] v){
-            for (long k=0; k<v.length(); k++){
-                if (v[k]<-500 || v[k]>500)
-                    return true;
-            }
-            return false;
-        }
-        public static void mostrarVector(double[] v){
-            for (long k=0; k<v.lenght(); k++){
-                System.out.println("," + v);
-            }
-        }
-     */
     public static double MAPE(double[] real, double[] estimation) {
         int N = real.length;
         double score;
@@ -71,8 +44,8 @@ public class FuncionesAux {
         return score;
     }
 
-    public static void cargaCromosomasIniciales(int tp, List<double[]> cromosomas, double rmin, double rmax, String funcion, double[] costes, int tam, double mejorCoste, double[] mejorCruce){
-        for (int i = 0; i < tp; i++) {
+    public static void cargaCromosomasIniciales(int tampoblacion, List<double[]> cromosomas, double rmin, double rmax, String funcion, double[] costes, int tam, double mejorCoste, double[] mejorCruce){
+        for (int i = 0; i < tampoblacion; i++) {
             cargaAleatoria(tam, cromosomas.get(i), rmin, rmax);
             costes[i] = evaluaCoste(cromosomas.get(i), funcion);
 
@@ -99,24 +72,75 @@ public class FuncionesAux {
         }
     }
 
-    public static void cruce(int tampoblacion,List<double[]> nuevaGeneracion,boolean[] marcados,double probabilidadCruce,int tam){
+    public static void cruceBlX(int tam, double[] v, double[] w, double alfa, double[] h1,double rmin, double rmax){
         Random aleatorio = new Random();
-        double x=0;
-        int p1;
-        double[] primerosHijos = new double[tam];
-        double[] segundosHijos = new double[tam];
-        for (int i = 0; i < tampoblacion; i++) {
-            x = aleatorio.nextDouble();
-            if (x < probabilidadCruce) {
-                while (i == (p1 = aleatorio.nextInt(tampoblacion - 1)));
-                nuevaGeneracion.add(i, primerosHijos);
-                nuevaGeneracion.add(p1, segundosHijos);
-                marcados[i] = marcados[p1] = true;
+        double Cmax,Cmin,x=0.0;
+
+            for (int i=0; i<tam; i++){
+                Cmax=Math.max(v[i],w[i]);
+                Cmin=Math.min(v[i],w[i]);
+                double r1=Cmin-(x*alfa);
+
+                if (r1<rmin)
+                    r1=rmin;
+
+                double r2=Cmax+(x*alfa);
+
+                if (r2<rmin)
+                    r2=rmin;
+
+                h1[i]= aleatorio.nextDouble()*(r2+r1);
             }
-        }
     }
 
-    public static void mutar(int tampoblacion, int tam, double probabilidadMutacion, double rmin,double rmax, List<double[]> nuevaGeneracion, boolean[] marcados){
+    public static void cruceTorneo2a2(int tam,int tampoblacion,double[] h,double[] costes,List<double[]> nuevaGeneracion,double probabilidadCruce,boolean[] marcados,List<double[]> nuevaGeneracionSegunda,double[] costeNuevaGeneracion,double[] costeNuevaGeneracionSegunda,double alfa,double rmin,double rmax){
+        Random aleatorio = new Random();
+        int c1,c2,c3,c4;
+        h = new double[tam];
+        int posAnt = 0;
+        double num,costeMejorPrimero,costeMejorSegundo;
+        double[] mejorPrimero, mejorSegundo;
+
+        for (int i = 0; i < tampoblacion; i++) {
+            c1 = aleatorio.nextInt((tampoblacion - 1 - 0) + 0);
+            while (c1 == (c2 = aleatorio.nextInt(tampoblacion - 1 - 0) + 0)) ;
+
+            if (costes[c1] < costes[c2]) {
+                mejorPrimero = nuevaGeneracion.get(c1);
+                costeMejorPrimero = costes[c1];
+            } else {
+                mejorPrimero = nuevaGeneracion.get(c2);
+                costeMejorPrimero = costes[c2];
+            }
+
+            while (posAnt == (c3 = aleatorio.nextInt(tampoblacion - 1 - 0) + 0)) ;
+            while (posAnt == (c4 = aleatorio.nextInt(tampoblacion - 1 - 0) + 0)) ;
+
+
+            if (costes[c3] < costes[c4]) {
+                mejorSegundo = nuevaGeneracion.get(c3);
+                costeMejorSegundo = costes[c3];
+            } else {
+                mejorSegundo = nuevaGeneracion.get(c4);
+                costeMejorSegundo = costes[c4];
+            }
+
+            num = aleatorio.nextDouble();
+
+            if (num < probabilidadCruce) {
+                cruceBlX(tam, mejorPrimero, mejorSegundo, alfa, h, rmin, rmax);
+                nuevaGeneracion.add(i, h);
+                marcados[i] = true;
+            } else {
+                nuevaGeneracion.add(i, mejorPrimero);
+                costeNuevaGeneracionSegunda[i] = costeMejorPrimero;
+            }
+        }
+        nuevaGeneracion = nuevaGeneracionSegunda;
+        costeNuevaGeneracion = costeNuevaGeneracionSegunda;
+    }
+
+    public static void mutar(int tampoblacion, int tam, double probabilidadMutacion, double rmin, List<double[]> nuevaGeneracion, boolean[] marcados){
         Random random = new Random();
         for (int i = 0; i < tampoblacion; i++) {
             boolean m = false;
@@ -125,13 +149,12 @@ public class FuncionesAux {
                 if (x < probabilidadMutacion) {
                     m = true;
                     double valor = random.nextDouble() + rmin;
-                    //Mutacion(nuevaAg.get(i),j,valor);
+                    Mutacion(nuevaGeneracion.get(i),j,valor);
                 }
             }
             if (m)
-                marcados[i] = true; //marcamos los modificados
+                marcados[i] = true;
         }
-
     }
 
     public static void calculaMejorPeor(int tampoblacion,boolean[] marcados, double[] costeNuevaGeneracion,List<double[]> nuevaGeneracion,String funcion,int contador,double peorCosteHijo,int peor,double mejorcostehijo, int mejorCruceHijo){
@@ -160,6 +183,5 @@ public class FuncionesAux {
                 System.out.println("," + mat);
             }
         }
-
     }
 }
