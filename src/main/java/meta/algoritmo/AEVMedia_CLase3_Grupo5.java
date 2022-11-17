@@ -33,8 +33,7 @@ public class AEVMedia_CLase3_Grupo5 {
         double[] h = new double[tam];
         double[] costes = new double[tampoblacion], costeNuevaGeneracionSegunda = new double[tampoblacion];
         boolean[] marcados=new boolean[tampoblacion];
-        int c2,c3,c4;
-        //double[] h1=new double[tam];
+        int c2,c3,c4; //posiciones donde almaceno los padres
         int posAnt = 0;
         double [] mejorCromosomaPrimero,mejorCromosomaSegundo;
         double costeMejorCromosomaPrimero,costeMejorCromosomaSegundo;

@@ -11,7 +11,7 @@ import static meta.utils.FuncionesAux.cargaCromosomasIniciales;
 
 public class AED_Clase3_Grupo5 {
 
-    public static void AED(int tampoblacion, int tam, int evaluaciones, double[] s, double rmin, double rmax, String funcion, Long semilla, Logger logger){
+    public static void AED(int tampoblacion, int tam, int evaluaciones, double[] solucion, double rmin, double rmax, String funcion, Long semilla, Logger logger){
         long tiempoInicial = System.nanoTime();
         int t=0;
         List<double[]> cromosomas = new ArrayList<>();
@@ -21,18 +21,15 @@ public class AED_Clase3_Grupo5 {
         double mejorCosteGlobal = mejorCoste;
         double[] mejorCruceGlobal=mejorCruce;
         Random random = new Random();
-        //Contador de evaluaciones de la poblacion
         int contador=tampoblacion;
 
 
         cargaCromosomasIniciales(tampoblacion,cromosomas,rmin,rmax,funcion,costes,tam,mejorCoste,mejorCruce);
 
-        //mostrarVector(mejorCroGlobal);
         System.out.println("Coste" + mejorCosteGlobal);
 
         //Comienzan las iteraciones
         while (contador<evaluaciones){
-            t++;                //VA AL FINAL, NO SE PORQUE LO PONEMOS AQUI LO DIJO EN CLASE EL OTRO DIA PERO PREGUNTAR
 
             //CRUZAMOS con operador de recombinacion ternaria
             double[] ale1, ale2, obj, nuevo = new double[tampoblacion], padre; //ALEATORIO 1, 2
@@ -44,8 +41,10 @@ public class AED_Clase3_Grupo5 {
                     a1 = random.nextInt(tampoblacion - 1 - 0);
                     while (a1 == (a2 = random.nextInt(tampoblacion - 1 - 0))) ;
                 } while (a1 != i && a2 != i);
+
                 if (a1 >= tampoblacion)
                     a1 = tampoblacion - 1;
+
                 ale1 = cromosomas.get(a1);
                 ale2 = cromosomas.get(a2);
 
@@ -55,9 +54,8 @@ public class AED_Clase3_Grupo5 {
                     while (k1 == (k2 = random.nextInt(tampoblacion - 1 - 0))) ;
                     //while (k1 == (k2 == (k3 = random.nextInt(tp - 1 - 0)))) ;
                     k3 = random.nextInt(tampoblacion - 1 - 0);
-                } while (k1 != i && k1 != a1 && k1 != a2 &&
-                        k2 != i && k2 != a1 && k2 != a2 &&
-                        k3 != i && k3 != a1 && k3 != a2);
+                } while (k1 != i && k1 != a1 && k1 != a2 && k2 != i && k2 != a1 && k2 != a2 && k3 != i && k3 != a1 && k3 != a2);
+
                 if (costes[k1] < costes[k2] && costes[k1] < costes[k3])
                     obj = cromosomas.get(k1);
                 else if (costes[k2] < costes[k1] && costes[k2] < costes[k3]) //ELEGIMOS EL  MEJOR
@@ -103,9 +101,11 @@ public class AED_Clase3_Grupo5 {
                 mejorCosteGlobal=mejorCoste;
                 mejorCruceGlobal=mejorCruce;
             }
+
+            t++;
         }
 
-        s=mejorCruceGlobal;
+        solucion=mejorCruceGlobal;
         double tiempoFinal = System.nanoTime();
         double resultado = (tiempoFinal - tiempoInicial);
 

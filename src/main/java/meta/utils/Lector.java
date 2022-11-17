@@ -85,7 +85,6 @@ public class Lector {
 
                     case "k":
                         k = Integer.parseInt(split[1]);
-                        // System.out.println("k:" + k);
                         break;
 
 
@@ -95,23 +94,22 @@ public class Lector {
 
                     case "prob_cambio":
                         prob_cambio = Float.parseFloat(split[1]);
-                        // System.out.println("prob_cambio:" + prob_cambio);
                         break;
+
                     case "funciones":
                         String[] splitfun = split[1].split(", ");
-                        for (int q = 0; q < splitfun.length; q++) { //aqui recorremos lo que hay a la derecha y se mete en algortimos
-                            //Los añadimos al atributo
+                        for (int q = 0; q < splitfun.length; q++) {
                             funciones.add(splitfun[q]);
                         }
                         break;
+
                     case "rangoInf":
                         String[] splitrangI = split[1].split(" ");
-                        for (int q = 0; q < splitrangI.length; q++) { //aqui recorremos lo que hay a la derecha y se mete en algortimos
-                            //Los añadimos al atributo
+                        for (int q = 0; q < splitrangI.length; q++) {
                             rangoInf[q] = Double.parseDouble(splitrangI[q]);
                         }
-                        //  System.out.println("rangoInf:" + rangoInf);
                         break;
+
                     case "rangoSup":
                         String[] splitrangS = split[1].split(" ");
                         for (int q = 0; q < splitrangS.length; q++) {
@@ -121,19 +119,22 @@ public class Lector {
                                 rangoSup[q] = Double.parseDouble(splitrangS[q]);
                                 ;
                             }
-
                         }
                         break;
+
                     case "poblacion":
                         poblacion = Integer.parseInt(split[1]);
                         // System.out.println("k:" + k);
                         break;
+
                     case "cruce":
                         cruce = Float.parseFloat(split[1]);
                         break;
+
                     case "mutacion":
                         mutacion = Float.parseFloat(split[1]);
                         break;
+
                     case "alfa":
                         alfa = Float.parseFloat(split[1]);
                         break;
