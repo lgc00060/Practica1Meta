@@ -32,13 +32,13 @@ public class AED_Clase3_Grupo5 {
 
         //Comienzan las iteraciones
         while (contador<evaluaciones){
-            t++;
+            t++;                //VA AL FINAL, NO SE PORQUE LO PONEMOS AQUI LO DIJO EN CLASE EL OTRO DIA PERO PREGUNTAR
 
             //CRUZAMOS con operador de recombinacion ternaria
-            double[] ale1, ale2, obj, nuevo = new double[tampoblacion], padre;
+            double[] ale1, ale2, obj, nuevo = new double[tampoblacion], padre; //ALEATORIO 1, 2
             int a1, a2, k1, k2, k3;
 
-            for (int i = 0; i < tampoblacion; i++) {
+            for (int i = 0; i < tampoblacion; i++) {   //PASAMOS POR TODA LA POBLACION
                 padre = cromosomas.get(i);
                 do {
                     a1 = random.nextInt(tampoblacion - 1 - 0);
@@ -60,15 +60,15 @@ public class AED_Clase3_Grupo5 {
                         k3 != i && k3 != a1 && k3 != a2);
                 if (costes[k1] < costes[k2] && costes[k1] < costes[k3])
                     obj = cromosomas.get(k1);
-                else if (costes[k2] < costes[k1] && costes[k2] < costes[k3])
+                else if (costes[k2] < costes[k1] && costes[k2] < costes[k3]) //ELEGIMOS EL  MEJOR
                     obj = cromosomas.get(k2);
                 else
                     obj = cromosomas.get(k3);
 
 
-                double F = random.nextDouble();  //Factor de mutacion diferente por cada elemento de la poblacion
+                double F = random.nextDouble();  //Factor de mutacion diferente por cada elemento de la poblacion TIENE QUE SER UN 1 POR CIENTE
 
-                for (int j=0; j<tam; j++){
+                for (int j=0; j<tam; j++){ //UN FOR PARA DIMENSION
                     double d=random.nextDouble(); //% de elección de dimensiones entre el nuevo y el objetivo
                     // por cada dimension(posicion) del individuo
                     if (d>0.5)

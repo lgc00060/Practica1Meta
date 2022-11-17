@@ -56,6 +56,13 @@ public class FuncionesAux {
         }
     }
 
+    public static void cruceMedia(int tam, double[] v, double[] w, double[] h) {
+
+        for (int i = 0; i < tam; i++) {
+            h[i] = (v[i] + w[i]) / 2;
+        }
+    }
+
     public static void torneo(int tampoblacion, int[] posicion, double[] costes,List<double[]> cromosomas,List<double[]> nuevaGeneracion,double[] costeNuevaGeneracion){
         Random aleatorio = new Random();
         for (int k = 0; k < tampoblacion; k++) {
@@ -141,7 +148,7 @@ public class FuncionesAux {
         costeNuevaGeneracion = costeNuevaGeneracionSegunda;
     }
 
-    public static void mutar(int tampoblacion, int tam, double probabilidadMutacion, double rmin, List<double[]> nuevaGeneracion, boolean[] marcados){
+    public static void mutar(int tampoblacion, int tam, double probabilidadMutacion, double rmin,double rmax, List<double[]> nuevaGeneracion, boolean[] marcados){
         Random random = new Random();
         for (int i = 0; i < tampoblacion; i++) {
             boolean m = false;
@@ -149,7 +156,7 @@ public class FuncionesAux {
                 double x = random.nextDouble();
                 if (x < probabilidadMutacion) {
                     m = true;
-                    double valor = random.nextDouble() + rmin;
+                    double valor = random.nextDouble() + rmin;  ///hay que poner dounle (int bound) NO ME DEJA
                     Mutacion(nuevaGeneracion.get(i),j,valor);
                 }
             }

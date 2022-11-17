@@ -49,7 +49,7 @@ public class AEvBLXalfa_Clase3_Grupo5 {
             alfa,rmin,rmax);
 
             //MUTAMOS los genes de los dos padres ya cruzados con probabilidad probabilidadMutacion
-            mutar(tampoblacion,tam,probabilidadMutacion,rmin,nuevaGeneracion,marcados);
+            mutar(tampoblacion,tam,probabilidadMutacion,rmin,rmax,nuevaGeneracion,marcados);
 
             //actualizamos el coste de los modificados
             // preparamos el REEMPLAZAMIENTO calculamos el peor de la nueva poblacion
@@ -103,7 +103,7 @@ public class AEvBLXalfa_Clase3_Grupo5 {
         double tiempoFinal = System.nanoTime();
         double resultado = (tiempoFinal - tiempoInicial);
 
-//dfsgdfgfdgf
+
         logger.info("El tiempo total de ejecucion en ms es: " + resultado);
         logger.info("Funcion:" + funcion);
         logger.info("RangoInf: " + rmin);

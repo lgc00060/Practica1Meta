@@ -46,7 +46,7 @@ public class AEVMedia_CLase3_Grupo5 {
 
         //PRINCIPAL: Comienzan las iteraciones
         while (conta < evaluaciones) {
-            t++;
+            t++;  //HAY QUE PONERLO ABAJO DEL TODO LO DIJO CRISTOBAL
             //SELECCION por TORNEO: Calculo de los cromosomas mas prometedores entre cada 2 parejas aleatorias
             //durante tp enfrentamiento¡'
             for (int k = 0; k < tampoblacion; k++) {
@@ -89,7 +89,7 @@ public class AEVMedia_CLase3_Grupo5 {
                 }
                 double x = random.nextDouble();
                 if (x < kProbCruce ) { //si se cumple la probabilidad de cruce  cojo otro aleatorio
-                    //cruceMedia(tam, mejor1, mejor2, h); y hacemos el cruce entre los dos
+                    cruceMedia(tam, mejor1, mejor2, h); //y hacemos el cruce entre los dos
                     nuevageneracion.add(i, h); //algunos cambiaran y otros no
                     marcados[i] = true; //sobre las posiciones de los padres elegidos
                 } else {
@@ -101,23 +101,11 @@ public class AEVMedia_CLase3_Grupo5 {
             costesHijo = costesHH;
 
             //MUTAMOS los genes de los dos padres ya cruzados con probabilidad probMutacion
-            for (int i = 0; i < tampoblacion; i++) {
-                boolean m = false;
-                for (int j = 0; j < tam; j++) {
-                    double x = random.nextDouble();
-                    if (x < kProbMuta) {
-                        m = true;
-                        double valor = random.nextDouble() + rmin;
-                        //Mutacion(nuevaAg.get(i),j,valor); //en la posicion j del vector quitamos el valor que tiene y  metemos el valor nuevo
-                    }
-                }
-                if (m)
-                    marcados[i] = true; //marcamos los cromosomas modificados
-            }
+            mutar(tampoblacion,tam,probMutacion, rmin,rmax, nuevageneracion, marcados);
 
             // preparamos el REEMPLAZAMIENTO calculamos el peor de la nueva poblacion
             for (int i = 0; i < tampoblacion; i++) {
-                if (marcados[i]) {  //todo cromosoma modificado le hacemos el calculo del coste sobre el nuevo cromosoma y calculo el nuevo coste
+                if (marcados[i]) {  ////todo cromosoma modificado le hacemos el calculo del coste sobre el nuevo cromosoma y calculo el nuevo coste
                     costesHijo[i] = evaluaCoste(nuevageneracion.get(i), String.valueOf(funcion));
                     conta++;
                 }
@@ -139,8 +127,8 @@ public class AEVMedia_CLase3_Grupo5 {
                 int p1, p2, p3 = random.nextInt(tampoblacion - 1 - 0) + 0, p4 = random.nextInt(tampoblacion - 1 - 0) + 0;
                 p1 = random.nextInt(tampoblacion - 1 - 0) + 0;
                 while (p1 == (p2 = random.nextInt(tampoblacion - 1 - 0) + 0)) ;
-//                while (p1 == p2 == p3) ;
-//                while (p1 == p2 == p3 == p4) ;
+                while (p1 == p2 && p2 == p3) ;
+                while (p1 == p2 && p2 == p3 && p3 == p4) ;
                 if (costesH[p1] > costesH[p2] && costesH[p1] > costesH[p3] && costesH[p1] > costesH[p4])
                     peor = p1;
                 else if (costesH[p2] > costesH[p1] && costesH[p2] > costesH[p3] && costesH[p2] > costesH[p4])
