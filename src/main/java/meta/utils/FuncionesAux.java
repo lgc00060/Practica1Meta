@@ -278,6 +278,43 @@ public class FuncionesAux {
         }
     }
 
+    public static void recombinacionTernaria(int tampoblacion,List<double[]> cromosomas,double[] costes) {
+        Random aleatorio = new Random();
+        double[] ale1, ale2, obj, nuevo = new double[tampoblacion], padre; //ALEATORIO 1, 2
+        int a1, a2, k1, k2, k3;
+        a2=aleatorio.nextInt(tampoblacion - 1);
+        k2=aleatorio.nextInt(tampoblacion - 1);
+        k3=aleatorio.nextInt(tampoblacion - 1);
+
+        for (int i = 0; i < tampoblacion; i++) {   //PASAMOS POR TODA LA POBLACION
+            padre = cromosomas.get(i);
+
+            do {
+                a1 = aleatorio.nextInt(tampoblacion - 1);
+                while (a1 == a2) ;
+            } while (a1 != i && a2 != i);
+
+            ale1 = cromosomas.get(a1);
+            ale2 = cromosomas.get(a2);
+
+            //un objetivo elegido entre k=3(distintos) y distintos a a1, a2 y el padre
+            do {
+                k1 = aleatorio.nextInt(tampoblacion - 1);
+                while (k1 == k2);
+                while(k1==k2 && k2==k3);
+            } while (k1 != i && k1 != a1 && k1 != a2 &&
+                    k2 != i && k2 != a1 && k2 != a2 &&
+                    k3 != i && k3 != a1 && k3 != a2);
+
+            if (costes[k1] < costes[k2] && costes[k1] < costes[k3])
+                obj = cromosomas.get(k1);
+            else if (costes[k2] < costes[k1] && costes[k2] < costes[k3]) //ELEGIMOS EL  MEJOR
+                obj = cromosomas.get(k2);
+            else
+                obj = cromosomas.get(k3);
+        }
+    }
+
     public static double randDoubleWithRange(double min, double max){
         Random random = new Random();
         return random.nextDouble() * (max - min) + min;

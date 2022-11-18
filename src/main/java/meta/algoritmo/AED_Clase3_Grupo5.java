@@ -8,75 +8,43 @@ import java.util.Random;
 
 import static meta.funciones.Funciones.evaluaCoste;
 import static meta.utils.FuncionesAux.cargaCromosomasIniciales;
+import static meta.utils.FuncionesAux.recombinacionTernaria;
 
 public class AED_Clase3_Grupo5 {
-
     public static void AED(int tampoblacion, int tam, int evaluaciones, double[] solucion, double rmin, double rmax, String funcion, Long semilla, Logger logger){
         long tiempoInicial = System.nanoTime();
         int t=0;
         List<double[]> cromosomas = new ArrayList<>();
         double[] costes = new double[tampoblacion];
         double mejorCoste = Double.MAX_VALUE;
-        double[] mejorCruce = new double[tampoblacion];
+        double[] mejorCromosoma = new double[tampoblacion];
         double mejorCosteGlobal = mejorCoste;
-        double[] mejorCruceGlobal=mejorCruce;
+        double[] mejorCromosomaGlobal=mejorCromosoma;
         Random random = new Random();
         int contador=tampoblacion;
+        double[] obj = new double[0];
+        double[] ale1 = new double[0],ale2 = new double[0];
+        double[]nuevo = new double[tampoblacion];
+        double[]padre = new double[0];
 
-
-        cargaCromosomasIniciales(tampoblacion,cromosomas,rmin,rmax,funcion,costes,tam,mejorCoste,mejorCruce);
-
-        System.out.println("Coste" + mejorCosteGlobal);
+        cargaCromosomasIniciales(tampoblacion,cromosomas,rmin,rmax,funcion,costes,tam,mejorCoste,mejorCromosoma);
 
         //Comienzan las iteraciones
         while (contador<evaluaciones){
 
             //CRUZAMOS con operador de recombinacion ternaria
-            double[] ale1, ale2, obj, nuevo = new double[tampoblacion], padre; //ALEATORIO 1, 2
-            int a1, a2, k1, k2, k3;
+            recombinacionTernaria(tampoblacion,cromosomas,costes);
 
-            for (int i = 0; i < tampoblacion; i++) {   //PASAMOS POR TODA LA POBLACION
-                padre = cromosomas.get(i);
-                do {
-                    a1 = random.nextInt(tampoblacion - 1 - 0);
-                    while (a1 == (a2 = random.nextInt(tampoblacion - 1 - 0))) ;
-                } while (a1 != i && a2 != i);
-
-                if (a1 >= tampoblacion)
-                    a1 = tampoblacion - 1;
-
-                ale1 = cromosomas.get(a1);
-                ale2 = cromosomas.get(a2);
-
-                //un objetivo elegido entre k=3(distintos) y distintos a a1, a2 y el padre
-                do {
-                    k1 = random.nextInt(tampoblacion - 1 - 0);
-                    while (k1 == (k2 = random.nextInt(tampoblacion - 1 - 0))) ;
-                    //while (k1 == (k2 == (k3 = random.nextInt(tp - 1 - 0)))) ;
-                    k3 = random.nextInt(tampoblacion - 1 - 0);
-                } while (k1 != i && k1 != a1 && k1 != a2 && k2 != i && k2 != a1 && k2 != a2 && k3 != i && k3 != a1 && k3 != a2);
-
-                if (costes[k1] < costes[k2] && costes[k1] < costes[k3])
-                    obj = cromosomas.get(k1);
-                else if (costes[k2] < costes[k1] && costes[k2] < costes[k3]) //ELEGIMOS EL  MEJOR
-                    obj = cromosomas.get(k2);
-                else
-                    obj = cromosomas.get(k3);
-
-
-                double F = random.nextDouble();  //Factor de mutacion diferente por cada elemento de la poblacion TIENE QUE SER UN 1 POR CIENTE
-
-                for (int j=0; j<tam; j++){ //UN FOR PARA DIMENSION
-                    double d=random.nextDouble(); //% de elección de dimensiones entre el nuevo y el objetivo
-                    // por cada dimension(posicion) del individuo
-                    if (d>0.5)
-                        nuevo[j]=obj[j];
-                    else{
-                        nuevo[j]= padre[j]+ (F*(ale1[j]-ale2[j])); //operador de recombinacion a posteriori de la mutacion
-                        //para cuando se salen los valores del rango de la funcion
-                        if (nuevo[j]>rmax)
-                            nuevo[j]=rmax;
-                        else
+            double F = random.nextDouble();  //Factor de mutacion diferente por cada elemento de la poblacion TIENE QUE SER UN 1 POR CIENTE
+            for (int j=0; j<tam; j++){ //UN FOR PARA DIMENSION
+                double d=random.nextDouble(); //% de elección de dimensiones entre el nuevo y el objetivo. Por cada dimension(posicion) del individuo
+                if (d>0.5)
+                    nuevo[j]=obj[j];
+                else{
+                    nuevo[j]= padre[j]+ (F*(ale1[j]-ale2[j])); //operador de recombinacion a posteriori de la mutacion. Para cuando se salen los valores del rango de la funcion
+                    if (nuevo[j]>rmax)
+                        nuevo[j]=rmax;
+                    else
                         if (nuevo[j]<rmin)
                             nuevo[j]=rmin;
                     }
@@ -90,22 +58,21 @@ public class AED_Clase3_Grupo5 {
                     costes[i]=costeNuevo;
                     if (costeNuevo<mejorCoste){
                         mejorCoste=costeNuevo;
-                        mejorCruce=nuevo;
+                        mejorCromosoma=nuevo;
                     }
                 }
             }
 
-            //Actualizamos el mejor global y su coste con el mejor hijo de la NUEVA POBLACION
-            //si mejora
+            //Actualizamos el mejor global y su coste con el mejor hijo de la NUEVA POBLACION.      Si mejora
             if (mejorCoste<mejorCosteGlobal){
                 mejorCosteGlobal=mejorCoste;
-                mejorCruceGlobal=mejorCruce;
+                mejorCromosomaGlobal=mejorCromosoma;
             }
 
             t++;
         }
 
-        solucion=mejorCruceGlobal;
+        solucion=mejorCromosomaGlobal;
         double tiempoFinal = System.nanoTime();
         double resultado = (tiempoFinal - tiempoInicial);
 
@@ -122,6 +89,3 @@ public class AED_Clase3_Grupo5 {
         //return mejorCosteGlobal;
 
     }
-
-
-}
