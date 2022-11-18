@@ -56,7 +56,10 @@ public class AEvBLXalfa_Clase3_Grupo5 {
             elitismo(tampoblacion,nuevaGeneracion,mejorCromosoma,costeNuevaGeneracion,mejorCosteHijo,mejorCromosomaHijo,mejorCoste);
 
             //Actualizamos el mejor global y su coste con el mejor hijo de la NUEVA POBLACION     si mejora
-            actualizarMejorCromosoma(mejorCosteHijo,mejorCosteGlobal,mejorCromosomaGlobal,nuevaGeneracion,mejorCromosomaHijo);
+            if (mejorCosteHijo < mejorCosteGlobal) {
+                mejorCosteGlobal = mejorCosteHijo;
+                mejorCromosomaGlobal = nuevaGeneracion.get(mejorCromosomaHijo);
+            }
 
             //Actualizo cromosomas con nuevaGeneracion, para la siguiente generacion
             costes = costeNuevaGeneracion;

@@ -180,13 +180,6 @@ public class FuncionesAux {
         }
     }
 
-    public static void actualizarMejorCromosoma(double mejorcostehijo,double mejorCosteGlobal,double[] mejorCroGlobal,List<double[]> nuevaGeneracion,int mejorCromosomaHijo){
-        if (mejorcostehijo < mejorCosteGlobal) {
-            mejorCosteGlobal = mejorcostehijo;
-            mejorCroGlobal = nuevaGeneracion.get(mejorCromosomaHijo);
-        }
-    }
-
     public static void elitismo(int tampoblacion,List<double[]> nuevaGeneracion,double[] mejorCromosoma,double[] costeNuevaGeneracion,double mejorCosteHijo,int mejorCromosomaHijo,double mejorCoste){
         boolean enc = false;
         Random aleatorio=new Random();
