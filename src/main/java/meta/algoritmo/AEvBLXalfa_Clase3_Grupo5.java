@@ -48,8 +48,7 @@ public class AEvBLXalfa_Clase3_Grupo5 {
             //MUTAMOS los genes de los dos padres ya cruzados con probabilidad probabilidadMutacion
             mutar(tampoblacion,tam,probabilidadMutacion,rmin,rmax,nuevaGeneracion,marcados);
 
-            //actualizamos el coste de los modificados
-            // preparamos el REEMPLAZAMIENTO calculamos el peor de la nueva poblacion
+            // preparamos el REEMPLAZAMIENTO calculamos el peor de la nueva poblacion. Actualizamos el coste de los modificados
             calculaMejorPeor(tampoblacion,marcados,costeNuevaGeneracion,nuevaGeneracion,funcion,contador,peorCosteHijo,peor,mejorCosteHijo,mejorCromosomaHijo);
 
             //Mantenemos el elitismo del mejor de P(t) para P(t') si no sobrevive
