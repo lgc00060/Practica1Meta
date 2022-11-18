@@ -7,9 +7,9 @@ import static meta.funciones.Funciones.evaluaCoste;
 
 public class FuncionesAux {
     public static void cargaAleatoria(int tam, double[] v, double rmin, double rmax) {
+        Random aleatorio = new Random();
         for (int i = 0; i < tam; i++) {
-            Random random = new Random();
-            v[i] = random.nextDouble();
+            v[i] = aleatorio.nextDouble();
         }
     }
 
@@ -44,14 +44,14 @@ public class FuncionesAux {
         return score;
     }
 
-    public static void cargaCromosomasIniciales(int tampoblacion, List<double[]> cromosomas, double rmin, double rmax, String funcion, double[] costes, int tam, double mejorCoste, double[] mejorCruce){
+    public static void cargaCromosomasIniciales(int tampoblacion, List<double[]> cromosomas, double rmin, double rmax, String funcion, double[] costes, int tam, double mejorCoste, double[] mejorCromosoma){
         for (int i = 0; i < tampoblacion; i++) {
             cargaAleatoria(tam, cromosomas.get(i), rmin, rmax);
             costes[i] = evaluaCoste(cromosomas.get(i), funcion);
 
             if (costes[i] < mejorCoste) {
                 mejorCoste = costes[i];
-                mejorCruce = cromosomas.get(i);
+                mejorCromosoma = cromosomas.get(i);
             }
         }
     }
@@ -149,14 +149,14 @@ public class FuncionesAux {
     }
 
     public static void mutar(int tampoblacion, int tam, double probabilidadMutacion, double rmin,double rmax, List<double[]> nuevaGeneracion, boolean[] marcados){
-        Random random = new Random();
+        Random aleatorio = new Random();
         for (int i = 0; i < tampoblacion; i++) {
             boolean m = false;
             for (int j = 0; j < tam; j++) {
-                double x = random.nextDouble();
+                double x = aleatorio.nextDouble();
                 if (x < probabilidadMutacion) {
                     m = true;
-                    double valor = random.nextDouble() + rmin;  ///hay que poner dounle (int bound) NO ME DEJA
+                    double valor = randDoubleWithRange(rmin,rmax);
                     Mutacion(nuevaGeneracion.get(i),j,valor);
                 }
             }
@@ -165,24 +165,67 @@ public class FuncionesAux {
         }
     }
 
-    public static void calculaMejorPeor(int tampoblacion,boolean[] marcados, double[] costeNuevaGeneracion,List<double[]> nuevaGeneracion,String funcion,int contador,double peorCosteHijo,int peor,double mejorcostehijo, int mejorCruceHijo){
+    public static void calculaMejorNuevaPoblacion(int tampoblacion, boolean[] marcados, double[] costeNuevaGeneracion, List<double[]> nuevaGeneracion, String funcion, int contador, double mejorCosteHijo, int mejorCromosomaHijo){
+        mejorCosteHijo=Double.MAX_VALUE;
         for (int i = 0; i < tampoblacion; i++) {
             if (marcados[i]) {
                 costeNuevaGeneracion[i] = evaluaCoste(nuevaGeneracion.get(i),funcion);
                 contador++;
             }
-            if (costeNuevaGeneracion[i] < mejorcostehijo) {
-                mejorcostehijo = costeNuevaGeneracion[i];
-                mejorCruceHijo = i;
+
+            if (costeNuevaGeneracion[i] < mejorCosteHijo) {
+                mejorCosteHijo = costeNuevaGeneracion[i];
+                mejorCromosomaHijo = i;
             }
         }
     }
 
-    public static void actualizarMejorCromosoma(double mejorcostehijo,double mejorCosteGlobal,double[] mejorCroGlobal,List<double[]> nuevaGeneracion,int mejorCruceHijo){
+    public static void actualizarMejorCromosoma(double mejorcostehijo,double mejorCosteGlobal,double[] mejorCroGlobal,List<double[]> nuevaGeneracion,int mejorCromosomaHijo){
         if (mejorcostehijo < mejorCosteGlobal) {
             mejorCosteGlobal = mejorcostehijo;
-            mejorCroGlobal = nuevaGeneracion.get(mejorCruceHijo);
+            mejorCroGlobal = nuevaGeneracion.get(mejorCromosomaHijo);
         }
+    }
+
+    public static void elitismo(int tampoblacion,List<double[]> nuevaGeneracion,double[] mejorCromosoma,double[] costeNuevaGeneracion,double mejorCosteHijo,int mejorCromosomaHijo,double mejorCoste){
+        boolean enc = false;
+        Random aleatorio=new Random();
+        int peor;
+
+        for (int i = 0; i < nuevaGeneracion.size() && !enc; i++) {
+            if (mejorCromosoma == nuevaGeneracion.get(i)) {
+                enc = true;
+            }
+        }
+        if (!enc) { //si no sobrevive planteamos un torneo k=4 para elegir el sustituto de la nueva poblacion
+            int p1, p2, p3 = aleatorio.nextInt(tampoblacion - 1 - 0) + 0, p4 = aleatorio.nextInt(tampoblacion - 1 - 0) + 0;
+            p1 = aleatorio.nextInt(tampoblacion - 1 - 0) + 0;
+
+            while (p1 == (p2 = aleatorio.nextInt(tampoblacion - 1 - 0) + 0)) ;
+            while (p1 == p2 && p2 == p3) ;
+            while (p1 == p2 && p2 == p3 && p3 == p4) ;
+
+            if (costeNuevaGeneracion[p1] > costeNuevaGeneracion[p2] && costeNuevaGeneracion[p1] > costeNuevaGeneracion[p3] && costeNuevaGeneracion[p1] > costeNuevaGeneracion[p4])
+                peor = p1;
+            else if (costeNuevaGeneracion[p2] > costeNuevaGeneracion[p1] && costeNuevaGeneracion[p2] > costeNuevaGeneracion[p3] && costeNuevaGeneracion[p2] > costeNuevaGeneracion[p4])
+                peor = p2;
+            else if (costeNuevaGeneracion[p3] > costeNuevaGeneracion[p1] && costeNuevaGeneracion[p3] > costeNuevaGeneracion[p2] && costeNuevaGeneracion[p3] > costeNuevaGeneracion[p4])
+                peor = p3;
+            else
+                peor = p4;
+
+            nuevaGeneracion.add(peor, mejorCromosoma);
+            costeNuevaGeneracion[peor] = mejorCoste;
+
+            //actualizamos el mejor con el elite si acaso lo mejora NEW
+            if(mejorCoste<mejorCosteHijo){
+                mejorCosteHijo = mejorCoste;
+                nuevaGeneracion.add(mejorCromosomaHijo, mejorCromosoma);
+            }
+        }
+        //actualizamos el mejor cromosoma para el elitismo de la siguiente generacion
+        mejorCromosoma = nuevaGeneracion.get(mejorCromosomaHijo);
+        mejorCoste = mejorCosteHijo;
     }
 
     public static void mostrarmatriz(double[] mat){
@@ -191,5 +234,10 @@ public class FuncionesAux {
                 System.out.println("," + mat);
             }
         }
+    }
+
+    public static double randDoubleWithRange(double min, double max){
+        Random random = new Random();
+        return random.nextDouble() * (max - min) + min;
     }
 }

@@ -42,6 +42,7 @@ public class AEvBLXalfa_Clase3_Grupo5 {
             //seleccion por torneo
             torneo(tampoblacion,posicion,costes,cromosomas,nuevaGeneracion,costeNuevaGeneracion);
 
+            //SELECCION por TORNEO: Calculo de los cromosomas mas prometedores entre cada 2 parejas aleatorias durante tp enfrentamientos
             cruceTorneo2a2(tam,tampoblacion,h,costes,nuevaGeneracion,probabilidadCruce,marcados,nuevaGeneracionSegunda,costeNuevaGeneracion,costeNuevaGeneracionSegunda,
             alfa,rmin,rmax);
 
@@ -49,47 +50,12 @@ public class AEvBLXalfa_Clase3_Grupo5 {
             mutar(tampoblacion,tam,probabilidadMutacion,rmin,rmax,nuevaGeneracion,marcados);
 
             // preparamos el REEMPLAZAMIENTO calculamos el peor de la nueva poblacion. Actualizamos el coste de los modificados
-            calculaMejorPeor(tampoblacion,marcados,costeNuevaGeneracion,nuevaGeneracion,funcion,contador,peorCosteHijo,peor,mejorCosteHijo,mejorCromosomaHijo);
+            calculaMejorNuevaPoblacion(tampoblacion,marcados,costeNuevaGeneracion,nuevaGeneracion,funcion,contador,peorCosteHijo,mejorCromosomaHijo);
 
             //Mantenemos el elitismo del mejor de P(t) para P(t') si no sobrevive
-            boolean enc = false;
-            for (int i = 0; i < nuevaGeneracion.size() && !enc; i++) {
-                if (mejorCromosoma == nuevaGeneracion.get(i)) {
-                    enc = true;
-                }
-            }
-            if (!enc) { //si no sobrevive planteamos un torneo k=4 para elegir el sustituto de la nueva poblacion
-                int p1, p2, p3 = random.nextInt(tampoblacion - 1 - 0) + 0, p4 = random.nextInt(tampoblacion - 1 - 0) + 0;
-                p1 = random.nextInt(tampoblacion - 1 - 0) + 0;
+            elitismo(tampoblacion,nuevaGeneracion,mejorCromosoma,costeNuevaGeneracion,mejorCosteHijo,mejorCromosomaHijo,mejorCoste);
 
-                while (p1 == (p2 = random.nextInt(tampoblacion - 1 - 0) + 0)) ;
-                while (p1 == p2 && p2 == p3) ;
-                while (p1 == p2 && p2 == p3 && p3 == p4) ;
-
-                if (costeNuevaGeneracion[p1] > costeNuevaGeneracion[p2] && costeNuevaGeneracion[p1] > costeNuevaGeneracion[p3] && costeNuevaGeneracion[p1] > costeNuevaGeneracion[p4])
-                    peor = p1;
-                else if (costeNuevaGeneracion[p2] > costeNuevaGeneracion[p1] && costeNuevaGeneracion[p2] > costeNuevaGeneracion[p3] && costeNuevaGeneracion[p2] > costeNuevaGeneracion[p4])
-                    peor = p2;
-                else if (costeNuevaGeneracion[p3] > costeNuevaGeneracion[p1] && costeNuevaGeneracion[p3] > costeNuevaGeneracion[p2] && costeNuevaGeneracion[p3] > costeNuevaGeneracion[p4])
-                    peor = p3;
-                else
-                    peor = p4;
-
-                nuevaGeneracion.add(peor, mejorCromosoma);
-                costeNuevaGeneracion[peor] = mejorCoste;
-
-                //actualizamos el mejor con el elite si acaso lo mejora NEW
-                if(mejorCoste<mejorCosteHijo){
-                    mejorCosteHijo = mejorCoste;
-                    nuevaGeneracion.add(mejorCromosomaHijo, mejorCromosoma);
-                }
-            }
-            //actualizamos el mejor cromosoma para el elitismo de la siguiente generacion
-            mejorCromosoma = nuevaGeneracion.get(mejorCromosomaHijo);
-            mejorCoste = mejorCosteHijo;
-
-            //Actualizamos el mejor global y su coste con el mejor hijo de la NUEVA POBLACION
-            //si mejora
+            //Actualizamos el mejor global y su coste con el mejor hijo de la NUEVA POBLACION     si mejora
             actualizarMejorCromosoma(mejorCosteHijo,mejorCosteGlobal,mejorCromosomaGlobal,nuevaGeneracion,mejorCromosomaHijo);
 
             //Actualizo cromosomas con nuevaGeneracion, para la siguiente generacion
