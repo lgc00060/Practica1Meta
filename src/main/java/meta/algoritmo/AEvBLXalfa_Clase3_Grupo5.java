@@ -43,7 +43,7 @@ public class AEvBLXalfa_Clase3_Grupo5 {
             torneo(tampoblacion,posicion,costes,cromosomas,nuevaGeneracion,costeNuevaGeneracion);
 
             //SELECCION por TORNEO: Calculo de los cromosomas mas prometedores entre cada 2 parejas aleatorias durante tp enfrentamientos
-            cruceTorneo2a2(tam,tampoblacion,h,costes,nuevaGeneracion,probabilidadCruce,marcados,nuevaGeneracionSegunda,costeNuevaGeneracion,costeNuevaGeneracionSegunda,
+            cruceTorneo2a2(tam,tampoblacion,h,nuevaGeneracion,probabilidadCruce,marcados,nuevaGeneracionSegunda,costeNuevaGeneracion,costeNuevaGeneracionSegunda,
             alfa,rmin,rmax);
 
             //MUTAMOS los genes de los dos padres ya cruzados con probabilidad probabilidadMutacion

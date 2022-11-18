@@ -56,20 +56,19 @@ public class FuncionesAux {
         }
     }
 
-    public static void cruceMedia(int tam, double[] v, double[] w, double[] h) {
-
+    public static void cruceMedia(int tam, double[] a, double[] b, double[] h) {
         for (int i = 0; i < tam; i++) {
-            h[i] = (v[i] + w[i]) / 2;
+            h[i] = (a[i] + b[i]) / 2;
         }
     }
 
     public static void torneo(int tampoblacion, int[] posicion, double[] costes,List<double[]> cromosomas,List<double[]> nuevaGeneracion,double[] costeNuevaGeneracion){
         Random aleatorio = new Random();
+        int x,j;
         for (int k = 0; k < tampoblacion; k++) {
-            int i,j;
-            i =  aleatorio.nextInt(tampoblacion - 1);
-            while (i == (j = aleatorio.nextInt(tampoblacion - 1)));
-            posicion[k] = (costes[i] < costes[j]) ? i : j;
+            x =  aleatorio.nextInt(tampoblacion - 1);
+            while (x == (j = aleatorio.nextInt(tampoblacion - 1)));
+            posicion[k] = (costes[x] < costes[j]) ? x : j;
         }
 
         //Nos quedamos con los cromosomas mas prometedores
@@ -100,7 +99,7 @@ public class FuncionesAux {
             }
     }
 
-    public static void cruceTorneo2a2(int tam,int tampoblacion,double[] h,double[] costes,List<double[]> nuevaGeneracion,double probabilidadCruce,boolean[] marcados,
+    public static void cruceTorneo2a2(int tam,int tampoblacion,double[] h,List<double[]> nuevaGeneracion,double probabilidadCruce,boolean[] marcados,
                                       List<double[]> nuevaGeneracionSegunda,double[] costeNuevaGeneracion,double[] costeNuevaGeneracionSegunda,double alfa,double rmin,double rmax){
         Random aleatorio = new Random();
         int c1,c2,c3,c4;
@@ -110,37 +109,85 @@ public class FuncionesAux {
         double[] mejorPrimero, mejorSegundo;
 
         for (int i = 0; i < tampoblacion; i++) {
-            c1 = aleatorio.nextInt((tampoblacion - 1 - 0) + 0);
-            while (c1 == (c2 = aleatorio.nextInt(tampoblacion - 1 - 0) + 0)) ;
+            c1 = aleatorio.nextInt((tampoblacion - 1) + 0);
+            while (c1 == (c2 = aleatorio.nextInt(tampoblacion - 1) + 0)) ;
 
-            if (costes[c1] < costes[c2]) {
+            if (costeNuevaGeneracion[c1] < costeNuevaGeneracion[c2]) {
                 mejorPrimero = nuevaGeneracion.get(c1);
-                costeMejorPrimero = costes[c1];
+                costeMejorPrimero = costeNuevaGeneracion[c1];
             } else {
                 mejorPrimero = nuevaGeneracion.get(c2);
-                costeMejorPrimero = costes[c2];
+                costeMejorPrimero = costeNuevaGeneracion[c2];
             }
 
-            while (posAnt == (c3 = aleatorio.nextInt(tampoblacion - 1 - 0) + 0)) ;
-            while (posAnt == (c4 = aleatorio.nextInt(tampoblacion - 1 - 0) + 0)) ;
+            while (posAnt == (c3 = aleatorio.nextInt(tampoblacion - 1) + 0)) ;
+            while (posAnt == (c4 = aleatorio.nextInt(tampoblacion - 1) + 0)) ;
 
 
-            if (costes[c3] < costes[c4]) {
+            if (costeNuevaGeneracion[c3] < costeNuevaGeneracion[c4]) {
                 mejorSegundo = nuevaGeneracion.get(c3);
-                costeMejorSegundo = costes[c3];
+                costeMejorSegundo = costeNuevaGeneracion[c3];
             } else {
                 mejorSegundo = nuevaGeneracion.get(c4);
-                costeMejorSegundo = costes[c4];
+                costeMejorSegundo = costeNuevaGeneracion[c4];
             }
 
             num = aleatorio.nextDouble();
 
             if (num < probabilidadCruce) {
                 cruceBlX(tam, mejorPrimero, mejorSegundo, alfa, h, rmin, rmax);
-                nuevaGeneracion.add(i, h);
+                nuevaGeneracionSegunda.add(i, h);
                 marcados[i] = true;
             } else {
-                nuevaGeneracion.add(i, mejorPrimero);
+                nuevaGeneracionSegunda.add(i, mejorPrimero);
+                costeNuevaGeneracionSegunda[i] = costeMejorPrimero;
+            }
+        }
+        nuevaGeneracion = nuevaGeneracionSegunda;
+        costeNuevaGeneracion = costeNuevaGeneracionSegunda;
+    }
+
+    public static void cruceTorneo2a2Media(int tam,int tampoblacion,double[] h,List<double[]> nuevaGeneracion,double probabilidadCruce,boolean[] marcados,
+                                      List<double[]> nuevaGeneracionSegunda,double[] costeNuevaGeneracion,double[] costeNuevaGeneracionSegunda,double[] mejorCromosomaPrimero, double[] mejorCromosomaSegundo){
+        Random aleatorio = new Random();
+        int c1,c2,c3,c4;
+        h = new double[tam];
+        int posAnt = 0;
+        double num,costeMejorPrimero,costeMejorSegundo;
+        double[] mejorPrimero, mejorSegundo;
+
+        for (int i = 0; i < tampoblacion; i++) {
+            c1 = aleatorio.nextInt((tampoblacion - 1) + 0);
+            while (c1 == (c2 = aleatorio.nextInt(tampoblacion - 1) + 0)) ;
+
+            if (costeNuevaGeneracion[c1] < costeNuevaGeneracion[c2]) {
+                mejorPrimero = nuevaGeneracion.get(c1);
+                costeMejorPrimero = costeNuevaGeneracion[c1];
+            } else {
+                mejorPrimero = nuevaGeneracion.get(c2);
+                costeMejorPrimero = costeNuevaGeneracion[c2];
+            }
+
+            while (posAnt == (c3 = aleatorio.nextInt(tampoblacion - 1) + 0)) ;
+            while (posAnt == (c4 = aleatorio.nextInt(tampoblacion - 1) + 0)) ;
+
+
+            if (costeNuevaGeneracion[c3] < costeNuevaGeneracion[c4]) {
+                mejorSegundo = nuevaGeneracion.get(c3);
+                costeMejorSegundo = costeNuevaGeneracion[c3];
+            } else {
+                mejorSegundo = nuevaGeneracion.get(c4);
+                costeMejorSegundo = costeNuevaGeneracion[c4];
+            }
+
+            num = aleatorio.nextDouble();
+
+            if (num < probabilidadCruce) {
+                cruceMedia(tam,mejorCromosomaPrimero,mejorCromosomaSegundo,h);
+                nuevaGeneracionSegunda.add(i, h);
+                marcados[i] = true;
+            } else {
+                nuevaGeneracionSegunda.add(i, mejorPrimero);
                 costeNuevaGeneracionSegunda[i] = costeMejorPrimero;
             }
         }
@@ -167,6 +214,7 @@ public class FuncionesAux {
 
     public static void calculaMejorNuevaPoblacion(int tampoblacion, boolean[] marcados, double[] costeNuevaGeneracion, List<double[]> nuevaGeneracion, String funcion, int contador, double mejorCosteHijo, int mejorCromosomaHijo){
         mejorCosteHijo=Double.MAX_VALUE;
+
         for (int i = 0; i < tampoblacion; i++) {
             if (marcados[i]) {
                 costeNuevaGeneracion[i] = evaluaCoste(nuevaGeneracion.get(i),funcion);
@@ -180,21 +228,22 @@ public class FuncionesAux {
         }
     }
 
-    public static void elitismo(int tampoblacion,List<double[]> nuevaGeneracion,double[] mejorCromosoma,double[] costeNuevaGeneracion,double mejorCosteHijo,int mejorCromosomaHijo,double mejorCoste){
+    public static void elitismo(int tampoblacion,List<double[]> nuevaGeneracion,double[] mejorCromosoma,double[] costeNuevaGeneracion,double mejorCosteHijo,
+                                int mejorCromosomaHijo,double mejorCoste){
         boolean enc = false;
         Random aleatorio=new Random();
         int peor;
+        int p1=p1 = aleatorio.nextInt(tampoblacion - 1 - 0) + 0, p2=aleatorio.nextInt(tampoblacion - 1 - 0) + 0,
+                p3 = aleatorio.nextInt(tampoblacion - 1 - 0) + 0, p4 = aleatorio.nextInt(tampoblacion - 1 - 0) + 0;
 
         for (int i = 0; i < nuevaGeneracion.size() && !enc; i++) {
-            if (mejorCromosoma == nuevaGeneracion.get(i)) {
+            if (mejorCromosoma == nuevaGeneracion.get(i))
                 enc = true;
-            }
         }
-        if (!enc) { //si no sobrevive planteamos un torneo k=4 para elegir el sustituto de la nueva poblacion
-            int p1, p2, p3 = aleatorio.nextInt(tampoblacion - 1 - 0) + 0, p4 = aleatorio.nextInt(tampoblacion - 1 - 0) + 0;
-            p1 = aleatorio.nextInt(tampoblacion - 1 - 0) + 0;
 
-            while (p1 == (p2 = aleatorio.nextInt(tampoblacion - 1 - 0) + 0)) ;
+        if (!enc) { //si no sobrevive planteamos un torneo k=4 para elegir el sustituto de la nueva poblacion
+
+            while (p1 == p2) ;
             while (p1 == p2 && p2 == p3) ;
             while (p1 == p2 && p2 == p3 && p3 == p4) ;
 
