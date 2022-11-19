@@ -7,7 +7,6 @@ import static meta.funciones.Funciones.evaluaCoste;
 
 public class FuncionesAux {
     public static void cargaAleatoria(int tam, double[] v, double rmin, double rmax) {
-        Random aleatorio = new Random();
         for (int i = 0; i < tam; i++) {
             v[i] = randDoubleWithRange(rmin,rmax);
         }
@@ -15,7 +14,6 @@ public class FuncionesAux {
 
     public static void Mutacion(double[] v, int pos, double valor) {
         v[pos] = valor;
-
     }
 
     public static double MAPE(double[] real, double[] estimation) {
@@ -46,12 +44,12 @@ public class FuncionesAux {
 
     public static void cargaCromosomasIniciales(int tampoblacion, List<double[]> cromosomas, double rmin, double rmax, String funcion, double[] costes, int tam, double mejorCoste, double[] mejorCromosoma){
         for (int i = 0; i < tampoblacion; i++) {
-            cargaAleatoria(tam, cromosomas.get(i), rmin, rmax);
+            cargaAleatoria(tam, cromosomas.get(i), rmin, rmax); //error aqui
             costes[i] = evaluaCoste(cromosomas.get(i), funcion);
 
             if (costes[i] < mejorCoste) {
                 mejorCoste = costes[i];
-                mejorCromosoma = cromosomas.get(i);
+                mejorCromosoma = cromosomas.get(i); //error aqui
             }
         }
     }
