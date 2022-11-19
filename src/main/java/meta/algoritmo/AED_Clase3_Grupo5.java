@@ -7,8 +7,7 @@ import java.util.List;
 import java.util.Random;
 
 import static meta.funciones.Funciones.evaluaCoste;
-import static meta.utils.FuncionesAux.cargaCromosomasIniciales;
-import static meta.utils.FuncionesAux.recombinacionTernaria;
+import static meta.utils.FuncionesAux.*;
 
 public class AED_Clase3_Grupo5 {
     public static void AED(int tampoblacion, int tam, int evaluaciones, double[] solucion, double rmin, double rmax, String funcion, Long semilla, Logger logger) {
@@ -22,55 +21,42 @@ public class AED_Clase3_Grupo5 {
         double[] mejorCromosomaGlobal = mejorCromosoma;
         Random random = new Random();
         int contador = tampoblacion;
-        double[] ale1, ale2, obj, nuevo = new double[tampoblacion], padre;
+        double[] ale1 = new double[tampoblacion], ale2 = new double[tampoblacion], obj, nuevo = new double[tampoblacion], padre;
+        int k1=0,k2=0,k3=0,k4=0,a1=0;
 
         cargaCromosomasIniciales(tampoblacion, cromosomas, rmin, rmax, funcion, costes, tam, mejorCoste, mejorCromosoma);
 
         //Comienzan las iteraciones
         while (contador < evaluaciones) {
 
-            //CRUZAMOS con operador de recombinacion ternaria
-            //recombinacionTernaria(tampoblacion,cromosomas,costes);
-            Random aleatorio = new Random();
-            int a1, a2, k1, k2, k3;
-            a2 = aleatorio.nextInt(tampoblacion - 1);
-            k2 = aleatorio.nextInt(tampoblacion - 1);
-            k3 = aleatorio.nextInt(tampoblacion - 1);
-
-            for (int i = 0; i < tampoblacion; i++) {   //PASAMOS POR TODA LA POBLACION
+            //CRUZAMOS con operador ternario
+            for(int i=0;i<tampoblacion;i++){
                 padre = cromosomas.get(i);
 
-                do {
-                    a1 = aleatorio.nextInt(tampoblacion - 1);
-                    while (a1 == a2) ;
-                } while (a1 != i && a2 != i);
+                //eleccion de 2 aleatorios distintos entre si y del padre
+                eleccion2Aleatorios(tampoblacion,cromosomas,costes,i,ale1,ale2);
 
-                ale1 = cromosomas.get(a1);
-                ale2 = cromosomas.get(a2);
+                //aplicamos torneo sobre inviduo objetivo elegido entre k=3(distintos) y distintos a a1, a2 y el padre
+                torneoK3(tampoblacion,i,a1,k1,k2,k3,k4);
 
-                //un objetivo elegido entre k=3(distintos) y distintos a a1, a2 y el padre
-                do {
-                    k1 = aleatorio.nextInt(tampoblacion - 1);
-                    while (k1 == k2) ;
-                    while (k1 == k2 && k2 == k3) ;
-                } while (k1 != i && k1 != a1 && k1 != a2 &&
-                        k2 != i && k2 != a1 && k2 != a2 &&
-                        k3 != i && k3 != a1 && k3 != a2);
-
+                //ELEGIMOS EL  MEJOR
                 if (costes[k1] < costes[k2] && costes[k1] < costes[k3])
                     obj = cromosomas.get(k1);
-                else if (costes[k2] < costes[k1] && costes[k2] < costes[k3]) //ELEGIMOS EL  MEJOR
+                else if (costes[k2] < costes[k1] && costes[k2] < costes[k3])
                     obj = cromosomas.get(k2);
                 else
                     obj = cromosomas.get(k3);
 
-                double F = random.nextDouble();  //Factor de mutacion diferente por cada elemento de la poblacion TIENE QUE SER UN 1 POR CIENTE
+                double Factor = random.nextDouble(); //Factor de mutacion diferente por cada elemento de la poblacion TIENE QUE SER UN 1 POR CIENTE
+
                 for (int j = 0; j < tam; j++) { //UN FOR PARA DIMENSION
                     double d = random.nextDouble(); //% de elección de dimensiones entre el nuevo y el objetivo. Por cada dimension(posicion) del individuo
+
                     if (d > 0.5)
                         nuevo[j] = obj[j];
                     else {
-                        nuevo[j] = padre[j] + (F * (ale1[j] - ale2[j])); //operador de recombinacion a posteriori de la mutacion. Para cuando se salen los valores del rango de la funcion
+                        nuevo[j] = operadorRecombinacion(padre,j,ale1,ale2,Factor); //operador de recombinacion a posteriori de la mutacion. Para cuando se salen los valores del rango de la funcion
+
                         if (nuevo[j] > rmax)
                             nuevo[j] = rmax;
                         else if (nuevo[j] < rmin)
@@ -81,23 +67,18 @@ public class AED_Clase3_Grupo5 {
                 //REEMPLAZAMIENTO si el hijo es mejor q el padre
                 double costeNuevo = evaluaCoste(nuevo, funcion);
                 contador++;
-                if (costeNuevo < costes[i]) {
-                    cromosomas.add(i, nuevo);
-                    costes[i] = costeNuevo;
-                    if (costeNuevo < mejorCoste) {
-                        mejorCoste = costeNuevo;
-                        mejorCromosoma = nuevo;
-                    }
-                }
-            }
+                reemplazamiento(costeNuevo,i,costes,cromosomas,nuevo,mejorCoste,mejorCromosoma);
 
-            //Actualizamos el mejor global y su coste con el mejor hijo de la NUEVA POBLACION.      Si mejora
+            }//llave for i
+
+            //Actualizamos el mejor global y su coste con el mejor hijo de la NUEVA POBLACION. Si mejora
             if (mejorCoste < mejorCosteGlobal) {
                 mejorCosteGlobal = mejorCoste;
                 mejorCromosomaGlobal = mejorCromosoma;
             }
 
             t++;
+            mejorCoste=Double.MAX_VALUE;
         }
 
         solucion = mejorCromosomaGlobal;
@@ -114,7 +95,6 @@ public class AED_Clase3_Grupo5 {
         logger.info("La semilla es:" + semilla);
         System.out.println("Total Evaluaciones:" + contador);
         System.out.println(" Total Iteraciones:" + t);
-        //return mejorCosteGlobal;
 
     }
 }

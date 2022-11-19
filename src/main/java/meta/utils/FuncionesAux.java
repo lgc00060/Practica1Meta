@@ -85,6 +85,8 @@ public class FuncionesAux {
             for (int i=0; i<tam; i++){
                 Cmax=Math.max(v[i],w[i]);
                 Cmin=Math.min(v[i],w[i]);
+                x=Cmax-Cmin;
+
                 double r1=Cmin-(x*alfa);
 
                 if (r1<rmin)
@@ -278,40 +280,49 @@ public class FuncionesAux {
         }
     }
 
-    public static void recombinacionTernaria(int tampoblacion,List<double[]> cromosomas,double[] costes) {
+    public static void eleccion2Aleatorios(int tampoblacion, List<double[]> cromosomas, double[] costes, int i,double[] ale1, double[] ale2) {
         Random aleatorio = new Random();
-        double[] ale1, ale2, obj, nuevo = new double[tampoblacion], padre; //ALEATORIO 1, 2
-        int a1, a2, k1, k2, k3;
+        double[] obj, nuevo = new double[tampoblacion]; //ALEATORIO 1, 2
+        int a1, a2;
+        a2=aleatorio.nextInt(tampoblacion - 1);
+
+        do {
+            a1 = aleatorio.nextInt(tampoblacion - 1);
+            while (a1 == a2) ;
+        } while (a1 != i && a2 != i);
+
+        ale1 = cromosomas.get(a1);
+        ale2 = cromosomas.get(a2);
+    }
+
+    public static void torneoK3(int tampoblacion,int i,int a1,int k1,int k2,int k3,int k4){
+        Random aleatorio = new Random();
+        int a2;
         a2=aleatorio.nextInt(tampoblacion - 1);
         k2=aleatorio.nextInt(tampoblacion - 1);
         k3=aleatorio.nextInt(tampoblacion - 1);
 
-        for (int i = 0; i < tampoblacion; i++) {   //PASAMOS POR TODA LA POBLACION
-            padre = cromosomas.get(i);
+        do {
+            k1 = aleatorio.nextInt(tampoblacion - 1);
+            while (k1 == k2);
+            while(k1==k2 && k2==k3);
+        } while (k1 != i && k1 != a1 && k1 != a2 &&
+                 k2 != i && k2 != a1 && k2 != a2 &&
+                 k3 != i && k3 != a1 && k3 != a2);
+    }
 
-            do {
-                a1 = aleatorio.nextInt(tampoblacion - 1);
-                while (a1 == a2) ;
-            } while (a1 != i && a2 != i);
+    public static double operadorRecombinacion(double[] padre,int j, double[] ale1, double[] ale2, double Factor){
+       return padre[j] + (Factor * (ale1[j] - ale2[j]));
+    }
 
-            ale1 = cromosomas.get(a1);
-            ale2 = cromosomas.get(a2);
-
-            //un objetivo elegido entre k=3(distintos) y distintos a a1, a2 y el padre
-            do {
-                k1 = aleatorio.nextInt(tampoblacion - 1);
-                while (k1 == k2);
-                while(k1==k2 && k2==k3);
-            } while (k1 != i && k1 != a1 && k1 != a2 &&
-                    k2 != i && k2 != a1 && k2 != a2 &&
-                    k3 != i && k3 != a1 && k3 != a2);
-
-            if (costes[k1] < costes[k2] && costes[k1] < costes[k3])
-                obj = cromosomas.get(k1);
-            else if (costes[k2] < costes[k1] && costes[k2] < costes[k3]) //ELEGIMOS EL  MEJOR
-                obj = cromosomas.get(k2);
-            else
-                obj = cromosomas.get(k3);
+    public static void reemplazamiento(double costeNuevo, int i, double[] costes, List<double[]> cromosomas, double[] nuevo, double mejorCoste, double[] mejorCromosoma ){
+        if (costeNuevo < costes[i]) {
+            cromosomas.add(i, nuevo);
+            costes[i] = costeNuevo;
+            if (costeNuevo < mejorCoste) {
+                mejorCoste = costeNuevo;
+                mejorCromosoma = nuevo;
+            }
         }
     }
 
