@@ -7,6 +7,8 @@ import meta.utils.Lector;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
+
+import static meta.algoritmo.AED_Clase3_Grupo5.AED;
 import static meta.algoritmo.AEvBLXalfa_Clase3_Grupo5.*;
 import static meta.algoritmo.AEVMedia_CLase3_Grupo5.*;
 
@@ -37,22 +39,22 @@ public class Main {
                 for (Long semilla : semillas) {
                     aleatorio.setSeed(semilla);
                     switch (algoritmo) {
-                        case "ALGEVBLXALFA" -> {
+                        case "algevblxalfa" -> {
                             AEVBLXALFA(poblacion,d,evaluar,solu,rangoInf[i],rangoSup[i],prob_muta,cruce,alfa, funcion, semilla,logger);
                         }
-/*
-                        case "AEVMedia" -> {
+                        case "aevmedia" -> {
                             AEVMedia(poblacion,d,evaluar,solu,rangoInf[i],rangoSup[i],prob_muta,cruce,alfa, funcion, semilla,logger );
                         }
- */
+                        case "aedifencial" ->{
+                            AED(poblacion,d,evaluar,solu,rangoInf[i],rangoSup[i],funcion, semilla,logger);
+                        }
                     }
                 }
             }
-
-            i++;
         }
+        i++;
+    }
         //convertir los resultados a CSV
         //  exportCSV(resultadoBL3, "BL3");
         //exportCSV(resultadoBLk, "BLk");
-    }
 }

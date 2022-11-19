@@ -12,17 +12,18 @@ import static meta.utils.FuncionesAux.*;
 public class AED_Clase3_Grupo5 {
     public static void AED(int tampoblacion, int tam, int evaluaciones, double[] solucion, double rmin, double rmax, String funcion, Long semilla, Logger logger) {
         long tiempoInicial = System.nanoTime();
+        Random aleatorio = new Random();
         int t = 0;
-        List<double[]> cromosomas = new ArrayList<>();
-        double[] costes = new double[tampoblacion];
-        double mejorCoste = Double.MAX_VALUE;
-        double[] mejorCromosoma = new double[tampoblacion];
+        List<double[]> cromosomas = new ArrayList<>(tampoblacion);
+        double[] mejorCromosoma=new double[tampoblacion];
+        double mejorCoste =Double.MAX_VALUE;
         double mejorCosteGlobal = mejorCoste;
         double[] mejorCromosomaGlobal = mejorCromosoma;
-        Random random = new Random();
         int contador = tampoblacion;
+        double[] costes = new double[tampoblacion];
         double[] ale1 = new double[tampoblacion], ale2 = new double[tampoblacion], obj, nuevo = new double[tampoblacion], padre;
         int k1=0,k2=0,k3=0,k4=0,a1=0;
+        double valor=0.5;
 
         cargaCromosomasIniciales(tampoblacion, cromosomas, rmin, rmax, funcion, costes, tam, mejorCoste, mejorCromosoma);
 
@@ -47,12 +48,12 @@ public class AED_Clase3_Grupo5 {
                 else
                     obj = cromosomas.get(k3);
 
-                double Factor = random.nextDouble(); //Factor de mutacion diferente por cada elemento de la poblacion TIENE QUE SER UN 1 POR CIENTE
+                double Factor = aleatorio.nextDouble(); //Factor de mutacion diferente por cada elemento de la poblacion TIENE QUE SER UN 1 POR CIENTE
 
                 for (int j = 0; j < tam; j++) { //UN FOR PARA DIMENSION
-                    double d = random.nextDouble(); //% de elección de dimensiones entre el nuevo y el objetivo. Por cada dimension(posicion) del individuo
+                    double d = aleatorio.nextDouble(); //% de elección de dimensiones entre el nuevo y el objetivo. Por cada dimension(posicion) del individuo
 
-                    if (d > 0.5)
+                    if (d > valor)
                         nuevo[j] = obj[j];
                     else {
                         nuevo[j] = operadorRecombinacion(padre,j,ale1,ale2,Factor); //operador de recombinacion a posteriori de la mutacion. Para cuando se salen los valores del rango de la funcion

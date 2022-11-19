@@ -9,7 +9,7 @@ public class FuncionesAux {
     public static void cargaAleatoria(int tam, double[] v, double rmin, double rmax) {
         Random aleatorio = new Random();
         for (int i = 0; i < tam; i++) {
-            v[i] = aleatorio.nextDouble();
+            v[i] = randDoubleWithRange(rmin,rmax);
         }
     }
 
@@ -65,9 +65,11 @@ public class FuncionesAux {
     public static void torneo(int tampoblacion, int[] posicion, double[] costes,List<double[]> cromosomas,List<double[]> nuevaGeneracion,double[] costeNuevaGeneracion){
         Random aleatorio = new Random();
         int x,j;
+        j= aleatorio.nextInt(tampoblacion - 1);
+
         for (int k = 0; k < tampoblacion; k++) {
             x =  aleatorio.nextInt(tampoblacion - 1);
-            while (x == (j = aleatorio.nextInt(tampoblacion - 1)));
+            while (x == j);
             posicion[k] = (costes[x] < costes[j]) ? x : j;
         }
 
@@ -94,23 +96,19 @@ public class FuncionesAux {
 
                 double r2=Cmax+(x*alfa);
 
-                if (r2<rmin)
-                    r2=rmin;
+                if (r2>rmax)
+                    r2=rmax;
 
                 h1[i]= aleatorio.nextDouble()*(r2+r1);
             }
     }
 
-    public static void cruceTorneo2a2(int tam,int tampoblacion,double[] h,List<double[]> nuevaGeneracion,double probabilidadCruce,boolean[] marcados,
-                                      List<double[]> nuevaGeneracionSegunda,double[] costeNuevaGeneracion,double[] costeNuevaGeneracionSegunda,double alfa,double rmin,double rmax){
+    public static void cruceTorneo2a2(int tampoblacion,List<double[]> nuevaGeneracion,double[] costeNuevaGeneracion,double[] mejorPrimero,double[] mejorSegundo,int i){
         Random aleatorio = new Random();
         int c1,c2,c3,c4;
-        h = new double[tam];
         int posAnt = 0;
-        double num,costeMejorPrimero,costeMejorSegundo;
-        double[] mejorPrimero, mejorSegundo;
+        double costeMejorPrimero,costeMejorSegundo;
 
-        for (int i = 0; i < tampoblacion; i++) {
             c1 = aleatorio.nextInt((tampoblacion - 1) + 0);
             while (c1 == (c2 = aleatorio.nextInt(tampoblacion - 1) + 0)) ;
 
@@ -125,7 +123,6 @@ public class FuncionesAux {
             while (posAnt == (c3 = aleatorio.nextInt(tampoblacion - 1) + 0)) ;
             while (posAnt == (c4 = aleatorio.nextInt(tampoblacion - 1) + 0)) ;
 
-
             if (costeNuevaGeneracion[c3] < costeNuevaGeneracion[c4]) {
                 mejorSegundo = nuevaGeneracion.get(c3);
                 costeMejorSegundo = costeNuevaGeneracion[c3];
@@ -133,72 +130,11 @@ public class FuncionesAux {
                 mejorSegundo = nuevaGeneracion.get(c4);
                 costeMejorSegundo = costeNuevaGeneracion[c4];
             }
-
-            num = aleatorio.nextDouble();
-
-            if (num < probabilidadCruce) {
-                cruceBlX(tam, mejorPrimero, mejorSegundo, alfa, h, rmin, rmax);
-                nuevaGeneracionSegunda.add(i, h);
-                marcados[i] = true;
-            } else {
-                nuevaGeneracionSegunda.add(i, mejorPrimero);
-                costeNuevaGeneracionSegunda[i] = costeMejorPrimero;
-            }
-        }
-        nuevaGeneracion = nuevaGeneracionSegunda;
-        costeNuevaGeneracion = costeNuevaGeneracionSegunda;
-    }
-
-    public static void cruceTorneo2a2Media(int tam,int tampoblacion,double[] h,List<double[]> nuevaGeneracion,double probabilidadCruce,boolean[] marcados,
-                                      List<double[]> nuevaGeneracionSegunda,double[] costeNuevaGeneracion,double[] costeNuevaGeneracionSegunda,double[] mejorCromosomaPrimero, double[] mejorCromosomaSegundo){
-        Random aleatorio = new Random();
-        int c1,c2,c3,c4;
-        h = new double[tam];
-        int posAnt = 0;
-        double num,costeMejorPrimero,costeMejorSegundo;
-        double[] mejorPrimero, mejorSegundo;
-
-        for (int i = 0; i < tampoblacion; i++) {
-            c1 = aleatorio.nextInt((tampoblacion - 1) + 0);
-            while (c1 == (c2 = aleatorio.nextInt(tampoblacion - 1) + 0)) ;
-
-            if (costeNuevaGeneracion[c1] < costeNuevaGeneracion[c2]) {
-                mejorPrimero = nuevaGeneracion.get(c1);
-                costeMejorPrimero = costeNuevaGeneracion[c1];
-            } else {
-                mejorPrimero = nuevaGeneracion.get(c2);
-                costeMejorPrimero = costeNuevaGeneracion[c2];
-            }
-
-            while (posAnt == (c3 = aleatorio.nextInt(tampoblacion - 1) + 0)) ;
-            while (posAnt == (c4 = aleatorio.nextInt(tampoblacion - 1) + 0)) ;
-
-
-            if (costeNuevaGeneracion[c3] < costeNuevaGeneracion[c4]) {
-                mejorSegundo = nuevaGeneracion.get(c3);
-                costeMejorSegundo = costeNuevaGeneracion[c3];
-            } else {
-                mejorSegundo = nuevaGeneracion.get(c4);
-                costeMejorSegundo = costeNuevaGeneracion[c4];
-            }
-
-            num = aleatorio.nextDouble();
-
-            if (num < probabilidadCruce) {
-                cruceMedia(tam,mejorCromosomaPrimero,mejorCromosomaSegundo,h);
-                nuevaGeneracionSegunda.add(i, h);
-                marcados[i] = true;
-            } else {
-                nuevaGeneracionSegunda.add(i, mejorPrimero);
-                costeNuevaGeneracionSegunda[i] = costeMejorPrimero;
-            }
-        }
-        nuevaGeneracion = nuevaGeneracionSegunda;
-        costeNuevaGeneracion = costeNuevaGeneracionSegunda;
     }
 
     public static void mutar(int tampoblacion, int tam, double probabilidadMutacion, double rmin,double rmax, List<double[]> nuevaGeneracion, boolean[] marcados){
         Random aleatorio = new Random();
+
         for (int i = 0; i < tampoblacion; i++) {
             boolean m = false;
             for (int j = 0; j < tam; j++) {
@@ -230,20 +166,11 @@ public class FuncionesAux {
         }
     }
 
-    public static void elitismo(int tampoblacion,List<double[]> nuevaGeneracion,double[] mejorCromosoma,double[] costeNuevaGeneracion,double mejorCosteHijo,
-                                int mejorCromosomaHijo,double mejorCoste){
-        boolean enc = false;
+    public static void elitismo(int tampoblacion,List<double[]> nuevaGeneracion,double[] mejorCromosoma,double[] costeNuevaGeneracion,double mejorCoste){
         Random aleatorio=new Random();
         int peor;
-        int p1=p1 = aleatorio.nextInt(tampoblacion - 1 - 0) + 0, p2=aleatorio.nextInt(tampoblacion - 1 - 0) + 0,
-                p3 = aleatorio.nextInt(tampoblacion - 1 - 0) + 0, p4 = aleatorio.nextInt(tampoblacion - 1 - 0) + 0;
-
-        for (int i = 0; i < nuevaGeneracion.size() && !enc; i++) {
-            if (mejorCromosoma == nuevaGeneracion.get(i))
-                enc = true;
-        }
-
-        if (!enc) { //si no sobrevive planteamos un torneo k=4 para elegir el sustituto de la nueva poblacion
+        int p1= aleatorio.nextInt(tampoblacion - 1 - 0) + 0,  p2=aleatorio.nextInt(tampoblacion - 1 - 0) + 0,
+            p3 = aleatorio.nextInt(tampoblacion - 1 - 0) + 0, p4 = aleatorio.nextInt(tampoblacion - 1 - 0) + 0;
 
             while (p1 == p2) ;
             while (p1 == p2 && p2 == p3) ;
@@ -260,24 +187,6 @@ public class FuncionesAux {
 
             nuevaGeneracion.add(peor, mejorCromosoma);
             costeNuevaGeneracion[peor] = mejorCoste;
-
-            //actualizamos el mejor con el elite si acaso lo mejora NEW
-            if(mejorCoste<mejorCosteHijo){
-                mejorCosteHijo = mejorCoste;
-                nuevaGeneracion.add(mejorCromosomaHijo, mejorCromosoma);
-            }
-        }
-        //actualizamos el mejor cromosoma para el elitismo de la siguiente generacion
-        mejorCromosoma = nuevaGeneracion.get(mejorCromosomaHijo);
-        mejorCoste = mejorCosteHijo;
-    }
-
-    public static void mostrarmatriz(double[] mat){
-        for (int i=0; i<50; i++){ //cout << mat[i].size() << endl;
-            for (int j=0; j<10; j++){
-                System.out.println("," + mat);
-            }
-        }
     }
 
     public static void eleccion2Aleatorios(int tampoblacion, List<double[]> cromosomas, double[] costes, int i,double[] ale1, double[] ale2) {

@@ -9,26 +9,28 @@ import static meta.utils.FuncionesAux.*;
 public class AEvBLXalfa_Clase3_Grupo5 {
     public static void AEVBLXALFA(int tampoblacion, int tam, double evaluaciones, double[] solucion, double rmin, double rmax,double kProbMuta, double probabilidadCruce, double alfa, String funcion, Long semilla, Logger logger) {
         long tiempoInicial = System.nanoTime();
-        Random random = new Random();
+        Random aleatorio = new Random();
         int t = 0;
-        List<double[]> cromosomas = new ArrayList<>();
-        List<double[]> nuevaGeneracion=new ArrayList<>(tam);
-        List<double[]> nuevaGeneracionSegunda=new ArrayList<>(tam);
+        List<double[]> cromosomas = new ArrayList<>(tampoblacion);
+        List<double[]> nuevaGeneracion=new ArrayList<>(tampoblacion);
+        List<double[]> nuevaGeneracionSegunda=new ArrayList<>(tampoblacion);
         double[] costeNuevaGeneracion= new double[tampoblacion];
         int[] posicion=new int[tampoblacion];
         double[] mejorCromosoma=new double[tampoblacion];
-        int peor=0;
         double peorCosteHijo=0.0;
         int mejorCromosomaHijo = 1;
         double mejorCoste =Double.MAX_VALUE;
-        double mejorCosteHijo = Integer.MAX_VALUE;
+        double mejorCosteHijo = Double.MAX_VALUE;
         double mejorCosteGlobal = mejorCoste;
         double[] mejorCromosomaGlobal = mejorCromosoma;
         double  probabilidadMutacion= kProbMuta;
         int contador = tampoblacion;
         double[] h = new double[tam];
+        double[] mejorPrimero = new double[tampoblacion],mejorSegundo = new double[tampoblacion];
         double[] costes = new double[tampoblacion], costeNuevaGeneracionSegunda = new double[tampoblacion];
         boolean[] marcados=new boolean[tampoblacion];
+        double costeMejorPrimero = 0.0;
+        boolean enc=false;
 
         logger.info("Empieza ejecucion algoritmo evolutivoBLXAlfa: ");
 
@@ -39,23 +41,54 @@ public class AEvBLXalfa_Clase3_Grupo5 {
         cargaCromosomasIniciales(tampoblacion,cromosomas,rmin,rmax,funcion,costes,tam,mejorCoste,mejorCromosoma);
 
         while (contador < evaluaciones) {
-            //seleccion por torneo
+            //SELECCION por TORNEO: Calculo de los cromosomas mas prometedores entre cada 2 parejas aleatorias durante tampoblacion enfrentamientos
             torneo(tampoblacion,posicion,costes,cromosomas,nuevaGeneracion,costeNuevaGeneracion);
 
-            //SELECCION por TORNEO: Calculo de los cromosomas mas prometedores entre cada 2 parejas aleatorias durante tp enfrentamientos
-            cruceTorneo2a2(tam,tampoblacion,h,nuevaGeneracion,probabilidadCruce,marcados,nuevaGeneracionSegunda,costeNuevaGeneracion,costeNuevaGeneracionSegunda,
-            alfa,rmin,rmax);
+            for (int i = 0; i < tampoblacion; i++) {
+                cruceTorneo2a2(tampoblacion, nuevaGeneracion, costeNuevaGeneracion, mejorPrimero, mejorSegundo,i);
 
-            //MUTAMOS los genes de los dos padres ya cruzados con probabilidad probabilidadMutacion
+                double num = aleatorio.nextDouble();
+                if (num < probabilidadCruce) {
+                    cruceBlX(tam, mejorPrimero, mejorSegundo, alfa, h, rmin, rmax);
+                    nuevaGeneracionSegunda.add(i, h);
+                    marcados[i] = true;
+                } else {
+                    nuevaGeneracionSegunda.add(i, mejorPrimero);
+                    costeNuevaGeneracionSegunda[i] = costeMejorPrimero;
+                }
+            }
+
+            nuevaGeneracion = nuevaGeneracionSegunda;
+            costeNuevaGeneracion = costeNuevaGeneracionSegunda;
+
+
+            //MUTAMOS los genes de los dos padres ya cruzados con probabilidadMutacion
             mutar(tampoblacion,tam,probabilidadMutacion,rmin,rmax,nuevaGeneracion,marcados);
 
             // preparamos el REEMPLAZAMIENTO calculamos el peor de la nueva poblacion. Actualizamos el coste de los modificados
             calculaMejorNuevaPoblacion(tampoblacion,marcados,costeNuevaGeneracion,nuevaGeneracion,funcion,contador,peorCosteHijo,mejorCromosomaHijo);
 
             //Mantenemos el elitismo del mejor de P(t) para P(t') si no sobrevive
-            elitismo(tampoblacion,nuevaGeneracion,mejorCromosoma,costeNuevaGeneracion,mejorCosteHijo,mejorCromosomaHijo,mejorCoste);
+            for (int i = 0; i < nuevaGeneracion.size() && !enc; i++) {
+                if (mejorCromosoma == nuevaGeneracion.get(i))
+                    enc = true;
+            }
 
-            //Actualizamos el mejor global y su coste con el mejor hijo de la NUEVA POBLACION     si mejora
+            if(!enc){ //si no sobrevive planteamos un torneo k=4 para elegir el sustituto de la nueva poblacion
+                elitismo(tampoblacion,nuevaGeneracion,mejorCromosoma,costeNuevaGeneracion,mejorCoste);
+            }
+
+            //actualizamos el mejor con el elite si acaso lo mejora
+            if(mejorCoste<mejorCosteHijo){
+                mejorCosteHijo = mejorCoste;
+                nuevaGeneracion.add(mejorCromosomaHijo, mejorCromosoma);
+            }
+
+            //actualizamos el mejor cromosoma para el elitismo de la siguiente generacion
+            mejorCromosoma = nuevaGeneracion.get(mejorCromosomaHijo);
+            mejorCoste = mejorCosteHijo;
+
+            //Actualizamos el mejor global y su coste con el mejor hijo de la NUEVA POBLACION   si mejora
             if (mejorCosteHijo < mejorCosteGlobal) {
                 mejorCosteGlobal = mejorCosteHijo;
                 mejorCromosomaGlobal = nuevaGeneracion.get(mejorCromosomaHijo);

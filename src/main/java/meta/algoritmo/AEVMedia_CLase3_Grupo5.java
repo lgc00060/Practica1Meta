@@ -11,34 +11,30 @@ import static meta.utils.FuncionesAux.*;
 
 public class AEVMedia_CLase3_Grupo5 {
     public static void AEVMedia(int tampoblacion, int tam, int evaluaciones, double[] solucion, double rmin, double rmax,
-                                double kProbMuta, double kProbCruce, double alfa, String funcion, Long semilla, Logger logger) {
+                                double kProbMuta, double probabilidadCruce, double alfa, String funcion, Long semilla, Logger logger) {
         long tiempoInicial = System.nanoTime();
-        Random random = new Random();
+        Random aleatorio = new Random();
         int t = 0;
-        List<double[]> cromosomas = new ArrayList<>();
-        List<double[]> nuevaGeneracion=new ArrayList<>(tam);
-        List<double[]> nuevaGeneracionSegunda=new ArrayList<>(tam);
+        List<double[]> cromosomas = new ArrayList<>(tampoblacion);
+        List<double[]> nuevaGeneracion=new ArrayList<>(tampoblacion);
+        List<double[]> nuevaGeneracionSegunda=new ArrayList<>(tampoblacion);
         double[] costeNuevaGeneracion= new double[tampoblacion];
         int[] posicion=new int[tampoblacion];
         double[] mejorCromosoma=new double[tampoblacion];
-        int peor=0;
         double peorCosteHijo=0.0;
         int mejorCromosomaHijo = 1;
         double mejorCoste =Double.MAX_VALUE;
-        double mejorCosteHijo = Integer.MAX_VALUE;
+        double mejorCosteHijo = Double.MAX_VALUE;
         double mejorCosteGlobal = mejorCoste;
         double[] mejorCromosomaGlobal = mejorCromosoma;
         double  probabilidadMutacion= kProbMuta;
         int contador = tampoblacion;
         double[] h = new double[tam];
+        double[] mejorPrimero = new double[tampoblacion],mejorSegundo = new double[tampoblacion];
         double[] costes = new double[tampoblacion], costeNuevaGeneracionSegunda = new double[tampoblacion];
         boolean[] marcados=new boolean[tampoblacion];
-        int c2,c3,c4; //posiciones donde almaceno los padres
-        int posAnt = 0;
-        double [] mejorCromosomaPrimero = new double[tampoblacion];
-        double[]mejorCromosomaSegundo= new double[tampoblacion];
-        double costeMejorCromosomaPrimero,costeMejorCromosomaSegundo;
-
+        double costeMejorPrimero = 0.0;
+        boolean enc=false;
 
         logger.info("Empieza ejecucion EvolutivoMedia: ");
 
@@ -52,8 +48,22 @@ public class AEVMedia_CLase3_Grupo5 {
             //SELECCION por TORNEO: Calculo de los cromosomas mas prometedores entre cada 2 parejas aleatorias durante tp enfrentamientos
             torneo(tampoblacion,posicion,costes,cromosomas,nuevaGeneracion,costeNuevaGeneracion);
 
-            //CRUZAMOS los padres seleccionados con una probabilidad probCruce
-            cruceTorneo2a2Media(tam,tampoblacion,h,nuevaGeneracion,kProbCruce,marcados,nuevaGeneracionSegunda,costeNuevaGeneracion,costeNuevaGeneracionSegunda,mejorCromosomaPrimero,mejorCromosomaSegundo);
+            for (int i = 0; i < tampoblacion; i++) {
+                cruceTorneo2a2(tampoblacion, nuevaGeneracion, costeNuevaGeneracion, mejorPrimero, mejorSegundo,i);
+
+                double num = aleatorio.nextDouble();
+                if (num < probabilidadCruce) {
+                    cruceMedia(tam,mejorPrimero,mejorSegundo,h);
+                    nuevaGeneracionSegunda.add(i, h);
+                    marcados[i] = true;
+                } else {
+                    nuevaGeneracionSegunda.add(i, mejorPrimero);
+                    costeNuevaGeneracionSegunda[i] = costeMejorPrimero;
+                }
+            }
+
+            nuevaGeneracion = nuevaGeneracionSegunda;
+            costeNuevaGeneracion = costeNuevaGeneracionSegunda;
 
             //MUTAMOS los genes de los dos padres ya cruzados con probabilidad probMutacion
             mutar(tampoblacion,tam,probabilidadMutacion, rmin,rmax, nuevaGeneracion, marcados);
@@ -63,8 +73,24 @@ public class AEVMedia_CLase3_Grupo5 {
 
             //ELITILISMO
             //Mantenemos el elitismo del mejor de P(t) para P(t') si no sobrevive
-            elitismo(tampoblacion,nuevaGeneracion,mejorCromosoma,costeNuevaGeneracion,mejorCosteHijo,
-            mejorCromosomaHijo,mejorCoste);
+            for (int i = 0; i < nuevaGeneracion.size() && !enc; i++) {
+                if (mejorCromosoma == nuevaGeneracion.get(i))
+                    enc = true;
+            }
+
+            if(!enc){ //si no sobrevive planteamos un torneo k=4 para elegir el sustituto de la nueva poblacion
+                elitismo(tampoblacion,nuevaGeneracion,mejorCromosoma,costeNuevaGeneracion,mejorCoste);
+            }
+
+            //actualizamos el mejor con el elite si acaso lo mejora
+            if(mejorCoste<mejorCosteHijo){
+                mejorCosteHijo = mejorCoste;
+                nuevaGeneracion.add(mejorCromosomaHijo, mejorCromosoma);
+            }
+
+            //actualizamos el mejor cromosoma para el elitismo de la siguiente generacion
+            mejorCromosoma = nuevaGeneracion.get(mejorCromosomaHijo);
+            mejorCoste = mejorCosteHijo;
 
             //Actualizamos el mejor global y su coste con el mejor hijo de la NUEVA POBLACION .Si mejora me quedo con el mejor coste y con el mejorCrhijo
             if (mejorCosteHijo < mejorCosteGlobal) {
