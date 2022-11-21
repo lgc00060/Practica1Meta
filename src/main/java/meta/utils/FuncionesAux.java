@@ -73,6 +73,9 @@ public class FuncionesAux {
 
         //Nos quedamos con los cromosomas mas prometedores
         for (int i = 0; i < tampoblacion; i++) {
+            if (posicion[i]==50)
+                posicion[i]--;
+
             nuevaGeneracion.add(i, cromosomas.get(posicion[i]));
             costeNuevaGeneracion[i] = costes[posicion[i]];
         }

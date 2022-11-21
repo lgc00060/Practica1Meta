@@ -11,7 +11,7 @@ public class AEvBLXalfa_Clase3_Grupo5 {
         long tiempoInicial = System.nanoTime();
         Random aleatorio = new Random();
         int t = 0;
-        List<double[]> cromosomas = new ArrayList<>(tampoblacion);
+        List<double[]> cromosomas = new ArrayList<>();
         List<double[]> nuevaGeneracion=new ArrayList<>(tampoblacion);
         List<double[]> nuevaGeneracionSegunda=new ArrayList<>(tampoblacion);
         double[] costeNuevaGeneracion= new double[tampoblacion];
