@@ -15,9 +15,9 @@ public class AEVMedia_CLase3_Grupo5 {
         long tiempoInicial = System.nanoTime();
         Random aleatorio = new Random();
         int t = 0;
-        List<double[]> cromosomas = new ArrayList<>(tampoblacion);
-        List<double[]> nuevaGeneracion=new ArrayList<>(tampoblacion);
-        List<double[]> nuevaGeneracionSegunda=new ArrayList<>(tampoblacion);
+        List<double[]> cromosomas = new ArrayList<>();
+        List<double[]> nuevaGeneracion=new ArrayList<>();
+        List<double[]> nuevaGeneracionSegunda=new ArrayList<>();
         double[] costeNuevaGeneracion= new double[tampoblacion];
         int[] posicion=new int[tampoblacion];
         double[] mejorCromosoma=new double[tampoblacion];
@@ -42,7 +42,7 @@ public class AEVMedia_CLase3_Grupo5 {
             marcados[i] = false;
         }
 
-        cargaCromosomasIniciales(tampoblacion,cromosomas,rmin,rmax,funcion,costes,tam,mejorCoste,mejorCromosoma);
+        cromosomas = cargaCromosomasIniciales(tampoblacion,tam,rmin,rmax,semilla);
 
         while (contador < evaluaciones) {
             //SELECCION por TORNEO: Calculo de los cromosomas mas prometedores entre cada 2 parejas aleatorias durante tp enfrentamientos

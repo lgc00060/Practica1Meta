@@ -38,7 +38,7 @@ public class AEvBLXalfa_Clase3_Grupo5 {
             marcados[i] = false;
         }
 
-        cargaCromosomasIniciales(tampoblacion,cromosomas,rmin,rmax,funcion,costes,tam,mejorCoste,mejorCromosoma);
+        cromosomas = cargaCromosomasIniciales(tampoblacion,tam,rmin,rmax,semilla);
 
         while (contador < evaluaciones) {
             //SELECCION por TORNEO: Calculo de los cromosomas mas prometedores entre cada 2 parejas aleatorias durante tampoblacion enfrentamientos

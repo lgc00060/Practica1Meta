@@ -1,16 +1,12 @@
 package meta.utils;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import static meta.funciones.Funciones.evaluaCoste;
 
 public class FuncionesAux {
-    public static void cargaAleatoria(int tam, double[] v, double rmin, double rmax) {
-        for (int i = 0; i < tam; i++) {
-            v[i] = randDoubleWithRange(rmin,rmax);
-        }
-    }
 
     public static void Mutacion(double[] v, int pos, double valor) {
         v[pos] = valor;
@@ -42,16 +38,19 @@ public class FuncionesAux {
         return score;
     }
 
-    public static void cargaCromosomasIniciales(int tampoblacion, List<double[]> cromosomas, double rmin, double rmax, String funcion, double[] costes, int tam, double mejorCoste, double[] mejorCromosoma){
+    public static List<double[]> cargaCromosomasIniciales(int tampoblacion,int tam, double rmin, double rmax, long semilla){
+        Random aleatorio = new Random();
+        aleatorio.setSeed(semilla);
+        List<double[]>vector = new ArrayList<>();
+        double[] v = new double[tam];
         for (int i = 0; i < tampoblacion; i++) {
-            cargaAleatoria(tam, cromosomas.get(i), rmin, rmax); //error aqui
-            costes[i] = evaluaCoste(cromosomas.get(i), funcion);
-
-            if (costes[i] < mejorCoste) {
-                mejorCoste = costes[i];
-                mejorCromosoma = cromosomas.get(i); //error aqui
+            for (int j = 0; j < tam; j++) {
+                v[j] = aleatorio.nextDouble()* (rmax - rmin) + rmin;
             }
+            vector.add(i,v);
+
         }
+        return vector;
     }
 
     public static void cruceMedia(int tam, double[] a, double[] b, double[] h) {

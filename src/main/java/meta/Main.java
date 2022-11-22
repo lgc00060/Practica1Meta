@@ -39,15 +39,11 @@ public class Main {
                 for (Long semilla : semillas) {
                     aleatorio.setSeed(semilla);
                     switch (algoritmo) {
-                        case "algevblxalfa" -> {
-                            AEVBLXALFA(poblacion,d,evaluar,solu,rangoInf[i],rangoSup[i],prob_muta,cruce,alfa, funcion, semilla,logger);
-                        }
-                        case "aevmedia" -> {
-                            AEVMedia(poblacion,d,evaluar,solu,rangoInf[i],rangoSup[i],prob_muta,cruce,alfa, funcion, semilla,logger );
-                        }
-                        case "aedifencial" ->{
-                            AED(poblacion,d,evaluar,solu,rangoInf[i],rangoSup[i],funcion, semilla,logger);
-                        }
+                        case "algevblxalfa" -> AEVBLXALFA(poblacion,d,evaluar,solu,rangoInf[i],rangoSup[i],prob_muta,cruce,alfa, funcion, semilla,logger);
+
+                        case "aevmedia" -> AEVMedia(poblacion,d,evaluar,solu,rangoInf[i],rangoSup[i],prob_muta,cruce,alfa, funcion, semilla,logger );
+
+                        case "aedifencial" -> AED(poblacion,d,evaluar,solu,rangoInf[i],rangoSup[i],funcion, semilla,logger);
                     }
                 }
             }
