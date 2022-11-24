@@ -2,13 +2,19 @@ package meta.algoritmo;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import meta.utils.GeneradorLog;
 import org.apache.log4j.Logger;
 import java.util.Random;
 import static meta.utils.FuncionesAux.*;
 
 public class AEvBLXalfa_Clase3_Grupo5 {
-    public static void AEVBLXALFA(int tampoblacion, int tam, double evaluaciones, double[] solucion, double rmin, double rmax,double kProbMuta, double probabilidadCruce, double alfa, String funcion, Long semilla, Logger logger) {
-        long tiempoInicial = System.nanoTime();
+    public AEvBLXalfa_Clase3_Grupo5(){
+        ArchivosLog = new GeneradorLog();
+    }
+    private final GeneradorLog ArchivosLog;
+    public void AEVBLXALFA(int tampoblacion, int tam, double evaluaciones, double[] solucion, double rmin, double rmax,double kProbMuta, double probabilidadCruce, double alfa, String funcion, Long semilla, Logger logger) {
+            long tiempoInicial = System.nanoTime();
         Random aleatorio = new Random();
         int t = 0;
         List<double[]> cromosomas = new ArrayList<>();
@@ -100,11 +106,11 @@ public class AEvBLXalfa_Clase3_Grupo5 {
 
             t++;
         }
-
         solucion = mejorCromosomaGlobal;
 
-        double tiempoFinal = System.nanoTime();
+        long tiempoFinal = System.nanoTime();
         double resultado = (tiempoFinal - tiempoInicial);
+        ArchivosLog.escritura("Algoritmo EVAlfa",funcion,Long.toString(semilla),tiempoInicial,tiempoFinal,solucion);
 
         logger.info("El tiempo total de ejecucion en ms es: " + resultado);
         logger.info("Funcion:" + funcion);

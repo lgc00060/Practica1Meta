@@ -12,7 +12,7 @@ public class FuncionesAux {
         v[pos] = valor;
     }
 
-    public static double MAPE(double[] real, double[] estimation) {
+    public double MAPE(double[] real, double[] estimation) {
         int N = real.length;
         double score;
         double sum = 0.0;
@@ -27,7 +27,7 @@ public class FuncionesAux {
         return score;
     }
 
-    public static double RMSE(double[] real, double[] estimation) {
+    public double RMSE(double[] real, double[] estimation) {
         int N = real.length;
         double score;
         double sum = 0;
