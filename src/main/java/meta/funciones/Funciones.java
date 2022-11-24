@@ -145,37 +145,37 @@ public class Funciones {
         }
         return score;
     }
-    public static double evaluaCoste(double[] j, String funcion) {
+    public static double evaluaCoste(double[] v, String funcion) {
         switch (funcion) {
             case "Ackley":
-                return ackleyFunction(j);
+                return ackleyFunction(v);
 
             case "Dixon":
-                return dixonFunction(j);
+                return dixonFunction(v);
 
             case "griewank":
-                return GriewankEvaluate(j);
+                return GriewankEvaluate(v);
 
             case "michale":
-                return michaleFunction(j);
+                return michaleFunction(v);
 
             case "Perm":
-                return permFunction(j);
+                return permFunction(v);
 
             case "Rast":
-                return rastFunction(j);
+                return rastFunction(v);
 
             case "Rosen":
-                return rotatedFunction(j);
+                return rotatedFunction(v);
 
             case "Rotated":
-                return schewFunction(j);
+                return schewFunction(v);
 
             case "Schew":
-                return tridFunction(j);
+                return tridFunction(v);
 
             case "Trid":
-                return rosenFunction(j);
+                return rosenFunction(v);
 
             default:
                 return -1;

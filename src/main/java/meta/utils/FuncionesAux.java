@@ -48,11 +48,10 @@ public class FuncionesAux {
                 v[j] = aleatorio.nextDouble()* (rmax - rmin) + rmin;
             }
             vector.add(i,v);
-
         }
         return vector;
     }
-//hsdfhdshfdsh
+
     public static void cruceMedia(int tam, double[] a, double[] b, double[] h) {
         for (int i = 0; i < tam; i++) {
             h[i] = (a[i] + b[i]) / 2;

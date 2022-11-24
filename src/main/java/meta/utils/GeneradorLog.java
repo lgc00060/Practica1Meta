@@ -24,17 +24,12 @@ public class GeneradorLog {
 
         } finally {
             try {
-                if (fichero != null){
+                if (fichero != null)
                     fichero.close();
-                }
             } catch (IOException e) {
-
             }
 
         }
-
-
-
     }
     public void escritura(String algoritmo,String funcion, String semilla,long tiempoInicial,long tiempoFinal, double[] solucion){ //aqui añadimos el texto que queramos mostrar
         String cadena= "algoritmo";

@@ -15,7 +15,7 @@ public class AEVMedia_CLase3_Grupo5 {
         long tiempoInicial = System.nanoTime();
         Random aleatorio = new Random();
         int t = 0;
-        List<double[]> cromosomas = new ArrayList<>();
+        List<double[]> cromosomas = new ArrayList<>(tampoblacion);
         List<double[]> nuevaGeneracion=new ArrayList<>();
         List<double[]> nuevaGeneracionSegunda=new ArrayList<>();
         double[] costeNuevaGeneracion= new double[tampoblacion];

@@ -25,7 +25,7 @@ public class AED_Clase3_Grupo5 {
         int k1=0,k2=0,k3=0,k4=0,a1=0;
         double valor=0.5;
 
-       cromosomas = cargaCromosomasIniciales(tampoblacion,tam, rmin, rmax,semilla);
+        cromosomas=cargaCromosomasIniciales(tampoblacion,tam,rmin,rmax,semilla);
 
         //Comienzan las iteraciones
         while (contador < evaluaciones) {

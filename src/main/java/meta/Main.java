@@ -31,7 +31,6 @@ public class Main {
         int evaluar = 10000;
         Long[] semillas;
         semillas = (Long[]) config.getSemilla();
-
     }
 }
 
