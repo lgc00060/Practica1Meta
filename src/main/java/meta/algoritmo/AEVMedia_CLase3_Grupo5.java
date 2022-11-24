@@ -34,6 +34,7 @@ public class AEVMedia_CLase3_Grupo5 {
         double[] costes = new double[tampoblacion], costeNuevaGeneracionSegunda = new double[tampoblacion];
         boolean[] marcados=new boolean[tampoblacion];
         double costeMejorPrimero = 0.0;
+        double costeMejorSegundo = 0.0;
         boolean enc=false;
 
         logger.info("Empieza ejecucion EvolutivoMedia: ");
@@ -49,7 +50,7 @@ public class AEVMedia_CLase3_Grupo5 {
             torneo(tampoblacion,posicion,costes,cromosomas,nuevaGeneracion,costeNuevaGeneracion);
 
             for (int i = 0; i < tampoblacion; i++) {
-                cruceTorneo2a2(tampoblacion, nuevaGeneracion, costeNuevaGeneracion, mejorPrimero, mejorSegundo,i);
+                cruceTorneo2a2(tampoblacion, nuevaGeneracion, costeNuevaGeneracion, mejorPrimero, mejorSegundo,i,costeMejorPrimero,costeMejorSegundo);
 
                 double num = aleatorio.nextDouble();
                 if (num < probabilidadCruce) {

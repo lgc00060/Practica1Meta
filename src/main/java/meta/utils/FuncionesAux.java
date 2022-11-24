@@ -102,11 +102,10 @@ public class FuncionesAux {
             }
     }
 
-    public static void cruceTorneo2a2(int tampoblacion,List<double[]> nuevaGeneracion,double[] costeNuevaGeneracion,double[] mejorPrimero,double[] mejorSegundo,int i){
+    public static void cruceTorneo2a2(int tampoblacion,List<double[]> nuevaGeneracion,double[] costeNuevaGeneracion,double[] mejorPrimero,double[] mejorSegundo,int i,double costeMejorPrimero,double costeMejorSegundo){
         Random aleatorio = new Random();
         int c1,c2,c3,c4;
         int posAnt = 0;
-        double costeMejorPrimero,costeMejorSegundo;
 
             c1 = aleatorio.nextInt((tampoblacion - 1) + 0);
             while (c1 == (c2 = aleatorio.nextInt(tampoblacion - 1) + 0)) ;
