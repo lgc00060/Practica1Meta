@@ -1,25 +1,26 @@
 package meta;
 
 import meta.algoritmo.AEvBLXalfa_Clase3_Grupo5;
+import meta.utils.Archivos_Log;
 import org.apache.log4j.BasicConfigurator;
-import org.apache.log4j.Logger;
 import meta.utils.Lector;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
-import static meta.algoritmo.AED_Clase3_Grupo5.AED;
-import static meta.algoritmo.AEvBLXalfa_Clase3_Grupo5.*;
-import static meta.algoritmo.AEVMedia_CLase3_Grupo5.*;
-
 public class Main {
+
+
     public static void main(String[] args) throws IOException {
         BasicConfigurator.configure();
+        long tiempoInicial = System.nanoTime();
+        long tiempoFinal = System.nanoTime();
         Random aleatorio = new Random();
-        Lector config = new Lector("src/main/java/meta/config_files/config_ini");
+        Lector config = new Lector("/Users/laura/eclipse-workspace/Practica1Meta/src/main/java/meta/utils/config_ini");
         int d = config.getD();
         ArrayList<String> algoritmos = config.getAlgoritmos();
-        double[] solu = new double[d];
+        Archivos_Log archivosLog = new Archivos_Log();
+        double[] solucion = new double[d];
         ArrayList<String> funciones = config.getFunciones();
         double[] rangoInf = config.getRangoInf();
         double[] rangoSup = config.getRangoSup();
@@ -28,12 +29,24 @@ public class Main {
         double alfa = config.getAlfa();
         double prob_muta = config.getMutacion();
         int i = 0;
-        int evaluar = 10000;
+        int evaluaciones = 10000;
         Long[] semillas;
         semillas = (Long[]) config.getSemilla();
-    }
-}
+        for (String algoritmo : algoritmos) {
+            for (long semilla : semillas) {
+                double[] vSolucion = new double[d];
+                archivosLog.estructura(algoritmo,funciones,semillas,tiempoInicial,tiempoFinal, solucion);
+                switch (algoritmo) {
+                    case "algevblxalfa" -> {
+                        new AEvBLXalfa_Clase3_Grupo5(poblacion, d, evaluaciones, solucion, rangoInf, rangoSup, prob_muta, cruce, alfa, funciones, semillas, archivosLog);
+                    }
+
+                    }
+                }
+            }
+        }
 
         //convertir los resultados a CSV
         //  exportCSV(resultadoBL3, "BL3");
         //exportCSV(resultadoBLk, "BLk");
+    }

@@ -38,7 +38,7 @@ public class FuncionesAux {
         return score;
     }
 
-    public static List<double[]> cargaCromosomasIniciales(int tampoblacion,int tam, double rmin, double rmax, long semilla){
+    public static List<double[]> cargaCromosomasIniciales(int tampoblacion, int tam, double rmin, double rmax, long semilla){
         Random aleatorio = new Random();
         aleatorio.setSeed(semilla);
         List<double[]>vector = new ArrayList<>();
