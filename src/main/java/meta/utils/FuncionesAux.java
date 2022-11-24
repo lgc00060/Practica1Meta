@@ -52,7 +52,7 @@ public class FuncionesAux {
         }
         return vector;
     }
-
+//hsdfhdshfdsh
     public static void cruceMedia(int tam, double[] a, double[] b, double[] h) {
         for (int i = 0; i < tam; i++) {
             h[i] = (a[i] + b[i]) / 2;
