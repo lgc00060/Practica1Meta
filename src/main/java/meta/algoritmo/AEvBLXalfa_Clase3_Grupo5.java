@@ -83,12 +83,12 @@ public class AEvBLXalfa_Clase3_Grupo5 {
 
             if(!enc){ //si no sobrevive planteamos un torneo k=4 para elegir el sustituto de la nueva poblacion
                 elitismo(tampoblacion,nuevaGeneracion,mejorCromosoma,costeNuevaGeneracion,mejorCoste);
-            }
 
-            //actualizamos el mejor con el elite si acaso lo mejora
-            if(mejorCoste<mejorCosteHijo){
-                mejorCosteHijo = mejorCoste;
-                nuevaGeneracion.add(mejorCromosomaHijo, mejorCromosoma);
+                //actualizamos el mejor con el elite si acaso lo mejora
+                if(mejorCoste<mejorCosteHijo){
+                    mejorCosteHijo = mejorCoste;
+                    nuevaGeneracion.add(mejorCromosomaHijo, mejorCromosoma);
+                }
             }
 
             //actualizamos el mejor cromosoma para el elitismo de la siguiente generacion
@@ -109,8 +109,9 @@ public class AEvBLXalfa_Clase3_Grupo5 {
         }
         solucion = mejorCromosomaGlobal;
 
-        long tiempoFinal = System.nanoTime();
+        double tiempoFinal = System.nanoTime();
         double resultado = (tiempoFinal - tiempoInicial);
+
         ArchivosLog.escritura("Algoritmo EVAlfa",funcion,Long.toString(semilla),tiempoInicial,tiempoFinal,solucion);
 
         logger.info("El tiempo total de ejecucion en ms es: " + resultado);
