@@ -19,7 +19,7 @@ public class Main {
         long tiempoInicial = System.nanoTime();
         long tiempoFinal = System.nanoTime();
         Random aleatorio = new Random();
-        Lector config = new Lector("/Users/laura/eclipse-workspace/Practica1Meta/src/main/java/meta/utils/config_ini");
+        Lector config = new Lector("src/main/java/meta/config_files/config_ini");
         int d = config.getD();
         ArrayList<String> algoritmos = config.getAlgoritmos();
         // Archivos_Log archivosLog = new Archivos_Log();
