@@ -1,3 +1,5 @@
+
+/*
 package meta.utils;
 
 import java.io.FileWriter;
@@ -23,7 +25,7 @@ public class Archivos_Log {
     } //añadimos texto
 
 
-    public void estructura(String algoritmo, ArrayList<String> funcion, Long[] semilla, double tiempoInicial, double tiempoFinal, double[] solucion) { //aqui añadimos el texto que queramos mostrar
+    public void estructura(String algoritmo, ArrayList<String> funcion, long[] semilla, double tiempoInicial, double tiempoFinal, double[] solucion) { //aqui añadimos el texto que queramos mostrar
 
         String cadena = "";
         cadena = "######################[" + algoritmo + "] ############################\n\n";
@@ -73,6 +75,8 @@ public class Archivos_Log {
 
 
     }
+
+ */
 
 
 

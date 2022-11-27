@@ -2,20 +2,22 @@ package meta.algoritmo;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.log4j.Logger;
 
-import meta.utils.Archivos_Log;
+//import meta.utils.Archivos_Log;
 
 import java.util.Random;
 import static meta.utils.FuncionesAux.*;
 
 public class AEvBLXalfa_Clase3_Grupo5 {
-    private final Archivos_Log ArchivosLog;
+    //private final Archivos_Log ArchivosLog;
 
-    public AEvBLXalfa_Clase3_Grupo5(int poblacion, int d, int evaluaciones, double[] solucion, double[] rangoInf, double[] rangoSup, double prob_muta, double cruce, double alfa, ArrayList<String> funciones, Long[] semillas, Archivos_Log archivosLog) {
-        ArchivosLog = new Archivos_Log();
+    public AEvBLXalfa_Clase3_Grupo5(int poblacion, int d, int evaluaciones, double[] solucion, double[] rangoInf, double[] rangoSup, double prob_muta, double cruce, double alfa, ArrayList<String> funciones, Long[] semilla, Logger logger) {
+    //    ArchivosLog = new Archivos_Log();
     }
 
-    public void AEVBLXALFA(int tampoblacion, int tam, double evaluaciones, double[] solucion, double rmin, double rmax,double kProbMuta, double probabilidadCruce, double alfa, ArrayList<String> funcion, Long[] semilla) {
+    public void AEVBLXALFA(int tampoblacion, int tam, double evaluaciones, double[] solucion, double rmin, double rmax,double kProbMuta, double probabilidadCruce, double alfa, ArrayList<String> funcion, Long[] semilla, Logger logger) {
+        logger.info("##################EJECUCION AEVBLXALFA############################");
         long tiempoInicial = System.nanoTime();
         Random aleatorio = new Random();
         int t = 0;
@@ -112,9 +114,8 @@ public class AEvBLXalfa_Clase3_Grupo5 {
         solucion = mejorCromosomaGlobal;
         double tiempoFinal = System.nanoTime();
         double resultado = (tiempoFinal - tiempoInicial);
-        ArchivosLog.estructura("Algoritmo EVBLXAlfa",funcion,semilla,tiempoInicial,tiempoFinal,solucion);
+       // ArchivosLog.estructura("Algoritmo EVBLXAlfa",funcion,semilla,tiempoInicial,tiempoFinal,solucion);
 
-/*
 
         logger.info("El tiempo total de ejecucion en ms es: " + resultado);
         logger.info("Funcion:" + funcion);
@@ -125,7 +126,7 @@ public class AEvBLXalfa_Clase3_Grupo5 {
         System.out.println("Total Evaluaciones:" + contador);
         System.out.println(" Total Iteraciones:" + t);
 
- */
+
 
     }
 

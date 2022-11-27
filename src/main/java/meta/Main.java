@@ -1,12 +1,15 @@
 package meta;
 
 import meta.algoritmo.AEvBLXalfa_Clase3_Grupo5;
-import meta.utils.Archivos_Log;
+//import meta.utils.Archivos_Log;
 import org.apache.log4j.BasicConfigurator;
 import meta.utils.Lector;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
+import meta.utils.FuncionesAux.*;
+import org.apache.log4j.Logger;
 
 public class Main {
 
@@ -19,8 +22,7 @@ public class Main {
         Lector config = new Lector("/Users/laura/eclipse-workspace/Practica1Meta/src/main/java/meta/utils/config_ini");
         int d = config.getD();
         ArrayList<String> algoritmos = config.getAlgoritmos();
-        Archivos_Log archivosLog = new Archivos_Log();
-        double[] solucion = new double[d];
+        // Archivos_Log archivosLog = new Archivos_Log();
         ArrayList<String> funciones = config.getFunciones();
         double[] rangoInf = config.getRangoInf();
         double[] rangoSup = config.getRangoSup();
@@ -30,23 +32,24 @@ public class Main {
         double prob_muta = config.getMutacion();
         int i = 0;
         int evaluaciones = 10000;
-        Long[] semillas;
-        semillas = (Long[]) config.getSemilla();
+        Long[] semillas = config.getSemilla();
         for (String algoritmo : algoritmos) {
-            for (long semilla : semillas) {
-                double[] vSolucion = new double[d];
-                archivosLog.estructura(algoritmo,funciones,semillas,tiempoInicial,tiempoFinal, solucion);
+            Logger logger = Logger.getLogger(funciones + "." + algoritmo);
+            System.out.println(algoritmo);
+            for (Long semilla : semillas) {
+                double[] Solucion = new double[d];
                 switch (algoritmo) {
                     case "algevblxalfa" -> {
-                        new AEvBLXalfa_Clase3_Grupo5(poblacion, d, evaluaciones, solucion, rangoInf, rangoSup, prob_muta, cruce, alfa, funciones, semillas, archivosLog);
-                    }
+                        new AEvBLXalfa_Clase3_Grupo5(poblacion, d, evaluaciones, Solucion, rangoInf, rangoSup, prob_muta, cruce, alfa, funciones, new Long[]{semilla}, logger);
+
 
                     }
                 }
             }
         }
-
+        //List<Daido> daidos = daidos("src/main/resources/daido-tra.dat");
         //convertir los resultados a CSV
         //  exportCSV(resultadoBL3, "BL3");
         //exportCSV(resultadoBLk, "BLk");
     }
+}
