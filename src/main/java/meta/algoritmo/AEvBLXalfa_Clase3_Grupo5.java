@@ -12,11 +12,12 @@ import static meta.utils.FuncionesAux.*;
 public class AEvBLXalfa_Clase3_Grupo5 {
     //private final Archivos_Log ArchivosLog;
 
-    public AEvBLXalfa_Clase3_Grupo5(int poblacion, int d, int evaluaciones, double[] solucion, double[] rangoInf, double[] rangoSup, double prob_muta, double cruce, double alfa, ArrayList<String> funciones, Long[] semilla, Logger logger) {
+    public AEvBLXalfa_Clase3_Grupo5(int poblacion, int d, int evaluaciones, double[] solucion, double[] rangoInf, double[] rangoSup, double prob_muta, double cruce, double alfa, String funciones, Long[] semilla, Logger logger) {
     //    ArchivosLog = new Archivos_Log();
     }
 
     public void AEVBLXALFA(int tampoblacion, int tam, double evaluaciones, double[] solucion, double rmin, double rmax,double kProbMuta, double probabilidadCruce, double alfa, ArrayList<String> funcion, Long[] semilla, Logger logger) {
+        //Logger log = Logger.getLogger();
         logger.info("##################EJECUCION AEVBLXALFA############################");
         long tiempoInicial = System.nanoTime();
         Random aleatorio = new Random();
@@ -68,7 +69,6 @@ public class AEvBLXalfa_Clase3_Grupo5 {
                     costeNuevaGeneracionSegunda[i] = costeMejorPrimero;
                 }
             }
-
             nuevaGeneracion = nuevaGeneracionSegunda;
             costeNuevaGeneracion = costeNuevaGeneracionSegunda;
 
@@ -113,7 +113,7 @@ public class AEvBLXalfa_Clase3_Grupo5 {
         }
         solucion = mejorCromosomaGlobal;
         double tiempoFinal = System.nanoTime();
-        double resultado = (tiempoFinal - tiempoInicial);
+        double resultado = (tiempoFinal - tiempoInicial)/1000000;
        // ArchivosLog.estructura("Algoritmo EVBLXAlfa",funcion,semilla,tiempoInicial,tiempoFinal,solucion);
 
 
