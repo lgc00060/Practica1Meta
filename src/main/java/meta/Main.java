@@ -44,7 +44,6 @@ public class Main {
                         }
                     }
                 }
-                i++;
             }
             //List<Daido> daidos = daidos("src/main/resources/daido-tra.dat");
             //convertir los resultados a CSV
