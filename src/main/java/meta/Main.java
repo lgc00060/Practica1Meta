@@ -1,7 +1,9 @@
 package meta;
 
+import meta.algoritmo.AEVMedia_CLase3_Grupo5;
 import meta.algoritmo.AEvBLXalfa_Clase3_Grupo5;
-//import meta.utils.Archivos_Log;
+import meta.algoritmo.AEVMedia_CLase3_Grupo5.*;
+import meta.utils.Daido;
 import org.apache.log4j.BasicConfigurator;
 import meta.utils.Lector;
 import java.io.IOException;
@@ -10,6 +12,9 @@ import java.util.List;
 import java.util.Random;
 import meta.utils.FuncionesAux.*;
 import org.apache.log4j.Logger;
+
+import static meta.algoritmo.AEvBLXalfa_Clase3_Grupo5.Aevblxalfa_clase3_grupo5;
+import static meta.utils.DaidoLector.daidos;
 
 public class Main {
 
@@ -21,7 +26,6 @@ public class Main {
         int d = config.getD();
         ArrayList<String> algoritmos = config.getAlgoritmos();
         double[] Solucion = new double[d];
-        // Archivos_Log archivosLog = new Archivos_Log();
         ArrayList<String> funciones = config.getFunciones();
         double[] rangoInf = config.getRangoInf();
         double[] rangoSup = config.getRangoSup();
@@ -30,7 +34,7 @@ public class Main {
         double alfa = config.getAlfa();
         double prob_muta = config.getMutacion();
         int evaluaciones = 10000;
-        int i=0;
+        int i = 0;
         Long[] semillas = config.getSemilla();
         for (String funcion : funciones) {
             for (String algoritmo : algoritmos) {
@@ -40,15 +44,20 @@ public class Main {
                     aleatorio.setSeed(semilla);
                     switch (algoritmo) {
                         case "algevblxalfa" -> {
-                            new AEvBLXalfa_Clase3_Grupo5(poblacion, d, evaluaciones, Solucion, rangoInf, rangoSup, prob_muta, cruce, alfa, funcion, new Long[]{semilla}, logger);
+                            Aevblxalfa_clase3_grupo5(poblacion, d, evaluaciones, Solucion, rangoInf[i], rangoSup[i], prob_muta, cruce, alfa, funciones, semillas, logger);
+                            {
+                                //Logger log = Logger.getLogger(););
+                            }
+                            // case "aevmedia" -> {
+                            //   new AEVMedia_CLase3_Grupo5()
+                            //}
                         }
+
                     }
+                    i++;
                 }
+                List<Daido> daidos = daidos("src/main/java/meta/config_files/daido-tra.dat");
             }
-            //List<Daido> daidos = daidos("src/main/resources/daido-tra.dat");
-            //convertir los resultados a CSV
-            //  exportCSV(resultadoBL3, "BL3");
-            //exportCSV(resultadoBLk, "BLk");
         }
     }
 }

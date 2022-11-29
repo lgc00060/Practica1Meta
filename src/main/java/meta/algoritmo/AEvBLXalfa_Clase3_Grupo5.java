@@ -3,6 +3,7 @@ package meta.algoritmo;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 
 //import meta.utils.Archivos_Log;
 
@@ -10,13 +11,7 @@ import java.util.Random;
 import static meta.utils.FuncionesAux.*;
 
 public class AEvBLXalfa_Clase3_Grupo5 {
-    //private final Archivos_Log ArchivosLog;
-
-    public AEvBLXalfa_Clase3_Grupo5(int poblacion, int d, int evaluaciones, double[] solucion, double[] rangoInf, double[] rangoSup, double prob_muta, double cruce, double alfa, String funciones, Long[] semilla, Logger logger) {
-    //    ArchivosLog = new Archivos_Log();
-    }
-
-    public void AEVBLXALFA(int tampoblacion, int tam, double evaluaciones, double[] solucion, double rmin, double rmax,double kProbMuta, double probabilidadCruce, double alfa, ArrayList<String> funcion, Long[] semilla, Logger logger) {
+    public static void Aevblxalfa_clase3_grupo5(int tampoblacion, int tam, double evaluaciones, double[] solucion, double rmin, double rmax, double kProbMuta, double probabilidadCruce, double alfa, ArrayList<String> funcion, Long[] semilla,  Logger logger) {
         //Logger log = Logger.getLogger();
         logger.info("##################EJECUCION AEVBLXALFA############################");
         long tiempoInicial = System.nanoTime();

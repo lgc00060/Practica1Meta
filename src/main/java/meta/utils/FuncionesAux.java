@@ -8,14 +8,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
-import java.util.stream.Collector;
-
 import static meta.funciones.Funciones.evaluaCoste;
-import static sun.awt.image.MultiResolutionCachedImage.map;
+
 
 public class FuncionesAux {
 
@@ -273,12 +267,12 @@ public class FuncionesAux {
                 Lector lector = new Lector(ruta + archivo);
                 List<String> algoritmos = lector.getAlgoritmos();
                 Long[] semillas = lector.getSemilla();
-                //List<Long> semillasList = Arrays.stream(semillas).boxed().collect(Collectors.toList());
+                List<Long> semillasList = Arrays.stream(semillas).collect(Collectors.toList());
                 for (String algoritmo : algoritmos) {
                     ArrayList <String> ListaSemillas;
-                    //ListaSemillas.stream();
-                            //.map(s -> convertToLogAppender(algoritmo, lector.getFunciones(), String.valueOf(s)))
-                             //.forEach(pw::print);
+                    semillasList.stream()
+                            .map(s -> convertToLogAppender(algoritmo, lector.getFunciones(), String.valueOf(s)))
+                             .forEach(pw::print);
 
                     pw.println();
                 }

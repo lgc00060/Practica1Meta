@@ -1,5 +1,7 @@
 package meta.utils;
+import lombok.Data;
 
+@Data
 public class Daido {
     private double dni;
     private double ape;
