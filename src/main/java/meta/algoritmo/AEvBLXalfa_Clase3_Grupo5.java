@@ -19,7 +19,7 @@ public class AEvBLXalfa_Clase3_Grupo5 {
         long tiempoInicial = System.nanoTime();
         Random aleatorio = new Random();
         int t = 0;
-        List<double[]> cromosomas = new ArrayList<>(tampoblacion);
+        List<double[]> cromosomas = new ArrayList<>();
         List<double[]> nuevaGeneracion=new ArrayList<>(tampoblacion);
         List<double[]> nuevaGeneracionSegunda=new ArrayList<>(tampoblacion);
         double[] costeNuevaGeneracion= new double[tampoblacion];
@@ -44,8 +44,13 @@ public class AEvBLXalfa_Clase3_Grupo5 {
         //logger.info("Empieza ejecucion algoritmo evolutivoBLXAlfa: ");
 
         for (int i = 0; i < tampoblacion; i++) {
-            //cromosomas.get(i)=randDoubleWithRange(rmin,rmax); Hay que rellenar cromosomas porque lo lee vacío, entonces no se puede hacer un evaluaCoste de una lista vacía
+            double[] v= new double[tam];
+            for (int j=0; j<tam; j++){
+                v[j] = randDoubleWithRange(rmin, rmax);
+            }
+            cromosomas.add(v);// Hay que rellenar cromosomas porque lo lee vacío, entonces no se puede hacer un evaluaCoste de una lista vacía
             marcados[i] = false;
+
         }
 
         for (int i = 0; i < tampoblacion; i++) {
@@ -54,7 +59,9 @@ public class AEvBLXalfa_Clase3_Grupo5 {
                 mejorCoste = costes[i];
                 mejorCromosoma = cromosomas.get(i);
             }
+
         }
+
 
         while (contador < evaluaciones) {
             //SELECCION por TORNEO: Calculo de los cromosomas mas prometedores entre cada 2 parejas aleatorias durante tampoblacion enfrentamientos
@@ -72,7 +79,10 @@ public class AEvBLXalfa_Clase3_Grupo5 {
                     nuevaGeneracionSegunda.add(i, mejorPrimero);
                     costeNuevaGeneracionSegunda[i] = costeMejorPrimero;
                 }
+
             }
+
+
             nuevaGeneracion = nuevaGeneracionSegunda;
             costeNuevaGeneracion = costeNuevaGeneracionSegunda;
 
@@ -87,7 +97,9 @@ public class AEvBLXalfa_Clase3_Grupo5 {
             for (int i = 0; i < nuevaGeneracion.size() && !enc; i++) {
                 if (mejorCromosoma == nuevaGeneracion.get(i))
                     enc = true;
+
             }
+
 
             if(!enc){ //si no sobrevive planteamos un torneo k=4 para elegir el sustituto de la nueva poblacion
                 elitismo(tampoblacion,nuevaGeneracion,mejorCromosoma,costeNuevaGeneracion,mejorCoste);
@@ -97,7 +109,9 @@ public class AEvBLXalfa_Clase3_Grupo5 {
                     mejorCosteHijo = mejorCoste;
                     nuevaGeneracion.add(mejorCromosomaHijo, mejorCromosoma);
                 }
+
             }
+
 
             //actualizamos el mejor cromosoma para el elitismo de la siguiente generacion
             mejorCromosoma = nuevaGeneracion.get(mejorCromosomaHijo);

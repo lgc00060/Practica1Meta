@@ -52,7 +52,7 @@ public class FuncionesAux {
             for (int j = 0; j < tam; j++) {
                 v[j] = aleatorio.nextDouble() * (rmax - rmin) + rmin;
             }
-            vector.add(i, v);
+            vector.add(v);
         }
         return vector;
     }
