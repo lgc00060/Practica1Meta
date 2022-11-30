@@ -43,7 +43,13 @@ public class AEVMedia_CLase3_Grupo5 {
             marcados[i] = false;
         }
 
-        cromosomas = cargaCromosomasIniciales(tampoblacion,tam,rmin,rmax,semilla);
+        for (int i = 0; i < tampoblacion; i++) {
+            costes[i] = evaluaCoste(cromosomas.get(i), funcion);
+            if (costes[i] < mejorCoste) {
+                mejorCoste = costes[i];
+                mejorCromosoma = cromosomas.get(i);
+            }
+        }
 
         while (contador < evaluaciones) {
             //SELECCION por TORNEO: Calculo de los cromosomas mas prometedores entre cada 2 parejas aleatorias durante tp enfrentamientos

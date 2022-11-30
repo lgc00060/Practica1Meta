@@ -36,6 +36,7 @@ public class Main {
         int evaluaciones = 10000;
         int i = 0;
         Long[] semillas = config.getSemilla();
+
         for (String funcion : funciones) {
             for (String algoritmo : algoritmos) {
                 Logger logger = Logger.getLogger(funciones + "." + algoritmo);
@@ -44,20 +45,13 @@ public class Main {
                     aleatorio.setSeed(semilla);
                     switch (algoritmo) {
                         case "algevblxalfa" -> {
-                            Aevblxalfa_clase3_grupo5(poblacion, d, evaluaciones, Solucion, rangoInf[i], rangoSup[i], prob_muta, cruce, alfa, funciones, semillas, logger);
-                            {
-                                //Logger log = Logger.getLogger(););
-                            }
-                            // case "aevmedia" -> {
-                            //   new AEVMedia_CLase3_Grupo5()
-                            //}
+                            Aevblxalfa_clase3_grupo5(poblacion, d, evaluaciones, Solucion, rangoInf[i], rangoSup[i], prob_muta, cruce, alfa,funcion,semillas, logger);
                         }
-
                     }
-                    i++;
                 }
                 List<Daido> daidos = daidos("src/main/java/meta/config_files/daido-tra.dat");
             }
+            i++;
         }
     }
 }

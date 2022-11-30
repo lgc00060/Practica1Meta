@@ -8,10 +8,12 @@ import org.jetbrains.annotations.NotNull;
 //import meta.utils.Archivos_Log;
 
 import java.util.Random;
+
+import static meta.funciones.Funciones.evaluaCoste;
 import static meta.utils.FuncionesAux.*;
 
 public class AEvBLXalfa_Clase3_Grupo5 {
-    public static void Aevblxalfa_clase3_grupo5(int tampoblacion, int tam, double evaluaciones, double[] solucion, double rmin, double rmax, double kProbMuta, double probabilidadCruce, double alfa, ArrayList<String> funcion, Long[] semilla,  Logger logger) {
+    public static void Aevblxalfa_clase3_grupo5(int tampoblacion, int tam, double evaluaciones, double[] solucion, double rmin, double rmax, double kProbMuta, double probabilidadCruce, double alfa, String funcion, Long[] semilla,  Logger logger) {
         //Logger log = Logger.getLogger();
         logger.info("##################EJECUCION AEVBLXALFA############################");
         long tiempoInicial = System.nanoTime();
@@ -42,10 +44,17 @@ public class AEvBLXalfa_Clase3_Grupo5 {
         //logger.info("Empieza ejecucion algoritmo evolutivoBLXAlfa: ");
 
         for (int i = 0; i < tampoblacion; i++) {
+            //cromosomas.get(i)=randDoubleWithRange(rmin,rmax); Hay que rellenar cromosomas porque lo lee vacío, entonces no se puede hacer un evaluaCoste de una lista vacía
             marcados[i] = false;
         }
 
-      // cromosomas = cargaCromosomasIniciales(tampoblacion,tam,rmin,rmax,semilla);
+        for (int i = 0; i < tampoblacion; i++) {
+            costes[i] = evaluaCoste(cromosomas.get(i), funcion);
+            if (costes[i] < mejorCoste) {
+                mejorCoste = costes[i];
+                mejorCromosoma = cromosomas.get(i);
+            }
+        }
 
         while (contador < evaluaciones) {
             //SELECCION por TORNEO: Calculo de los cromosomas mas prometedores entre cada 2 parejas aleatorias durante tampoblacion enfrentamientos
