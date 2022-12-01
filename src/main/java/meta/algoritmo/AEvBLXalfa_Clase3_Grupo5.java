@@ -83,7 +83,6 @@ public class AEvBLXalfa_Clase3_Grupo5 {
             mutar(tampoblacion,tam,probabilidadMutacion,rmin,rmax,nuevaGeneracion,marcados);
 
             // preparamos el REEMPLAZAMIENTO calculamos el peor de la nueva poblacion. Actualizamos el coste de los modificados
-            //calculaMejorNuevaPoblacion(tampoblacion,marcados,costeNuevaGeneracion,nuevaGeneracion,funcion,contador,peorCosteHijo,mejorCromosomaHijo);
             for (int i = 0; i < tampoblacion; i++) {
                 if (marcados[i]) {
                     costeNuevaGeneracion[i] = evaluaCoste(nuevaGeneracion.get(i), funcion);

@@ -76,7 +76,7 @@ public class AEVMedia_CLase3_Grupo5 {
             mutar(tampoblacion,tam,probabilidadMutacion, rmin,rmax, nuevaGeneracion, marcados);
 
             // preparamos el REEMPLAZAMIENTO calculamos el peor de la nueva poblacion
-            calculaMejorNuevaPoblacion(tampoblacion,marcados,costeNuevaGeneracion,nuevaGeneracion,funcion,contador,mejorCosteHijo,mejorCromosomaHijo);
+            //calculaMejorNuevaPoblacion(tampoblacion,marcados,costeNuevaGeneracion,nuevaGeneracion,funcion,contador,mejorCosteHijo,mejorCromosomaHijo);
 
             //ELITILISMO
             //Mantenemos el elitismo del mejor de P(t) para P(t') si no sobrevive

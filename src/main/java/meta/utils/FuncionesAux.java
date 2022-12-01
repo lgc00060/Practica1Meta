@@ -17,7 +17,7 @@ public class FuncionesAux {
         v[pos] = valor;
     }
 
-    public double MAPE(double[] real, double[] estimation) {
+    public static double MAPE(double[] real, double[] estimation) {
         int N = real.length;
         double score;
         double sum = 0.0;
@@ -32,7 +32,7 @@ public class FuncionesAux {
         return score;
     }
 
-    public double RMSE(double[] real, double[] estimation) {
+    public static double RMSE(double[] real, double[] estimation) {
         int N = real.length;
         double score;
         double sum = 0;
@@ -116,8 +116,9 @@ public class FuncionesAux {
             costeMejorPrimero = costeNuevaGeneracion[c2];
         }
 
-        while (posAnt == (c3 = aleatorio.nextInt(tampoblacion - 1) + 0)) ;
-        while (posAnt == (c4 = aleatorio.nextInt(tampoblacion - 1) + 0)) ;
+        while (posAnt == (c3 = aleatorio.nextInt(tampoblacion))) ;
+        while (posAnt == (c4 = aleatorio.nextInt(tampoblacion)));
+
 
         if (costeNuevaGeneracion[c3] < costeNuevaGeneracion[c4]) {
             mejorSegundo = nuevaGeneracion.get(c3);
@@ -125,6 +126,29 @@ public class FuncionesAux {
         } else {
             mejorSegundo = nuevaGeneracion.get(c4);
             costeMejorSegundo = costeNuevaGeneracion[c4];
+        }
+    }
+
+    public static void funcionPotencia(double[] a,int errorTipo,double[][] observaciones,double error){
+        double r;
+        double[] real = new double[observaciones.length], estimado = new double[observaciones.length];
+
+        int filas=observaciones.length;
+
+        for (int i=0; i<filas; i++){
+                r=observaciones[i][0]*(a[0]+(a[1]*observaciones[i][0])+(a[2]*observaciones[i][2])+
+                (a[3]*observaciones[i][3])+ (a[4]*observaciones[i][4]));
+
+            //estimado.add(r);
+            //real.add(observaciones[i][5]);
+
+        }
+
+        if (errorTipo==0){
+            error=MAPE(real, estimado);
+
+        }else{
+            error=RMSE(real, estimado);
         }
     }
 
@@ -146,31 +170,18 @@ public class FuncionesAux {
         }
     }
 
-    public static void calculaMejorNuevaPoblacion(int tampoblacion, boolean[] marcados, double[] costeNuevaGeneracion, List<double[]> nuevaGeneracion, String funcion, int contador, double mejorCosteHijo, int mejorCromosomaHijo) {
-        for (int i = 0; i < tampoblacion; i++) {
-            if (marcados[i]) {
-                costeNuevaGeneracion[i] = evaluaCoste(nuevaGeneracion.get(i), funcion);
-                contador++;
-            }
-
-            if (costeNuevaGeneracion[i] < mejorCosteHijo) {
-                mejorCosteHijo = costeNuevaGeneracion[i];
-                mejorCromosomaHijo = i;
-            }
-        }
-    }
-
     public static void elitismo(int tampoblacion, List<double[]> nuevaGeneracion, double[] mejorCromosoma, double[] costeNuevaGeneracion, double mejorCoste) {
         Random aleatorio = new Random();
         int peor;
         int p1, p2, p3, p4;
-        p1 = aleatorio.nextInt(tampoblacion - 1);
-        p2 = aleatorio.nextInt(tampoblacion - 1);
-        p3 = aleatorio.nextInt(tampoblacion - 1);
-        p4 = aleatorio.nextInt(tampoblacion - 1);
+        p1 = aleatorio.nextInt(tampoblacion);
+        p2 = aleatorio.nextInt(tampoblacion);
+        p3 = aleatorio.nextInt(tampoblacion);
+        p4 = aleatorio.nextInt(tampoblacion);
         while (p1 == p2) ;
-        while (p1 == p2 && p2 == p3) ;
-        while (p1 == p2 && p2 == p3 && p3 == p4) ;
+        while (p1 == p3) ;
+        while (p1 == p4) ;
+
         if (costeNuevaGeneracion[p1] > costeNuevaGeneracion[p2] && costeNuevaGeneracion[p1] > costeNuevaGeneracion[p3]
                 && costeNuevaGeneracion[p1] > costeNuevaGeneracion[p4])
             peor = p1;
@@ -196,7 +207,7 @@ public class FuncionesAux {
         do {
             a1 = aleatorio.nextInt(tampoblacion - 1);
             while (a1 == a2) ;
-        } while (a1 != i && a2 != i);
+        } while (a1 != i || a2 != i);
 
         ale1 = cromosomas.get(a1);
         ale2 = cromosomas.get(a2);
@@ -213,9 +224,9 @@ public class FuncionesAux {
             k1 = aleatorio.nextInt(tampoblacion - 1);
             while (k1 == k2) ;
             while (k1 == k2 && k2 == k3) ;
-        } while (k1 != i && k1 != a1 && k1 != a2 &&
-                k2 != i && k2 != a1 && k2 != a2 &&
-                k3 != i && k3 != a1 && k3 != a2);
+        } while (k1 == i || k1 == a1 || k1 == a2 &&
+                k2 == i || k2 == a1 || k2 == a2 &&
+                k3 == i || k3 == a1 || k3 == a2);
     }
 
     public static double operadorRecombinacion(double[] padre, int j, double[] ale1, double[] ale2, double Factor) {
