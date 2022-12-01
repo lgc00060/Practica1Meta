@@ -43,13 +43,11 @@ public class AEvBLXalfa_Clase3_Grupo5 {
 
         //logger.info("Empieza ejecucion algoritmo evolutivoBLXAlfa: ");
 
-        for (int i = 0; i < tampoblacion; i++) {
-            double[] v= new double[tam];
-            for (int j=0; j<tam; j++){
+        double[] v= new double[tam];
+        for (int j = 0; j < tampoblacion; j++) {
                 v[j] = randDoubleWithRange(rmin, rmax);
-            }
             cromosomas.add(v);// Hay que rellenar cromosomas porque lo lee vacío, entonces no se puede hacer un evaluaCoste de una lista vacía
-            marcados[i] = false;
+            marcados[j] = false;
 
         }
 
@@ -61,7 +59,6 @@ public class AEvBLXalfa_Clase3_Grupo5 {
             }
 
         }
-
 
         while (contador < evaluaciones) {
             //SELECCION por TORNEO: Calculo de los cromosomas mas prometedores entre cada 2 parejas aleatorias durante tampoblacion enfrentamientos
