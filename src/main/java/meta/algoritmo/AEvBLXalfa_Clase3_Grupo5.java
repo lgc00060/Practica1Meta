@@ -43,11 +43,12 @@ public class AEvBLXalfa_Clase3_Grupo5 {
 
         //logger.info("Empieza ejecucion algoritmo evolutivoBLXAlfa: ");
 
-        double[] v= new double[tam];
+        double[] v= new double[tampoblacion];
         for (int j = 0; j < tampoblacion; j++) {
                 v[j] = randDoubleWithRange(rmin, rmax);
             cromosomas.add(v);// Hay que rellenar cromosomas porque lo lee vacío, entonces no se puede hacer un evaluaCoste de una lista vacía
             marcados[j] = false;
+
 
         }
 
@@ -70,6 +71,7 @@ public class AEvBLXalfa_Clase3_Grupo5 {
                 double num = aleatorio.nextDouble();
                 if (num < probabilidadCruce) {
                     cruceBlX(tam, mejorPrimero, mejorSegundo, alfa, h, rmin, rmax);
+
                     nuevaGeneracionSegunda.add(i, h);
                     marcados[i] = true;
                 } else {
@@ -88,7 +90,8 @@ public class AEvBLXalfa_Clase3_Grupo5 {
             mutar(tampoblacion,tam,probabilidadMutacion,rmin,rmax,nuevaGeneracion,marcados);
 
             // preparamos el REEMPLAZAMIENTO calculamos el peor de la nueva poblacion. Actualizamos el coste de los modificados
-            calculaMejorNuevaPoblacion(tampoblacion,marcados,costeNuevaGeneracion,nuevaGeneracion, String.valueOf(funcion),contador,peorCosteHijo,mejorCromosomaHijo);
+            calculaMejorNuevaPoblacion(tampoblacion,marcados,costeNuevaGeneracion,nuevaGeneracion,funcion,contador,peorCosteHijo,mejorCromosomaHijo);
+
 
             //Mantenemos el elitismo del mejor de P(t) para P(t') si no sobrevive
             for (int i = 0; i < nuevaGeneracion.size() && !enc; i++) {
@@ -125,6 +128,7 @@ public class AEvBLXalfa_Clase3_Grupo5 {
             cromosomas = nuevaGeneracion;
 
             t++;
+
         }
         solucion = mejorCromosomaGlobal;
         double tiempoFinal = System.nanoTime();
