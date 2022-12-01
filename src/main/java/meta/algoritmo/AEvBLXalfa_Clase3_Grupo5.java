@@ -14,8 +14,6 @@ import static meta.utils.FuncionesAux.*;
 
 public class AEvBLXalfa_Clase3_Grupo5 {
     public static void Aevblxalfa_clase3_grupo5(int tampoblacion, int tam, double evaluaciones, double[] solucion, double rmin, double rmax, double kProbMuta, double probabilidadCruce, double alfa, String funcion, Long[] semilla,  Logger logger) {
-        //Logger log = Logger.getLogger();
-        logger.info("##################EJECUCION AEVBLXALFA############################");
         long tiempoInicial = System.nanoTime();
         Random aleatorio = new Random();
         int t = 0;
@@ -41,15 +39,13 @@ public class AEvBLXalfa_Clase3_Grupo5 {
         double costeMejorSegundo = 0.0;
         boolean enc=false;
 
-        //logger.info("Empieza ejecucion algoritmo evolutivoBLXAlfa: ");
+        logger.info("Empieza ejecucion algoritmo evolutivoBLXAlfa: ");
 
         double[] v= new double[tampoblacion];
         for (int j = 0; j < tampoblacion; j++) {
                 v[j] = randDoubleWithRange(rmin, rmax);
-            cromosomas.add(v);// Hay que rellenar cromosomas porque lo lee vacío, entonces no se puede hacer un evaluaCoste de una lista vacía
-            marcados[j] = false;
-
-
+                cromosomas.add(v);
+                marcados[j] = false;
         }
 
         for (int i = 0; i < tampoblacion; i++) {
@@ -79,9 +75,7 @@ public class AEvBLXalfa_Clase3_Grupo5 {
                     costeNuevaGeneracionSegunda[i] = costeMejorPrimero;
                 }
 
-            }
-
-
+            } //for
             nuevaGeneracion = nuevaGeneracionSegunda;
             costeNuevaGeneracion = costeNuevaGeneracionSegunda;
 
@@ -90,9 +84,20 @@ public class AEvBLXalfa_Clase3_Grupo5 {
             mutar(tampoblacion,tam,probabilidadMutacion,rmin,rmax,nuevaGeneracion,marcados);
 
             // preparamos el REEMPLAZAMIENTO calculamos el peor de la nueva poblacion. Actualizamos el coste de los modificados
-            calculaMejorNuevaPoblacion(tampoblacion,marcados,costeNuevaGeneracion,nuevaGeneracion,funcion,contador,peorCosteHijo,mejorCromosomaHijo);
+            //calculaMejorNuevaPoblacion(tampoblacion,marcados,costeNuevaGeneracion,nuevaGeneracion,funcion,contador,peorCosteHijo,mejorCromosomaHijo);
+            for (int i = 0; i < tampoblacion; i++) {
+                if (marcados[i]) {
+                    costeNuevaGeneracion[i] = evaluaCoste(nuevaGeneracion.get(i), funcion);
+                    contador++;
+                }
 
+                if (costeNuevaGeneracion[i] < mejorCosteHijo) {
+                    mejorCosteHijo = costeNuevaGeneracion[i];
+                    mejorCromosomaHijo = i;
+                }
+            }
 
+            enc=false;
             //Mantenemos el elitismo del mejor de P(t) para P(t') si no sobrevive
             for (int i = 0; i < nuevaGeneracion.size() && !enc; i++) {
                 if (mejorCromosoma == nuevaGeneracion.get(i))
@@ -126,15 +131,13 @@ public class AEvBLXalfa_Clase3_Grupo5 {
             //Actualizo cromosomas con nuevaGeneracion, para la siguiente generacion
             costes = costeNuevaGeneracion;
             cromosomas = nuevaGeneracion;
-
             t++;
 
         }
+
         solucion = mejorCromosomaGlobal;
         double tiempoFinal = System.nanoTime();
         double resultado = (tiempoFinal - tiempoInicial)/1000000;
-       // ArchivosLog.estructura("Algoritmo EVBLXAlfa",funcion,semilla,tiempoInicial,tiempoFinal,solucion);
-
 
         logger.info("El tiempo total de ejecucion en ms es: " + resultado);
         logger.info("Funcion:" + funcion);
@@ -144,9 +147,6 @@ public class AEvBLXalfa_Clase3_Grupo5 {
         logger.info("La semilla es:" + semilla);
         System.out.println("Total Evaluaciones:" + contador);
         System.out.println(" Total Iteraciones:" + t);
-
-
-
     }
 
 }

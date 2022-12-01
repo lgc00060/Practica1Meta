@@ -115,7 +115,7 @@ public class AEVMedia_CLase3_Grupo5 {
 
         double tiempoFinal = System.nanoTime();
         double resultado = (tiempoFinal - tiempoInicial);
-        //ArchivosLog.escritura("Algoritmo EVAlfa",funcion,Long.toString(semilla),tiempoInicial,tiempoFinal,solucion);
+
 
         logger.info("El tiempo total de ejecucion en ms es: " + resultado);
         logger.info("Funcion:" + funcion);

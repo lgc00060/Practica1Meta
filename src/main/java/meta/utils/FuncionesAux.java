@@ -147,8 +147,6 @@ public class FuncionesAux {
     }
 
     public static void calculaMejorNuevaPoblacion(int tampoblacion, boolean[] marcados, double[] costeNuevaGeneracion, List<double[]> nuevaGeneracion, String funcion, int contador, double mejorCosteHijo, int mejorCromosomaHijo) {
-        mejorCosteHijo = Double.MAX_VALUE;
-
         for (int i = 0; i < tampoblacion; i++) {
             if (marcados[i]) {
                 costeNuevaGeneracion[i] = evaluaCoste(nuevaGeneracion.get(i), funcion);
