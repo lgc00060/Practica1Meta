@@ -37,7 +37,7 @@ public class AEvBLXalfa_Clase3_Grupo5 {
         boolean[] marcados=new boolean[tampoblacion];
         double costeMejorPrimero = 0.0;
         double costeMejorSegundo = 0.0;
-        boolean enc=false;
+        boolean enc;
 
         logger.info("Empieza ejecucion algoritmo evolutivoBLXAlfa: ");
 
@@ -54,7 +54,6 @@ public class AEvBLXalfa_Clase3_Grupo5 {
                 mejorCoste = costes[i];
                 mejorCromosoma = cromosomas.get(i);
             }
-
         }
 
         while (contador < evaluaciones) {
