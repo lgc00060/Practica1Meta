@@ -21,7 +21,6 @@ public class AEVMedia_CLase3_Grupo5 {
         double[] costeNuevaGeneracion= new double[tampoblacion];
         int[] posicion=new int[tampoblacion];
         double[] mejorCromosoma=new double[tampoblacion];
-        double peorCosteHijo=0.0;
         int mejorCromosomaHijo = 1;
         double mejorCoste =Double.MAX_VALUE;
         double mejorCosteHijo = Double.MAX_VALUE;
@@ -154,14 +153,15 @@ public class AEVMedia_CLase3_Grupo5 {
 
         double tiempoFinal = System.nanoTime();
         double resultado = (tiempoFinal - tiempoInicial);
+
         logger.info("El tiempo total de ejecucion en ms es: " + resultado);
         logger.info("Funcion:" + funcion);
         logger.info("RangoInf: " + rmin);
         logger.info("RangoSup: " + rmax);
         logger.info("El coste del algoritmo EvolutivoMedia es:" + mejorCosteGlobal);
         logger.info("La semilla es:" + semilla);
-        System.out.println("Total Evaluaciones:" + contador);
-        System.out.println(" Total Iteraciones:" + t);
+        logger.info("Total Evaluaciones:" + contador);
+        logger.info("Total Iteraciones:" + t);
     }
 
 }

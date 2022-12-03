@@ -1,22 +1,19 @@
 package meta;
 
-import meta.algoritmo.AEVMedia_CLase3_Grupo5;
-import meta.algoritmo.AEvBLXalfa_Clase3_Grupo5;
-import meta.algoritmo.AEVMedia_CLase3_Grupo5.*;
 import meta.utils.Daido;
-import org.apache.log4j.BasicConfigurator;
 import meta.utils.Lector;
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Logger;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import meta.utils.FuncionesAux.*;
-import org.apache.log4j.Logger;
 
 import static meta.algoritmo.AED_Clase3_Grupo5.AED;
+import static meta.algoritmo.AEVMedia_CLase3_Grupo5.AEVMedia;
 import static meta.algoritmo.AEvBLXalfa_Clase3_Grupo5.Aevblxalfa_clase3_grupo5;
 import static meta.utils.DaidoLector.daidos;
-import static meta.algoritmo.AEVMedia_CLase3_Grupo5.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -44,13 +41,13 @@ public class Main {
                 for (Long semilla : semillas) {
                     aleatorio.setSeed(semilla);
                     switch (algoritmo) {
-                        /*case "algevblxalfa" -> {
+                        case "algevblxalfa" -> {
                             Aevblxalfa_clase3_grupo5(poblacion, d, evaluaciones, Solucion, rangoInf[i], rangoSup[i], prob_muta, cruce, alfa,funcion,semilla, logger);
-                        }*/
+                        }
 
-                        /*case "aevmedia" -> {
+                        case "aevmedia" -> {
                             AEVMedia(poblacion, d, evaluaciones, Solucion, rangoInf[i], rangoSup[i], prob_muta, cruce, alfa,funcion,semilla, logger);
-                        }*/
+                        }
 
                         case "aedifencial" -> {
                             AED(poblacion,d,evaluaciones,Solucion,rangoInf[i],rangoSup[i],funcion,semilla,logger);

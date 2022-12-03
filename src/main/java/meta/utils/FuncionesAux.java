@@ -208,9 +208,8 @@ public class FuncionesAux {
         ale2 = cromosomas.get(a2);
     }
 
-    public static void torneoK3(int tampoblacion, int i, int a1, int k1, int k2, int k3, int k4) {
+    public static void torneoK3(int tampoblacion, int i, int a1, int k1, int k2, int k3, int k4,int a2) {
         Random aleatorio = new Random();
-        int a2;
         a2 = aleatorio.nextInt(tampoblacion);
         k2 = aleatorio.nextInt(tampoblacion);
         k3 = aleatorio.nextInt(tampoblacion);
