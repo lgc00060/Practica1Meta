@@ -28,6 +28,7 @@ public class AED_Clase3_Grupo5 {
 
         logger.info("Empieza ejecucion algoritmo Diferencial: ");
 
+        //cargamos los cromosomas iniciales con aleatorios
         double[] v= new double[tampoblacion];
         for (int j = 0; j < tampoblacion; j++) {
             v[j] = randDoubleWithRange(rmin, rmax);
@@ -51,8 +52,6 @@ public class AED_Clase3_Grupo5 {
 
                 padre = cromosomas.get(i);
 
-                //eleccion de 2 aleatorios distintos entre si y del padre
-                //eleccion2Aleatorios(tampoblacion,cromosomas,costes,i,ale1,ale2);
 
                 do {
                     a1 = aleatorio.nextInt(tampoblacion);
@@ -61,7 +60,7 @@ public class AED_Clase3_Grupo5 {
                 ale1 = cromosomas.get(a1);
                 ale2 = cromosomas.get(a2);
 
-                //aplicamos torneo sobre inviduo objetivo elegido entre k=3(distintos) y distintos a a1, a2 y el padre
+                //
                 // torneoK3(tampoblacion,i,a1,k1,k2,k3,k4);
 
                 do {
@@ -81,10 +80,10 @@ public class AED_Clase3_Grupo5 {
                 else
                     obj = cromosomas.get(k3);
 
-                double factor = aleatorio.nextDouble();//Factor de mutacion diferente por cada elemento de la poblacion TIENE QUE SER UN 1 POR CIENTE
+                double factor = aleatorio.nextDouble();//
 
                 for (int j = 0; j < tam; j++) {
-                    double d = aleatorio.nextDouble();//% de elección de dimensiones entre el nuevo y el objetivo. Por cada dimension(posicion) del individuo
+                    double d = aleatorio.nextDouble();//
                     if (d > valor)
                         nuevo[j] = obj[j];
                     else {
@@ -96,14 +95,14 @@ public class AED_Clase3_Grupo5 {
                     }
                 }
 
-                //REEMPLAZAMIENTO si el hijo es mejor q el padre
+                //reemplazamos si hijo mejor que padre
                 double nuevoCoste = evaluaCoste(nuevo, funcion);
                 contador++;
                 reemplazamiento(nuevoCoste, i, costes, cromosomas, nuevo, mejorCoste, mejorCromosoma);
 
             }//llave for i
 
-            //Actualizamos el mejor global y su coste con el mejor hijo de la NUEVA POBLACION. Si mejora
+            //
             if (mejorCoste < mejorCosteGlobal) {
                 mejorCosteGlobal = mejorCoste;
                 mejorCromosomaGlobal = mejorCromosoma;
