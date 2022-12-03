@@ -105,6 +105,17 @@ public class AEVMedia_CLase3_Grupo5 {
 
             // preparamos el REEMPLAZAMIENTO calculamos el peor de la nueva poblacion
             //calculaMejorNuevaPoblacion(tampoblacion,marcados,costeNuevaGeneracion,nuevaGeneracion,funcion,contador,mejorCosteHijo,mejorCromosomaHijo);
+            for (int i = 0; i < tampoblacion; i++) {
+                if (marcados[i]) {
+                    costeNuevaGeneracion[i] = evaluaCoste(nuevaGeneracion.get(i), funcion);
+                    contador++;
+                }
+
+                if (costeNuevaGeneracion[i] < mejorCosteHijo) {
+                    mejorCosteHijo = costeNuevaGeneracion[i];
+                    mejorCromosomaHijo = i;
+                }
+            }
 
             //ELITILISMO
             //Mantenemos el elitismo del mejor de P(t) para P(t') si no sobrevive
@@ -137,7 +148,6 @@ public class AEVMedia_CLase3_Grupo5 {
             //Actualizo cromosomas con nuevag, para la siguiente generacion
             costes = costeNuevaGeneracion;
             cromosomas = nuevaGeneracion;
-
             t++;
         }
         solucion = mejorCromosomaGlobal;
