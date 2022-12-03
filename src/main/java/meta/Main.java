@@ -13,12 +13,12 @@ import java.util.Random;
 import meta.utils.FuncionesAux.*;
 import org.apache.log4j.Logger;
 
+import static meta.algoritmo.AED_Clase3_Grupo5.AED;
 import static meta.algoritmo.AEvBLXalfa_Clase3_Grupo5.Aevblxalfa_clase3_grupo5;
 import static meta.utils.DaidoLector.daidos;
+import static meta.algoritmo.AEVMedia_CLase3_Grupo5.*;
 
 public class Main {
-
-
     public static void main(String[] args) throws IOException {
         BasicConfigurator.configure();
         Random aleatorio = new Random();
@@ -45,8 +45,16 @@ public class Main {
                     aleatorio.setSeed(semilla);
                     switch (algoritmo) {
                         case "algevblxalfa" -> {
-                            Aevblxalfa_clase3_grupo5(poblacion, d, evaluaciones, Solucion, rangoInf[i], rangoSup[i], prob_muta, cruce, alfa,funcion,semillas, logger);
+                            Aevblxalfa_clase3_grupo5(poblacion, d, evaluaciones, Solucion, rangoInf[i], rangoSup[i], prob_muta, cruce, alfa,funcion,semilla, logger);
                         }
+
+                        /*case "aevmedia" -> {
+                            AEVMedia(poblacion, d, evaluaciones, Solucion, rangoInf[i], rangoSup[i], prob_muta, cruce, alfa,funcion,semilla, logger);
+                        }*/
+
+                        /*case "aedifencial" -> {
+                            AED(poblacion,d,evaluaciones,Solucion,rangoInf[i],rangoSup[i],funcion,semilla,logger);
+                        }*/
                     }
                 }
                 List<Daido> daidos = daidos("src/main/java/meta/config_files/daido-tra.dat");

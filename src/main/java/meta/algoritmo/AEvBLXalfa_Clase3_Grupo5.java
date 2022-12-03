@@ -13,7 +13,7 @@ import static meta.funciones.Funciones.evaluaCoste;
 import static meta.utils.FuncionesAux.*;
 
 public class AEvBLXalfa_Clase3_Grupo5 {
-    public static void Aevblxalfa_clase3_grupo5(int tampoblacion, int tam, double evaluaciones, double[] solucion, double rmin, double rmax, double kProbMuta, double probabilidadCruce, double alfa, String funcion, Long[] semilla,  Logger logger) {
+    public static void Aevblxalfa_clase3_grupo5(int tampoblacion, int tam, int evaluaciones, double[] solucion, double rmin, double rmax, double kProbMuta, double probabilidadCruce, double alfa, String funcion, long semilla,  Logger logger) {
         long tiempoInicial = System.nanoTime();
         Random aleatorio = new Random();
         int t = 0;
@@ -43,9 +43,9 @@ public class AEvBLXalfa_Clase3_Grupo5 {
 
         double[] v= new double[tampoblacion];
         for (int j = 0; j < tampoblacion; j++) {
-                v[j] = randDoubleWithRange(rmin, rmax);
-                cromosomas.add(v);
-                marcados[j] = false;
+            v[j] = randDoubleWithRange(rmin, rmax);
+            cromosomas.add(v);
+            marcados[j] = false;
         }
 
         for (int i = 0; i < tampoblacion; i++) {
@@ -60,8 +60,33 @@ public class AEvBLXalfa_Clase3_Grupo5 {
             //SELECCION por TORNEO: Calculo de los cromosomas mas prometedores entre cada 2 parejas aleatorias durante tampoblacion enfrentamientos
             torneo(tampoblacion,posicion,costes,cromosomas,nuevaGeneracion,costeNuevaGeneracion);
 
+            //cruce torneo 2 a 2 llamar a la funcion
             for (int i = 0; i < tampoblacion; i++) {
-                cruceTorneo2a2(tampoblacion, nuevaGeneracion, costeNuevaGeneracion, mejorPrimero, mejorSegundo,i,costeMejorPrimero,costeMejorSegundo);
+                int c1, c2, c3, c4;
+                int posAnt = 0;
+
+                c1 = aleatorio.nextInt((tampoblacion));
+                while (c1 == (c2 = aleatorio.nextInt(tampoblacion))) ;
+
+                if (costeNuevaGeneracion[c1] < costeNuevaGeneracion[c2]) {
+                    mejorPrimero = nuevaGeneracion.get(c1);
+                    costeMejorPrimero = costeNuevaGeneracion[c1];
+                } else {
+                    mejorPrimero = nuevaGeneracion.get(c2);
+                    costeMejorPrimero = costeNuevaGeneracion[c2];
+                }
+
+                while (posAnt == (c3 = aleatorio.nextInt(tampoblacion))) ;
+                while (posAnt == (c4 = aleatorio.nextInt(tampoblacion)));
+
+
+                if (costeNuevaGeneracion[c3] < costeNuevaGeneracion[c4]) {
+                    mejorSegundo = nuevaGeneracion.get(c3);
+                    costeMejorSegundo = costeNuevaGeneracion[c3];
+                } else {
+                    mejorSegundo = nuevaGeneracion.get(c4);
+                    costeMejorSegundo = costeNuevaGeneracion[c4];
+                }
 
                 double num = aleatorio.nextDouble();
                 if (num < probabilidadCruce) {

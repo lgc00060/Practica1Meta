@@ -100,11 +100,7 @@ public class FuncionesAux {
         }
     }
 
-    public static void cruceTorneo2a2(int tampoblacion, List<double[]> nuevaGeneracion, double[] costeNuevaGeneracion, double[] mejorPrimero, double[] mejorSegundo, int i, double costeMejorPrimero, double costeMejorSegundo) {
-        Random aleatorio = new Random();
-        int c1, c2, c3, c4;
-        int posAnt = 0;
-
+    public static void cruceTorneo2a2(int tampoblacion, List<double[]> nuevaGeneracion, double[] costeNuevaGeneracion, double[] mejorPrimero, double[] mejorSegundo,int posAnt, double costeMejorPrimero, double costeMejorSegundo,int c1,int c2,int c3, int c4, Random aleatorio) {
         c1 = aleatorio.nextInt((tampoblacion - 1) + 0);
         while (c1 == (c2 = aleatorio.nextInt(tampoblacion - 1) + 0)) ;
 
@@ -200,14 +196,13 @@ public class FuncionesAux {
 
     public static void eleccion2Aleatorios(int tampoblacion, List<double[]> cromosomas, double[] costes, int i, double[] ale1, double[] ale2) {
         Random aleatorio = new Random();
-        double[] obj, nuevo = new double[tampoblacion]; //ALEATORIO 1, 2
         int a1, a2;
-        a2 = aleatorio.nextInt(tampoblacion - 1);
+        a2 = aleatorio.nextInt(tampoblacion);
 
         do {
-            a1 = aleatorio.nextInt(tampoblacion - 1);
+            a1 = aleatorio.nextInt(tampoblacion);
             while (a1 == a2) ;
-        } while (a1 != i || a2 != i);
+        } while (a1 != i && a2 != i);
 
         ale1 = cromosomas.get(a1);
         ale2 = cromosomas.get(a2);
@@ -216,17 +211,17 @@ public class FuncionesAux {
     public static void torneoK3(int tampoblacion, int i, int a1, int k1, int k2, int k3, int k4) {
         Random aleatorio = new Random();
         int a2;
-        a2 = aleatorio.nextInt(tampoblacion - 1);
-        k2 = aleatorio.nextInt(tampoblacion - 1);
-        k3 = aleatorio.nextInt(tampoblacion - 1);
+        a2 = aleatorio.nextInt(tampoblacion);
+        k2 = aleatorio.nextInt(tampoblacion);
+        k3 = aleatorio.nextInt(tampoblacion);
 
         do {
-            k1 = aleatorio.nextInt(tampoblacion - 1);
+            k1 = aleatorio.nextInt(tampoblacion);
             while (k1 == k2) ;
             while (k1 == k2 && k2 == k3) ;
-        } while (k1 == i || k1 == a1 || k1 == a2 &&
-                k2 == i || k2 == a1 || k2 == a2 &&
-                k3 == i || k3 == a1 || k3 == a2);
+        } while (k1 != i && k1 != a1 && k1 != a2 &&
+                 k2 != i && k2 != a1 && k2 != a2 &&
+                 k3 != i && k3 != a1 && k3 != a2);
     }
 
     public static double operadorRecombinacion(double[] padre, int j, double[] ale1, double[] ale2, double Factor) {

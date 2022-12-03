@@ -10,14 +10,14 @@ import static meta.funciones.Funciones.evaluaCoste;
 import static meta.utils.FuncionesAux.*;
 
 public class AEVMedia_CLase3_Grupo5 {
-    public void AEVMedia(int tampoblacion, int tam, int evaluaciones, double[] solucion, double rmin, double rmax,
-                                double kProbMuta, double probabilidadCruce, double alfa, String funcion, Long semilla, Logger logger) {
+    public static void AEVMedia(int tampoblacion, int tam, int evaluaciones, double[] solucion, double rmin, double rmax,
+                                double kProbMuta, double probabilidadCruce, double alfa, String funcion, long semilla, Logger logger) {
         long tiempoInicial = System.nanoTime();
         Random aleatorio = new Random();
         int t = 0;
-        List<double[]> cromosomas = new ArrayList<>(tampoblacion);
-        List<double[]> nuevaGeneracion=new ArrayList<>();
-        List<double[]> nuevaGeneracionSegunda=new ArrayList<>();
+        List<double[]> cromosomas = new ArrayList<>();
+        List<double[]> nuevaGeneracion=new ArrayList<>(tampoblacion);
+        List<double[]> nuevaGeneracionSegunda=new ArrayList<>(tampoblacion);
         double[] costeNuevaGeneracion= new double[tampoblacion];
         int[] posicion=new int[tampoblacion];
         double[] mejorCromosoma=new double[tampoblacion];
@@ -35,12 +35,15 @@ public class AEVMedia_CLase3_Grupo5 {
         boolean[] marcados=new boolean[tampoblacion];
         double costeMejorPrimero = 0.0;
         double costeMejorSegundo = 0.0;
-        boolean enc=false;
+        boolean enc;
 
         logger.info("Empieza ejecucion EvolutivoMedia: ");
 
-        for (int i = 0; i < tampoblacion; i++) {
-            marcados[i] = false;
+        double[] v= new double[tampoblacion];
+        for (int j = 0; j < tampoblacion; j++) {
+            v[j] = randDoubleWithRange(rmin, rmax);
+            cromosomas.add(v);
+            marcados[j] = false;
         }
 
         for (int i = 0; i < tampoblacion; i++) {
@@ -56,7 +59,32 @@ public class AEVMedia_CLase3_Grupo5 {
             torneo(tampoblacion,posicion,costes,cromosomas,nuevaGeneracion,costeNuevaGeneracion);
 
             for (int i = 0; i < tampoblacion; i++) {
-                cruceTorneo2a2(tampoblacion, nuevaGeneracion, costeNuevaGeneracion, mejorPrimero, mejorSegundo,i,costeMejorPrimero,costeMejorSegundo);
+                //cruceTorneo2a2(tampoblacion, nuevaGeneracion, costeNuevaGeneracion, mejorPrimero, mejorSegundo,i,costeMejorPrimero,costeMejorSegundo);
+                int c1, c2, c3, c4;
+                int posAnt = 0;
+
+                c1 = aleatorio.nextInt((tampoblacion));
+                while (c1 == (c2 = aleatorio.nextInt(tampoblacion))) ;
+
+                if (costeNuevaGeneracion[c1] < costeNuevaGeneracion[c2]) {
+                    mejorPrimero = nuevaGeneracion.get(c1);
+                    costeMejorPrimero = costeNuevaGeneracion[c1];
+                } else {
+                    mejorPrimero = nuevaGeneracion.get(c2);
+                    costeMejorPrimero = costeNuevaGeneracion[c2];
+                }
+
+                while (posAnt == (c3 = aleatorio.nextInt(tampoblacion))) ;
+                while (posAnt == (c4 = aleatorio.nextInt(tampoblacion)));
+
+
+                if (costeNuevaGeneracion[c3] < costeNuevaGeneracion[c4]) {
+                    mejorSegundo = nuevaGeneracion.get(c3);
+                    costeMejorSegundo = costeNuevaGeneracion[c3];
+                } else {
+                    mejorSegundo = nuevaGeneracion.get(c4);
+                    costeMejorSegundo = costeNuevaGeneracion[c4];
+                }
 
                 double num = aleatorio.nextDouble();
                 if (num < probabilidadCruce) {
@@ -80,6 +108,7 @@ public class AEVMedia_CLase3_Grupo5 {
 
             //ELITILISMO
             //Mantenemos el elitismo del mejor de P(t) para P(t') si no sobrevive
+            enc=false;
             for (int i = 0; i < nuevaGeneracion.size() && !enc; i++) {
                 if (mejorCromosoma == nuevaGeneracion.get(i))
                     enc = true;
@@ -115,8 +144,6 @@ public class AEVMedia_CLase3_Grupo5 {
 
         double tiempoFinal = System.nanoTime();
         double resultado = (tiempoFinal - tiempoInicial);
-
-
         logger.info("El tiempo total de ejecucion en ms es: " + resultado);
         logger.info("Funcion:" + funcion);
         logger.info("RangoInf: " + rmin);
