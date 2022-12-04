@@ -1,12 +1,10 @@
 package meta.utils;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.Collectors;
 import static meta.funciones.Funciones.evaluaCoste;
 
@@ -125,27 +123,23 @@ public class FuncionesAux {
         }
     }
 
-    public static void funcionPotencia(double[] a,int errorTipo,double[][] observaciones,double error){
-        double r;
-        double[] real = new double[observaciones.length], estimado = new double[observaciones.length];
-
-        int filas=observaciones.length;
+    public static double funcionPotencia(double[] v,String tipoError,List <Daido> observaciones){
+        double potencia;
+        int filas=observaciones.size();
+        double[] real = new double[filas], estimado = new double[filas];
 
         for (int i=0; i<filas; i++){
-                r=observaciones[i][0]*(a[0]+(a[1]*observaciones[i][0])+(a[2]*observaciones[i][2])+
-                (a[3]*observaciones[i][3])+ (a[4]*observaciones[i][4]));
+            potencia=observaciones.get(i).getDni() * (v[0] + (v[1] * observaciones.get(i).getDni()) + (v[2]
+                    * observaciones.get(i).getTemp_amb()) + (v[3] * observaciones.get(i).getVel_viento()) +
+                    (v[4] * observaciones.get(i).getSmr()));
 
-            //estimado.add(r);
-            //real.add(observaciones[i][5]);
+            estimado[i]=potencia;
+            real[i]=observaciones.get(i).getPotencia();
 
         }
 
-        if (errorTipo==0){
-            error=MAPE(real, estimado);
+        return tipoError.equals("MAPE") ? MAPE(real, estimado) : RMSE(real, estimado);
 
-        }else{
-            error=RMSE(real, estimado);
-        }
     }
 
     public static void mutar(int tampoblacion, int tam, double probabilidadMutacion, double rmin, double rmax, List<double[]> nuevaGeneracion, boolean[] marcados) {
@@ -219,8 +213,8 @@ public class FuncionesAux {
             while (k1 == k2) ;
             while (k1 == k2 && k2 == k3) ;
         } while (k1 != i && k1 != a1 && k1 != a2 &&
-                 k2 != i && k2 != a1 && k2 != a2 &&
-                 k3 != i && k3 != a1 && k3 != a2);
+                k2 != i && k2 != a1 && k2 != a2 &&
+                k3 != i && k3 != a1 && k3 != a2);
     }
 
     public static double operadorRecombinacion(double[] padre, int j, double[] ale1, double[] ale2, double Factor) {
@@ -260,23 +254,33 @@ public class FuncionesAux {
 
 
     //se ejecuta una vez para crear el log properties
-    public static void createAppendersLog(List<String> archivosConfig, String ruta) throws IOException {
-        FileOutputStream csvFile = new FileOutputStream("log/log4j.properties");
+    public static void createAppendersLog(String archivosConfig, String ruta) throws IOException {
+        FileOutputStream csvFile = new FileOutputStream("src/main/resources/log4j.properties");
         try (PrintWriter pw = new PrintWriter(csvFile)) {
-            for (String archivo : archivosConfig) {
-                Lector lector = new Lector(ruta + archivo);
-                List<String> algoritmos = lector.getAlgoritmos();
-                Long[] semillas = lector.getSemilla();
-                List<Long> semillasList = Arrays.stream(semillas).collect(Collectors.toList());
-                for (String algoritmo : algoritmos) {
-                    ArrayList <String> ListaSemillas;
-                    semillasList.stream()
-                            .map(s -> convertToLogAppender(algoritmo, lector.getFunciones(), String.valueOf(s)))
-                             .forEach(pw::print);
+            Lector lector = new Lector(ruta + archivosConfig);
+            List<String> algoritmos = lector.getAlgoritmos();
+            Long[] semillas = lector.getSemilla();
+            List<Long> semillasList = Arrays.stream(semillas).collect(Collectors.toList());
+            for (String algoritmo : algoritmos) {
+                ArrayList <String> ListaSemillas;
+                semillasList.stream()
+                        .map(s -> convertToLogAppender(algoritmo, lector.getFunciones(), String.valueOf(s)))
+                        .forEach(pw::print);
 
-                    pw.println();
-                }
+                pw.println();
             }
         }
+    }
+    public static String getFiles(final File folder){
+        String fileName="";
+        for (final File fileEntry : Objects.requireNonNull(folder.listFiles())) {
+            if (fileEntry.isDirectory()) {
+                getFiles(fileEntry);
+            } else {
+                fileName=(fileEntry.getName());
+            }
+        }
+        return fileName;
+
     }
 }

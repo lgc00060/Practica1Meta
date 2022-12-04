@@ -155,7 +155,7 @@ public class AEVMedia_CLase3_Grupo5 {
         solucion = mejorCromosomaGlobal;
 
         double tiempoFinal = System.nanoTime();
-        double resultado = (tiempoFinal - tiempoInicial);
+        double resultado = (tiempoFinal - tiempoInicial)/1000000;
 
         logger.info("El tiempo total de ejecucion en ms es: " + resultado);
         logger.info("Funcion:" + funcion);

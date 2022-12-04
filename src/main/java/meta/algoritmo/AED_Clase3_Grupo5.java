@@ -87,7 +87,7 @@ public class AED_Clase3_Grupo5 {
                     if (d > valor)
                         nuevo[j] = obj[j];
                     else {
-                        nuevo[j] = padre[j] + (factor * (ale1[j] - ale2[j]));
+                        nuevo[j] = operadorRecombinacion(padre,j,ale1,ale2,factor);
                         if (nuevo[j] > rmax)
                             nuevo[j] = rmax;
                         else if (nuevo[j] < rmin)
@@ -114,7 +114,7 @@ public class AED_Clase3_Grupo5 {
 
         solucion = mejorCromosomaGlobal;
         double tiempoFinal = System.nanoTime();
-        double resultado = (tiempoFinal - tiempoInicial);
+        double resultado = (tiempoFinal - tiempoInicial)/1000000;
 
 
         logger.info("El tiempo total de ejecucion en ms es: " + resultado);
