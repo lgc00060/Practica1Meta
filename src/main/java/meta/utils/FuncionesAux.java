@@ -125,7 +125,7 @@ public class FuncionesAux {
 
     public static double funcionPotencia(double[] v,String tipoError,List <Daido> observaciones){
         double potencia;
-        int filas=observaciones.size();
+        int filas=observaciones.size();//
         double[] real = new double[filas], estimado = new double[filas];
 
         for (int i=0; i<filas; i++){
