@@ -38,6 +38,7 @@ public class AEVMedia_CLase3_Grupo5 {
 
         logger.info("Empieza ejecucion EvolutivoMedia: ");
 
+        //cargamos los cromosomas iniciales con aleatorios
         double[] v= new double[tampoblacion];
         for (int j = 0; j < tampoblacion; j++) {
             v[j] = randDoubleWithRange(rmin, rmax);
@@ -54,9 +55,10 @@ public class AEVMedia_CLase3_Grupo5 {
         }
 
         while (contador < evaluaciones) {
-            //SELECCION por TORNEO: Calculo de los cromosomas mas prometedores entre cada 2 parejas aleatorias durante tp enfrentamientos
+            //durante 50 veces (tampoblacion) selecciono por torneo a los cromosomas que sean los mas favorables
             torneo(tampoblacion,posicion,costes,cromosomas,nuevaGeneracion,costeNuevaGeneracion);
 
+            //cruce torneo 2 a 2 llamar a la funcion
             for (int i = 0; i < tampoblacion; i++) {
                 //cruceTorneo2a2(tampoblacion, nuevaGeneracion, costeNuevaGeneracion, mejorPrimero, mejorSegundo,i,costeMejorPrimero,costeMejorSegundo);
                 int c1, c2, c3, c4;
@@ -64,6 +66,8 @@ public class AEVMedia_CLase3_Grupo5 {
 
                 c1 = aleatorio.nextInt((tampoblacion));
                 while (c1 == (c2 = aleatorio.nextInt(tampoblacion))) ;
+
+                //comprobamos si es el mejor1
 
                 if (costeNuevaGeneracion[c1] < costeNuevaGeneracion[c2]) {
                     mejorPrimero = nuevaGeneracion.get(c1);
@@ -94,20 +98,19 @@ public class AEVMedia_CLase3_Grupo5 {
                     nuevaGeneracionSegunda.add(i, mejorPrimero);
                     costeNuevaGeneracionSegunda[i] = costeMejorPrimero;
                 }
-            }
+            }// for
 
-            nuevaGeneracion = nuevaGeneracionSegunda;
+            nuevaGeneracion = nuevaGeneracionSegunda; //continuamos
             costeNuevaGeneracion = costeNuevaGeneracionSegunda;
 
-            //MUTAMOS los genes de los dos padres ya cruzados con probabilidad probMutacion
+            //Se realiza la mutacion de los dos padres(genes) cruzados con la probabilidad de mutacion y marcamos los que se han modificado
             mutar(tampoblacion,tam,probabilidadMutacion, rmin,rmax, nuevaGeneracion, marcados);
 
-            // preparamos el REEMPLAZAMIENTO calculamos el peor de la nueva poblacion
-            //calculaMejorNuevaPoblacion(tampoblacion,marcados,costeNuevaGeneracion,nuevaGeneracion,funcion,contador,mejorCosteHijo,mejorCromosomaHijo);
+            // Procedemos a reemplazar.1 calculamos el menos favorable de la POBLACION NUEVA
             for (int i = 0; i < tampoblacion; i++) {
                 if (marcados[i]) {
-                    costeNuevaGeneracion[i] = evaluaCoste(nuevaGeneracion.get(i), funcion);
-                    contador++;
+                    costeNuevaGeneracion[i] = evaluaCoste(nuevaGeneracion.get(i), funcion);//Actualizar coste
+                    contador++; //Para evaluaciones
                 }
 
                 if (costeNuevaGeneracion[i] < mejorCosteHijo) {
@@ -116,18 +119,18 @@ public class AEVMedia_CLase3_Grupo5 {
                 }
             }
 
-            //ELITILISMO
-            //Mantenemos el elitismo del mejor de P(t) para P(t') si no sobrevive
+
             enc=false;
+            //
             for (int i = 0; i < nuevaGeneracion.size() && !enc; i++) {
                 if (mejorCromosoma == nuevaGeneracion.get(i))
                     enc = true;
             }
 
-            if(!enc){ //si no sobrevive planteamos un torneo k=4 para elegir el sustituto de la nueva poblacion
+            if(!enc){ //torneo k=4
                 elitismo(tampoblacion,nuevaGeneracion,mejorCromosoma,costeNuevaGeneracion,mejorCoste);
 
-                //actualizamos el mejor con el elite si acaso lo mejora
+                //comparamos el mejor con el elite. MEJORA?
                 if(mejorCoste<mejorCosteHijo){
                     mejorCosteHijo = mejorCoste;
                     nuevaGeneracion.add(mejorCromosomaHijo, mejorCromosoma);
@@ -138,13 +141,13 @@ public class AEVMedia_CLase3_Grupo5 {
             mejorCromosoma = nuevaGeneracion.get(mejorCromosomaHijo);
             mejorCoste = mejorCosteHijo;
 
-            //Actualizamos el mejor global y su coste con el mejor hijo de la NUEVA POBLACION .Si mejora me quedo con el mejor coste y con el mejorCrhijo
+            //Actualizamos el mejor global y su coste
             if (mejorCosteHijo < mejorCosteGlobal) {
                 mejorCosteGlobal = mejorCosteHijo;
                 mejorCromosomaGlobal = nuevaGeneracion.get(mejorCromosomaHijo);
             }
 
-            //Actualizo cromosomas con nuevag, para la siguiente generacion
+            //Actualizamos cromosomas
             costes = costeNuevaGeneracion;
             cromosomas = nuevaGeneracion;
             t++;
