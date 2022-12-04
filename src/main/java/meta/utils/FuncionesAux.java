@@ -1,12 +1,10 @@
 package meta.utils;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.Collectors;
 import static meta.funciones.Funciones.evaluaCoste;
 
@@ -260,11 +258,10 @@ public class FuncionesAux {
 
 
     //se ejecuta una vez para crear el log properties
-    public static void createAppendersLog(List<String> archivosConfig, String ruta) throws IOException {
-        FileOutputStream csvFile = new FileOutputStream("log/log4j.properties");
+    public static void createAppendersLog(String archivosConfig, String ruta) throws IOException {
+        FileOutputStream csvFile = new FileOutputStream("src/main/resources/log4j.properties");
         try (PrintWriter pw = new PrintWriter(csvFile)) {
-            for (String archivo : archivosConfig) {
-                Lector lector = new Lector(ruta + archivo);
+                Lector lector = new Lector(ruta + archivosConfig);
                 List<String> algoritmos = lector.getAlgoritmos();
                 Long[] semillas = lector.getSemilla();
                 List<Long> semillasList = Arrays.stream(semillas).collect(Collectors.toList());
@@ -278,5 +275,16 @@ public class FuncionesAux {
                 }
             }
         }
+        public static String getFiles(final File folder){
+            String fileName="";
+            for (final File fileEntry : Objects.requireNonNull(folder.listFiles())) {
+                if (fileEntry.isDirectory()) {
+                    getFiles(fileEntry);
+                } else {
+                    fileName=(fileEntry.getName());
+                }
+            }
+            return fileName;
+
+        }
     }
-}
