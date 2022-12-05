@@ -21,10 +21,10 @@ public class AED_Clase3_Grupo5 {
         double[] mejorCromosomaGlobal = mejorCromosoma;
         int contador = tampoblacion;
         double[] costes = new double[tampoblacion];
-        double[] ale1, ale2, obj, nuevo = new double[tam], padre;
-        int k1,k2,k3;
+        double[] aleatorio1 = new double[tampoblacion], aleatorio2 = new double[tampoblacion], obj, nuevo = new double[tam], padre;
+        int k1=0,k2=0,k3=0;
         double valor=0.5;
-        int a1,a2;
+        int a1=0,a2=0;
 
         logger.info("Empieza ejecucion algoritmo Diferencial: ");
 
@@ -44,35 +44,17 @@ public class AED_Clase3_Grupo5 {
             }
         }
 
-
-        //Comienzan las iteraciones
+        //Comenzaran las iteraciones
         while (contador < evaluaciones) {
-            //CRUZAMOS con operador ternario
             for(int i=0;i<tampoblacion;i++){
 
                 padre = cromosomas.get(i);
 
+                aleatorios(tampoblacion,cromosomas,a1,a2,i,aleatorio1,aleatorio2);
 
-                do {
-                    a1 = aleatorio.nextInt(tampoblacion);
-                    while (a1 == (a2 = aleatorio.nextInt(tampoblacion))) ;
-                } while (a1 != i && a2 != i);
-                ale1 = cromosomas.get(a1);
-                ale2 = cromosomas.get(a2);
-
-                //
-                // torneoK3(tampoblacion,i,a1,k1,k2,k3,k4);
-
-                do {
-                    k1 = aleatorio.nextInt(tampoblacion);
-                    while (k1 == (k2 = aleatorio.nextInt(tampoblacion))) ;
-                    while ((k2 == (k3 = aleatorio.nextInt(tampoblacion)))) ;
-                } while (k1 != i &&  k1 != a1 && k1 != a2 &&
-                         k2 != i &&  k2 != a1 && k2 != a2 &&
-                         k3 != i &&  k3 != a1 && k3 != a2);
+                torneoK3(tampoblacion,i,a1,k1,k2,k3,a2);
 
                 //ELEGIMOS EL  MEJOR
-
                 if (costes[k1] < costes[k2] && costes[k1] < costes[k3])
                     obj = cromosomas.get(k1);
                 else if (costes[k2] < costes[k1] && costes[k2] < costes[k3])
@@ -80,14 +62,15 @@ public class AED_Clase3_Grupo5 {
                 else
                     obj = cromosomas.get(k3);
 
-                double factor = aleatorio.nextDouble();//
-
+                //elegimos el nuevo cromosoma
+                double factor = aleatorio.nextDouble(); //factor mutacion
                 for (int j = 0; j < tam; j++) {
-                    double d = aleatorio.nextDouble();//
+                    double d = aleatorio.nextDouble();
                     if (d > valor)
                         nuevo[j] = obj[j];
                     else {
-                        nuevo[j] = operadorRecombinacion(padre,j,ale1,ale2,factor);
+                        nuevo[j] = operadorRecombinacion(padre,j,aleatorio1,aleatorio2,factor);
+                        //por si se saliera del rango
                         if (nuevo[j] > rmax)
                             nuevo[j] = rmax;
                         else if (nuevo[j] < rmin)
@@ -95,14 +78,14 @@ public class AED_Clase3_Grupo5 {
                     }
                 }
 
-                //reemplazamos si hijo mejor que padre
+                //reemplazamos SII hijo mejor que padre
                 double nuevoCoste = evaluaCoste(nuevo, funcion);
                 contador++;
                 reemplazamiento(nuevoCoste, i, costes, cromosomas, nuevo, mejorCoste, mejorCromosoma);
 
             }//llave for i
 
-            //
+            //actualizamos
             if (mejorCoste < mejorCosteGlobal) {
                 mejorCosteGlobal = mejorCoste;
                 mejorCromosomaGlobal = mejorCromosoma;
