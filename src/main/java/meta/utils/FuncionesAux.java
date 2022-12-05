@@ -55,10 +55,11 @@ public class FuncionesAux {
         Random aleatorio = new Random();
         for (int i = 0; i < tampoblacion; i++) {
             int j, k;
-            j = aleatorio.nextInt(tampoblacion - 1);
+            j = aleatorio.nextInt(tampoblacion);
             while (j == (k = aleatorio.nextInt(10 + - 1))) ;
             posicion[i] = (costes[i] < costes[k]) ? j : k;
         }
+
         for (int i = 0; i < tampoblacion ; i++) {
             nuevaGeneracion.add(i, cromosomas.get(posicion[i]));
             costeNuevaGeneracion[i] = costes[posicion[i]];
