@@ -1,9 +1,0 @@
-2022-12-05 17:28:14,542 Ackley.aevmedia.22776589 - Empieza ejecucion EvolutivoMedia: 
-2022-12-05 17:28:14,573 Ackley.aevmedia.22776589 - El tiempo total de ejecucion en ms es: 30.3713
-2022-12-05 17:28:14,573 Ackley.aevmedia.22776589 - Funcion:Ackley
-2022-12-05 17:28:14,573 Ackley.aevmedia.22776589 - RangoInf: -32768.0
-2022-12-05 17:28:14,573 Ackley.aevmedia.22776589 - RangoSup: 32768.0
-2022-12-05 17:28:14,574 Ackley.aevmedia.22776589 - El coste del algoritmo EvolutivoMedia es:21.034073142678203
-2022-12-05 17:28:14,574 Ackley.aevmedia.22776589 - La semilla es:22776589
-2022-12-05 17:28:14,574 Ackley.aevmedia.22776589 - Total Evaluaciones:10026
-2022-12-05 17:28:14,574 Ackley.aevmedia.22776589 - Total Iteraciones:200

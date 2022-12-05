@@ -1,9 +1,0 @@
-2022-12-05 17:28:16,052 michale.aevmedia.27765892 - Empieza ejecucion EvolutivoMedia: 
-2022-12-05 17:28:16,077 michale.aevmedia.27765892 - El tiempo total de ejecucion en ms es: 25.7828
-2022-12-05 17:28:16,077 michale.aevmedia.27765892 - Funcion:michale
-2022-12-05 17:28:16,077 michale.aevmedia.27765892 - RangoInf: 0.0
-2022-12-05 17:28:16,077 michale.aevmedia.27765892 - RangoSup: 3.141592653589793
-2022-12-05 17:28:16,077 michale.aevmedia.27765892 - El coste del algoritmo EvolutivoMedia es:-3.8145060034783134
-2022-12-05 17:28:16,077 michale.aevmedia.27765892 - La semilla es:27765892
-2022-12-05 17:28:16,077 michale.aevmedia.27765892 - Total Evaluaciones:10034
-2022-12-05 17:28:16,077 michale.aevmedia.27765892 - Total Iteraciones:200

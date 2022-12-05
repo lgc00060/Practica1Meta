@@ -1,9 +1,0 @@
-2022-12-05 17:28:17,002 Perm.aedifencial.22776589 - Empieza ejecucion algoritmo Diferencial: 
-2022-12-05 17:28:17,057 Perm.aedifencial.22776589 - El tiempo total de ejecucion en ms es: 54.6354
-2022-12-05 17:28:17,057 Perm.aedifencial.22776589 - Funcion:Perm
-2022-12-05 17:28:17,057 Perm.aedifencial.22776589 - RangoInf: -100.0
-2022-12-05 17:28:17,057 Perm.aedifencial.22776589 - RangoSup: 100.0
-2022-12-05 17:28:17,057 Perm.aedifencial.22776589 - El coste del algoritmo Diferencial es:1.3415234221350655E21
-2022-12-05 17:28:17,057 Perm.aedifencial.22776589 - La semilla es:22776589
-2022-12-05 17:28:17,057 Perm.aedifencial.22776589 - Total Evaluaciones:10000
-2022-12-05 17:28:17,057 Perm.aedifencial.22776589 -  Total Iteraciones:199

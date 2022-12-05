@@ -1,9 +1,0 @@
-2022-12-05 17:28:17,418 Rast.aedifencial.92277658 - Empieza ejecucion algoritmo Diferencial: 
-2022-12-05 17:28:17,431 Rast.aedifencial.92277658 - El tiempo total de ejecucion en ms es: 12.7368
-2022-12-05 17:28:17,431 Rast.aedifencial.92277658 - Funcion:Rast
-2022-12-05 17:28:17,431 Rast.aedifencial.92277658 - RangoInf: -51.12
-2022-12-05 17:28:17,431 Rast.aedifencial.92277658 - RangoSup: 51.12
-2022-12-05 17:28:17,431 Rast.aedifencial.92277658 - El coste del algoritmo Diferencial es:44863.92591750751
-2022-12-05 17:28:17,431 Rast.aedifencial.92277658 - La semilla es:92277658
-2022-12-05 17:28:17,431 Rast.aedifencial.92277658 - Total Evaluaciones:10000
-2022-12-05 17:28:17,431 Rast.aedifencial.92277658 -  Total Iteraciones:199

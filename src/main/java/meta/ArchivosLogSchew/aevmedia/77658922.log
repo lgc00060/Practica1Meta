@@ -1,9 +1,0 @@
-2022-12-05 17:28:18,217 Schew.aevmedia.77658922 - Empieza ejecucion EvolutivoMedia: 
-2022-12-05 17:28:18,237 Schew.aevmedia.77658922 - El tiempo total de ejecucion en ms es: 19.775
-2022-12-05 17:28:18,237 Schew.aevmedia.77658922 - Funcion:Schew
-2022-12-05 17:28:18,237 Schew.aevmedia.77658922 - RangoInf: -500.0
-2022-12-05 17:28:18,237 Schew.aevmedia.77658922 - RangoSup: 500.0
-2022-12-05 17:28:18,237 Schew.aevmedia.77658922 - El coste del algoritmo EvolutivoMedia es:273559.64384214656
-2022-12-05 17:28:18,237 Schew.aevmedia.77658922 - La semilla es:77658922
-2022-12-05 17:28:18,237 Schew.aevmedia.77658922 - Total Evaluaciones:10036
-2022-12-05 17:28:18,237 Schew.aevmedia.77658922 - Total Iteraciones:200

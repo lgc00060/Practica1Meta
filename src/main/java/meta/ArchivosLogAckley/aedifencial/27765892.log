@@ -1,9 +1,0 @@
-2022-12-05 17:28:14,710 Ackley.aedifencial.27765892 - Empieza ejecucion algoritmo Diferencial: 
-2022-12-05 17:28:14,733 Ackley.aedifencial.27765892 - El tiempo total de ejecucion en ms es: 23.416
-2022-12-05 17:28:14,733 Ackley.aedifencial.27765892 - Funcion:Ackley
-2022-12-05 17:28:14,733 Ackley.aedifencial.27765892 - RangoInf: -32768.0
-2022-12-05 17:28:14,733 Ackley.aedifencial.27765892 - RangoSup: 32768.0
-2022-12-05 17:28:14,733 Ackley.aedifencial.27765892 - El coste del algoritmo Diferencial es:21.91467596106181
-2022-12-05 17:28:14,734 Ackley.aedifencial.27765892 - La semilla es:27765892
-2022-12-05 17:28:14,734 Ackley.aedifencial.27765892 - Total Evaluaciones:10000
-2022-12-05 17:28:14,734 Ackley.aedifencial.27765892 -  Total Iteraciones:199

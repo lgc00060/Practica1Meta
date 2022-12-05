@@ -1,9 +1,0 @@
-2022-12-05 17:28:18,616 Trid.aedifencial.77658922 - Empieza ejecucion algoritmo Diferencial: 
-2022-12-05 17:28:18,627 Trid.aedifencial.77658922 - El tiempo total de ejecucion en ms es: 10.9906
-2022-12-05 17:28:18,627 Trid.aedifencial.77658922 - Funcion:Trid
-2022-12-05 17:28:18,627 Trid.aedifencial.77658922 - RangoInf: -1000.0
-2022-12-05 17:28:18,627 Trid.aedifencial.77658922 - RangoSup: 1000.0
-2022-12-05 17:28:18,627 Trid.aedifencial.77658922 - El coste del algoritmo Diferencial es:9.397015425851218E14
-2022-12-05 17:28:18,627 Trid.aedifencial.77658922 - La semilla es:77658922
-2022-12-05 17:28:18,627 Trid.aedifencial.77658922 - Total Evaluaciones:10000
-2022-12-05 17:28:18,627 Trid.aedifencial.77658922 -  Total Iteraciones:199

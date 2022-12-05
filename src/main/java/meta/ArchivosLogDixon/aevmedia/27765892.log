@@ -1,9 +1,0 @@
-2022-12-05 17:28:15,045 Dixon.aevmedia.27765892 - Empieza ejecucion EvolutivoMedia: 
-2022-12-05 17:28:15,071 Dixon.aevmedia.27765892 - El tiempo total de ejecucion en ms es: 26.8021
-2022-12-05 17:28:15,071 Dixon.aevmedia.27765892 - Funcion:Dixon
-2022-12-05 17:28:15,071 Dixon.aevmedia.27765892 - RangoInf: -100.0
-2022-12-05 17:28:15,071 Dixon.aevmedia.27765892 - RangoSup: 100.0
-2022-12-05 17:28:15,071 Dixon.aevmedia.27765892 - El coste del algoritmo EvolutivoMedia es:1.1681827773286026E9
-2022-12-05 17:28:15,071 Dixon.aevmedia.27765892 - La semilla es:27765892
-2022-12-05 17:28:15,072 Dixon.aevmedia.27765892 - Total Evaluaciones:10031
-2022-12-05 17:28:15,072 Dixon.aevmedia.27765892 - Total Iteraciones:200

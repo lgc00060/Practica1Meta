@@ -56,9 +56,20 @@ public class AEvBLXalfa_Clase3_Grupo5 {
             if (costes[i] < mejorCoste) {
                 mejorCoste = costes[i];
                 mejorCromosoma = cromosomas.get(i);
+                //posicionn=i;
             }
         }
 
+        logger.info("Poblacion inicial: ");
+        for(int i=0;i<tampoblacion;i++){
+            for(int j=0;j<tampoblacion;j++){
+                logger.info(""+ cromosomas.get(i)[j]);
+            }
+        }
+
+        logger.info("Mejor cromosoma de la poblacion inicial es: " + formatoVector(mejorCromosoma));
+
+        //mientras no superemos el numero maximo de evaluaciones
         while (contador < evaluaciones) {
             //durante 50 veces (tampoblacion) selecciono por torneo a los cromosomas que sean los mas favorables
             torneo(tampoblacion,posicion,costes,cromosomas,nuevaGeneracion,costeNuevaGeneracion);
@@ -167,13 +178,15 @@ public class AEvBLXalfa_Clase3_Grupo5 {
         double resultado = (tiempoFinal - tiempoInicial)/1000000;
 
         logger.info("El tiempo total de ejecucion en ms es: " + resultado);
-        logger.info("Funcion:" + funcion);
+        logger.info("La semilla utilizada es: " + semilla);
+        logger.info("Funcion: " + funcion);
         logger.info("RangoInf: " + rmin);
         logger.info("RangoSup: " + rmax);
-        logger.info("El coste del algoritmo EvolutivoBLXalfa es:" + mejorCosteGlobal);
-        logger.info("La semilla es:" + semilla);
-        logger.info("Total Evaluaciones:" + contador);
-        logger.info(" Total Iteraciones:" + t);
+        logger.info("El coste del algoritmo EvolutivoBLXalfa es: " + mejorCosteGlobal);
+        logger.info("Numero total de Evaluaciones: " + contador);
+        logger.info("Numero total de Iteraciones: " + t);
+        //logger.info("Nueva poblacion: "+nuevaGeneracion);
+        logger.info("Mejor cromosoma de la nueva poblacion: "+formatoVector(nuevaGeneracion.get(mejorCromosomaHijo)));
     }
 
 }

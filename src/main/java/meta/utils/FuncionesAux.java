@@ -303,4 +303,14 @@ public class FuncionesAux {
         return fileName;
 
     }
+
+    public static String formatoVector(double []v){
+        StringBuilder vector = new StringBuilder();
+        vector.append("[");
+        for (int i = 0; i < v.length - 1; i++) {
+            vector.append(v[i]).append(", ");
+        }
+        vector.append(v[v.length - 1]).append("]");
+        return vector.toString();
+    }
 }

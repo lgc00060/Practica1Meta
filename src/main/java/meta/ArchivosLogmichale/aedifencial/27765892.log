@@ -1,9 +1,0 @@
-2022-12-05 17:28:16,179 michale.aedifencial.27765892 - Empieza ejecucion algoritmo Diferencial: 
-2022-12-05 17:28:16,200 michale.aedifencial.27765892 - El tiempo total de ejecucion en ms es: 21.3929
-2022-12-05 17:28:16,200 michale.aedifencial.27765892 - Funcion:michale
-2022-12-05 17:28:16,200 michale.aedifencial.27765892 - RangoInf: 0.0
-2022-12-05 17:28:16,200 michale.aedifencial.27765892 - RangoSup: 3.141592653589793
-2022-12-05 17:28:16,200 michale.aedifencial.27765892 - El coste del algoritmo Diferencial es:1.3597329588564233
-2022-12-05 17:28:16,200 michale.aedifencial.27765892 - La semilla es:27765892
-2022-12-05 17:28:16,200 michale.aedifencial.27765892 - Total Evaluaciones:10000
-2022-12-05 17:28:16,200 michale.aedifencial.27765892 -  Total Iteraciones:199

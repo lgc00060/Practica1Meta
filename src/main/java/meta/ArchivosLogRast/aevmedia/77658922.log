@@ -1,9 +1,0 @@
-2022-12-05 17:28:17,262 Rast.aevmedia.77658922 - Empieza ejecucion EvolutivoMedia: 
-2022-12-05 17:28:17,285 Rast.aevmedia.77658922 - El tiempo total de ejecucion en ms es: 22.2268
-2022-12-05 17:28:17,285 Rast.aevmedia.77658922 - Funcion:Rast
-2022-12-05 17:28:17,285 Rast.aevmedia.77658922 - RangoInf: -51.12
-2022-12-05 17:28:17,285 Rast.aevmedia.77658922 - RangoSup: 51.12
-2022-12-05 17:28:17,285 Rast.aevmedia.77658922 - El coste del algoritmo EvolutivoMedia es:3425.3257053114426
-2022-12-05 17:28:17,285 Rast.aevmedia.77658922 - La semilla es:77658922
-2022-12-05 17:28:17,285 Rast.aevmedia.77658922 - Total Evaluaciones:10033
-2022-12-05 17:28:17,285 Rast.aevmedia.77658922 - Total Iteraciones:200

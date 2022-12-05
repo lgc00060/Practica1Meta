@@ -1,9 +1,0 @@
-2022-12-05 17:28:17,732 Rosen.aedifencial.92277658 - Empieza ejecucion algoritmo Diferencial: 
-2022-12-05 17:28:17,744 Rosen.aedifencial.92277658 - El tiempo total de ejecucion en ms es: 11.4034
-2022-12-05 17:28:17,744 Rosen.aedifencial.92277658 - Funcion:Rosen
-2022-12-05 17:28:17,744 Rosen.aedifencial.92277658 - RangoInf: -5.0
-2022-12-05 17:28:17,744 Rosen.aedifencial.92277658 - RangoSup: 10.0
-2022-12-05 17:28:17,744 Rosen.aedifencial.92277658 - El coste del algoritmo Diferencial es:24814.13766383565
-2022-12-05 17:28:17,744 Rosen.aedifencial.92277658 - La semilla es:92277658
-2022-12-05 17:28:17,744 Rosen.aedifencial.92277658 - Total Evaluaciones:10000
-2022-12-05 17:28:17,744 Rosen.aedifencial.92277658 -  Total Iteraciones:199

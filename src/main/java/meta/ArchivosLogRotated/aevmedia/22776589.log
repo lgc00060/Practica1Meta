@@ -1,9 +1,0 @@
-2022-12-05 17:28:17,943 Rotated.aevmedia.22776589 - Empieza ejecucion EvolutivoMedia: 
-2022-12-05 17:28:17,966 Rotated.aevmedia.22776589 - El tiempo total de ejecucion en ms es: 22.1953
-2022-12-05 17:28:17,966 Rotated.aevmedia.22776589 - Funcion:Rotated
-2022-12-05 17:28:17,966 Rotated.aevmedia.22776589 - RangoInf: -65.536
-2022-12-05 17:28:17,966 Rotated.aevmedia.22776589 - RangoSup: 65.536
-2022-12-05 17:28:17,966 Rotated.aevmedia.22776589 - El coste del algoritmo EvolutivoMedia es:4011.1635127189315
-2022-12-05 17:28:17,966 Rotated.aevmedia.22776589 - La semilla es:22776589
-2022-12-05 17:28:17,966 Rotated.aevmedia.22776589 - Total Evaluaciones:10038
-2022-12-05 17:28:17,966 Rotated.aevmedia.22776589 - Total Iteraciones:200
