@@ -1,0 +1,9 @@
+2022-12-05 16:49:06,280 michale.algevblxalfa.27765892 - Empieza ejecucion algoritmo evolutivoBLXAlfa: 
+2022-12-05 16:49:06,319 michale.algevblxalfa.27765892 - El tiempo total de ejecucion en ms es: 39.079458
+2022-12-05 16:49:06,321 michale.algevblxalfa.27765892 - Funcion:michale
+2022-12-05 16:49:06,321 michale.algevblxalfa.27765892 - RangoInf: 0.0
+2022-12-05 16:49:06,321 michale.algevblxalfa.27765892 - RangoSup: 3.141592653589793
+2022-12-05 16:49:06,326 michale.algevblxalfa.27765892 - El coste del algoritmo EvolutivoBLXalfa es:-3.497719864753953
+2022-12-05 16:49:06,326 michale.algevblxalfa.27765892 - La semilla es:27765892
+2022-12-05 16:49:06,326 michale.algevblxalfa.27765892 - Total Evaluaciones:10027
+2022-12-05 16:49:06,326 michale.algevblxalfa.27765892 -  Total Iteraciones:200

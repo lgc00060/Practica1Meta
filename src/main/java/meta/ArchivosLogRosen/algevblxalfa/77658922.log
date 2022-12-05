@@ -1,0 +1,9 @@
+2022-12-05 16:49:07,937 Rosen.algevblxalfa.77658922 - Empieza ejecucion algoritmo evolutivoBLXAlfa: 
+2022-12-05 16:49:07,968 Rosen.algevblxalfa.77658922 - El tiempo total de ejecucion en ms es: 30.98975
+2022-12-05 16:49:07,968 Rosen.algevblxalfa.77658922 - Funcion:Rosen
+2022-12-05 16:49:07,968 Rosen.algevblxalfa.77658922 - RangoInf: -5.0
+2022-12-05 16:49:07,968 Rosen.algevblxalfa.77658922 - RangoSup: 10.0
+2022-12-05 16:49:07,968 Rosen.algevblxalfa.77658922 - El coste del algoritmo EvolutivoBLXalfa es:363.76698396798923
+2022-12-05 16:49:07,968 Rosen.algevblxalfa.77658922 - La semilla es:77658922
+2022-12-05 16:49:07,968 Rosen.algevblxalfa.77658922 - Total Evaluaciones:10023
+2022-12-05 16:49:07,968 Rosen.algevblxalfa.77658922 -  Total Iteraciones:200

@@ -42,10 +42,10 @@ public class Main {
 
         for (String funcion : funciones) {
             for (String algoritmo : algoritmos) {
-                Logger logger = Logger.getLogger(funciones + "." + algoritmo);
                 System.out.println(algoritmo);
                 for (Long semilla : semillas) {
                     aleatorio.setSeed(semilla);
+                    Logger logger = Logger.getLogger(funcion + "." + algoritmo + "." + semilla);
                     switch (algoritmo) {
                         case "algevblxalfa" -> {
                             Aevblxalfa_clase3_grupo5(poblacion, d, evaluaciones, Solucion, rangoInf[i], rangoSup[i], prob_muta, cruce, alfa,funcion,semilla, logger);
@@ -59,7 +59,7 @@ public class Main {
                             AED(poblacion,d,evaluaciones,Solucion,rangoInf[i],rangoSup[i],funcion,semilla,logger);
                         }
                     }
-                    createAppendersLog(archivoConfig,ruta);
+                    //createAppendersLog(archivoConfig,ruta);
                 }
                 List<Daido> daidos = daidos("src/main/resources/daido-tra.dat");
             }

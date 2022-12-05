@@ -1,0 +1,9 @@
+2022-12-05 16:49:09,126 Trid.aevmedia.22776589 - Empieza ejecucion EvolutivoMedia: 
+2022-12-05 16:49:09,148 Trid.aevmedia.22776589 - El tiempo total de ejecucion en ms es: 22.436209
+2022-12-05 16:49:09,148 Trid.aevmedia.22776589 - Funcion:Trid
+2022-12-05 16:49:09,148 Trid.aevmedia.22776589 - RangoInf: -1000.0
+2022-12-05 16:49:09,148 Trid.aevmedia.22776589 - RangoSup: 1000.0
+2022-12-05 16:49:09,148 Trid.aevmedia.22776589 - El coste del algoritmo EvolutivoMedia es:1.1613948791095709E13
+2022-12-05 16:49:09,148 Trid.aevmedia.22776589 - La semilla es:22776589
+2022-12-05 16:49:09,148 Trid.aevmedia.22776589 - Total Evaluaciones:10030
+2022-12-05 16:49:09,148 Trid.aevmedia.22776589 - Total Iteraciones:200

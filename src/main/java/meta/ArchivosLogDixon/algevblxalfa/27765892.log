@@ -1,0 +1,9 @@
+2022-12-05 16:49:05,214 Dixon.algevblxalfa.27765892 - Empieza ejecucion algoritmo evolutivoBLXAlfa: 
+2022-12-05 16:49:05,247 Dixon.algevblxalfa.27765892 - El tiempo total de ejecucion en ms es: 32.530125
+2022-12-05 16:49:05,247 Dixon.algevblxalfa.27765892 - Funcion:Dixon
+2022-12-05 16:49:05,247 Dixon.algevblxalfa.27765892 - RangoInf: -100.0
+2022-12-05 16:49:05,247 Dixon.algevblxalfa.27765892 - RangoSup: 100.0
+2022-12-05 16:49:05,247 Dixon.algevblxalfa.27765892 - El coste del algoritmo EvolutivoBLXalfa es:1.213186470308144E9
+2022-12-05 16:49:05,247 Dixon.algevblxalfa.27765892 - La semilla es:27765892
+2022-12-05 16:49:05,247 Dixon.algevblxalfa.27765892 - Total Evaluaciones:10034
+2022-12-05 16:49:05,247 Dixon.algevblxalfa.27765892 -  Total Iteraciones:200

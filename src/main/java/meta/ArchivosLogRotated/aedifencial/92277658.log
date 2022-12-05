@@ -1,0 +1,9 @@
+2022-12-05 16:49:08,593 Rotated.aedifencial.92277658 - Empieza ejecucion algoritmo Diferencial: 
+2022-12-05 16:49:08,602 Rotated.aedifencial.92277658 - El tiempo total de ejecucion en ms es: 8.964584
+2022-12-05 16:49:08,602 Rotated.aedifencial.92277658 - Funcion:Rotated
+2022-12-05 16:49:08,602 Rotated.aedifencial.92277658 - RangoInf: -65.536
+2022-12-05 16:49:08,602 Rotated.aedifencial.92277658 - RangoSup: 65.536
+2022-12-05 16:49:08,602 Rotated.aedifencial.92277658 - El coste del algoritmo Diferencial es:21048.342113857085
+2022-12-05 16:49:08,602 Rotated.aedifencial.92277658 - La semilla es:92277658
+2022-12-05 16:49:08,602 Rotated.aedifencial.92277658 - Total Evaluaciones:10000
+2022-12-05 16:49:08,602 Rotated.aedifencial.92277658 -  Total Iteraciones:199

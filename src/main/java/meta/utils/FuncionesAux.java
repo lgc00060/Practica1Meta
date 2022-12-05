@@ -194,7 +194,7 @@ public class FuncionesAux {
         return random.nextDouble() * (max - min) + min;
     }
 
-    private static String convertToLogAppender(String algoritmo, ArrayList<String> funcion, String semilla) {
+    private static String convertToLogAppender(String algoritmo, String funcion, String semilla) {
         return "log4j.appender." + funcion + "." + algoritmo + "." + semilla +
                 " = org.apache.log4j.FileAppender\n" +
                 "log4j.appender." + funcion + "." + algoritmo + "." + semilla +
@@ -210,7 +210,6 @@ public class FuncionesAux {
     }
 
 
-    //se ejecuta una vez para crear el log properties
     public static void createAppendersLog(String archivosConfig, String ruta) throws IOException {
         FileOutputStream csvFile = new FileOutputStream("src/main/resources/log4j.properties");
         try (PrintWriter pw = new PrintWriter(csvFile)) {
@@ -219,12 +218,17 @@ public class FuncionesAux {
             Long[] semillas = lector.getSemilla();
             List<Long> semillasList = Arrays.stream(semillas).collect(Collectors.toList());
             for (String algoritmo : algoritmos) {
-                ArrayList <String> ListaSemillas;
-                semillasList.stream()
-                        .map(s -> convertToLogAppender(algoritmo, lector.getFunciones(), String.valueOf(s)))
-                        .forEach(pw::print);
+                for (int i = 0; i < lector.getFunciones().size(); i++) {
+                    String funcion = lector.getFunciones().get(i);
+                    ArrayList <String> ListaSemillas;
+                    semillasList.stream()
+                            .map(s -> convertToLogAppender(algoritmo, funcion, String.valueOf(s)))
+                            .forEach(pw::print);
 
-                pw.println();
+                    pw.println();
+
+                }
+
             }
         }
     }

@@ -1,0 +1,9 @@
+2022-12-05 16:49:08,103 Rosen.aevmedia.77658922 - Empieza ejecucion EvolutivoMedia: 
+2022-12-05 16:49:08,128 Rosen.aevmedia.77658922 - El tiempo total de ejecucion en ms es: 24.997
+2022-12-05 16:49:08,128 Rosen.aevmedia.77658922 - Funcion:Rosen
+2022-12-05 16:49:08,128 Rosen.aevmedia.77658922 - RangoInf: -5.0
+2022-12-05 16:49:08,128 Rosen.aevmedia.77658922 - RangoSup: 10.0
+2022-12-05 16:49:08,128 Rosen.aevmedia.77658922 - El coste del algoritmo EvolutivoMedia es:139.7299422069593
+2022-12-05 16:49:08,128 Rosen.aevmedia.77658922 - La semilla es:77658922
+2022-12-05 16:49:08,128 Rosen.aevmedia.77658922 - Total Evaluaciones:10026
+2022-12-05 16:49:08,128 Rosen.aevmedia.77658922 - Total Iteraciones:200

@@ -1,0 +1,9 @@
+2022-12-05 16:49:07,613 Rast.algevblxalfa.92277658 - Empieza ejecucion algoritmo evolutivoBLXAlfa: 
+2022-12-05 16:49:07,650 Rast.algevblxalfa.92277658 - El tiempo total de ejecucion en ms es: 36.984458
+2022-12-05 16:49:07,650 Rast.algevblxalfa.92277658 - Funcion:Rast
+2022-12-05 16:49:07,650 Rast.algevblxalfa.92277658 - RangoInf: -51.12
+2022-12-05 16:49:07,650 Rast.algevblxalfa.92277658 - RangoSup: 51.12
+2022-12-05 16:49:07,650 Rast.algevblxalfa.92277658 - El coste del algoritmo EvolutivoBLXalfa es:4151.131470442144
+2022-12-05 16:49:07,650 Rast.algevblxalfa.92277658 - La semilla es:92277658
+2022-12-05 16:49:07,650 Rast.algevblxalfa.92277658 - Total Evaluaciones:10020
+2022-12-05 16:49:07,650 Rast.algevblxalfa.92277658 -  Total Iteraciones:200
