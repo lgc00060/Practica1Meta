@@ -47,13 +47,13 @@ public class Main {
                 for (Long semilla : semillas) {
                     aleatorio.setSeed(semilla);
                     switch (algoritmo) {
-                        /*case "algevblxalfa" -> {
+                        case "algevblxalfa" -> {
                             Aevblxalfa_clase3_grupo5(poblacion, d, evaluaciones, Solucion, rangoInf[i], rangoSup[i], prob_muta, cruce, alfa,funcion,semilla, logger);
                         }
 
                         case "aevmedia" -> {
                             AEVMedia(poblacion, d, evaluaciones, Solucion, rangoInf[i], rangoSup[i], prob_muta, cruce, alfa,funcion,semilla, logger);
-                        }*/
+                        }
 
                         case "aedifencial" -> {
                             AED(poblacion,d,evaluaciones,Solucion,rangoInf[i],rangoSup[i],funcion,semilla,logger);

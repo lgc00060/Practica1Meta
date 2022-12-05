@@ -67,25 +67,22 @@ public class FuncionesAux {
     }
 
     public static void cruceBlX(int tam, double[] v, double[] w, double alfa, double[] h1, double rmin, double rmax) {
-        double Cmax, Cmin, x = 0.0;
+        double Cmax, Cmin, diferencia = 0.0;
 
         for (int i = 0; i < tam; i++) {
             Cmax = Math.max(v[i], w[i]);
             Cmin = Math.min(v[i], w[i]);
-            double r1 = Cmin - (x * alfa);
+            diferencia = Cmax - Cmin;
 
-            x = Cmax - Cmin;
+            double valor1 = Cmin - (diferencia * alfa);
+            if (valor1 < rmin)
+                valor1 = rmin;
 
+            double valor2 = Cmax + (diferencia * alfa);
+            if (valor2 > rmax)
+                valor2 = rmax;
 
-            if (r1 < rmin)
-                r1 = rmin;
-
-            double r2 = Cmax + (x * alfa);
-
-            if (r2 > rmax)
-                r2 = rmax;
-
-            h1[i] =  randDoubleWithRange(r1,r2);
+            h1[i] =  randDoubleWithRange(valor1,valor2);
         }
     }
 
