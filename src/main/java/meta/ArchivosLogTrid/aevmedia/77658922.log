@@ -1,9 +1,9 @@
-2022-12-05 16:49:09,075 Trid.aevmedia.77658922 - Empieza ejecucion EvolutivoMedia: 
-2022-12-05 16:49:09,099 Trid.aevmedia.77658922 - El tiempo total de ejecucion en ms es: 23.658458
-2022-12-05 16:49:09,099 Trid.aevmedia.77658922 - Funcion:Trid
-2022-12-05 16:49:09,099 Trid.aevmedia.77658922 - RangoInf: -1000.0
-2022-12-05 16:49:09,099 Trid.aevmedia.77658922 - RangoSup: 1000.0
-2022-12-05 16:49:09,099 Trid.aevmedia.77658922 - El coste del algoritmo EvolutivoMedia es:2.1258953291812758E13
-2022-12-05 16:49:09,099 Trid.aevmedia.77658922 - La semilla es:77658922
-2022-12-05 16:49:09,099 Trid.aevmedia.77658922 - Total Evaluaciones:10032
-2022-12-05 16:49:09,099 Trid.aevmedia.77658922 - Total Iteraciones:200
+2022-12-05 17:28:18,525 Trid.aevmedia.77658922 - Empieza ejecucion EvolutivoMedia: 
+2022-12-05 17:28:18,543 Trid.aevmedia.77658922 - El tiempo total de ejecucion en ms es: 18.6793
+2022-12-05 17:28:18,543 Trid.aevmedia.77658922 - Funcion:Trid
+2022-12-05 17:28:18,543 Trid.aevmedia.77658922 - RangoInf: -1000.0
+2022-12-05 17:28:18,544 Trid.aevmedia.77658922 - RangoSup: 1000.0
+2022-12-05 17:28:18,544 Trid.aevmedia.77658922 - El coste del algoritmo EvolutivoMedia es:2.0213514022058465E13
+2022-12-05 17:28:18,544 Trid.aevmedia.77658922 - La semilla es:77658922
+2022-12-05 17:28:18,544 Trid.aevmedia.77658922 - Total Evaluaciones:10023
+2022-12-05 17:28:18,544 Trid.aevmedia.77658922 - Total Iteraciones:200

@@ -1,9 +1,9 @@
-2022-12-05 16:49:06,642 Perm.algevblxalfa.76589227 - Empieza ejecucion algoritmo evolutivoBLXAlfa: 
-2022-12-05 16:49:06,704 Perm.algevblxalfa.76589227 - El tiempo total de ejecucion en ms es: 61.940917
-2022-12-05 16:49:06,704 Perm.algevblxalfa.76589227 - Funcion:Perm
-2022-12-05 16:49:06,704 Perm.algevblxalfa.76589227 - RangoInf: -100.0
-2022-12-05 16:49:06,704 Perm.algevblxalfa.76589227 - RangoSup: 100.0
-2022-12-05 16:49:06,704 Perm.algevblxalfa.76589227 - El coste del algoritmo EvolutivoBLXalfa es:8.8782914532660265E18
-2022-12-05 16:49:06,704 Perm.algevblxalfa.76589227 - La semilla es:76589227
-2022-12-05 16:49:06,704 Perm.algevblxalfa.76589227 - Total Evaluaciones:10035
-2022-12-05 16:49:06,704 Perm.algevblxalfa.76589227 -  Total Iteraciones:200
+2022-12-05 17:28:16,247 Perm.algevblxalfa.76589227 - Empieza ejecucion algoritmo evolutivoBLXAlfa: 
+2022-12-05 17:28:16,313 Perm.algevblxalfa.76589227 - El tiempo total de ejecucion en ms es: 64.7731
+2022-12-05 17:28:16,313 Perm.algevblxalfa.76589227 - Funcion:Perm
+2022-12-05 17:28:16,313 Perm.algevblxalfa.76589227 - RangoInf: -100.0
+2022-12-05 17:28:16,313 Perm.algevblxalfa.76589227 - RangoSup: 100.0
+2022-12-05 17:28:16,313 Perm.algevblxalfa.76589227 - El coste del algoritmo EvolutivoBLXalfa es:5.2093787537281147E18
+2022-12-05 17:28:16,313 Perm.algevblxalfa.76589227 - La semilla es:76589227
+2022-12-05 17:28:16,313 Perm.algevblxalfa.76589227 - Total Evaluaciones:10041
+2022-12-05 17:28:16,313 Perm.algevblxalfa.76589227 -  Total Iteraciones:200

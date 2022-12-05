@@ -1,9 +1,9 @@
-2022-12-05 16:49:04,735 Ackley.aevmedia.27765892 - Empieza ejecucion EvolutivoMedia: 
-2022-12-05 16:49:04,776 Ackley.aevmedia.27765892 - El tiempo total de ejecucion en ms es: 40.769292
-2022-12-05 16:49:04,776 Ackley.aevmedia.27765892 - Funcion:Ackley
-2022-12-05 16:49:04,776 Ackley.aevmedia.27765892 - RangoInf: -32768.0
-2022-12-05 16:49:04,776 Ackley.aevmedia.27765892 - RangoSup: 32768.0
-2022-12-05 16:49:04,776 Ackley.aevmedia.27765892 - El coste del algoritmo EvolutivoMedia es:20.897036253599026
-2022-12-05 16:49:04,776 Ackley.aevmedia.27765892 - La semilla es:27765892
-2022-12-05 16:49:04,776 Ackley.aevmedia.27765892 - Total Evaluaciones:10027
-2022-12-05 16:49:04,776 Ackley.aevmedia.27765892 - Total Iteraciones:200
+2022-12-05 17:28:14,506 Ackley.aevmedia.27765892 - Empieza ejecucion EvolutivoMedia: 
+2022-12-05 17:28:14,542 Ackley.aevmedia.27765892 - El tiempo total de ejecucion en ms es: 35.2166
+2022-12-05 17:28:14,542 Ackley.aevmedia.27765892 - Funcion:Ackley
+2022-12-05 17:28:14,542 Ackley.aevmedia.27765892 - RangoInf: -32768.0
+2022-12-05 17:28:14,542 Ackley.aevmedia.27765892 - RangoSup: 32768.0
+2022-12-05 17:28:14,542 Ackley.aevmedia.27765892 - El coste del algoritmo EvolutivoMedia es:20.98515832463862
+2022-12-05 17:28:14,542 Ackley.aevmedia.27765892 - La semilla es:27765892
+2022-12-05 17:28:14,542 Ackley.aevmedia.27765892 - Total Evaluaciones:10029
+2022-12-05 17:28:14,542 Ackley.aevmedia.27765892 - Total Iteraciones:200

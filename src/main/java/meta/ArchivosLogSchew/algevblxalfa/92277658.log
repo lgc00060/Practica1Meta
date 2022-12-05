@@ -1,9 +1,9 @@
-2022-12-05 16:49:08,716 Schew.algevblxalfa.92277658 - Empieza ejecucion algoritmo evolutivoBLXAlfa: 
-2022-12-05 16:49:08,742 Schew.algevblxalfa.92277658 - El tiempo total de ejecucion en ms es: 25.698458
-2022-12-05 16:49:08,742 Schew.algevblxalfa.92277658 - Funcion:Schew
-2022-12-05 16:49:08,742 Schew.algevblxalfa.92277658 - RangoInf: -500.0
-2022-12-05 16:49:08,742 Schew.algevblxalfa.92277658 - RangoSup: 500.0
-2022-12-05 16:49:08,742 Schew.algevblxalfa.92277658 - El coste del algoritmo EvolutivoBLXalfa es:193980.77090853287
-2022-12-05 16:49:08,742 Schew.algevblxalfa.92277658 - La semilla es:92277658
-2022-12-05 16:49:08,742 Schew.algevblxalfa.92277658 - Total Evaluaciones:10032
-2022-12-05 16:49:08,742 Schew.algevblxalfa.92277658 -  Total Iteraciones:200
+2022-12-05 17:28:18,168 Schew.algevblxalfa.92277658 - Empieza ejecucion algoritmo evolutivoBLXAlfa: 
+2022-12-05 17:28:18,191 Schew.algevblxalfa.92277658 - El tiempo total de ejecucion en ms es: 22.9128
+2022-12-05 17:28:18,191 Schew.algevblxalfa.92277658 - Funcion:Schew
+2022-12-05 17:28:18,191 Schew.algevblxalfa.92277658 - RangoInf: -500.0
+2022-12-05 17:28:18,191 Schew.algevblxalfa.92277658 - RangoSup: 500.0
+2022-12-05 17:28:18,191 Schew.algevblxalfa.92277658 - El coste del algoritmo EvolutivoBLXalfa es:144654.25682404175
+2022-12-05 17:28:18,191 Schew.algevblxalfa.92277658 - La semilla es:92277658
+2022-12-05 17:28:18,191 Schew.algevblxalfa.92277658 - Total Evaluaciones:10033
+2022-12-05 17:28:18,191 Schew.algevblxalfa.92277658 -  Total Iteraciones:200

@@ -35,6 +35,8 @@ public class AEVMedia_CLase3_Grupo5 {
         double costeMejorPrimero = 0.0;
         double costeMejorSegundo = 0.0;
         boolean enc;
+        int c1, c2, c3, c4;
+        int posAnt = 0;
 
         logger.info("Empieza ejecucion EvolutivoMedia: ");
 
@@ -61,8 +63,7 @@ public class AEVMedia_CLase3_Grupo5 {
             //cruce torneo 2 a 2 llamar a la funcion
             for (int i = 0; i < tampoblacion; i++) {
                 //cruceTorneo2a2(tampoblacion, nuevaGeneracion, costeNuevaGeneracion, mejorPrimero, mejorSegundo,i,costeMejorPrimero,costeMejorSegundo);
-                int c1, c2, c3, c4;
-                int posAnt = 0;
+
 
                 c1 = aleatorio.nextInt((tampoblacion));
                 while (c1 == (c2 = aleatorio.nextInt(tampoblacion))) ;

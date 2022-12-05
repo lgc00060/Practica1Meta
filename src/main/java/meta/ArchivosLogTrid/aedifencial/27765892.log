@@ -1,9 +1,9 @@
-2022-12-05 16:49:09,198 Trid.aedifencial.27765892 - Empieza ejecucion algoritmo Diferencial: 
-2022-12-05 16:49:09,206 Trid.aedifencial.27765892 - El tiempo total de ejecucion en ms es: 7.452541
-2022-12-05 16:49:09,206 Trid.aedifencial.27765892 - Funcion:Trid
-2022-12-05 16:49:09,206 Trid.aedifencial.27765892 - RangoInf: -1000.0
-2022-12-05 16:49:09,206 Trid.aedifencial.27765892 - RangoSup: 1000.0
-2022-12-05 16:49:09,206 Trid.aedifencial.27765892 - El coste del algoritmo Diferencial es:9.626422182057246E14
-2022-12-05 16:49:09,206 Trid.aedifencial.27765892 - La semilla es:27765892
-2022-12-05 16:49:09,206 Trid.aedifencial.27765892 - Total Evaluaciones:10000
-2022-12-05 16:49:09,206 Trid.aedifencial.27765892 -  Total Iteraciones:199
+2022-12-05 17:28:18,627 Trid.aedifencial.27765892 - Empieza ejecucion algoritmo Diferencial: 
+2022-12-05 17:28:18,638 Trid.aedifencial.27765892 - El tiempo total de ejecucion en ms es: 11.0522
+2022-12-05 17:28:18,638 Trid.aedifencial.27765892 - Funcion:Trid
+2022-12-05 17:28:18,638 Trid.aedifencial.27765892 - RangoInf: -1000.0
+2022-12-05 17:28:18,638 Trid.aedifencial.27765892 - RangoSup: 1000.0
+2022-12-05 17:28:18,638 Trid.aedifencial.27765892 - El coste del algoritmo Diferencial es:1.2071782781930562E15
+2022-12-05 17:28:18,638 Trid.aedifencial.27765892 - La semilla es:27765892
+2022-12-05 17:28:18,638 Trid.aedifencial.27765892 - Total Evaluaciones:10000
+2022-12-05 17:28:18,638 Trid.aedifencial.27765892 -  Total Iteraciones:199

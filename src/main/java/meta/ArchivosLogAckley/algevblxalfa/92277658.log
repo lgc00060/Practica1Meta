@@ -1,9 +1,9 @@
-2022-12-05 16:49:04,575 Ackley.algevblxalfa.92277658 - Empieza ejecucion algoritmo evolutivoBLXAlfa: 
-2022-12-05 16:49:04,607 Ackley.algevblxalfa.92277658 - El tiempo total de ejecucion en ms es: 31.6195
-2022-12-05 16:49:04,607 Ackley.algevblxalfa.92277658 - Funcion:Ackley
-2022-12-05 16:49:04,607 Ackley.algevblxalfa.92277658 - RangoInf: -32768.0
-2022-12-05 16:49:04,608 Ackley.algevblxalfa.92277658 - RangoSup: 32768.0
-2022-12-05 16:49:04,608 Ackley.algevblxalfa.92277658 - El coste del algoritmo EvolutivoBLXalfa es:20.96787646407548
-2022-12-05 16:49:04,608 Ackley.algevblxalfa.92277658 - La semilla es:92277658
-2022-12-05 16:49:04,608 Ackley.algevblxalfa.92277658 - Total Evaluaciones:10029
-2022-12-05 16:49:04,609 Ackley.algevblxalfa.92277658 -  Total Iteraciones:200
+2022-12-05 17:28:14,330 Ackley.algevblxalfa.92277658 - Empieza ejecucion algoritmo evolutivoBLXAlfa: 
+2022-12-05 17:28:14,363 Ackley.algevblxalfa.92277658 - El tiempo total de ejecucion en ms es: 32.4027
+2022-12-05 17:28:14,363 Ackley.algevblxalfa.92277658 - Funcion:Ackley
+2022-12-05 17:28:14,363 Ackley.algevblxalfa.92277658 - RangoInf: -32768.0
+2022-12-05 17:28:14,363 Ackley.algevblxalfa.92277658 - RangoSup: 32768.0
+2022-12-05 17:28:14,363 Ackley.algevblxalfa.92277658 - El coste del algoritmo EvolutivoBLXalfa es:20.902626662946854
+2022-12-05 17:28:14,363 Ackley.algevblxalfa.92277658 - La semilla es:92277658
+2022-12-05 17:28:14,364 Ackley.algevblxalfa.92277658 - Total Evaluaciones:10031
+2022-12-05 17:28:14,364 Ackley.algevblxalfa.92277658 -  Total Iteraciones:200

@@ -1,9 +1,9 @@
-2022-12-05 16:49:05,816 griewank.algevblxalfa.22776589 - Empieza ejecucion algoritmo evolutivoBLXAlfa: 
-2022-12-05 16:49:05,869 griewank.algevblxalfa.22776589 - El tiempo total de ejecucion en ms es: 52.752334
-2022-12-05 16:49:05,869 griewank.algevblxalfa.22776589 - Funcion:griewank
-2022-12-05 16:49:05,869 griewank.algevblxalfa.22776589 - RangoInf: -600.0
-2022-12-05 16:49:05,869 griewank.algevblxalfa.22776589 - RangoSup: 600.0
-2022-12-05 16:49:05,869 griewank.algevblxalfa.22776589 - El coste del algoritmo EvolutivoBLXalfa es:-1.6248708311016706
-2022-12-05 16:49:05,869 griewank.algevblxalfa.22776589 - La semilla es:22776589
-2022-12-05 16:49:05,869 griewank.algevblxalfa.22776589 - Total Evaluaciones:10039
-2022-12-05 16:49:05,869 griewank.algevblxalfa.22776589 -  Total Iteraciones:200
+2022-12-05 17:28:15,405 griewank.algevblxalfa.22776589 - Empieza ejecucion algoritmo evolutivoBLXAlfa: 
+2022-12-05 17:28:15,448 griewank.algevblxalfa.22776589 - El tiempo total de ejecucion en ms es: 42.7325
+2022-12-05 17:28:15,448 griewank.algevblxalfa.22776589 - Funcion:griewank
+2022-12-05 17:28:15,448 griewank.algevblxalfa.22776589 - RangoInf: -600.0
+2022-12-05 17:28:15,448 griewank.algevblxalfa.22776589 - RangoSup: 600.0
+2022-12-05 17:28:15,448 griewank.algevblxalfa.22776589 - El coste del algoritmo EvolutivoBLXalfa es:-1.8406797169645257
+2022-12-05 17:28:15,448 griewank.algevblxalfa.22776589 - La semilla es:22776589
+2022-12-05 17:28:15,448 griewank.algevblxalfa.22776589 - Total Evaluaciones:10036
+2022-12-05 17:28:15,448 griewank.algevblxalfa.22776589 -  Total Iteraciones:200

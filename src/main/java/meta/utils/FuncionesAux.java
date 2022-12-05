@@ -9,12 +9,6 @@ import java.util.stream.Collectors;
 
 
 public class FuncionesAux {
-     /**
-     * @brief Funcion que sirve para
-     * @param v: vector
-     * @param pos: posicion del vector
-     * @param valor: valor
-     */
     public static void Mutacion(double[] v, int pos, double valor) {
         v[pos] = valor;
     }
@@ -51,12 +45,21 @@ public class FuncionesAux {
         }
     }
 
+    /**
+     * @brief Funcion que sirve para seleccionar por torneo a los cromosomas que sean mas favorables entre cada 2 parejas aleatorias
+     * @param tampoblacion: tamaño de poblacion
+     * @param posicion: posiciones de los cromosomas que guardo pq gana el torneo
+     * @param costes: coste de los cromosomas
+     * @param cromosomas cromosomas
+     * @param nuevaGeneracion cromosomas de la nueva generacion
+     * @param costeNuevaGeneracion coste de los cromosomas de la nueva generacion
+     */
     public static void torneo(int tampoblacion, int[] posicion, double[] costes, List<double[]> cromosomas, List<double[]> nuevaGeneracion, double[] costeNuevaGeneracion) {
         Random aleatorio = new Random();
         for (int i = 0; i < tampoblacion; i++) {
             int j, k;
             j = aleatorio.nextInt(tampoblacion);
-            while (j == (k = aleatorio.nextInt(10 + - 1))) ;
+            while (j == (k = aleatorio.nextInt(tampoblacion))) ;
             posicion[i] = (costes[i] < costes[k]) ? j : k;
         }
 
@@ -66,7 +69,17 @@ public class FuncionesAux {
         }
     }
 
-    public static void cruceBlX(int tam, double[] v, double[] w, double alfa, double[] h1, double rmin, double rmax) {
+    /**
+     * @brief Funcion que sirve para cruzar 2 padres obtenidos por torneo 2 a 2 y obtener un hijo
+     * @param tam: tamaño del vector
+     * @param v: vector mejor primero
+     * @param w: vector mejor segundo
+     * @param alfa valor alfa
+     * @param hijo hijo que genero
+     * @param rmin rango minimo
+     * @param rmax rango maximo
+     */
+    public static void cruceBlX(int tam, double[] v, double[] w, double alfa, double[] hijo, double rmin, double rmax) {
         double Cmax, Cmin, diferencia = 0.0;
 
         for (int i = 0; i < tam; i++) {
@@ -82,7 +95,7 @@ public class FuncionesAux {
             if (valor2 > rmax)
                 valor2 = rmax;
 
-            h1[i] =  randDoubleWithRange(valor1,valor2);
+            hijo[i] =  randDoubleWithRange(valor1,valor2);
         }
     }
 
@@ -105,6 +118,16 @@ public class FuncionesAux {
 
     }
 
+    /**
+     * @brief Funcion que sirve para mutar los padres cruzados con la probabilidad de mutacion
+     * @param tampoblacion: tamaño de la poblacion
+     * @param tam: tamaño del vector
+     * @param probabilidadMutacion: probabilidad de que haya mutacion
+     * @param rmin rango minimo
+     * @param rmax rango maximo
+     * @param nuevaGeneracion cromosomas de la nueva generacion
+     * @param marcados marco los cromosomas que se hayan modificado
+     */
     public static void mutar(int tampoblacion, int tam, double probabilidadMutacion, double rmin, double rmax, List<double[]> nuevaGeneracion, boolean[] marcados) {
         Random aleatorio = new Random();
 
@@ -123,6 +146,14 @@ public class FuncionesAux {
         }
     }
 
+    /**
+     * @brief Funcion que sirve para sustituir al peor cromosoma de la nueva generacion por el mejor de la poblacion anterior
+     * @param tampoblacion tamaño de poblacion
+     * @param nuevaGeneracion cromosomas de la nueva generacion
+     * @param mejorCromosoma mejor cromosoma de la poblacion anterior(padre)
+     * @param costeNuevaGeneracion coste de los cromosomas de la nueva generacion
+     * @param mejorCoste coste del mejor cromosoma
+     */
     public static void elitismo(int tampoblacion, List<double[]> nuevaGeneracion, double[] mejorCromosoma, double[] costeNuevaGeneracion, double mejorCoste) {
         Random aleatorio = new Random();
         int peor;
@@ -150,7 +181,16 @@ public class FuncionesAux {
         costeNuevaGeneracion[peor] = mejorCoste;
     }
 
-
+    /**
+     * @brief Funcion que sirve para generar 2 aleatorios distintos entre si
+     * @param tampoblacion tamaño de la poblacion
+     * @param cromosomas cromosomas
+     * @param a1 valor1
+     * @param a2 valor 2
+     * @param i iterador
+     * @param ale1 aleatorio 1
+     * @param ale2 aleatorio 2
+     */
     public static void aleatorios(int tampoblacion, List<double[]> cromosomas, int a1, int a2, int i, double[] ale1, double[] ale2) {
         Random aleatorio = new Random();
 
@@ -162,9 +202,18 @@ public class FuncionesAux {
         ale2 = cromosomas.get(a2);
     }
 
+    /**
+     * @brief Funcion que sirve para elegir un individuo objetivo por torneo k=3, distinto de a1,a2 y del padre
+     * @param tampoblacion tamaño de poblacion
+     * @param i iterador
+     * @param a1 aleatorio1 elegido antes
+     * @param k1 valor aleatorio
+     * @param k2 valor aleatorio
+     * @param k3 valor aleatorio
+     * @param a2 aleatorio 2 elegido antes
+     */
     public static void torneoK3(int tampoblacion, int i, int a1, int k1, int k2, int k3,int a2) {
         Random aleatorio = new Random();
-
         do {
             k1 = aleatorio.nextInt(tampoblacion);
             while (k1 ==(k2 = aleatorio.nextInt(tampoblacion))) ;
@@ -178,6 +227,16 @@ public class FuncionesAux {
         return padre[j] + (Factor * (ale1[j] - ale2[j]));
     }
 
+    /**
+     * @brief Funcion que sirve para reemplazar si y solo si el hijo es mejor que el padre
+     * @param costeNuevo nuevo coste
+     * @param i iterador
+     * @param costes costes de los cromosomas
+     * @param cromosomas cromosomas
+     * @param nuevo nuevo hijo
+     * @param mejorCoste mejor coste hasta ahora
+     * @param mejorCromosoma mejor cromosoma hasta ahora
+     */
     public static void reemplazamiento(double costeNuevo, int i, double[] costes, List<double[]> cromosomas, double[] nuevo, double mejorCoste, double[] mejorCromosoma) {
         if (costeNuevo < costes[i]) {
             cromosomas.add(i, nuevo);

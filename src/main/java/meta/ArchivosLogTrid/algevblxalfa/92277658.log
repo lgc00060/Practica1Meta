@@ -1,9 +1,9 @@
-2022-12-05 16:49:09,018 Trid.algevblxalfa.92277658 - Empieza ejecucion algoritmo evolutivoBLXAlfa: 
-2022-12-05 16:49:09,046 Trid.algevblxalfa.92277658 - El tiempo total de ejecucion en ms es: 28.430625
-2022-12-05 16:49:09,047 Trid.algevblxalfa.92277658 - Funcion:Trid
-2022-12-05 16:49:09,047 Trid.algevblxalfa.92277658 - RangoInf: -1000.0
-2022-12-05 16:49:09,047 Trid.algevblxalfa.92277658 - RangoSup: 1000.0
-2022-12-05 16:49:09,047 Trid.algevblxalfa.92277658 - El coste del algoritmo EvolutivoBLXalfa es:1.8116091369242086E13
-2022-12-05 16:49:09,047 Trid.algevblxalfa.92277658 - La semilla es:92277658
-2022-12-05 16:49:09,047 Trid.algevblxalfa.92277658 - Total Evaluaciones:10034
-2022-12-05 16:49:09,047 Trid.algevblxalfa.92277658 -  Total Iteraciones:200
+2022-12-05 17:28:18,475 Trid.algevblxalfa.92277658 - Empieza ejecucion algoritmo evolutivoBLXAlfa: 
+2022-12-05 17:28:18,501 Trid.algevblxalfa.92277658 - El tiempo total de ejecucion en ms es: 25.2056
+2022-12-05 17:28:18,501 Trid.algevblxalfa.92277658 - Funcion:Trid
+2022-12-05 17:28:18,501 Trid.algevblxalfa.92277658 - RangoInf: -1000.0
+2022-12-05 17:28:18,501 Trid.algevblxalfa.92277658 - RangoSup: 1000.0
+2022-12-05 17:28:18,501 Trid.algevblxalfa.92277658 - El coste del algoritmo EvolutivoBLXalfa es:2.506382264740358E13
+2022-12-05 17:28:18,501 Trid.algevblxalfa.92277658 - La semilla es:92277658
+2022-12-05 17:28:18,501 Trid.algevblxalfa.92277658 - Total Evaluaciones:10028
+2022-12-05 17:28:18,501 Trid.algevblxalfa.92277658 -  Total Iteraciones:200

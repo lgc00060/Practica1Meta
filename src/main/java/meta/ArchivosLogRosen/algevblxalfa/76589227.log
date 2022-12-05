@@ -1,9 +1,9 @@
-2022-12-05 16:49:07,891 Rosen.algevblxalfa.76589227 - Empieza ejecucion algoritmo evolutivoBLXAlfa: 
-2022-12-05 16:49:07,936 Rosen.algevblxalfa.76589227 - El tiempo total de ejecucion en ms es: 45.138917
-2022-12-05 16:49:07,936 Rosen.algevblxalfa.76589227 - Funcion:Rosen
-2022-12-05 16:49:07,937 Rosen.algevblxalfa.76589227 - RangoInf: -5.0
-2022-12-05 16:49:07,937 Rosen.algevblxalfa.76589227 - RangoSup: 10.0
-2022-12-05 16:49:07,937 Rosen.algevblxalfa.76589227 - El coste del algoritmo EvolutivoBLXalfa es:247.63865136964935
-2022-12-05 16:49:07,937 Rosen.algevblxalfa.76589227 - La semilla es:76589227
-2022-12-05 16:49:07,937 Rosen.algevblxalfa.76589227 - Total Evaluaciones:10030
-2022-12-05 16:49:07,937 Rosen.algevblxalfa.76589227 -  Total Iteraciones:200
+2022-12-05 17:28:17,437 Rosen.algevblxalfa.76589227 - Empieza ejecucion algoritmo evolutivoBLXAlfa: 
+2022-12-05 17:28:17,478 Rosen.algevblxalfa.76589227 - El tiempo total de ejecucion en ms es: 41.329
+2022-12-05 17:28:17,478 Rosen.algevblxalfa.76589227 - Funcion:Rosen
+2022-12-05 17:28:17,478 Rosen.algevblxalfa.76589227 - RangoInf: -5.0
+2022-12-05 17:28:17,478 Rosen.algevblxalfa.76589227 - RangoSup: 10.0
+2022-12-05 17:28:17,478 Rosen.algevblxalfa.76589227 - El coste del algoritmo EvolutivoBLXalfa es:262.00089986307273
+2022-12-05 17:28:17,478 Rosen.algevblxalfa.76589227 - La semilla es:76589227
+2022-12-05 17:28:17,478 Rosen.algevblxalfa.76589227 - Total Evaluaciones:10026
+2022-12-05 17:28:17,478 Rosen.algevblxalfa.76589227 -  Total Iteraciones:200

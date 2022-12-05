@@ -1,9 +1,9 @@
-2022-12-05 16:49:06,401 michale.aevmedia.76589227 - Empieza ejecucion EvolutivoMedia: 
-2022-12-05 16:49:06,432 michale.aevmedia.76589227 - El tiempo total de ejecucion en ms es: 31.070959
-2022-12-05 16:49:06,432 michale.aevmedia.76589227 - Funcion:michale
-2022-12-05 16:49:06,432 michale.aevmedia.76589227 - RangoInf: 0.0
-2022-12-05 16:49:06,432 michale.aevmedia.76589227 - RangoSup: 3.141592653589793
-2022-12-05 16:49:06,432 michale.aevmedia.76589227 - El coste del algoritmo EvolutivoMedia es:-3.697334913832535
-2022-12-05 16:49:06,432 michale.aevmedia.76589227 - La semilla es:76589227
-2022-12-05 16:49:06,432 michale.aevmedia.76589227 - Total Evaluaciones:10034
-2022-12-05 16:49:06,432 michale.aevmedia.76589227 - Total Iteraciones:200
+2022-12-05 17:28:16,000 michale.aevmedia.76589227 - Empieza ejecucion EvolutivoMedia: 
+2022-12-05 17:28:16,026 michale.aevmedia.76589227 - El tiempo total de ejecucion en ms es: 25.8219
+2022-12-05 17:28:16,026 michale.aevmedia.76589227 - Funcion:michale
+2022-12-05 17:28:16,026 michale.aevmedia.76589227 - RangoInf: 0.0
+2022-12-05 17:28:16,026 michale.aevmedia.76589227 - RangoSup: 3.141592653589793
+2022-12-05 17:28:16,026 michale.aevmedia.76589227 - El coste del algoritmo EvolutivoMedia es:-4.951362952676927
+2022-12-05 17:28:16,026 michale.aevmedia.76589227 - La semilla es:76589227
+2022-12-05 17:28:16,026 michale.aevmedia.76589227 - Total Evaluaciones:10033
+2022-12-05 17:28:16,026 michale.aevmedia.76589227 - Total Iteraciones:200

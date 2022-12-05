@@ -1,9 +1,9 @@
-2022-12-05 16:49:06,027 griewank.aevmedia.22776589 - Empieza ejecucion EvolutivoMedia: 
-2022-12-05 16:49:06,059 griewank.aevmedia.22776589 - El tiempo total de ejecucion en ms es: 31.628375
-2022-12-05 16:49:06,059 griewank.aevmedia.22776589 - Funcion:griewank
-2022-12-05 16:49:06,059 griewank.aevmedia.22776589 - RangoInf: -600.0
-2022-12-05 16:49:06,059 griewank.aevmedia.22776589 - RangoSup: 600.0
-2022-12-05 16:49:06,059 griewank.aevmedia.22776589 - El coste del algoritmo EvolutivoMedia es:-2.3710830981629667
-2022-12-05 16:49:06,059 griewank.aevmedia.22776589 - La semilla es:22776589
-2022-12-05 16:49:06,059 griewank.aevmedia.22776589 - Total Evaluaciones:10032
-2022-12-05 16:49:06,059 griewank.aevmedia.22776589 - Total Iteraciones:200
+2022-12-05 17:28:15,605 griewank.aevmedia.22776589 - Empieza ejecucion EvolutivoMedia: 
+2022-12-05 17:28:15,640 griewank.aevmedia.22776589 - El tiempo total de ejecucion en ms es: 35.1458
+2022-12-05 17:28:15,640 griewank.aevmedia.22776589 - Funcion:griewank
+2022-12-05 17:28:15,640 griewank.aevmedia.22776589 - RangoInf: -600.0
+2022-12-05 17:28:15,640 griewank.aevmedia.22776589 - RangoSup: 600.0
+2022-12-05 17:28:15,640 griewank.aevmedia.22776589 - El coste del algoritmo EvolutivoMedia es:-1.3841252223573863
+2022-12-05 17:28:15,640 griewank.aevmedia.22776589 - La semilla es:22776589
+2022-12-05 17:28:15,640 griewank.aevmedia.22776589 - Total Evaluaciones:10029
+2022-12-05 17:28:15,640 griewank.aevmedia.22776589 - Total Iteraciones:200

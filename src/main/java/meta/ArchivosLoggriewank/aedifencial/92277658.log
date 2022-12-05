@@ -1,9 +1,9 @@
-2022-12-05 16:49:06,176 griewank.aedifencial.92277658 - Empieza ejecucion algoritmo Diferencial: 
-2022-12-05 16:49:06,193 griewank.aedifencial.92277658 - El tiempo total de ejecucion en ms es: 16.679208
-2022-12-05 16:49:06,193 griewank.aedifencial.92277658 - Funcion:griewank
-2022-12-05 16:49:06,193 griewank.aedifencial.92277658 - RangoInf: -600.0
-2022-12-05 16:49:06,193 griewank.aedifencial.92277658 - RangoSup: 600.0
-2022-12-05 16:49:06,193 griewank.aedifencial.92277658 - El coste del algoritmo Diferencial es:2.1996027375466034
-2022-12-05 16:49:06,193 griewank.aedifencial.92277658 - La semilla es:92277658
-2022-12-05 16:49:06,193 griewank.aedifencial.92277658 - Total Evaluaciones:10000
-2022-12-05 16:49:06,193 griewank.aedifencial.92277658 -  Total Iteraciones:199
+2022-12-05 17:28:15,794 griewank.aedifencial.92277658 - Empieza ejecucion algoritmo Diferencial: 
+2022-12-05 17:28:15,820 griewank.aedifencial.92277658 - El tiempo total de ejecucion en ms es: 26.0332
+2022-12-05 17:28:15,820 griewank.aedifencial.92277658 - Funcion:griewank
+2022-12-05 17:28:15,820 griewank.aedifencial.92277658 - RangoInf: -600.0
+2022-12-05 17:28:15,820 griewank.aedifencial.92277658 - RangoSup: 600.0
+2022-12-05 17:28:15,820 griewank.aedifencial.92277658 - El coste del algoritmo Diferencial es:-1.330184160563062
+2022-12-05 17:28:15,820 griewank.aedifencial.92277658 - La semilla es:92277658
+2022-12-05 17:28:15,820 griewank.aedifencial.92277658 - Total Evaluaciones:10000
+2022-12-05 17:28:15,820 griewank.aedifencial.92277658 -  Total Iteraciones:199

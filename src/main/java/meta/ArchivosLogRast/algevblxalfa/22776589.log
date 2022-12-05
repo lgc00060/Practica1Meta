@@ -1,9 +1,9 @@
-2022-12-05 16:49:07,580 Rast.algevblxalfa.22776589 - Empieza ejecucion algoritmo evolutivoBLXAlfa: 
-2022-12-05 16:49:07,613 Rast.algevblxalfa.22776589 - El tiempo total de ejecucion en ms es: 33.036334
-2022-12-05 16:49:07,613 Rast.algevblxalfa.22776589 - Funcion:Rast
-2022-12-05 16:49:07,613 Rast.algevblxalfa.22776589 - RangoInf: -51.12
-2022-12-05 16:49:07,613 Rast.algevblxalfa.22776589 - RangoSup: 51.12
-2022-12-05 16:49:07,613 Rast.algevblxalfa.22776589 - El coste del algoritmo EvolutivoBLXalfa es:3174.481404446317
-2022-12-05 16:49:07,613 Rast.algevblxalfa.22776589 - La semilla es:22776589
-2022-12-05 16:49:07,613 Rast.algevblxalfa.22776589 - Total Evaluaciones:10034
-2022-12-05 16:49:07,613 Rast.algevblxalfa.22776589 -  Total Iteraciones:200
+2022-12-05 17:28:17,185 Rast.algevblxalfa.22776589 - Empieza ejecucion algoritmo evolutivoBLXAlfa: 
+2022-12-05 17:28:17,211 Rast.algevblxalfa.22776589 - El tiempo total de ejecucion en ms es: 25.7927
+2022-12-05 17:28:17,211 Rast.algevblxalfa.22776589 - Funcion:Rast
+2022-12-05 17:28:17,211 Rast.algevblxalfa.22776589 - RangoInf: -51.12
+2022-12-05 17:28:17,211 Rast.algevblxalfa.22776589 - RangoSup: 51.12
+2022-12-05 17:28:17,211 Rast.algevblxalfa.22776589 - El coste del algoritmo EvolutivoBLXalfa es:2969.4629685929813
+2022-12-05 17:28:17,211 Rast.algevblxalfa.22776589 - La semilla es:22776589
+2022-12-05 17:28:17,211 Rast.algevblxalfa.22776589 - Total Evaluaciones:10028
+2022-12-05 17:28:17,211 Rast.algevblxalfa.22776589 -  Total Iteraciones:200

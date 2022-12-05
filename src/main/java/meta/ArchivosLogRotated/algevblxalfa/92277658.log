@@ -1,9 +1,9 @@
-2022-12-05 16:49:08,380 Rotated.algevblxalfa.92277658 - Empieza ejecucion algoritmo evolutivoBLXAlfa: 
-2022-12-05 16:49:08,407 Rotated.algevblxalfa.92277658 - El tiempo total de ejecucion en ms es: 27.05925
-2022-12-05 16:49:08,407 Rotated.algevblxalfa.92277658 - Funcion:Rotated
-2022-12-05 16:49:08,407 Rotated.algevblxalfa.92277658 - RangoInf: -65.536
-2022-12-05 16:49:08,407 Rotated.algevblxalfa.92277658 - RangoSup: 65.536
-2022-12-05 16:49:08,407 Rotated.algevblxalfa.92277658 - El coste del algoritmo EvolutivoBLXalfa es:3843.5228067292087
-2022-12-05 16:49:08,407 Rotated.algevblxalfa.92277658 - La semilla es:92277658
-2022-12-05 16:49:08,407 Rotated.algevblxalfa.92277658 - Total Evaluaciones:10034
-2022-12-05 16:49:08,407 Rotated.algevblxalfa.92277658 -  Total Iteraciones:200
+2022-12-05 17:28:17,847 Rotated.algevblxalfa.92277658 - Empieza ejecucion algoritmo evolutivoBLXAlfa: 
+2022-12-05 17:28:17,871 Rotated.algevblxalfa.92277658 - El tiempo total de ejecucion en ms es: 25.0266
+2022-12-05 17:28:17,871 Rotated.algevblxalfa.92277658 - Funcion:Rotated
+2022-12-05 17:28:17,871 Rotated.algevblxalfa.92277658 - RangoInf: -65.536
+2022-12-05 17:28:17,871 Rotated.algevblxalfa.92277658 - RangoSup: 65.536
+2022-12-05 17:28:17,871 Rotated.algevblxalfa.92277658 - El coste del algoritmo EvolutivoBLXalfa es:3975.6870049267277
+2022-12-05 17:28:17,871 Rotated.algevblxalfa.92277658 - La semilla es:92277658
+2022-12-05 17:28:17,871 Rotated.algevblxalfa.92277658 - Total Evaluaciones:10031
+2022-12-05 17:28:17,871 Rotated.algevblxalfa.92277658 -  Total Iteraciones:200

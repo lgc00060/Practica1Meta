@@ -1,9 +1,9 @@
-2022-12-05 16:49:08,898 Schew.aedifencial.92277658 - Empieza ejecucion algoritmo Diferencial: 
-2022-12-05 16:49:08,905 Schew.aedifencial.92277658 - El tiempo total de ejecucion en ms es: 7.536
-2022-12-05 16:49:08,905 Schew.aedifencial.92277658 - Funcion:Schew
-2022-12-05 16:49:08,905 Schew.aedifencial.92277658 - RangoInf: -500.0
-2022-12-05 16:49:08,905 Schew.aedifencial.92277658 - RangoSup: 500.0
-2022-12-05 16:49:08,905 Schew.aedifencial.92277658 - El coste del algoritmo Diferencial es:4661078.595904189
-2022-12-05 16:49:08,905 Schew.aedifencial.92277658 - La semilla es:92277658
-2022-12-05 16:49:08,905 Schew.aedifencial.92277658 - Total Evaluaciones:10000
-2022-12-05 16:49:08,905 Schew.aedifencial.92277658 -  Total Iteraciones:199
+2022-12-05 17:28:18,357 Schew.aedifencial.92277658 - Empieza ejecucion algoritmo Diferencial: 
+2022-12-05 17:28:18,368 Schew.aedifencial.92277658 - El tiempo total de ejecucion en ms es: 11.9449
+2022-12-05 17:28:18,369 Schew.aedifencial.92277658 - Funcion:Schew
+2022-12-05 17:28:18,369 Schew.aedifencial.92277658 - RangoInf: -500.0
+2022-12-05 17:28:18,369 Schew.aedifencial.92277658 - RangoSup: 500.0
+2022-12-05 17:28:18,369 Schew.aedifencial.92277658 - El coste del algoritmo Diferencial es:3546395.2346952157
+2022-12-05 17:28:18,369 Schew.aedifencial.92277658 - La semilla es:92277658
+2022-12-05 17:28:18,369 Schew.aedifencial.92277658 - Total Evaluaciones:10000
+2022-12-05 17:28:18,369 Schew.aedifencial.92277658 -  Total Iteraciones:199

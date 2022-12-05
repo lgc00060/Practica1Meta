@@ -38,7 +38,7 @@ public class AEvBLXalfa_Clase3_Grupo5 {
         double costeMejorPrimero = 0.0;
         double costeMejorSegundo = 0.0;
         boolean enc;
-        int posAnt = 0;
+        int posiciAnt = 0;
         int c1=0, c2=0, c3=0, c4=0;
 
         logger.info("Empieza ejecucion algoritmo evolutivoBLXAlfa: ");
@@ -65,7 +65,7 @@ public class AEvBLXalfa_Clase3_Grupo5 {
 
             //cruce torneo 2 a 2 llamar a la funcion
             for (int i = 0; i < tampoblacion; i++) {
-                //cruceTorneo2a2(tampoblacion,nuevaGeneracion,costeNuevaGeneracion,mejorPrimero,mejorSegundo,posAnt,costeMejorPrimero,costeMejorSegundo,c1,c2,c3,c4,aleatorio);
+                //cruceTorneo2a2(tampoblacion,nuevaGeneracion,costeNuevaGeneracion,mejorPrimero,mejorSegundo,posiciAnt,costeMejorPrimero,costeMejorSegundo,c1,c2,c3,c4,aleatorio);
 
                 c1 = aleatorio.nextInt((tampoblacion));
                 while (c1 == (c2 = aleatorio.nextInt(tampoblacion))) ;
@@ -80,8 +80,8 @@ public class AEvBLXalfa_Clase3_Grupo5 {
                     costeMejorPrimero = costeNuevaGeneracion[c2];
                 }
 
-                while (posAnt == (c3 = aleatorio.nextInt(tampoblacion))) ;
-                while (posAnt == (c4 = aleatorio.nextInt(tampoblacion)));
+                while (posiciAnt == (c3 = aleatorio.nextInt(tampoblacion))) ;
+                while (posiciAnt == (c4 = aleatorio.nextInt(tampoblacion)));
 
 
                 if (costeNuevaGeneracion[c3] < costeNuevaGeneracion[c4]) {

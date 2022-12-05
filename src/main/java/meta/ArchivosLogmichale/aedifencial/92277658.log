@@ -1,9 +1,9 @@
-2022-12-05 16:49:06,618 michale.aedifencial.92277658 - Empieza ejecucion algoritmo Diferencial: 
-2022-12-05 16:49:06,634 michale.aedifencial.92277658 - El tiempo total de ejecucion en ms es: 15.664958
-2022-12-05 16:49:06,634 michale.aedifencial.92277658 - Funcion:michale
-2022-12-05 16:49:06,634 michale.aedifencial.92277658 - RangoInf: 0.0
-2022-12-05 16:49:06,634 michale.aedifencial.92277658 - RangoSup: 3.141592653589793
-2022-12-05 16:49:06,634 michale.aedifencial.92277658 - El coste del algoritmo Diferencial es:-3.7857396329864197
-2022-12-05 16:49:06,634 michale.aedifencial.92277658 - La semilla es:92277658
-2022-12-05 16:49:06,634 michale.aedifencial.92277658 - Total Evaluaciones:10000
-2022-12-05 16:49:06,634 michale.aedifencial.92277658 -  Total Iteraciones:199
+2022-12-05 17:28:16,221 michale.aedifencial.92277658 - Empieza ejecucion algoritmo Diferencial: 
+2022-12-05 17:28:16,240 michale.aedifencial.92277658 - El tiempo total de ejecucion en ms es: 19.0455
+2022-12-05 17:28:16,240 michale.aedifencial.92277658 - Funcion:michale
+2022-12-05 17:28:16,240 michale.aedifencial.92277658 - RangoInf: 0.0
+2022-12-05 17:28:16,240 michale.aedifencial.92277658 - RangoSup: 3.141592653589793
+2022-12-05 17:28:16,240 michale.aedifencial.92277658 - El coste del algoritmo Diferencial es:-5.105483019384152
+2022-12-05 17:28:16,240 michale.aedifencial.92277658 - La semilla es:92277658
+2022-12-05 17:28:16,240 michale.aedifencial.92277658 - Total Evaluaciones:10000
+2022-12-05 17:28:16,240 michale.aedifencial.92277658 -  Total Iteraciones:199

@@ -1,9 +1,9 @@
-2022-12-05 16:49:08,232 Rosen.aedifencial.27765892 - Empieza ejecucion algoritmo Diferencial: 
-2022-12-05 16:49:08,241 Rosen.aedifencial.27765892 - El tiempo total de ejecucion en ms es: 8.528417
-2022-12-05 16:49:08,241 Rosen.aedifencial.27765892 - Funcion:Rosen
-2022-12-05 16:49:08,241 Rosen.aedifencial.27765892 - RangoInf: -5.0
-2022-12-05 16:49:08,241 Rosen.aedifencial.27765892 - RangoSup: 10.0
-2022-12-05 16:49:08,241 Rosen.aedifencial.27765892 - El coste del algoritmo Diferencial es:23799.446838358923
-2022-12-05 16:49:08,241 Rosen.aedifencial.27765892 - La semilla es:27765892
-2022-12-05 16:49:08,241 Rosen.aedifencial.27765892 - Total Evaluaciones:10000
-2022-12-05 16:49:08,241 Rosen.aedifencial.27765892 -  Total Iteraciones:199
+2022-12-05 17:28:17,709 Rosen.aedifencial.27765892 - Empieza ejecucion algoritmo Diferencial: 
+2022-12-05 17:28:17,721 Rosen.aedifencial.27765892 - El tiempo total de ejecucion en ms es: 11.2961
+2022-12-05 17:28:17,721 Rosen.aedifencial.27765892 - Funcion:Rosen
+2022-12-05 17:28:17,721 Rosen.aedifencial.27765892 - RangoInf: -5.0
+2022-12-05 17:28:17,721 Rosen.aedifencial.27765892 - RangoSup: 10.0
+2022-12-05 17:28:17,721 Rosen.aedifencial.27765892 - El coste del algoritmo Diferencial es:25239.76521529914
+2022-12-05 17:28:17,721 Rosen.aedifencial.27765892 - La semilla es:27765892
+2022-12-05 17:28:17,721 Rosen.aedifencial.27765892 - Total Evaluaciones:10000
+2022-12-05 17:28:17,721 Rosen.aedifencial.27765892 -  Total Iteraciones:199

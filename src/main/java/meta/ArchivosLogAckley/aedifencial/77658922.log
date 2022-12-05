@@ -1,9 +1,9 @@
-2022-12-05 16:49:05,010 Ackley.aedifencial.77658922 - Empieza ejecucion algoritmo Diferencial: 
-2022-12-05 16:49:05,031 Ackley.aedifencial.77658922 - El tiempo total de ejecucion en ms es: 21.862
-2022-12-05 16:49:05,032 Ackley.aedifencial.77658922 - Funcion:Ackley
-2022-12-05 16:49:05,032 Ackley.aedifencial.77658922 - RangoInf: -32768.0
-2022-12-05 16:49:05,033 Ackley.aedifencial.77658922 - RangoSup: 32768.0
-2022-12-05 16:49:05,033 Ackley.aedifencial.77658922 - El coste del algoritmo Diferencial es:21.66132929369166
-2022-12-05 16:49:05,033 Ackley.aedifencial.77658922 - La semilla es:77658922
-2022-12-05 16:49:05,034 Ackley.aedifencial.77658922 - Total Evaluaciones:10000
-2022-12-05 16:49:05,034 Ackley.aedifencial.77658922 -  Total Iteraciones:199
+2022-12-05 17:28:14,688 Ackley.aedifencial.77658922 - Empieza ejecucion algoritmo Diferencial: 
+2022-12-05 17:28:14,709 Ackley.aedifencial.77658922 - El tiempo total de ejecucion en ms es: 20.7601
+2022-12-05 17:28:14,709 Ackley.aedifencial.77658922 - Funcion:Ackley
+2022-12-05 17:28:14,709 Ackley.aedifencial.77658922 - RangoInf: -32768.0
+2022-12-05 17:28:14,709 Ackley.aedifencial.77658922 - RangoSup: 32768.0
+2022-12-05 17:28:14,709 Ackley.aedifencial.77658922 - El coste del algoritmo Diferencial es:21.710134067467802
+2022-12-05 17:28:14,709 Ackley.aedifencial.77658922 - La semilla es:77658922
+2022-12-05 17:28:14,709 Ackley.aedifencial.77658922 - Total Evaluaciones:10000
+2022-12-05 17:28:14,710 Ackley.aedifencial.77658922 -  Total Iteraciones:199
