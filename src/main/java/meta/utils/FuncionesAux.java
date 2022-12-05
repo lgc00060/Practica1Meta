@@ -9,19 +9,24 @@ import java.util.stream.Collectors;
 
 
 public class FuncionesAux {
-
+     /**
+     * @brief Funcion que sirve para
+     * @param v: vector
+     * @param pos: posicion del vector
+     * @param valor: valor
+     */
     public static void Mutacion(double[] v, int pos, double valor) {
         v[pos] = valor;
     }
 
-    public static double MAPE(double[] real, double[] estimation) {
+    public static double MAPE(double[] real, double[] estimacion) {
         int N = real.length;
         double score;
         double sum = 0.0;
         double num = 0.0;
         for (int i = 0; i < N; i++) {
             if (real[i] != 0) {
-                sum += Math.abs((real[i] - estimation[i]) / Math.abs(real[i]));
+                sum += Math.abs((real[i] - estimacion[i]) / Math.abs(real[i]));
                 num++;
             }
         }
@@ -29,12 +34,12 @@ public class FuncionesAux {
         return score;
     }
 
-    public static double RMSE(double[] real, double[] estimation) {
+    public static double RMSE(double[] real, double[] estimacion) {
         int N = real.length;
         double score;
         double sum = 0;
         for (int i = 0; i < N; i++) {
-            sum += Math.pow(real[i] - estimation[i], 2);
+            sum += Math.pow(real[i] - estimacion[i], 2);
         }
         score = Math.sqrt(1.0 / N * sum);
         return score;
