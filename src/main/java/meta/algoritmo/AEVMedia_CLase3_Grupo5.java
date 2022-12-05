@@ -28,7 +28,7 @@ public class AEVMedia_CLase3_Grupo5 {
         double[] mejorCromosomaGlobal = mejorCromosoma;
         double  probabilidadMutacion= kProbMuta;
         int contador = tampoblacion;
-        double[] h = new double[tam];
+        double[] resultante = new double[tam];
         double[] mejorPrimero = new double[tampoblacion],mejorSegundo = new double[tampoblacion];
         double[] costes = new double[tampoblacion], costeNuevaGeneracionSegunda = new double[tampoblacion];
         boolean[] marcados=new boolean[tampoblacion];
@@ -91,8 +91,8 @@ public class AEVMedia_CLase3_Grupo5 {
 
                 double num = aleatorio.nextDouble();
                 if (num < probabilidadCruce) {
-                    cruceMedia(tam,mejorPrimero,mejorSegundo,h);
-                    nuevaGeneracionSegunda.add(i, h);
+                    cruceMedia(tam,mejorPrimero,mejorSegundo,resultante);
+                    nuevaGeneracionSegunda.add(i, resultante);
                     marcados[i] = true;
                 } else {
                     nuevaGeneracionSegunda.add(i, mejorPrimero);

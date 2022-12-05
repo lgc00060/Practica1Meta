@@ -45,9 +45,9 @@ public class FuncionesAux {
         return score;
     }
 
-    public static void cruceMedia(int tam, double[] a, double[] b, double[] h) {
+    public static void cruceMedia(int tam, double[] a, double[] b, double[] res) {
         for (int i = 0; i < tam; i++) {
-            h[i] = (a[i] + b[i]) / 2;
+            res[i] = (a[i] + b[i]) / 2;
         }
     }
 
