@@ -63,7 +63,7 @@ public class AEvBLXalfa_Clase3_Grupo5 {
         logger.info("Poblacion inicial: ");
         for(int i=0;i<tampoblacion;i++){
             for(int j=0;j<tampoblacion;j++){
-                logger.info(""+ cromosomas.get(i)[j]);
+                logger.info("Cromosoma de la poblacion inicial: "+ cromosomas.get(i)[j]);
             }
         }
 
@@ -140,7 +140,6 @@ public class AEvBLXalfa_Clase3_Grupo5 {
             for (int i = 0; i < nuevaGeneracion.size() && !enc; i++) {
                 if (mejorCromosoma == nuevaGeneracion.get(i))
                     enc = true;
-
             }
 
 
@@ -185,8 +184,7 @@ public class AEvBLXalfa_Clase3_Grupo5 {
         logger.info("El coste del algoritmo EvolutivoBLXalfa es: " + mejorCosteGlobal);
         logger.info("Numero total de Evaluaciones: " + contador);
         logger.info("Numero total de Iteraciones: " + t);
-        //logger.info("Nueva poblacion: "+nuevaGeneracion);
-        logger.info("Mejor cromosoma de la nueva poblacion: "+formatoVector(nuevaGeneracion.get(mejorCromosomaHijo)));
+        logger.info("Mejor cromosoma de la nueva poblacion: "+formatoVector(solucion));
     }
 
 }

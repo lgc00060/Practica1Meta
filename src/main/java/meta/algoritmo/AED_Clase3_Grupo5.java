@@ -44,6 +44,15 @@ public class AED_Clase3_Grupo5 {
             }
         }
 
+        logger.info("Poblacion inicial: ");
+        for(int i=0;i<tampoblacion;i++){
+            for(int j=0;j<tampoblacion;j++){
+                logger.info("Cromosoma de la poblacion inicial: "+ cromosomas.get(i)[j]);
+            }
+        }
+
+        logger.info("Mejor cromosoma de la poblacion inicial es: " + formatoVector(mejorCromosoma));
+
         //Comenzaran las iteraciones
         while (contador < evaluaciones) {
             for(int i=0;i<tampoblacion;i++){
@@ -108,6 +117,6 @@ public class AED_Clase3_Grupo5 {
         logger.info("La semilla es:" + semilla);
         logger.info("Total Evaluaciones:" + contador);
         logger.info(" Total Iteraciones:" + t);
-
+        logger.info("Mejor cromosoma de la nueva poblacion: "+formatoVector(solucion));
     }
 }
