@@ -1,5 +1,6 @@
 package meta.algoritmo;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.log4j.Logger;
@@ -13,7 +14,7 @@ import static meta.funciones.Funciones.evaluaCoste;
 import static meta.utils.FuncionesAux.*;
 
 public class AEvBLXalfa_Clase3_Grupo5 {
-    public static void Aevblxalfa_clase3_grupo5(int tampoblacion, int tam, int evaluaciones, double[] solucion, double rmin, double rmax, double kProbMuta, double probabilidadCruce, double alfa, String funcion, long semilla,  Logger logger) {
+    public static void Aevblxalfa_clase3_grupo5(int tampoblacion, int tam, int evaluaciones, double[] solucion, double rmin, double rmax, double kProbMuta, double probabilidadCruce, double alfa, String funcion, long semilla,  Logger logger) throws IOException {
         long tiempoInicial = System.nanoTime();
         Random aleatorio = new Random();
         int t = 0;

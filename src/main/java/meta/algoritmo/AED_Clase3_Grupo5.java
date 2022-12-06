@@ -2,6 +2,7 @@ package meta.algoritmo;
 
 import org.apache.log4j.Logger;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -10,7 +11,7 @@ import static meta.funciones.Funciones.evaluaCoste;
 import static meta.utils.FuncionesAux.*;
 
 public class AED_Clase3_Grupo5 {
-    public static void AED(int tampoblacion, int tam, int evaluaciones, double[] solucion, double rmin, double rmax, String funcion, long semilla, Logger logger) {
+    public static void AED(int tampoblacion, int tam, int evaluaciones, double[] solucion, double rmin, double rmax, String funcion, long semilla, Logger logger) throws IOException {
         long tiempoInicial = System.nanoTime();
         Random aleatorio = new Random();
         int t = 0;
