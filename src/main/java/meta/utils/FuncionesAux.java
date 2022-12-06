@@ -7,6 +7,8 @@ import java.io.PrintWriter;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static meta.utils.DaidoLector.daidos;
+
 
 public class FuncionesAux {
     public static void Mutacion(double[] v, int pos, double valor) {
@@ -99,23 +101,40 @@ public class FuncionesAux {
         }
     }
 
-    public static double funcionPotencia(double[] v,String tipoError,List <Daido> observaciones){
+    public static double funcionPotenciaMAPE(double[] v) throws IOException {
         double potencia;
-        int filas=observaciones.size();//
-        double[] real = new double[filas], estimado = new double[filas];
+        List<Daido> vectorob= daidos("src/main/resources/daido-tra.dat");
+        int filas=vectorob.size();//
+        double[] valorReal = new double[filas], valorEst = new double[filas];
 
         for (int i=0; i<filas; i++){
-            potencia=observaciones.get(i).getDni() * (v[0] + (v[1] * observaciones.get(i).getDni()) + (v[2]
-                    * observaciones.get(i).getTemp_amb()) + (v[3] * observaciones.get(i).getVel_viento()) +
-                    (v[4] * observaciones.get(i).getSmr()));
+            potencia=vectorob.get(i).getDni() * (v[0] + (v[1] * vectorob.get(i).getDni()) + (v[2]
+                    * vectorob.get(i).getTemp_amb()) + (v[3] * vectorob.get(i).getVel_viento()) +
+                    (v[4] * vectorob.get(i).getSmr()));
 
-            estimado[i]=potencia;
-            real[i]=observaciones.get(i).getPotencia();
+            valorEst[i]=potencia;
+            valorReal[i]=vectorob.get(i).getPotencia();
 
         }
+        return MAPE(valorReal, valorEst);
+    }
 
-        return tipoError.equals("MAPE") ? MAPE(real, estimado) : RMSE(real, estimado);
+    public static double funcionPotenciaRMSE(double[] v) throws IOException {
+        double potencia;
+        List<Daido> vectorob= daidos("src/main/resources/daido-tra.dat");
+        int filas=vectorob.size();//
+        double[] valorReal = new double[filas], valorEst = new double[filas];
 
+        for (int i=0; i<filas; i++){
+            potencia=vectorob.get(i).getDni() * (v[0] + (v[1] * vectorob.get(i).getDni()) + (v[2]
+                    * vectorob.get(i).getTemp_amb()) + (v[3] * vectorob.get(i).getVel_viento()) +
+                    (v[4] * vectorob.get(i).getSmr()));
+
+            valorEst[i]=potencia;
+            valorReal[i]=vectorob.get(i).getPotencia();
+
+        }
+        return RMSE(valorReal, valorEst);
     }
 
     /**

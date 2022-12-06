@@ -1,5 +1,10 @@
 package meta.funciones;
 
+import java.io.IOException;
+
+import static meta.utils.FuncionesAux.funcionPotenciaMAPE;
+import static meta.utils.FuncionesAux.funcionPotenciaRMSE;
+
 public class Funciones {
 
     public static double ackleyFunction(double[] v) {
@@ -145,7 +150,7 @@ public class Funciones {
         }
         return score;
     }
-    public static double evaluaCoste(double[] v, String funcion) {
+    public static double evaluaCoste(double[] v, String funcion) throws IOException {
         switch (funcion) {
             case "Ackley":
                 return ackleyFunction(v);
@@ -176,6 +181,12 @@ public class Funciones {
 
             case "Trid":
                 return rosenFunction(v);
+
+            case "FuncionPotenciaMAPE":
+                return funcionPotenciaMAPE(v);
+
+            case "FuncionPotenciaRMSE":
+                return funcionPotenciaRMSE(v);
 
             default:
                 return -1;

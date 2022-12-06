@@ -12,7 +12,7 @@ public class DaidoLector {
         FileReader f;
         f = new FileReader(rutaArchConfig);
         BufferedReader b = new BufferedReader(f);
-        b.readLine(); // para skipear la primera linea
+        b.readLine();
         String linea;
         while ((linea = b.readLine()) != null) {
             Daido daido = new Daido();
