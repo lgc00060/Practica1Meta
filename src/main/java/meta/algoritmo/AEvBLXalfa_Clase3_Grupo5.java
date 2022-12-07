@@ -15,6 +15,9 @@ import static meta.utils.FuncionesAux.*;
 
 public class AEvBLXalfa_Clase3_Grupo5 {
     public static void Aevblxalfa_clase3_grupo5(int tampoblacion, int tam, int evaluaciones, double[] solucion, double rmin, double rmax, double kProbMuta, double probabilidadCruce, double alfa, String funcion, long semilla,  Logger logger) throws IOException {
+        if(funcion.equals("FuncionPotenciaMAPE") || funcion.equals("FuncionPotenciaRMSE"))
+            tam=5;
+
         long tiempoInicial = System.nanoTime();
         Random aleatorio = new Random();
         int t = 0;
@@ -41,6 +44,7 @@ public class AEvBLXalfa_Clase3_Grupo5 {
         boolean enc;
         int posiciAnt = 0;
         int c1=0, c2=0, c3=0, c4=0;
+
 
         logger.info("Empieza ejecucion algoritmo evolutivoBLXAlfa: ");
 
