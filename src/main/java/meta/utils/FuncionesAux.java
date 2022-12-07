@@ -102,8 +102,8 @@ public class FuncionesAux {
     }
 
     public static double funcionPotenciaMAPE(double[] v) throws IOException {
-        double potencia;
         List<Daido> vectorob= daidos("src/main/resources/daido-tra.dat");
+        double potencia;
         int filas=vectorob.size();//
         double[] valorReal = new double[filas], valorEst = new double[filas];
 
@@ -120,18 +120,17 @@ public class FuncionesAux {
     }
 
     public static double funcionPotenciaRMSE(double[] v) throws IOException {
+        List<Daido> vectorob = daidos("src/main/resources/daido-tra.dat");
         double potencia;
-        List<Daido> vectorob= daidos("src/main/resources/daido-tra.dat");
-        int filas=vectorob.size();//
+        int filas = vectorob.size();
         double[] valorReal = new double[filas], valorEst = new double[filas];
 
-        for (int i=0; i<filas; i++){
-            potencia=vectorob.get(i).getDni() * (v[0] + (v[1] * vectorob.get(i).getDni()) + (v[2]
+        for (int i = 0; i < filas; i++) {
+            potencia = vectorob.get(i).getDni() * (v[0] + (v[1] * vectorob.get(i).getDni()) + (v[2]
                     * vectorob.get(i).getTemp_amb()) + (v[3] * vectorob.get(i).getVel_viento()) +
                     (v[4] * vectorob.get(i).getSmr()));
-
-            valorEst[i]=potencia;
-            valorReal[i]=vectorob.get(i).getPotencia();
+            valorEst[i] = potencia;
+            valorReal[i] = vectorob.get(i).getPotencia();
 
         }
         return RMSE(valorReal, valorEst);

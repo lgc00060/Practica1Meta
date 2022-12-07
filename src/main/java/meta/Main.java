@@ -59,7 +59,7 @@ public class Main {
                             AED(poblacion,d,evaluaciones,Solucion,rangoInf[i],rangoSup[i],funcion,semilla,logger);
                         }
                     }
-                    //createAppendersLog(archivoConfig,ruta);
+                    createAppendersLog(archivoConfig,ruta);
                 }
                 List<Daido> daidos = daidos("src/main/resources/daido-tra.dat");
             }

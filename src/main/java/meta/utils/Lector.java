@@ -30,9 +30,9 @@ public class Lector {
 
     private ArrayList<String> funciones = new ArrayList<>();
 
-    private double[] rangoInf = new double[10];
+    private double[] rangoInf = new double[12];
 
-    private double[] rangoSup = new double[10];
+    private double[] rangoSup = new double[12];
 
     //Simbolo de separacion
     private String simbolo = "=";
