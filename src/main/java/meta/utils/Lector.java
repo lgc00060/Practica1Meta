@@ -10,7 +10,15 @@ public class Lector {
     int tamSem = 5;
     private Long[] semilla = new Long[tamSem];
 
-    private int d;
+    private int tam;
+
+    private float q0;
+
+    public int greedy;
+
+    private float p;
+
+    private float fi;
 
     private ArrayList<String> algoritmos = new ArrayList<>();
 
@@ -18,15 +26,11 @@ public class Lector {
 
     private int poblacion;
 
-    private float prob_cambio;
-
-    private float cruce;
-
-    private float mutacion;
+    private int beta;
 
     private float alfa;
 
-    private long iteraciones;
+    private int evaluaciones;
 
     private ArrayList<String> funciones = new ArrayList<>();
 
@@ -68,11 +72,6 @@ public class Lector {
                         }
                         break;
 
-                    case "d":
-                        //Los añadimos al atributo
-                        d = Integer.parseInt(split[1]);
-                        break;
-
                     case "algoritmos":
                         String[] splittalgg = split[1].split(" ");
                         for (int q = 0; q < splittalgg.length; q++) {
@@ -80,43 +79,13 @@ public class Lector {
                         }
                         break;
 
-                    case "k":
-                        k = Integer.parseInt(split[1]);
+                    case "tam":
+                        //Los añadimos al atributo
+                        tam = Integer.parseInt(split[1]);
                         break;
 
-
-                    case "iteraciones":
-                        iteraciones = Long.parseLong(split[1]);
-                        break;
-
-                    case "prob_cambio":
-                        prob_cambio = Float.parseFloat(split[1]);
-                        break;
-
-                    case "funciones":
-                        String[] splitfun = split[1].split(", ");
-                        for (int q = 0; q < splitfun.length; q++) {
-                            funciones.add(splitfun[q]);
-                        }
-                        break;
-
-                    case "rangoInf":
-                        String[] splitrangI = split[1].split(" ");
-                        for (int q = 0; q < splitrangI.length; q++) {
-                            rangoInf[q] = Double.parseDouble(splitrangI[q]);
-                        }
-                        break;
-
-                    case "rangoSup":
-                        String[] splitrangS = split[1].split(" ");
-                        for (int q = 0; q < splitrangS.length; q++) {
-                            if (splitrangS[q].equals("PI")) {
-                                rangoSup[q] = Math.PI;
-                            } else {
-                                rangoSup[q] = Double.parseDouble(splitrangS[q]);
-                                ;
-                            }
-                        }
+                    case "evaluaciones":
+                        evaluaciones = Integer.parseInt(split[1]);
                         break;
 
                     case "poblacion":
@@ -124,18 +93,32 @@ public class Lector {
                         // System.out.println("k:" + k);
                         break;
 
-                    case "cruce":
-                        cruce = Float.parseFloat(split[1]);
-                        break;
-
-                    case "mutacion":
-                        mutacion = Float.parseFloat(split[1]);
+                    case "greedy":
+                        greedy = Integer.parseInt(split[1]);
                         break;
 
                     case "alfa":
                         alfa = Float.parseFloat(split[1]);
                         break;
-                }
+
+                    case "beta":
+                        beta = Integer.parseInt(split[1]);
+                        // System.out.println("k:" + k);
+                        break;
+
+                    case "q0":
+                        q0 = Float.parseFloat(split[1]);
+                        break;
+
+                    case "p":
+                        p = Float.parseFloat(split[1]);
+                        break;
+
+                    case "fi":
+                        fi = Float.parseFloat(split[1]);
+                        break;
+
+                }//cierra switch
             }
 
         } catch (IOException e) {
@@ -152,51 +135,38 @@ public class Lector {
         return semilla;
     }
 
-    public int getD() {
-        return d;
-    }
-
-    /**
-     * @return ArrayList con el nombre de los algoritmos que se deberán ejecutar
-     */
-
     public ArrayList<String> getAlgoritmos() {
         return algoritmos;
     }
-
-    public int getK() {
-        return k;
+    public int getTam() {
+        return tam;
     }
 
-    public float getProb() {
-        return prob_cambio;
-    }
-
-    public String getSimbolo() {
-        return simbolo;
-    }
-
-    public long getIteraciones() {
-        return iteraciones;
-    }
-
-    public ArrayList<String> getFunciones() {
-        return funciones;
-    }
-
-    public double[] getRangoInf() {
-        return rangoInf;
-    }
-
-    public double[] getRangoSup() {
-        return rangoSup;
+    public int getEvaluaciones() {
+        return evaluaciones;
     }
 
     public int getPoblacion() {return poblacion;}
 
-    public float getCruce() {return cruce;}
+    public int getGreedy() {
+        return greedy;
+    }
 
     public float getAlfa() {return alfa;}
 
-    public float getMutacion() {return mutacion;}
+    public int getBeta(){
+        return beta;
+    }
+
+    public float getQ0(){
+        return q0;
+    }
+
+    public float getP() {
+        return p;
+    }
+
+    public float getFi() {
+        return fi;
+    }
 }
