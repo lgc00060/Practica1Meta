@@ -12,7 +12,7 @@ public class FuncionesAux {
 
     public static double greedy(double[][] matriz,int tam){
         int posMenor=-1;
-        double menor=Double.MAX_VALUE,coste=0.0;
+        double menor=Double.MAX_VALUE,coste=0.0; //
         int[] vector=new int[tam];
 
         for(int i=0;i<tam;i++){
