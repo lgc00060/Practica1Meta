@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class leerFicheros {
+public class leerFicheros{
     private double tsp[][];
     private double distancia[][];
     private int tam;
@@ -64,10 +64,12 @@ public class leerFicheros {
     }
 
     public double[][] getTsp() {
+
         return tsp;
     }
 
     public double[][] getDistancia() {
+
         return distancia;
     }
 
