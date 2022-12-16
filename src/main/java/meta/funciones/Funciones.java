@@ -2,8 +2,6 @@ package meta.funciones;
 
 import java.io.IOException;
 
-import static meta.utils.FuncionesAux.funcionPotenciaMAPE;
-import static meta.utils.FuncionesAux.funcionPotenciaRMSE;
 
 public class Funciones {
 
@@ -181,12 +179,6 @@ public class Funciones {
 
             case "Trid":
                 return rosenFunction(v);
-
-            case "FuncionPotenciaMAPE":
-                return funcionPotenciaMAPE(v);
-
-            case "FuncionPotenciaRMSE":
-                return funcionPotenciaRMSE(v);
 
             default:
                 return -1;

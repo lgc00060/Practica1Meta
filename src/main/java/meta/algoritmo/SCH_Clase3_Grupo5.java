@@ -44,12 +44,10 @@ public class SCH_Clase3_Grupo5 {
             }
         }
 
-        while (contador < evaluaciones && tiempo<600000) {
-
+        do {
             //Carga de las hormigas iniciales
-            for (int i = 0; i < tampoblacion; i++) {
-                solucion[i] = aleatorio.nextInt(tam - 1);
-            }
+            for (int i = 0; i < tampoblacion; i++)
+                solucion[i] = aleatorio.nextInt(tam);
 
             char c;
             //GENERAMOS las n-1 componentes pdtes. de las hormigas
@@ -63,7 +61,7 @@ public class SCH_Clase3_Grupo5 {
                     //de ciudades no visitadas aun
                     for (int i = 0; i < tam; i++) {
                         if (!marcados[h][i])
-                            feromonaHeuristica[i] = Math.pow(heuristica[hormigas[h][comp - 1]][i], beta)* Math.pow(feromona[hormigas[h][comp - 1]][i], alfa);
+                            feromonaHeuristica[i] = Math.pow(heuristica[hormigas[h][comp - 1]][i], beta) * Math.pow(feromona[hormigas[h][comp - 1]][i], alfa);
                     }
 
 
@@ -104,12 +102,8 @@ public class SCH_Clase3_Grupo5 {
                     hormigas[h][comp] = elegido;
                     marcados[h][elegido] = true;
 
-                    feromona[hormigas[h][comp - 1]][hormigas[h][comp]] =
-                            ((1 - fi) * feromona[hormigas[h][comp - 1]][hormigas[h][comp]]) + (fi * fInicial);
-                    feromona[hormigas[h][comp]][hormigas[h][comp - 1]] =
-                            feromona[hormigas[h][comp - 1]][hormigas[h][comp]];
-
-
+                    feromona[hormigas[h][comp - 1]][hormigas[h][comp]] = ((1 - fi) * feromona[hormigas[h][comp - 1]][hormigas[h][comp]]) + (fi * fInicial);
+                    feromona[hormigas[h][comp]][hormigas[h][comp - 1]] = feromona[hormigas[h][comp - 1]][hormigas[h][comp]];
                 }
             }
 
@@ -118,9 +112,8 @@ public class SCH_Clase3_Grupo5 {
             mejorCosteActual = Double.MAX_VALUE;
             for (int i = 0; i < tampoblacion; i++) {
                 double coste = 0.0;
-                for (int j = 0; j < tam - 1; j++) {
+                for (int j = 0; j < tam - 1; j++)
                     coste += distancia[solucion[j]][solucion[j + 1]];
-                }
                 coste += distancia[solucion[0]][solucion[tam - 1]];
 
                 if (coste < mejorCosteActual) {
@@ -153,7 +146,7 @@ public class SCH_Clase3_Grupo5 {
             }*/
 
 
-            //LIMPIAR
+            //Tenemos que limpiar
             hormigas = new int[tampoblacion][tam];
             costes = new double[tampoblacion];
             for (int i = 0; i < tampoblacion; i++) {
@@ -162,7 +155,8 @@ public class SCH_Clase3_Grupo5 {
                 }
             }
 
-        }
+        }while (contador < evaluaciones && tiempo<600000);
+
 
         double tiempoFinal = System.nanoTime();
         double resultado = (tiempoFinal - tiempoInicial)/1000000;
@@ -170,4 +164,5 @@ public class SCH_Clase3_Grupo5 {
         logger.info("El coste del algoritmo SCH es:" + mejorCosteGlobal);
         logger.info("La semilla es:" + semilla);
     }
+
 }

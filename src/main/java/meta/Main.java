@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import static meta.algoritmo.SCH_Clase3_Grupo5.SCH_Clase3_Grupo5;
-import static meta.utils.FuncionesAux.createAppendersLog;
 import static meta.utils.FuncionesAux.getFiles;
 
 public class Main {
@@ -28,7 +27,7 @@ public class Main {
         double q0=config.getQ0();
         double p=config.getP();
         double fi=config.getFi();
-        int greedy= config.getGreedy();
+        double greedy =0.1;
         Long[] semillas = config.getSemilla();
         final File folder = new File(ruta);
         String archivoConfig= getFiles(folder);
@@ -43,7 +42,7 @@ public class Main {
                         SCH_Clase3_Grupo5(tampoblacion,q0,p,fi,tam,evaluaciones,greedy,distancia,Solucion,alfa,beta,semilla,logger);
                     }
                 }
-                createAppendersLog(archivoConfig,ruta);
+                //createAppendersLog(archivoConfig,ruta);
             }
         }
     }
