@@ -150,6 +150,7 @@ public class SCH_Clase3_Grupo5 {
         double resultado = (tiempoFinal - tiempoInicial) / 1000000;
         logger.info("El tiempo total de ejecucion en ms es: " + resultado);
         logger.info("El coste del algoritmo SCH es:" + mejorCosteGlobal);
+        logger.info("Mejor hormiga: "+ mejorHormigaActual);
         logger.info("La semilla es:" + semilla);
     }
 

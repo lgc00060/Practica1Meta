@@ -16,7 +16,6 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BasicConfigurator.configure();
         Random aleatorio = new Random();
-        double[][] distancia=new double[10][10];
         Lector config = new Lector("src/main/java/meta/config_files/config_ini");
         String ruta = ("src/main/java/meta/config_files/");
         ArrayList<String> algoritmos = config.getAlgoritmos();
@@ -25,6 +24,7 @@ public class Main {
         int[] Solucion = new int[tam];
         int tampoblacion = config.getPoblacion();
         double alfa = config.getAlfa();
+        double[][] distancia=leerFicheros.getMatrizDistancias();
         int evaluaciones =config.getEvaluaciones();
         int beta=config.getBeta();
         double q0=config.getQ0();
