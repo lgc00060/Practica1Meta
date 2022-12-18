@@ -4,12 +4,12 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class leerFicheros{
+public class LectorFicheros {
     private double tsp[][];
-    private double distancia[][];
-    private int tam;
+    private double matrizDistancias[][];
+    private int tamanio;
 
-    public void leeDatos(String ruta) {
+    public void LectorDatos(String ruta) {
         String linea;
         FileReader f = null;
         try {
@@ -20,13 +20,14 @@ public class leerFicheros{
             b.readLine();
             linea = b.readLine();
             String tam[] = linea.split(" ");
-            this.tam = Integer.parseInt(tam[2]);
-            tsp = new double[this.tam][2];
-            distancia = new double[this.tam][this.tam];
+            this.tamanio = Integer.parseInt(tam[2]);
+            tsp = new double[this.tamanio][2];
+            matrizDistancias = new double[this.tamanio][this.tamanio];
             b.readLine();
             b.readLine();
             int c = 0;
-            while(c < this.tam) {
+
+            while(c < this.tamanio) {
                 linea = b.readLine();
                 String[] separador = linea.split(" ");
                 tsp[c][0] = Double.parseDouble(separador[1]);
@@ -34,10 +35,10 @@ public class leerFicheros{
                 c++;
             }
 
-            for(int i = 0; i <= this.tam; i++) {
-                for(int j = i + 1; j < this.tam; j++) {
-                    distancia[i][j] = Math.sqrt(Math.pow(tsp[i][0] - tsp[j][0], 2) + Math.pow(tsp[i][1] - tsp[j][1], 2));
-                    distancia[j][i] = distancia[i][j];
+            for(int i = 0; i <= this.tamanio; i++) {
+                for(int j = i + 1; j < this.tamanio; j++) {
+                    matrizDistancias[i][j] = Math.sqrt(Math.pow(tsp[i][0] - tsp[j][0], 2) + Math.pow(tsp[i][1] - tsp[j][1], 2));
+                    matrizDistancias[j][i] = matrizDistancias[i][j];
                 }
             }
         } catch(IOException IOE) {
@@ -46,7 +47,7 @@ public class leerFicheros{
     }
 
     public void mostrarDatos() {
-        for(int i = 0; i < tam; i++) {
+        for(int i = 0; i < tamanio; i++) {
             for(int j = 0; j < 2; j++) {
                 System.out.print(tsp[i][j] + ", ");
             }
@@ -55,9 +56,9 @@ public class leerFicheros{
 
         System.out.println();
 
-        for(int i = 0; i < tam; i++) {
-            for(int j = 0; j < tam; j++) {
-                System.out.print(distancia[i][j] + ", ");
+        for(int i = 0; i < tamanio; i++) {
+            for(int j = 0; j < tamanio; j++) {
+                System.out.print(matrizDistancias[i][j] + ", ");
             }
             System.out.println();
         }
@@ -68,13 +69,13 @@ public class leerFicheros{
         return tsp;
     }
 
-    public double[][] getDistancia() {
+    public double[][] getMatrizDistancias() {
 
-        return distancia;
+        return matrizDistancias;
     }
 
-    public int getTam() {
-        return tam;
+    public int getTamanio() {
+        return tamanio;
     }
 
 }

@@ -1,6 +1,5 @@
 semilla=76589227 77658922 27765892 22776589 92277658
 algoritmos=SCH
-tam=5
 evaluaciones=10000
 poblacion=10
 greedy=1840

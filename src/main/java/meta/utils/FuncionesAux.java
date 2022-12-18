@@ -10,25 +10,25 @@ import java.util.stream.Collectors;
 
 public class FuncionesAux {
 
-    public static double greedy(double[][] matriz,int tam){
+    public static double greedy(double[][] matrizDistancias,int tam){
         int posMenor=-1;
         double menor=Double.MAX_VALUE,coste=0.0;
         int[] vector=new int[tam];
 
         for(int i=0;i<tam;i++){
             for(int j=0;j<tam;j++){
-                if(vector[i]!=j && matriz[vector[i]][j]< menor){
-                    menor=matriz[vector[i]][j];
+                if(vector[i]!=j && matrizDistancias[vector[i]][j]< menor){
+                    menor=matrizDistancias[vector[i]][j];
                     posMenor=j;
                 }
             }
             vector[i]=posMenor;
         }
 
-        for (int i=0; i<tam; i++){
-            coste+= matriz[vector[i]][vector[i]];
+        for (int i=0; i<tam-1; i++){
+            coste+= matrizDistancias[vector[i]][vector[i]];
         }
-        coste+=matriz[vector[0]][vector[tam]];
+        coste+=matrizDistancias[vector[tam-1]][vector[0]];
 
         return coste;
     }
@@ -39,23 +39,23 @@ public class FuncionesAux {
         return random.nextDouble() * (max - min) + min;
     }
 
-    /*private static String convertToLogAppender(String algoritmo, String funcion, String semilla) {
-        return "log4j.appender." + funcion + "." + algoritmo + "." + semilla +
+    private static String convertToLogAppender(String algoritmo, String semilla) {
+        return "log4j.appender." + algoritmo + "." + semilla +
                 " = org.apache.log4j.FileAppender\n" +
-                "log4j.appender." + funcion + "." + algoritmo + "." + semilla +
-                ".file = src/main/java/meta/ArchivosLog" + funcion + "/" + algoritmo + "/" + semilla + ".log\n" +
-                "log4j.appender." + funcion + "." + algoritmo + "." + semilla +
+                "log4j.appender." + algoritmo + "." + semilla +
+                ".file = src/main/java/meta/ArchivosLog"  + "/" + algoritmo + "/" + semilla + ".log\n" +
+                "log4j.appender."  + algoritmo + "." + semilla +
                 ".append = false\n" +
-                "log4j.appender." + funcion + "." + algoritmo + "." + semilla +
+                "log4j.appender." + algoritmo + "." + semilla +
                 ".layout = org.apache.log4j.PatternLayout\n" +
-                "log4j.appender." + funcion + "." + algoritmo + "." + semilla +
+                "log4j.appender." + algoritmo + "." + semilla +
                 ".layout.ConversionPattern = %d %c{3} - %m%n\n\n" +
-                "log4j.logger." + funcion + "." + algoritmo + "." + semilla +
-                " = INFO, " + funcion + "." + algoritmo + "." + semilla + "\n\n";
-    }*/
+                "log4j.logger." + algoritmo + "." + semilla +
+                " = INFO, " + algoritmo + "." + semilla + "\n\n";
+    }
 
 
-    /*public static void createAppendersLog(String archivosConfig, String ruta) throws IOException {
+    public static void createAppendersLog(String archivosConfig, String ruta) throws IOException {
         FileOutputStream csvFile = new FileOutputStream("src/main/resources/log4j.properties");
         try (PrintWriter pw = new PrintWriter(csvFile)) {
             Lector lector = new Lector(ruta + archivosConfig);
@@ -63,20 +63,15 @@ public class FuncionesAux {
             Long[] semillas = lector.getSemilla();
             List<Long> semillasList = Arrays.stream(semillas).collect(Collectors.toList());
             for (String algoritmo : algoritmos) {
-                for (int i = 0; i < lector.getFunciones().size(); i++) {
-                    String funcion = lector.getFunciones().get(i);
                     ArrayList <String> ListaSemillas;
                     semillasList.stream()
-                            .map(s -> convertToLogAppender(algoritmo, funcion, String.valueOf(s)))
+                            .map(s -> convertToLogAppender(algoritmo, String.valueOf(s)))
                             .forEach(pw::print);
 
                     pw.println();
-
-                }
-
             }
         }
-    }*/
+    }
 
     public static String getFiles(final File folder){
         String fileName="";
