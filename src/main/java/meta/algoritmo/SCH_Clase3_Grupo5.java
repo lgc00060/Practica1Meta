@@ -33,6 +33,8 @@ public class SCH_Clase3_Grupo5 {
 
         double feromonaInicial = 1 / (tamHormigas * greedy); //carga inicial de feromona y heuristica
 
+        logger.info("Valor del greedy: "+ greedy);
+
         for (int i = 0; i < tamCiudades; i++) {
             for (int j = 0; j < tamCiudades; j++) {
                 if (i != j) {

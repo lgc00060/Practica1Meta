@@ -19,12 +19,22 @@ public class Main {
         Lector config = new Lector("src/main/java/meta/config_files/config_ini");
         String ruta = ("src/main/java/meta/config_files/");
         ArrayList<String> algoritmos = config.getAlgoritmos();
-        LectorFicheros leerFicheros = null;
-        int tam=leerFicheros.getTamanio();
-        int[] Solucion = new int[tam];
+        int i=0;
+
+        ArrayList<String>Datos=config.getDatos();
+
+        LectorFicheros ch130;
+        LectorFicheros d15112;
+        LectorFicheros pr144;
+
+        //int tam=leerFicheros.getTamanio();
+
+        //int[] Solucion = new int[tam];
         int tampoblacion = config.getPoblacion();
         double alfa = config.getAlfa();
-        double[][] distancia=leerFicheros.getMatrizDistancias();
+
+        //double[][] distancia=leerFicheros.getMatrizDistancias();
+
         int evaluaciones =config.getEvaluaciones();
         int beta=config.getBeta();
         double q0=config.getQ0();
@@ -36,19 +46,25 @@ public class Main {
         String archivoConfig= getFiles(folder);
         LectorFicheros fichero= new LectorFicheros();
 
-        for (String algoritmo : algoritmos) {
-            System.out.println(algoritmo);
-            for (Long semilla : semillas) {
-                aleatorio.setSeed(semilla);
-                Logger logger = Logger.getLogger(algoritmo + "." + semilla);
-                switch (algoritmo) {
-                    case "SCH" -> {
-                        SCH_Clase3_Grupo5(tampoblacion,q0,p,fi,tam,evaluaciones,greedy,distancia,Solucion,alfa,beta,semilla,logger);
+        for(String datos: Datos) {
+            for (String algoritmo : algoritmos) {
+                System.out.println(algoritmo);
+                for (Long semilla : semillas) {
+                    aleatorio.setSeed(semilla);
+                    Logger logger = Logger.getLogger(algoritmo + "." + semilla);
+                    switch (algoritmo) {
+                        case "SCH" -> {
+                            if(config.getDatos().get(i)=="ch130.tsp"){
+
+                            }
+                            //SCH_Clase3_Grupo5(tampoblacion, q0, p, fi, tam, evaluaciones, greedy, distancia, Solucion, alfa, beta, semilla, logger);
+                        }
                     }
+                    //createAppendersLog(archivoConfig,ruta);
                 }
-                //createAppendersLog(archivoConfig,ruta);
+                //fichero.leeDatos("src/main/resources/ch130.tsp");
             }
-            //fichero.leeDatos("src/main/resources/ch130.tsp");
+            i++;
         }
     }
 }

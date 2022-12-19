@@ -11,24 +11,33 @@ import java.util.stream.Collectors;
 public class FuncionesAux {
 
     public static double greedy(double[][] matrizDistancias,int tam){
-        int posMenor=-1;
-        double menor=Double.MAX_VALUE,coste=0.0;
-        int[] vector=new int[tam];
+        boolean visitadas[] = new boolean[tam];
+        double coste=0.0;
+        int contador = 1;
+        int posAct = -1;
+        double valorMenor;
+        int posicionMenor;
 
-        for(int i=0;i<tam;i++){
-            for(int j=0;j<tam;j++){
-                if(vector[i]!=j && matrizDistancias[vector[i]][j]< menor){
-                    menor=matrizDistancias[vector[i]][j];
-                    posMenor=j;
+        for(int i = 0; i < tam; i++)
+            visitadas[i] = false;
+
+        visitadas[0] = true;
+
+        while(contador < tam) {
+            valorMenor = Double.MAX_VALUE;
+            posicionMenor = 0;
+            for(int i = 0; i < tam; i++) {
+                if(visitadas[i] == false && matrizDistancias[posAct][i] < valorMenor && i != posAct){
+                    valorMenor = matrizDistancias[posAct][i];
+                    posicionMenor = i;
                 }
             }
-            vector[i]=posMenor;
-        }
 
-        for (int i=0; i<tam-1; i++){
-            coste+= matrizDistancias[vector[i]][vector[i]];
+            visitadas[posicionMenor] = true;
+            coste += valorMenor;
+            posAct = posicionMenor;
+            contador++;
         }
-        coste+=matrizDistancias[vector[tam-1]][vector[0]];
 
         return coste;
     }

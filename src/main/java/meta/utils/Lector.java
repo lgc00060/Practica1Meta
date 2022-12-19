@@ -16,6 +16,8 @@ public class Lector {
 
     public int greedy;
 
+    private ArrayList<String> Datos = new ArrayList<>();
+
     private float p;
 
     private float fi;
@@ -31,8 +33,6 @@ public class Lector {
     private float alfa;
 
     private int evaluaciones;
-
-    private ArrayList<String> funciones = new ArrayList<>();
 
     private double[] rangoInf = new double[12];
 
@@ -69,6 +69,13 @@ public class Lector {
                             //Los añadimos al ArrayList
                             semilla[q] = Long.parseLong(splitsemi[q]);
                             // System.out.println("semilla:" + semilla[q]);
+                        }
+                        break;
+
+                    case "Datos":
+                        String[] splitfun = split[1].split(", ");
+                        for (int q = 0; q < splitfun.length; q++) {
+                            Datos.add(splitfun[q]);
                         }
                         break;
 
@@ -135,6 +142,9 @@ public class Lector {
         return semilla;
     }
 
+    public ArrayList<String> getDatos() {
+        return Datos;
+    }
     public ArrayList<String> getAlgoritmos() {
         return algoritmos;
     }

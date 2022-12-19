@@ -1,8 +1,8 @@
 semilla=76589227 77658922 27765892 22776589 92277658
+datos=ch130.tsp d15112.tsp pr144.tsp
 algoritmos=SCH
 evaluaciones=10000
 poblacion=10
-greedy=1840
 alfa=1
 beta=2
 q0=0.95
