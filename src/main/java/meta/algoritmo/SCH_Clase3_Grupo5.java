@@ -110,7 +110,7 @@ public class SCH_Clase3_Grupo5 {
                 }
             }
 
-            //Nos quedamos con la mejor hormiga de las 10 que tengo
+            //Nos quedamos con la mejor hormiga de las 10 que tengo //OJO A ESTO
             mejorCosteActual = Double.MAX_VALUE;
             for (int i = 0; i < tamHormigas; i++) {
                 coste = 0.0;
@@ -124,7 +124,7 @@ public class SCH_Clase3_Grupo5 {
                 }
             }
 
-            //ACTUALIZO SII la mejor hormiga actual mejora a la mejor global
+            //ACTUALIZO
             if (mejorCosteActual < mejorCosteGlobal) {
                 mejorCosteGlobal = mejorCosteActual;
                 solucion = mejorHormigaActual;

@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 public class FuncionesAux {
 
-    public static double greedy(double[][] matrizDistancias,int tam){
+    public double greedy(double[][] matrizDistancias,int tam){
         boolean visitadas[] = new boolean[tam];
         double coste=0.0;
         int contador = 1;
