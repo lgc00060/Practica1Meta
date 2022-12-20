@@ -10,42 +10,40 @@ import java.util.stream.Collectors;
 
 public class FuncionesAux {
 
-    public double greedy(double[][] matrizDistancias,int tam){
-        boolean visitadas[] = new boolean[tam];
-        double coste=0.0;
-        int contador = 1;
-        int posAct = -1;
-        double valorMenor;
-        int posicionMenor;
-
-        for(int i = 0; i < tam; i++)
-            visitadas[i] = false;
-
-        visitadas[0] = true;
-
-        while(contador < tam) {
-            valorMenor = Double.MAX_VALUE;
-            posicionMenor = 0;
-            for(int i = 0; i < tam; i++) {
-                if(visitadas[i] == false && matrizDistancias[posAct][i] < valorMenor && i != posAct){
-                    valorMenor = matrizDistancias[posAct][i];
-                    posicionMenor = i;
+    public static double greedy(double[][] matrizDistancias,int tam){
+        Random random = new Random();
+        int[] solucion = new int[tam];
+        boolean[] marcado = new boolean[tam];
+        solucion[0] = random.nextInt(tam);
+        marcado[solucion[0]] = true;
+        for (int i = 0; i < tam - 1; i++) {
+            double menosDist = Double.MAX_VALUE;
+            int posMenor = 0;
+            for (int j = 0; j < tam; j++) {
+                if (solucion[i] != j && matrizDistancias[solucion[i]][j] < menosDist && !marcado[j]) {
+                    menosDist = matrizDistancias[solucion[i]][j];
+                    posMenor = j;
                 }
             }
-
-            visitadas[posicionMenor] = true;
-            coste += valorMenor;
-            posAct = posicionMenor;
-            contador++;
+            solucion[i + 1] = posMenor;
+            marcado[posMenor] = true;
         }
-
-        return coste;
+        return coste(matrizDistancias, tam,solucion);
     }
 
 
     public static double randDoubleWithRange(double min, double max) {
         Random random = new Random();
         return random.nextDouble() * (max - min) + min;
+    }
+
+    public static double coste(double[][] matrizDistancias,int tam,int[] vector){
+        double coste = 0;
+        for (int i = 0; i < tam - 1; i++) {
+            coste += matrizDistancias[vector[i]][vector[i + 1]];
+        }
+        coste += matrizDistancias[vector[0]][vector[tam - 1]];
+        return coste;
     }
 
     private static String convertToLogAppender(String algoritmo, String semilla) {

@@ -34,9 +34,6 @@ public class Lector {
 
     private int evaluaciones;
 
-    private double[] rangoInf = new double[12];
-
-    private double[] rangoSup = new double[12];
 
     //Simbolo de separacion
     private String simbolo = "=";
@@ -44,7 +41,7 @@ public class Lector {
     //Parametros de cada algoritmo
     //Integer parametroextra;
     //Constructor
-    public Lector(String ruta) {
+    public Lector(String ruta) throws IOException{
         //Parametros necesarios para la lectura de los archivos
         String linea;
         FileReader f = null;
@@ -72,8 +69,8 @@ public class Lector {
                         }
                         break;
 
-                    case "Datos":
-                        String[] splitfun = split[1].split(", ");
+                    case "datos":
+                        String[] splitfun = split[1].split(" ");
                         for (int q = 0; q < splitfun.length; q++) {
                             Datos.add(splitfun[q]);
                         }

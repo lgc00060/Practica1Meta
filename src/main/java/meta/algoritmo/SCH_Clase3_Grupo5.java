@@ -4,8 +4,10 @@ import org.apache.log4j.Logger;
 
 import java.util.Random;
 
+import static meta.utils.FuncionesAux.coste;
+
 public class SCH_Clase3_Grupo5 {
-    public static void SCH_Clase3_Grupo5(int tamHormigas, double q0, double p, double fi,int tamCiudades, int evaluaciones,double greedy,double[][] matrizDistancias, int[] solucion,double alfa,int beta,long semilla,Logger logger) {
+    public static void SCH_Clase3_Grupo5(int tamHormigas, double q0, double p, double fi,int tamCiudades, int evaluaciones,double greedy,double[][] matrizDistancias,double alfa,int beta,long semilla,Logger logger) {
         long tiempoInicial = System.nanoTime();
         Random aleatorio = new Random();
         double[][] feromona = new double[tamCiudades][tamCiudades];
@@ -26,6 +28,7 @@ public class SCH_Clase3_Grupo5 {
         double mejorCosteGlobal = Double.MAX_VALUE;
         int[] mejorHormigaActual = new int[tamCiudades];
         double tiempoFinalAlg = 0.0;
+        int[] solucion;
 
         logger.info("Empieza ejecucion algoritmo SCH: ");
 
@@ -77,7 +80,7 @@ public class SCH_Clase3_Grupo5 {
                         }
                     }
 
-                    if(q0<q){
+                    if(q0>q){
                         for (int i = 0; i < tamCiudades; i++) {
                             if (!verctorMarcaje[hormig][i]) {
                                 double numerador = feromonaHeuristica[i];
@@ -97,7 +100,7 @@ public class SCH_Clase3_Grupo5 {
                             }
                         }
                     }else{
-                        if(q0>=q)
+                        if(q0<=q)
                             elegido = posArgMax;
                     }
 
@@ -113,10 +116,7 @@ public class SCH_Clase3_Grupo5 {
             //Nos quedamos con la mejor hormiga de las 10 que tengo //OJO A ESTO
             mejorCosteActual = Double.MAX_VALUE;
             for (int i = 0; i < tamHormigas; i++) {
-                coste = 0.0;
-                for (int j = 0; j < tamCiudades - 1; j++)
-                    coste += matrizDistancias[solucion[j]][solucion[j + 1]];
-                    coste += matrizDistancias[solucion[0]][solucion[tamCiudades - 1]];
+                coste=coste(matrizDistancias,tamCiudades, hormigas[i]);
 
                 if (coste < mejorCosteActual) {
                     mejorCosteActual = coste;
