@@ -32,6 +32,7 @@ public class Main {
         System.out.println(Datos.get(0));
 
         TSP tsp = tspLector("src/main/resources/ch130.tsp");
+        TSP pr1 = tspLector("src/main/resources/pr144.tsp");
 
 
 
@@ -74,18 +75,16 @@ public class Main {
                                 greedy=f.greedy(distancia,tam);
 
                                 SCH_Clase3_Grupo5(tampoblacion, q0, p, fi, tam, evaluaciones, greedy, distancia, Solucion, alfa, beta, semilla, logger);
-                        }
+                        }*/
 
                         case "pr144.tsp" -> {
-                                pr144.LectorDatos("src/main/resources/pr144.tsp");
-                                tam= pr144.getTamanio();
-                                distancia=new double[tam][tam];
-                                distancia=pr144.getMatrizDistancias();
-                                Solucion = new int[tam];
-                                greedy=f.greedy(distancia,tam);
+                            distancia=pr1.getMatriz();
+                            tam=pr1.getDimension();
+                            coste=FuncionesAux.greedy(distancia,tam);
 
-                                SCH_Clase3_Grupo5(tampoblacion, q0, p, fi, tam, evaluaciones, greedy, distancia, Solucion, alfa, beta, semilla, logger);
-                        }*/
+                            SCH_Clase3_Grupo5 alg1=new SCH_Clase3_Grupo5();
+                            alg1.SCH_Clase3_Grupo5(tampoblacion, q0, p, fi, tam, evaluaciones, coste, distancia, alfa, beta, semilla, logger);
+                        }
                     }
                     createAppendersLog(archivoConfig,ruta);
                 }
